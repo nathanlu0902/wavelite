@@ -11,15 +11,9 @@ Page({
     typeList:["波奇","意面","沙拉","咖啡"],
     currentType:"波奇",
     goodsList:[],
-    cart_list:[],
     currentIndexL:null
   },
 
-  filterDish:function(arr,type){
-    let new_arr=arr.filter(item=>item.type==type);
-    console.log(new_arr);
-    return new_arr;
-  },
 
   bindLeftItemTap:function(e){
     let {currenttype}=e.currentTarget.dataset;
@@ -31,39 +25,28 @@ Page({
   },
 
   add:function(e){
-    let {qty}=e.currentTarget.dataset;
-    let {rightid}=e.currentTarget.dataset;
-    if(qty==0){
-      cart_list.push(goodsList[this.leftid].right_item[rightid]);
-    }else{
-      cart_list[leftid].right_item[rightid].qty++;
-    }
+    let that=this;
+    let {id}=e.currentTarget.dataset;
+    that.data.goodsList[id].qty+=1;
     this.setData({
-      cart_list:cart_list
+      goodsList:that.data.goodsList
     })
-   },
+  },
 
   minus:function(e){
+    
+    let {id}=e.currentTarget.dataset;
     let {qty}=e.currentTarget.dataset;
-    let {rightid}=e.currentTarget.dataset;
     if(qty>0){
+      this.goodsList[id].qty-=1;
     }
-    this.setData({
-      cart_list:cart_list
-    })
-
-   },
+  },
 
   input:function(e){
-    let cart_list=this.data.cart_list;
-    let indexL=this.data.currentIndexL;
-    let num=parseInt(e.detail.value,10);
-    let {index}=e.currentTarget.dataset;
-    cart_list[indexL].right_item[index].num=num>=0?num:0;
-    this.setData({
-      cart_list:cart_list
-    })
-   },
+    let {value}=e.detail;
+    let {id}=e.currentTarget.dataset;
+    this.goodsList[id].qty=parseInt(value);
+  },
 
   computePrice:(arr)=>{
     return arr.reduce((cur,nxt)=>{
@@ -75,7 +58,6 @@ Page({
       currentIndexL:0,
       goodsList:goodsList
     })
-    console.log(goodsList);
 },
 
   /**
