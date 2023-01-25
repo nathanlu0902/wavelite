@@ -1,0 +1,93 @@
+.wrapper{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.menu-wrapper{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height:1100rpx;
+  padding:0 32rpx;
+}
+
+.search-bar{
+  
+}
+
+.left-menu{
+  width:18%;
+  background-color:rgb(245, 246, 248);
+  padding:0 16px;
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  border-radius: 20rpx;
+}
+
+.right-menu{
+  width:80%;
+  background-color: rgba(255,255,255,1);
+}
+
+.left-item{
+  display:flex;
+  align-items: center;
+  justify-content:center;
+  height:100rpx;
+  background:rgb(245, 246, 248);
+  font-size:28rpx;
+}
+
+.right-item{
+  display:flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: space-around;
+}
+
+.img{
+  width:250rpx;
+  height:250rpx;
+}
+
+.info-wrapper{
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  line-height:40rpx;
+}
+
+.dishName{
+  font-size: 32rpx;
+}
+
+.dishRemark{
+  font-size:22rpx;
+  color:lightgray;
+  
+}
+
+.dishPrice{
+  
+}
+.active-text{
+  color:red;
+}
+
+.btnGroup{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+
+}
+
+.goodsBtn{
+  text-align: center;
+}
+
+.qty_input{
+  text-align: center;
+  width:40rpx;
+}

@@ -1,0 +1,10 @@
+<view>cart</view>
+<!-- <block wx:if="{{cartGroupData.isNotEmpty}}"> -->
+<!--分层购物车-->
+<cart-group/>
+<view class="gap"></view>
+<!--商品结算按钮-->
+<cart-bar>
+
+</cart-bar>
+<!-- </block> -->

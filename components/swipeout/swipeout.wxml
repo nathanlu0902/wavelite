@@ -1,0 +1,37 @@
+<wxs module="swipe">
+var THRESHOLD=0.3;
+var MIN_DISTANCE=10;
+var owner;
+var state;
+
+var getState=function(ownerInstance){
+  owner=ownerInstance;
+  state=owner.getState();//??
+  state.leftWidth=state.leftWidth||0;
+  state.rightWidth=state.rightWidth||0;
+  state.offset=state.offset||0;
+  state.startOffset=state.startOffset||0;
+}
+
+var initRightWidth=function(newVal,oldVal,ownerInstance){
+  getState(ownerInstance);
+  state.rightWidth=newVal;
+  if(state.offset<0){
+    swipeMove(-state.rightWidth);
+  }
+};
+
+var range=function(num,min,max){
+  return Math.min(Math.max(num,min),max);//取中间数？
+}
+
+var swipeMove=function(_offset=0){
+  state.offset=range(
+    _offset,
+    -state.rightWidth,
+    +state.leftWidth
+  )
+}
+
+
+</wxs>

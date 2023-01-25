@@ -1,0 +1,55 @@
+/**index.wxss**/
+.index-swiper{
+  width:100%;
+  display:block;
+  height:500rpx;
+  padding-top: constant(safe-area-inset-top);
+}
+.bnr-item-img{
+  width:100%;
+  height:inherit;
+}
+.btn-wrapper{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+  margin:20px auto;
+}
+.btn{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height:70px;
+  width:70px;
+  text-align:center;
+  box-shadow: 0 1px 11px 0 rgba(0,0,0,.09);
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight:500;
+  letter-spacing: .053px;
+  line-height: 24px;
+}
+
+.subscribe{
+  
+}
+
+.mine{
+  
+}
+
+.delivery{
+  
+}
+
+.pic-wrapper{
+  width: 100%;
+  left:0;
+  right:0;
+  margin:0 auto;
+}
+
+.pic-wrapper image{
+  width:100%;
+  overflow:hidden;
+}

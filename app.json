@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/delivery/index",
+    "pages/mine/index",
+    "pages/subscribe/index",
+    "pages/goods/index",
+    "pages/cart/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Wave Lite"
+  },
+  "tabBar": {
+    "custom": true,
+    "backgroundColor": "#FFFFFF",
+    "color":"#D3D3D3",
+    "selectedColor": "#000000",
+    "list": [
+      {
+        "pagePath":"pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath":"pages/delivery/index",
+        "text": "外卖"
+      },
+      {
+        "pagePath":"pages/subscribe/index",
+        "text": "订阅"
+      },
+      {
+        "pagePath":"pages/mine/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {}
+}

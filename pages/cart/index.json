@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "购物车",
+  "usingComponents": {
+    "cart-group":"./components/cart-group/cart-group",
+    "cart-bar":"./components/cart-bar/cart-bar"
+  }
+}

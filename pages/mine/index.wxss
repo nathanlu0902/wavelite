@@ -1,0 +1,23 @@
+/* pages/mine/index.wxss */
+.mine_wrap{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user_info_wrap{
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top:300rpx;
+  text-align: center;
+}
+
+
+.menu_wrap{
+  display:flex;
+  flex-direction: column;
+  margin-top:80px;
+  width:90%;
+
+}

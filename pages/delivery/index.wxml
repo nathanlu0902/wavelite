@@ -1,0 +1,58 @@
+<view class="wrapper">
+<van-search 
+class="search-bar"
+value="{{value}}"
+placeholder="搜索菜品"
+bind:search="onSearch"
+bind:change="onChange"
+></van-search>
+<view class="menu-wrapper">
+<scroll-view class="left-menu" scroll-y="true" style="height:{{height}}">
+  <view 
+    class="left-item" 
+    wx:for="{{typeList}}" 
+    wx:key="*this"
+    bindtap="bindLeftItemTap"
+    data-currenttype="{{item}}"
+    data-index="{{index}}"
+    >
+    <text class="itemText {{currentIndexL==index?'active-text':''}}">{{item}}</text>
+  </view>
+</scroll-view>
+<scroll-view class="right-menu" scroll-y="true" style="height:{{height}}">
+  <view 
+    class="right-item"
+    wx:for="{{goodsList}}"
+    wx:key="id"
+  >
+  <block wx:if="{{item.type==currentType}}">
+    <image class="img" mode="aspectFit" src="{{item.picURL}}"></image>
+    <view class="info-wrapper">
+      <text class="dishName">{{item.dish}}</text>
+      <text class="dishRemark">{{item.dishRemark}}</text>
+      <view class="dishPrice">{{item.dishPrice}}</view>
+      <view class="btnGroup">
+      <button class="goodsBtn btnMinus" size="mini" bindtap="minus" data-rightid="{{item.id}}" data-qty="{{item.qty}}"style="width:20rpx;height:40rpx">-</button>
+      <input type="number" class="qty_input" value="{{item.qty}}" bindinput="input" data-rightid="{{item.id}}"/> 
+      <button class="goodsBtn btnAdd" size="mini" bindtap="add"  data-rightid="{{item.id}}" data-qty="{{item.qty}}" style="width:20rpx;height:40rpx">+</button>
+      </view>
+    </view>
+  </block> 
+  </view>
+
+</scroll-view>
+</view>
+<view class="cart-fixbar">
+  <view class="selectAll">
+    <icon />
+    <view class="selectAllText">全选</view>
+  </view>
+  <view class="count">
+    <text>合计：{{totalSum}}</text>
+  </view>
+  <view class="order">
+    <text class="allnum">{{num}}</text>
+  </view>
+
+</view>
+</view>

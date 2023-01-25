@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+    "van-cell-group":"/miniprogram_npm/vant-weapp/cell-group",
+    "van-cell":"/miniprogram_npm/vant-weapp/cell",
+    "price":"/components/price/price"
+  }
+}

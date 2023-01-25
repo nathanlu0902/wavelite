@@ -1,0 +1,15 @@
+<view class="mine_wrap">
+<view class="user_info_wrap">
+  <t-avatar class="avatar" alt="{{userInfo.nickName}}" image="{{userInfo.avatarUrl}}" size="large" catchtap="changeAvatar">
+  </t-avatar>
+  <text class="username">
+  {{userInfo.nickName}}
+  </text>
+</view>
+<view class="menu_wrap">
+<van-cell-group >
+  <van-cell wx:for="{{menu}}" wx:key="url" inset="true" class="menu_item" title="{{item.text}}" is-link="true" url="{{item.url}}" bindtap="navTo">
+  </van-cell>
+</van-cell-group>
+</view>
+</view>
