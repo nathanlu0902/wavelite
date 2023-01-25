@@ -32,9 +32,9 @@ bind:change="onChange"
       <text class="dishRemark">{{item.dishRemark}}</text>
       <view class="dishPrice">{{item.dishPrice}}</view>
       <view class="btnGroup">
-      <button class="goodsBtn btnMinus" size="mini" bindtap="minus" data-id="{{item.id}}" data-qty="{{item.qty}}"style="width:20rpx;height:40rpx">-</button>
+      <view class="goodsBtn" bindtap="minus" data-id="{{item.id}}" data-qty="{{item.qty}}">-</view>
       <input type="number" class="qty_input" value="{{item.qty}}" bindinput="input" data-id="{{item.id}}"/> 
-      <button class="goodsBtn btnAdd" size="mini" bindtap="add"  data-id="{{item.id}}" data-qty="{{item.qty}}" style="width:20rpx;height:40rpx">+</button>
+      <view class="goodsBtn" bindtap="add"  data-id="{{item.id}}">+</view>
       </view>
     </view>
   </block> 

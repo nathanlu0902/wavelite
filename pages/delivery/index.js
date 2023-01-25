@@ -34,18 +34,25 @@ Page({
   },
 
   minus:function(e){
-    
+    let that=this;
     let {id}=e.currentTarget.dataset;
     let {qty}=e.currentTarget.dataset;
     if(qty>0){
-      this.goodsList[id].qty-=1;
+      that.data.goodsList[id].qty-=1;
     }
+    this.setData({
+      goodsList:that.data.goodsList
+    })
   },
 
   input:function(e){
+    let that=this;
     let {value}=e.detail;
     let {id}=e.currentTarget.dataset;
-    this.goodsList[id].qty=parseInt(value);
+    that.data.goodsList[id].qty=parseInt(value);
+    this.setData({
+      goodsList:that.data.goodsList
+    })
   },
 
   computePrice:(arr)=>{
