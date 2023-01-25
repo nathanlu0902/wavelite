@@ -6,7 +6,7 @@
 //          dish:"波奇1",
 //          dishRemark:"xdfefe",
 //          dishPrice:"",
-//          picURL:"/images/dishPic/苏州轻食拍摄0957.JPG",
+//          picURL:"/images/dishPic/苏州轻食拍摄0957.JPG"
 //          qty:0},
 //         {id:2,
 //         dish:"波奇2",
