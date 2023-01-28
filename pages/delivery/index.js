@@ -11,7 +11,8 @@ Page({
     typeList:["波奇","意面","沙拉","咖啡"],
     currentType:"波奇",
     goodsList:[],
-    currentIndexL:null
+    currentIndexL:null,
+    totalPrice:0
   },
 
 
@@ -31,6 +32,7 @@ Page({
     this.setData({
       goodsList:that.data.goodsList
     })
+    this.getTotalPrice();
   },
 
   minus:function(e){
@@ -43,6 +45,7 @@ Page({
     this.setData({
       goodsList:that.data.goodsList
     })
+    this.getTotalPrice();
   },
 
   input:function(e){
@@ -53,10 +56,16 @@ Page({
     this.setData({
       goodsList:that.data.goodsList
     })
+    this.getTotalPrice();
   },
 
-  computePrice:(arr)=>{
-    return arr.reduce((cur,nxt)=>{
+  getTotalPrice:function(){
+    let totalPrice=this.data.goodsList.reduce((cur,nxt)=>{
+      console.log(this);
+      cur.dishPrice*cur.qty+nxt.dishPrice*nxt.qty;
+    })
+    this.setData({
+      totalPrice:totalPrice
     })
   } ,
 

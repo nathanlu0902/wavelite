@@ -48,7 +48,7 @@ bind:change="onChange"
     <view class="selectAllText">全选</view>
   </view>
   <view class="count">
-    <text>合计：{{totalSum}}</text>
+    <text>合计：{{totalPrice}}</text>
   </view>
   <view class="order">
     <text class="allnum">{{num}}</text>
