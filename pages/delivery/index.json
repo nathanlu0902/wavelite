@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "van-search":"/miniprogram_npm/vant-weapp/search/index",
-    "price":"/components/price/price"
+    "price":"/components/price/price",
+    "checkout-bar":"/components/checkout-bar/index"
   }
 }

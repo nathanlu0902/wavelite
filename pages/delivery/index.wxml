@@ -32,9 +32,9 @@ bind:change="onChange"
       <text class="dishRemark">{{item.dishRemark}}</text>
       <view class="dishPrice">{{item.dishPrice}}</view>
       <view class="btnGroup">
-      <view class="goodsBtn" bindtap="minus" data-id="{{item.id}}" data-qty="{{item.qty}}">-</view>
-      <input type="number" class="qty_input" value="{{item.qty}}" bindinput="input" data-id="{{item.id}}"/> 
-      <view class="goodsBtn" bindtap="add"  data-id="{{item.id}}">+</view>
+      <view class="goodsBtn" bindtap="minus" data-id="{{item.id}}" data-qty="{{item.qty}}" wx:if="{{item.qty>0}}">-</view>
+      <text class="qty" wx:if="{{item.qty>0}}">{{item.qty}}</text> 
+      <view class="goodsBtn add" bindtap="add"  data-id="{{item.id}}">+</view>
       </view>
     </view>
   </block> 
@@ -42,17 +42,5 @@ bind:change="onChange"
 
 </scroll-view>
 </view>
-<view class="cart-fixbar">
-  <view class="selectAll">
-    <icon />
-    <view class="selectAllText">全选</view>
-  </view>
-  <view class="count">
-    <text>合计：{{totalPrice}}</text>
-  </view>
-  <view class="order">
-    <text class="allnum">{{num}}</text>
-  </view>
-
-</view>
+<checkout-bar class="checkout-bar" totalPrice="{{totalPrice}}"/>
 </view>

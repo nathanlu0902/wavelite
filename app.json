@@ -23,10 +23,6 @@
         "text": "首页"
       },
       {
-        "pagePath":"pages/delivery/index",
-        "text": "外卖"
-      },
-      {
         "pagePath":"pages/subscribe/index",
         "text": "订阅"
       },

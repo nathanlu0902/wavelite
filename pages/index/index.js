@@ -54,7 +54,7 @@ Page({
   },
   switchTab:function(e){
     let {url}=e.currentTarget.dataset;
-    wx.switchTab({
+    wx.navigateTo({
       url: url,
     })
   }
