@@ -39,17 +39,5 @@ bind:change="onChange"
 
 </scroll-view>
 </view>
-<view class="cart-fixbar">
-  <view class="selectAll">
-    <icon />
-    <view class="selectAllText">全选</view>
-  </view>
-  <view class="count">
-    <text>合计：{{totalPrice}}</text>
-  </view>
-  <view class="order">
-    <text class="allnum">{{num}}</text>
-  </view>
-
-</view>
+<checkout-bar class="checkout-bar" totalPrice="{{totalPrice}}"/>
 </view>

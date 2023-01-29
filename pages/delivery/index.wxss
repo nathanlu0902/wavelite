@@ -61,6 +61,7 @@
   flex-direction:column;
   justify-content: flex-start;
   line-height:40rpx;
+  width:140rpx;
 }
 
 .dishName{

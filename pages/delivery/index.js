@@ -48,22 +48,25 @@ Page({
     this.getTotalPrice();
   },
 
-  input:function(e){
-    let that=this;
-    let {value}=e.detail;
-    let {id}=e.currentTarget.dataset;
-    that.data.goodsList[id].qty=parseInt(value);
-    this.setData({
-      goodsList:that.data.goodsList
-    })
-    this.getTotalPrice();
-  },
+  // input:function(e){
+  //   let that=this;
+  //   let {value}=e.detail;
+  //   let {id}=e.currentTarget.dataset;
+  //   if(value){
+  //     that.data.goodsList[id].qty=parseInt(value);
+  //   }else{}
+  //   this.setData({
+  //     goodsList:that.data.goodsList
+  //   })
+  //   this.getTotalPrice();
+  // },
 
   getTotalPrice:function(){
-    let totalPrice=this.data.goodsList.reduce((cur,nxt)=>{
-      console.log(this);
-      cur.dishPrice*cur.qty+nxt.dishPrice*nxt.qty;
-    })
+    let totalPrice=0;
+    let goodsList=this.data.goodsList;
+    for(let i=0;i<this.data.goodsList.length;i++){
+      totalPrice+=goodsList[i].dishPrice*goodsList[i].qty;
+    }
     this.setData({
       totalPrice:totalPrice
     })
@@ -86,12 +89,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow:function() {
-    if(typeof this.getTabBar==='function'&&this.getTabBar()){
-      this.getTabBar().setData({
-        selected:1,
-      })
-    }
+  onShow() {
+   
   },
 
   /**
