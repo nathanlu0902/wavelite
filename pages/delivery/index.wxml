@@ -1,3 +1,4 @@
+<import src="/templates/goodsAction.wxml"/>
 <view class="wrapper">
 <van-search 
 class="search-bar"
@@ -31,11 +32,7 @@ bind:change="onChange"
       <text class="dishName">{{item.dish}}</text>
       <text class="dishRemark">{{item.dishRemark}}</text>
       <view class="dishPrice">{{item.dishPrice}}</view>
-      <view class="btnGroup">
-      <view class="goodsBtn" bindtap="minus" data-id="{{item.id}}" data-qty="{{item.qty}}">-</view>
-      <input type="number" class="qty_input" value="{{item.qty}}" bindinput="input" data-id="{{item.id}}"/> 
-      <view class="goodsBtn" bindtap="add"  data-id="{{item.id}}">+</view>
-      </view>
+    <template is="goodsAction" data="{{id:item.id,qty:item.qty}}"></template>
     </view>
   </block> 
   </view>

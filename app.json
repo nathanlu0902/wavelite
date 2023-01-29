@@ -5,7 +5,8 @@
     "pages/mine/index",
     "pages/subscribe/index",
     "pages/goods/index",
-    "pages/cart/index"
+    "pages/cart/index",
+    "pages/delivery/templates/goodsAction"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -15,23 +16,23 @@
   "tabBar": {
     "custom": true,
     "backgroundColor": "#FFFFFF",
-    "color":"#D3D3D3",
+    "color": "#D3D3D3",
     "selectedColor": "#000000",
     "list": [
       {
-        "pagePath":"pages/index/index",
+        "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "pagePath":"pages/delivery/index",
+        "pagePath": "pages/delivery/index",
         "text": "外卖"
       },
       {
-        "pagePath":"pages/subscribe/index",
+        "pagePath": "pages/subscribe/index",
         "text": "订阅"
       },
       {
-        "pagePath":"pages/mine/index",
+        "pagePath": "pages/mine/index",
         "text": "我的"
       }
     ]

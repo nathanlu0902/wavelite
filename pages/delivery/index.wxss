@@ -80,26 +80,3 @@
   color:red;
 }
 
-.btnGroup{
-  display:flex;
-  flex-direction:row;
-  justify-content: space-around;
-  align-items: baseline;
-  margin-top: 20rpx;
-
-}
-
-.goodsBtn{
-  text-align: center;
-  border:1px solid lightgray;
-  background-color: lightgray;
-  width:30rpx;
-  height:30rpx;
-  border-radius: 100%;
-  line-height: 30rpx;
-}
-
-.qty_input{
-  text-align: center;
-  width:60rpx;
-}
