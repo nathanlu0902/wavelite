@@ -1,71 +1,52 @@
 import {goodsList} from "../../model/goods.js"
 const app=getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     height:app.globalData.SCREENHEIGHT*750/app.globalData.SCREENWIDTH,
-    totalSum:0,
-    typeList:["波奇","意面","沙拉","咖啡"],
-    currentType:"波奇",
-    goodsList:[],
-    currentIndexL:null,
-    totalPrice:0
+    typeList:["波奇","意面","沙拉","咖啡","咖啡","咖啡","咖啡","咖啡","咖啡","咖啡"],
+
   },
 
 
   bindLeftItemTap:function(e){
-    let {currenttype}=e.currentTarget.dataset;
     let {index}=e.currentTarget.dataset;
+    let type=this.data.typeList[index];
     this.setData({
-      currentType:currenttype,
-      currentIndexL:index
+      currentIndexL:index,
+      currentType:type
     })
   },
 
   add:function(e){
-    let that=this;
     let {id}=e.currentTarget.dataset;
-    that.data.goodsList[id].qty+=1;
+    this.data.goodsList[this.data.currentType][id].qty+=1;
     this.setData({
-      goodsList:that.data.goodsList
+      goodsList:this.data.goodsList
     })
     this.getTotalPrice();
   },
 
   minus:function(e){
-    let that=this;
     let {id}=e.currentTarget.dataset;
     let {qty}=e.currentTarget.dataset;
     if(qty>0){
-      that.data.goodsList[id].qty-=1;
+      this.data.goodsList[this.data.currentType][id].qty-=1;;
     }
     this.setData({
-      goodsList:that.data.goodsList
+      goodsList:this.data.goodsList
     })
     this.getTotalPrice();
   },
 
-  // input:function(e){
-  //   let that=this;
-  //   let {value}=e.detail;
-  //   let {id}=e.currentTarget.dataset;
-  //   if(value){
-  //     that.data.goodsList[id].qty=parseInt(value);
-  //   }else{}
-  //   this.setData({
-  //     goodsList:that.data.goodsList
-  //   })
-  //   this.getTotalPrice();
-  // },
 
   getTotalPrice:function(){
     let totalPrice=0;
     let goodsList=this.data.goodsList;
-    for(let i=0;i<this.data.goodsList.length;i++){
-      totalPrice+=goodsList[i].dishPrice*goodsList[i].qty;
+    for (let index in this.data.typeList){
+      let type=this.data.typeList[index];
+      for (let i = 0;i<goodsList[type].length;i++){
+        totalPrice+=goodsList[type][i].qty*goodsList[type][i].dishPrice;
+      }
     }
     this.setData({
       totalPrice:totalPrice
@@ -75,7 +56,10 @@ Page({
   onLoad(options) {
     this.setData({
       currentIndexL:0,
-      goodsList:goodsList
+      goodsList:goodsList,
+      currentType:"波奇",
+      totalPrice:0,
+      totalSum:0,
     })
 },
 

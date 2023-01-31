@@ -1,4 +1,4 @@
-<import src="/templates/goodsAction.wxml"/>
+<import src="templates/goods-actions.wxml"/>
 <view class="wrapper">
 <van-search 
 class="search-bar"
@@ -8,31 +8,33 @@ bind:search="onSearch"
 bind:change="onChange"
 ></van-search>
 <view class="menu-wrapper">
-<scroll-view class="left-menu" scroll-y="true" style="height:{{height}}">
+<scroll-view class="left-menu" scroll-y="true" enable-flex="true">
   <view 
-    class="left-item" 
+    class="left-item {{currentIndexL==index?'active-text':''}}" 
     wx:for="{{typeList}}" 
     wx:key="*this"
     bindtap="bindLeftItemTap"
-    data-currenttype="{{item}}"
     data-index="{{index}}"
     >
-    <text class="itemText {{currentIndexL==index?'active-text':''}}">{{item}}</text>
+    <view>{{item}}</view>
   </view>
 </scroll-view>
-<scroll-view class="right-menu" scroll-y="true" style="height:{{height}}">
+<scroll-view class="right-menu" scroll-y="true" enable-flex="true">
   <view 
     class="right-item"
-    wx:for="{{goodsList}}"
+    wx:for="{{goodsList[currentType]}}"
     wx:key="id"
   >
   <block wx:if="{{item.type==currentType}}">
     <image class="img" mode="aspectFit" src="{{item.picURL}}"></image>
     <view class="info-wrapper">
-      <text class="dishName">{{item.dish}}</text>
-      <text class="dishRemark">{{item.dishRemark}}</text>
-      <view class="dishPrice">{{item.dishPrice}}</view>
-    <template is="goodsAction" data="{{id:item.id,qty:item.qty}}"></template>
+      <view class="dishName text-bold">{{item.dish}}</view>
+      <view class="text-small grey-color">{{item.dishRemark}}</view>
+      <view class="text-small grey-color">月售{{item.sale}}份</view>
+      <view class="price-action-wrapper">
+        <view class="dishPrice text-large primary-color">¥{{item.dishPrice}}</view>
+        <template is="goods-actions" data="{{id:item.id,qty:item.qty}}"/>
+      </view>
     </view>
   </block> 
   </view>

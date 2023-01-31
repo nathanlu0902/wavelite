@@ -1,0 +1,13 @@
+<template name="goods-actions">
+  <view class="goods-actions">
+    <block wx:if="{{qty>0}}">
+      <view class="goodsBtn" bindtap="minus" data-id="{{id}}" data-qty="{{qty}}">
+        <image src="/images/delivery_btn/minus.svg" class="goods-btn_img"></image>
+      </view>
+      <view class="action-qty">{{qty}}</view>
+    </block>
+    <view class="goodsBtn" bindtap="add"  data-id="{{id}}">
+      <image src="/images/delivery_btn/plus.svg" class="goods-btn_img"></image>
+    </view>
+  </view>
+</template>

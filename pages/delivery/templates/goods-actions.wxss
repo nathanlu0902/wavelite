@@ -1,0 +1,22 @@
+.goods-actions{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+  align-items: center;
+  height:50rpx; /*固定高度防抖动*/
+}
+
+.action-qty{
+  margin:0 15rpx;
+  font-size:24rpx;
+}
+
+.goodsBtn{
+  height:45rpx;
+  width:45rpx;
+}
+
+.goods-btn_img{
+  height:100%;
+  width:100%;
+}

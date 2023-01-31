@@ -2,35 +2,36 @@
 .bar-wrapper{
   display:flex;
   flex-direction:row;
-  justify-content: ;
   align-items: center;
-  background: #fff;
-  box-shadow: 0 0 14px rgba(0,0,0,.2);
+  justify-content: space-around;
+  box-shadow: 0 0 16px rgba(0,0,0,.2);
   border-radius: 30px;
-  height:100rpx;
-  width:600rpx;
+  height:80rpx;
+  width:550rpx;
   margin:0 auto;
-  bottom:60rpx;
+  bottom:40rpx;
   position:fixed;
   right:0;
   left:0
 }
 
-.detail-btn{
-  display:flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width:120rpx;
-  border-right:1px solid black
+van-icon{
+  padding-left:40rpx;
 }
 
 .totalPrice{
   width:100rpx;
   flex-grow:3;
-  margin-left:40rpx;
+  font-weight: 600;
+  margin-left:20rpx;
 }
 
 .checkout-btn{
   margin-right:20rpx;
+  text-align: center;
+  padding:15rpx 35rpx;
+  font-size:26rpx;
+  color:#fff;
+  background-color: #0765f3be;
+  border-radius: 30rpx;
 }

@@ -1,83 +1,78 @@
+@import 'templates/goods-actions.wxss';
+
 .wrapper{
   display:flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
 .menu-wrapper{
   display:flex;
   flex-direction: row;
-  justify-content: space-around;
-  height:1100rpx;
-  padding:0 32rpx;
+  padding:0 32rpx 100rpx;
 }
 
-.search-bar{
-  
-}
 
 .left-menu{
-  width:18%;
+  width:160rpx;
   background-color:rgb(245, 246, 248);
-  padding:0 16px;
   display:flex;
   flex-direction:column;
-  justify-content: flex-start;
-  border-radius: 20rpx;
-}
-
-.right-menu{
-  width:80%;
-  background-color: rgba(255,255,255,1);
-  display:flex;
-  flex-direction: column;
-  justify-content: space-around;
+  height:970rpx;
 }
 
 .left-item{
-  display:flex;
-  align-items: center;
-  justify-content:center;
-  height:100rpx;
-  background:rgb(245, 246, 248);
+  height:80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  flex:none;
   font-size:28rpx;
+  font-weight: 500;
+  padding:15rpx 20rpx;
+}
+
+.active-text{
+  border-left:5rpx solid #ff5801;
+  background-color: #fff;
+}
+
+.right-menu{
+  width:600rpx;
+  display:flex;
+  flex-direction: column;
+  height:970rpx;
 }
 
 .right-item{
   display:flex;
   flex-direction: row;
-  align-items:center;
+  align-items:flex-start;
+  margin-left:20rpx;
   justify-content: space-around;
-  margin-bottom:20rpx;
+  margin-bottom:40rpx;
 }
 
 .img{
-  width:200rpx;
-  height:200rpx;
+  width:150rpx;
+  height:150rpx;
 }
 
 .info-wrapper{
   display:flex;
   flex-direction:column;
   justify-content: flex-start;
-  line-height:40rpx;
-  width:140rpx;
+  flex:auto;
+  margin-left:20rpx;
+  line-height: 1.5;
 }
 
-.dishName{
-  font-size: 32rpx;
+.price-action-wrapper{
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.dishRemark{
-  font-size:22rpx;
-  color:lightgray;
-  
-}
 
-.dishPrice{
-  
-}
-.active-text{
-  color:red;
-}
+
+
 

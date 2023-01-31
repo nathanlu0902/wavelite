@@ -5,8 +5,7 @@
     "pages/mine/index",
     "pages/subscribe/index",
     "pages/goods/index",
-    "pages/cart/index",
-    "pages/delivery/templates/goodsAction"
+    "pages/cart/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

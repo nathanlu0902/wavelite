@@ -1,4 +1,4 @@
-/**app.wxss**/
+/* *app.wxss*
 .container {
   height: 100%;
   display: flex;
@@ -7,4 +7,25 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}  */
+
+.primary-color{
+  color:#ff5801 !important;
+}
+
+.grey-color{
+  color:#999 !important;
+}
+
+.text-large{
+  font-size:1.1em;
+}
+
+.text-small{
+  font-size:0.7em;
+}
+
+.text-bold{
+  font-weight:500;
+}
+
