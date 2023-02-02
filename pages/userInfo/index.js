@@ -6,7 +6,8 @@ Page({
    */
   data: {
     gender:"",
-    avatarUrl:""
+    avatarUrl:"",
+    phone:""
   },
 
   genderChnage(e){
