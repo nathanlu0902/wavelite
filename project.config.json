@@ -1,17 +1,10 @@
 {
-  "appid": "touristappid",
-  "projectname": "miniprogram-1",
   "compileType": "miniprogram",
-  "libVersion": "2.17.0",
-  "packOptions": {
-    "ignore": [],
-    "include": []
-  },
   "condition": {},
   "setting": {
     "urlCheck": true,
     "coverView": true,
-    "es6": true,
+    "es6": false,
     "postcss": true,
     "lazyloadPlaceholderEnable": false,
     "preloadBackgroundData": false,
@@ -36,12 +29,19 @@
     "disableUseStrict": false,
     "useCompilerPlugins": false,
     "minifyWXML": true,
-    "ignoreUploadUnusedFiles": true
+    "ignoreUploadUnusedFiles": true,
+    "useIsolateContext": true
   },
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
   "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-  "simulatorPluginLibVersion": {}
+  "simulatorPluginLibVersion": {},
+  "libVersion": "2.29.2",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "appid": "wx63fd2a9f576da51b"
 }

@@ -1,15 +1,50 @@
-
-<swiper class="index-swiper" autoplay="true" circular="true" indicator-dots="true" interval="5000" duration="1000">
-<block wx:for="{{bnrUrl}}" wx:for-index="index" wx:key="index">
-<swiper-item>
-<image class="bnr-item-img" src="{{item.imgUrl}}"></image>
-</swiper-item> 
-</block>
+<swiper
+  class="index-swiper"
+  autoplay="true"
+  circular="true"
+  indicator-dots="true"
+  interval="5000"
+  duration="1000"
+>
+  <block
+    wx:for="{{bnrUrl}}"
+    wx:for-index="index"
+    wx:key="index"
+  >
+    <swiper-item>
+      <image class="bnr-item-img" src="{{item.imgUrl}}"></image>
+    </swiper-item>
+  </block>
 </swiper>
 <view class="btn-wrapper">
-  <button class="delivery btn" bindtap="switchTab" data-url="/pages/delivery/index">外卖</button>
-  <button class="subscribe btn" bindtap="switchTab" data-url="/pages/subscribe/index">订阅</button>
-  <button class="mine btn" bindtap="switchTab" data-url="/pages/mine/index">个人中心</button>
+  <button
+    class="delivery btn"
+    bindtap="switchTab"
+    data-url="/pages/delivery/index"
+  >外卖
+  </button>
+  <button
+    class="subscribe btn"
+    bindtap="switchTab"
+    data-url="/pages/subscribe/index"
+  >订阅
+  </button>
+  <button
+    class="mine btn"
+    bindtap="switchTab"
+    data-url="/pages/mine/index"
+  >个人中心
+  </button>
+</view>
+<view class="userCard">
+  <view class="btn-area" bindtap="nav_to_userInfo">
+    <image class="pic"></image>
+    <view class="member-info">
+      <text class="text-large">Hi，Wave用户</text>
+      <view class="points text-small">积分:20</view>
+    </view>
+  </view>
+  <view class="memeber-qr-code">11</view>
 </view>
 <view class="pic-wrapper">
   <image src="http://www.wagas.com.cn/admin/img/indeximg/bc4bb4740548b7348f6ef04b9219d21f.jpg" mode="aspectFill"></image>

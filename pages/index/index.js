@@ -1,4 +1,5 @@
 const app=getApp();
+import {login} from "../../utils/api"
 
 Page({
   data: {
@@ -17,8 +18,8 @@ Page({
     
   },
   //options(Object)
-  onLoad: function(options) {
-    
+  onLoad: function() {
+    // login();
   },
   onReady: function() {
     
@@ -52,6 +53,12 @@ Page({
   onTabItemTap:function(item) {
 
   },
+  nav_to_userInfo:function(){
+    wx.navigateTo({
+      url: '/pages/userInfo/index',
+    })
+  },
+
   switchTab:function(e){
     let {url}=e.currentTarget.dataset;
     wx.navigateTo({
