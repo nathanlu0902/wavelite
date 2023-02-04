@@ -8,34 +8,33 @@
       <image class="avatar" src="{{avatarUrl}}" />
     </button>
   </view>
-  <view class="info-wrapper">
-    <view class="nickName item">
-      <text class="label">昵称：</text>
-    </view>
-    <view class="phoneNumber item">
-      <text class="label">手机号：</text>
-      <view>{{phone}}</view>
-    </view>
-    <view class="gender item">
-      <text class="label">性别：</text>
-      <radio-group bindchange="genderChange">
-        <label>
-          <radio value="male" checked="{{gender=='male'?true:false}}" />
-          男
-        </label>
-        <label>
-          <radio value="female" checked="{{gender=='female'?true:false}}" />
-          女
-        </label>
-      </radio-group>
-    </view>
-    <view class="status item">
-      <text class="label">会员状态：</text>
-    </view>
-    <view class="birth item">
-      <text class="label">生日：</text>
-    </view>
-  </view>
+  <mp-form bindsuccess="formSubmit" rules="{{rules}}">
+    <mp-cells>
+      <mp-cell class="item" prop="nickname" title="昵称:" inline="true">
+        <input maxlength="32" data-field="nickname" value="{{nickname}}" class="weui-input" bindinput="onInputName" placeholder="请输入昵称"/>
+      </mp-cell>
+
+      <mp-cell class="item" prop="phone" title="手机号:" inline="true">
+        <input type="number" value="{{phone}}" bindinput="onInputPhone" placeholder="请输入手机号"/>
+      </mp-cell>
+
+      <mp-cell class="item" prop="gender" title="性别:" inline="true">
+        <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="genderChange">
+          <mp-checkbox value="male" label="男" checked="{{gender=='male'?true:false}}" />
+          <mp-checkbox value="male" label="女" checked="{{gender=='female'?true:false}}" />
+        </mp-checkbox-group>
+      </mp-cell>
+
+      <mp-cell class="item" prop="birth" title="生日:" inline="true">
+        <picker mode="date" value="{{date}}" start="1910-01-01" end="{{pickerEndDate}}" bindchange="bindDateChange">
+          <view class="picker">
+           请选择: {{date}}
+          </view>
+      </picker>
+      </mp-cell>
+    </mp-cells>
+    
+  </mp-form>
 
 </view>
 

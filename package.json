@@ -8,8 +8,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "moments": "^0.0.2",
     "tdesign-miniprogram": "^0.24.0",
-    "vant-weapp": "^0.5.29"
+    "vant-weapp": "^0.5.29",
+    "weui-miniprogram": "^1.2.7"
   },
   "description": ""
 }

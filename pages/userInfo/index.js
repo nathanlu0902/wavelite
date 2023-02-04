@@ -7,7 +7,19 @@ Page({
   data: {
     gender:"",
     avatarUrl:"",
-    phone:""
+    phone:"",
+    nickname:"",
+    rules:[
+      {
+        name:'nickname',
+        rules:[{required:true,message:'请填写昵称'}]
+      },
+      {
+        name:'phone',
+        rules:[{required:true,message:'请填写手机号'},
+              {mobile:true,message:'手机号码格式错误'},]
+      },
+    ]
   },
 
   genderChnage(e){
