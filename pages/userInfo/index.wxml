@@ -8,33 +8,36 @@
       <image class="avatar" src="{{avatarUrl}}" />
     </button>
   </view>
-  <mp-form bindsuccess="formSubmit" rules="{{rules}}">
+  <mp-form rules="{{rules}}" models="{{formData}}">
     <mp-cells>
       <mp-cell class="item" prop="nickname" title="昵称:" inline="true">
-        <input maxlength="32" data-field="nickname" value="{{nickname}}" class="weui-input" bindinput="onInputName" placeholder="请输入昵称"/>
+        <input type="nickname" name="nickname" maxlength="32" data-field="nickname" value="{{formData.nickname}}" class="weui-input" bindinput="onInputName" placeholder="请输入昵称"/>
       </mp-cell>
 
       <mp-cell class="item" prop="phone" title="手机号:" inline="true">
-        <input type="number" value="{{phone}}" bindinput="onInputPhone" placeholder="请输入手机号"/>
+        <input type="number" name="phone" maxlength="11" value="{{formData.phone}}" bindinput="onInputPhone" placeholder="请输入手机号"/>
       </mp-cell>
 
       <mp-cell class="item" prop="gender" title="性别:" inline="true">
-        <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="genderChange">
-          <mp-checkbox value="male" label="男" checked="{{gender=='male'?true:false}}" />
-          <mp-checkbox value="male" label="女" checked="{{gender=='female'?true:false}}" />
+        <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="genderChange" name="gender">
+          <mp-checkbox value="male" label="男" checked="{{formData.gender=='male'?true:false}}" />
+          <mp-checkbox value="female" label="女" checked="{{formData.gender=='female'?true:false}}" />
         </mp-checkbox-group>
       </mp-cell>
 
       <mp-cell class="item" prop="birth" title="生日:" inline="true">
-        <picker mode="date" value="{{date}}" start="1910-01-01" end="{{pickerEndDate}}" bindchange="bindDateChange">
+        <picker name="birth" mode="date" value="{{date}}" start="1910-01-01" end="{{pickerEndDate}}" bindchange="bindDateChange">
           <view class="picker">
            请选择: {{date}}
           </view>
       </picker>
       </mp-cell>
     </mp-cells>
-    
+    <button type="primary" bindtap="submitForm">保存</button>
+    <button type="primary" bindtap="resetForm">重置</button>
   </mp-form>
+
+  
 
 </view>
 

@@ -5,10 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    gender:"",
+    formData:{
+      nickname:"",
+      gender:"",
+      phone:""
+    },
+   
     avatarUrl:"",
-    phone:"",
-    nickname:"",
+   
     rules:[
       {
         name:'nickname',
@@ -37,7 +41,33 @@ Page({
     })
   },
 
+  submitForm(e){
+    const {nickname,phone,gender,birth}=this.data.formData;
+    wx.request({
+      url:"http://127.0.0.1:8000/api/registerUser",
+      data:{
+        nickname:nickname,
+        phone:phone,
+        gender:gender,
+        birth:birth
+      },
+      method:"POST",
+      success(res){
+        console.log(res.code);
+        wx.showToast({title:"保存成功"});
+      }
+    })
 
+  },
+
+  resetForm(){
+    this.setData({
+      "formData.nickname":"",
+      "formData.phone":"",
+      "formData.gender":"",
+      "formData.birth":""
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
