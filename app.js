@@ -6,7 +6,11 @@ App({
     "statusBarHeight":'',
     "menuHeight":'',
     "SCREENHEIGHT":'',
-    "SCREENWIDTH":''
+    "SCREENWIDTH":'',
+    userinfo:{
+      nickname:"",
+      phone
+    }
   },
   onLaunch(){
     wx.getSystemInfo({

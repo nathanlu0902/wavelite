@@ -19,7 +19,7 @@ Page({
   },
   //options(Object)
   onLoad: function() {
-    // login();
+    login();
   },
   onReady: function() {
     

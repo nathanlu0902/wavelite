@@ -6,7 +6,8 @@
     "pages/subscribe/index",
     "pages/goods/index",
     "pages/cart/index",
-    "pages/userInfo/index"
+    "pages/userInfo/index",
+    "pages/register/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -1,0 +1,4 @@
+<view class="wrapper">
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">一键注册</button>
+</view>
+

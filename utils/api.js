@@ -3,7 +3,6 @@ export function login(){
   wx.login({
     success(res){
       if(res.code){
-        console.log(res.code)
         //后端服务器获取openid
         wx.request({
           url:"http://127.0.0.1:8000/api/login",
@@ -13,8 +12,9 @@ export function login(){
           },
           method:"POST",
           success(res){
-            console.log(res);
-            wx.setStorageSync('openid', res['data'].openid);
+            let openid=res['data'].openid;
+            console.log(openid);
+            wx.setStorageSync('openid', openid);
           }
         })
       }
