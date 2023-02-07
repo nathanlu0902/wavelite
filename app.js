@@ -1,3 +1,5 @@
+import { login } from "./utils/api";
+
 // app.js
 App({
   "globalData":{
@@ -9,9 +11,13 @@ App({
     "SCREENWIDTH":'',
     userinfo:{
       nickname:"",
-      phone
+      phone:"",
+      gender:"",
+      oepnid:"",
+      loggedIn:true
     }
   },
+
   onLaunch(){
     wx.getSystemInfo({
       success: (result) => {
@@ -25,5 +31,8 @@ App({
     let menu=wx.getMenuButtonBoundingClientRect();
     this.globalData.menuTop=menu.top;
     this.globalData.menuHeight=menu.height;
+
+    login();
   }
+
 })

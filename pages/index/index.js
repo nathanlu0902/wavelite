@@ -1,5 +1,4 @@
 const app=getApp();
-import {login} from "../../utils/api"
 
 Page({
   data: {
@@ -19,7 +18,6 @@ Page({
   },
   //options(Object)
   onLoad: function() {
-    // login();
   },
   onReady: function() {
     
@@ -54,9 +52,20 @@ Page({
 
   },
   nav_to_userInfo:function(){
+    if(app.globalData.userinfo.loggedIn==true){
+      this.setData({
+        "formData.nickname":app.globalData.userinfo.nickname,
+        "formData.phone":app.globalData.userinfo.phone,
+        "formData.gender":app.globalData.userinfo.gender,
+      })
     wx.navigateTo({
       url: '/pages/userInfo/index',
     })
+    }else{
+      wx.navigateTo({
+        url: '../register/index',
+      })
+    }
   },
 
   switchTab:function(e){

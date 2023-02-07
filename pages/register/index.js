@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    
   },
 
   getPhoneNumber(e){
@@ -29,6 +29,32 @@ Page({
         })
       }
     })
+  },
+
+  register(){
+    if(getApp().globalData.userinfo.loggedIn==false){
+      wx.request({
+        url:"http://127.0.0.1:8000/api/registerUser",
+        method:"POST",
+        data:{
+          phone:"1321",
+          openid:wx.getStorageSync("openid")
+        },
+        header:{
+          "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
+        },
+        success(res){
+          console.log(res)
+          if(res.data.code=="1006"){
+            getApp().globalData.userinfo.loggedIn=true
+            wx.showToast({title:"用户已创建"})
+          }
+        },
+        fail(err){
+          console.log(err)
+        }
+      })
+    }
   },
 
 

@@ -1,4 +1,5 @@
-// pages/userInfo/index.js
+const app=getApp()
+
 Page({
 
   /**
@@ -44,7 +45,7 @@ Page({
   submitForm(e){
     const {nickname,phone,gender,birth}=this.data.formData;
     wx.request({
-      url:"http://127.0.0.1:8000/api/registerUser",
+      url:"http://127.0.0.1:8000/api/updateUser",
       data:{
         nickname:nickname,
         phone:phone,
@@ -53,25 +54,28 @@ Page({
       },
       method:"POST",
       success(res){
-        console.log(res.code);
-        wx.showToast({title:"保存成功"});
+        if(res.code==1007){
+          wx.showToast({title:"保存成功"});
+        }
       }
     })
 
   },
 
-  resetForm(){
-    this.setData({
-      "formData.nickname":"",
-      "formData.phone":"",
-      "formData.gender":"",
-      "formData.birth":""
-    })
-  },
+  // resetForm(){
+  //   this.setData({
+  //     "formData.nickname":"",
+  //     "formData.phone":"",
+  //     "formData.gender":"",
+  //     "formData.birth":""
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    console.log(app.globalData.userinfo.loggedIn)
+    
 
   },
 
