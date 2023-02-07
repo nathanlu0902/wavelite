@@ -14,7 +14,7 @@ App({
       phone:"",
       gender:"",
       oepnid:"",
-      loggedIn:true
+      loggedIn:false
     }
   },
 

@@ -50,11 +50,16 @@ Page({
         nickname:nickname,
         phone:phone,
         gender:gender,
-        birth:birth
+        birth:birth,
+        openid:wx.getStorageSync("openid")
+      },
+      header:{
+        "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
       },
       method:"POST",
       success(res){
-        if(res.code==1007){
+        console.log(res)
+        if(res.data.code=="1007"){
           wx.showToast({title:"保存成功"});
         }
       }

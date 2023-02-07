@@ -12,24 +12,24 @@ export function login(){
           },
           method:"POST",
           success(res){
-            if(res.code=="1005"){
-              console.log(res)
-              getApp().setData({
-                "userinfo.nickname":res.nickname,
-                "userinfo.phone":res.phone,
-                "userinfo.gender":res.gender,
-                // "userinfo.token":res.token,
-                "userinfo.loggedIn":true
-              })
-              wx.setStorageSync("openid", res.openid);
-                
+            if(res.data.code=="1005"){
+              getApp().globalData.userinfo.nickname=res.data.nickname,
+              getApp().globalData.userinfo.phone=res.data.phone,
+              getApp().globalData.userinfo.gender=res.data.gender,
+              getApp().globalData.userinfo.loggedIn=true,
+              setStorageSync({"openid":res.data.openid})
+            }else if(res.data.code=="1004"){
+              console.log("this user is not registered yet")
             }
+          },
+          fail(err){
+            console.log(err)
           }
         })
       }
     },
-    error(res){
-      alert(res['errMsg']);
-    }
+    fail(err){
+        console.log(err);
+    },
   })
 }
