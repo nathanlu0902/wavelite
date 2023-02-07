@@ -19,6 +19,7 @@
         <input
           type="nickname"
           name="nickname"
+          bindinput="onNicknameChange"
           maxlength="32"
           data-field="nickname"
           value="{{formData.nickname}}"
@@ -37,8 +38,10 @@
           type="number"
           name="phone"
           maxlength="11"
+          auto-focus
           value="{{formData.phone}}"
           placeholder="请输入手机号"
+          bindinput="onPhoneInput"
         />
       </mp-cell>
 
@@ -51,7 +54,7 @@
         <mp-checkbox-group
           prop="radio"
           multi="{{false}}"
-          bindchange="genderChange"
+          bindchange="onGenderChange"
           name="gender"
         >
           <mp-checkbox

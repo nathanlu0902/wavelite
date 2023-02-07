@@ -27,10 +27,25 @@ Page({
     ]
   },
 
-  genderChnage(e){
-    let gender=e.detail.value;
+  onNicknameChange(e){
+    let nickname=e.detail.value;
     this.setData({
-      gender:gender
+      "formData.nickname":nickname
+    })
+  },
+
+  onPhoneInput(e){
+    let phone=e.detail.value;
+    this.setData({
+      "formData.phone":phone
+    })
+  },
+
+  onGenderChange(e){
+    console.log(e)
+    let {gender}=e.detail.value;
+    this.setData({
+      "formData.gender":gender
     })
   },
 

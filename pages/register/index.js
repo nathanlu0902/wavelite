@@ -33,6 +33,7 @@ Page({
 
   register(){
     if(getApp().globalData.userinfo.loggedIn==false){
+      console.log("openid is"+wx.getStorageSync("openid"))
       wx.request({
         url:"http://127.0.0.1:8000/api/registerUser",
         method:"POST",

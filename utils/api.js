@@ -16,11 +16,12 @@ export function login(){
               getApp().globalData.userinfo.nickname=res.data.nickname,
               getApp().globalData.userinfo.phone=res.data.phone,
               getApp().globalData.userinfo.gender=res.data.gender,
-              getApp().globalData.userinfo.loggedIn=true,
-              setStorageSync({"openid":res.data.openid})
+              getApp().globalData.userinfo.loggedIn=true
             }else if(res.data.code=="1004"){
               console.log("this user is not registered yet")
             }
+            wx.setStorageSync("openid",res.data.openid)
+            console.log("received openid:"+res.data.openid)
           },
           fail(err){
             console.log(err)
