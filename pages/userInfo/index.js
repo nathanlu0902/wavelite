@@ -7,50 +7,42 @@ Page({
    */
   data: {
     formData:{
-      nickname:"",
-      gender:"",
-      phone:""
+      nickname:app.globalData.userinfo.nickname,
+      gender:app.globalData.userinfo.gender,
+      phone:app.globalData.userinfo.phone,
+      birth:app.globalData.userinfo.birth
     },
    
     avatarUrl:"",
    
-    rules:[
-      {
-        name:'nickname',
-        rules:[{required:true,message:'请填写昵称'}]
-      },
-      {
-        name:'phone',
-        rules:[{required:true,message:'请填写手机号'},
-              {mobile:true,message:'手机号码格式错误'},]
-      },
-    ]
+    // rules:[
+    //   {
+    //     name:'nickname',
+    //     rules:[{required:true,message:'请填写昵称'}]
+    //   },
+    //   {
+    //     name:'phone',
+    //     rules:[{required:true,message:'请填写手机号'},
+    //           {mobile:true,message:'手机号码格式错误'},]
+    //   },
+    // ]
   },
 
-  onNicknameChange(e){
-    let nickname=e.detail.value;
-    this.setData({
-      "formData.nickname":nickname
-    })
-  },
-
-  onPhoneInput(e){
-    let phone=e.detail.value;
-    this.setData({
-      "formData.phone":phone
-    })
-  },
+  // onPhoneInput(e){
+  //   let phone=e.detail.value;
+  //   this.setData({
+  //     "formData.phone":phone
+  //   })
+  // },
 
   onGenderChange(e){
-    console.log(e)
-    let {gender}=e.detail.value;
+    let gender=e.detail.value;
     this.setData({
       "formData.gender":gender
     })
   },
 
   onChooseAvatar(e){
-    console.log(e);
     const {avatarUrl}=e.detail;
     this.setData({
       avatarUrl:avatarUrl
@@ -58,14 +50,16 @@ Page({
   },
 
   submitForm(e){
-    const {nickname,phone,gender,birth}=this.data.formData;
+    const {nickname,phone,birth}=e.detail.value;
+    console.log("going to update:",nickname,phone,birth)
+    let that=this;
     wx.request({
       url:"http://127.0.0.1:8000/api/updateUser",
       data:{
         nickname:nickname,
         phone:phone,
-        gender:gender,
         birth:birth,
+        gender:that.data.formData.gender,
         openid:wx.getStorageSync("openid")
       },
       header:{
@@ -73,10 +67,14 @@ Page({
       },
       method:"POST",
       success(res){
-        console.log(res)
         if(res.data.code=="1007"){
           wx.showToast({title:"保存成功"});
         }
+        that.setData({
+          "formData.nickname":nickname,
+          "formData.phone":phone,
+          "formData.birth":birth,
+        })
       }
     })
 
@@ -94,9 +92,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(app.globalData.userinfo.loggedIn)
-    
-
+    console.log(this.data)
+  
   },
 
   /**

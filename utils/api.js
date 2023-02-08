@@ -13,6 +13,7 @@ export function login(){
           method:"POST",
           success(res){
             if(res.data.code=="1005"){
+              console.log(res)
               getApp().globalData.userinfo.nickname=res.data.nickname,
               getApp().globalData.userinfo.phone=res.data.phone,
               getApp().globalData.userinfo.gender=res.data.gender,

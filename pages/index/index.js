@@ -2,6 +2,9 @@ const app=getApp();
 
 Page({
   data: {
+    // formData:{
+    //   nickname:"",
+    // },
     top:app.globalData.menuTop+(app.globalData.menuTop-app.globalData.statusBarHeight)+app.globalData.menuHeight,
     bnrUrl:[
       {link:'',
@@ -18,6 +21,12 @@ Page({
   },
   //options(Object)
   onLoad: function() {
+    console.log(app.globalData.userinfo.nickname)
+    this.setData({
+      "formData.nickname":app.globalData.userinfo.nickname,
+    })
+    console.log(this.data)
+
   },
   onReady: function() {
     
@@ -51,15 +60,11 @@ Page({
   onTabItemTap:function(item) {
 
   },
-  nav_to_userInfo:function(){
+
+  onBindUserTap:function(){
     if(app.globalData.userinfo.loggedIn==true){
-      this.setData({
-        "formData.nickname":app.globalData.userinfo.nickname,
-        "formData.phone":app.globalData.userinfo.phone,
-        "formData.gender":app.globalData.userinfo.gender,
-      })
-    wx.navigateTo({
-      url: '/pages/userInfo/index',
+      wx.navigateTo({
+        url: '/pages/userInfo/index',
     })
     }else{
       wx.navigateTo({

@@ -37,10 +37,10 @@
   </button>
 </view>
 <view class="userCard">
-  <view class="btn-area" bindtap="nav_to_userInfo">
+  <view class="btn-area" bindtap="onBindUserTap">
     <image class="pic"></image>
     <view class="member-info">
-      <text class="text-large">Hi，Wave用户</text>
+      <text class="text-large">Hi，{{formData.nickname?formData.nickname:"Wave用户"}}</text>
       <view class="points text-small">积分:20</view>
     </view>
   </view>

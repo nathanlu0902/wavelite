@@ -8,7 +8,7 @@
       <image class="avatar" src="{{avatarUrl}}" />
     </button>
   </view>
-  <mp-form rules="{{rules}}" models="{{formData}}">
+  <form bindsubmit="submitForm">
     <mp-cells>
       <mp-cell
         class="item"
@@ -19,7 +19,6 @@
         <input
           type="nickname"
           name="nickname"
-          bindinput="onNicknameChange"
           maxlength="32"
           data-field="nickname"
           value="{{formData.nickname}}"
@@ -41,7 +40,6 @@
           auto-focus
           value="{{formData.phone}}"
           placeholder="请输入手机号"
-          bindinput="onPhoneInput"
         />
       </mp-cell>
 
@@ -90,9 +88,9 @@
         </picker>
       </mp-cell>
     </mp-cells>
-    <button type="primary" bindtap="submitForm">保存</button>
+    <button type="primary" formType="submit">保存</button>
     <button type="primary" bindtap="resetForm">重置</button>
-  </mp-form>
+  </form>
 
 </view>
 
