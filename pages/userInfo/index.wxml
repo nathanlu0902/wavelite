@@ -21,7 +21,7 @@
           name="nickname"
           maxlength="32"
           data-field="nickname"
-          value="{{formData.nickname}}"
+          value="{{nickname}}"
           class="weui-input"
           placeholder="请输入昵称"
         />
@@ -38,7 +38,7 @@
           name="phone"
           maxlength="11"
           auto-focus
-          value="{{formData.phone}}"
+          value="{{phone}}"
           placeholder="请输入手机号"
         />
       </mp-cell>
@@ -49,23 +49,21 @@
         title="性别:"
         inline="true"
       >
-        <mp-checkbox-group
-          prop="radio"
-          multi="{{false}}"
+        <radio-group
           bindchange="onGenderChange"
           name="gender"
         >
-          <mp-checkbox
+          <label>男</label>
+          <radio
             value="male"
-            label="男"
-            checked="{{formData.gender=='male'?true:false}}"
+            checked="{{gender=='male'?true:false}}"
           />
-          <mp-checkbox
+          <label>女</label>
+          <radio
             value="female"
-            label="女"
-            checked="{{formData.gender=='female'?true:false}}"
+            checked="{{gender=='female'?true:false}}"
           />
-        </mp-checkbox-group>
+        </radio-group>
       </mp-cell>
 
       <mp-cell

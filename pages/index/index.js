@@ -1,10 +1,11 @@
 const app=getApp();
+import { login } from "../../utils/api";
 
 Page({
   data: {
-    // formData:{
-    //   nickname:"",
-    // },
+    formData:{
+      nickname:"",
+    },
     top:app.globalData.menuTop+(app.globalData.menuTop-app.globalData.statusBarHeight)+app.globalData.menuHeight,
     bnrUrl:[
       {link:'',
@@ -21,12 +22,15 @@ Page({
   },
   //options(Object)
   onLoad: function() {
-    console.log(app.globalData.userinfo.nickname)
-    this.setData({
-      "formData.nickname":app.globalData.userinfo.nickname,
-    })
-    console.log(this.data)
-
+    if(wx.getStorageSync('nickname')){
+      this.setData({
+        "formData.nickname":wx.getStorageSync('nickname'),
+      })
+    }else{
+      this.setData({
+        "formData.nickname":"Wave用户"
+      })
+    }
   },
   onReady: function() {
     
