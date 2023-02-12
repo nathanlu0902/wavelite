@@ -6,10 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nickname:"",
-    phone:"",
-    gender:"",
-    avatarUrl:"",
+    nickname:null,
+    phone:null,
+    gender:null,
+    avatarUrl:null,
     
   },
     // rules:[
@@ -34,9 +34,6 @@ Page({
     console.log(gender)
   },
 
-  checked(e){
-
-  },
 
   onChooseAvatar(e){
     const {avatarUrl}=e.detail;
@@ -45,7 +42,14 @@ Page({
     })
   },
 
-  async submitForm(e){
+  onDateChange(e){
+    let {date}=e.detail.value;
+    this.setData({
+      birth:date
+    })
+  },
+
+  submitForm(e){
     const {nickname,phone,birth}=e.detail.value;
     let that=this;
     wx.request({

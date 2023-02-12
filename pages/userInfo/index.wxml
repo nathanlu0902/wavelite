@@ -49,20 +49,11 @@
         title="性别:"
         inline="true"
       >
-        <radio-group
-          bindchange="onGenderChange"
-          name="gender"
-        >
+        <radio-group bindchange="onGenderChange" name="gender">
           <label>男</label>
-          <radio
-            value="male"
-            checked="{{gender=='male'?true:false}}"
-          />
+          <radio value="male" checked="{{gender=='male'?true:false}}" />
           <label>女</label>
-          <radio
-            value="female"
-            checked="{{gender=='female'?true:false}}"
-          />
+          <radio value="female" checked="{{gender=='female'?true:false}}" />
         </radio-group>
       </mp-cell>
 
@@ -78,10 +69,10 @@
           value="{{date}}"
           start="1910-01-01"
           end="{{pickerEndDate}}"
-          bindchange="bindDateChange"
+          bindchange="onDateChange"
         >
           <view class="picker">
-            请选择: {{date}}
+            生日: {{typeof(date)=="string"?date:"请选择"}}
           </view>
         </picker>
       </mp-cell>

@@ -9,8 +9,8 @@ Page({
 
 
   bindLeftItemTap:function(e){
-    let {index}=e.currentTarget.dataset;
-    let type=this.data.typeList[index];
+    let {index}=e.currentTarget.dataset,
+        type=this.data.typeList[index];
     this.setData({
       currentIndexL:index,
       currentType:type
@@ -27,8 +27,7 @@ Page({
   },
 
   minus:function(e){
-    let {id}=e.currentTarget.dataset;
-    let {qty}=e.currentTarget.dataset;
+    let {id,qty}=e.currentTarget.dataset;
     if(qty>0){
       this.data.goodsList[this.data.currentType][id].qty-=1;;
     }
@@ -40,11 +39,13 @@ Page({
 
 
   getTotalPrice:function(){
-    let totalPrice=0;
-    let goodsList=this.data.goodsList;
-    for (let index in this.data.typeList){
+    let totalPrice=0,
+        goodsList=this.data.goodsList,
+        index,
+        i
+    for (index in this.data.typeList){
       let type=this.data.typeList[index];
-      for (let i = 0;i<goodsList[type].length;i++){
+      for (i = 0;i<goodsList[type].length;i++){
         totalPrice+=goodsList[type][i].qty*goodsList[type][i].dishPrice;
       }
     }
