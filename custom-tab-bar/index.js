@@ -21,21 +21,15 @@ Component({
       },
       {
         path:"/pages/delivery/index",
-        iconSelectedName: "shop",
-        iconName: "shop-o",
+        iconSelectedClass: "shop",
+        iconClass: "shop-o",
         text: "外卖"
       },
       {
-        path:"/pages/subscribe/index",
-        iconSelectedName: "bill",
-        iconName: "bill-o",
-        text: "订阅"
-      },
-      {
         path:"/pages/mine/index",
-        iconSelectedName: "manager",
-        iconName: "manager-o",
-        text: "我的"
+        iconSelectedClass: "icon-myfill",
+        iconClass: "icon-my",
+        text: "个人"
       }
     ]
   },

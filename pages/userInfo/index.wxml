@@ -75,13 +75,13 @@
         <picker
           name="birth"
           mode="date"
-          value="{{date}}"
+          value="{{birth}}"
           start="1910-01-01"
           end="{{pickerEndDate}}"
-          bindchange="bindDateChange"
+          bindchange="onDateChange"
         >
           <view class="picker">
-            请选择: {{date}}
+           {{birth?birth:"请选择"}}
           </view>
         </picker>
       </mp-cell>

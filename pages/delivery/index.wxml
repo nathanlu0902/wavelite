@@ -32,7 +32,7 @@ bind:change="onChange"
       <view class="text-small grey-color">{{item.dishRemark}}</view>
       <view class="text-small grey-color">月售{{item.sale}}份</view>
       <view class="price-action-wrapper">
-        <view class="dishPrice text-large primary-color">¥{{item.dishPrice}}</view>
+        <view class="dishPrice text-large">¥{{item.dishPrice}}</view>
         <template is="goods-actions" data="{{id:item.id,qty:item.qty}}"/>
       </view>
     </view>

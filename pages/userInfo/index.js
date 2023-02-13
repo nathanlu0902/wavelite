@@ -1,3 +1,5 @@
+import { request } from "../../request/index";
+
 const app=getApp()
 
 Page({
@@ -6,11 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nickname:"",
-    phone:"",
-    gender:"",
     avatarUrl:"",
-    
   },
     // rules:[
     //   {
@@ -31,11 +29,14 @@ Page({
     this.setData({
       gender:gender
     })
-    console.log(gender)
   },
 
-  checked(e){
-
+  onDateChange(e){
+    let birth=e.detail.value;
+    app.globalData.userinfo.birth=birth;
+    this.setData({
+      birth:birth
+    })
   },
 
   onChooseAvatar(e){
@@ -45,10 +46,10 @@ Page({
     })
   },
 
-  async submitForm(e){
+  submitForm(e){
     const {nickname,phone,birth}=e.detail.value;
     let that=this;
-    wx.request({
+    request({
       url: "http://127.0.0.1:8000/api/updateUser",
       data: {
         nickname: nickname,
@@ -61,34 +62,29 @@ Page({
         "content-type": "application/x-www-form-urlencoded" //使用POST方法要带上这个header
       },
       method: "POST",
-      success(res) {
-        if (res.data.code == "1007") {
-          wx.showToast({ title: "保存成功" });
-        }
-        app.globalData.userinfo.nickname=nickname;
-        app.globalData.userinfo.phone=phone;
-        app.globalData.userinfo.birth=birth;
-      },
-      fail(e){
-        console.log(e)
+    }).then(res=>{
+      if (res.data.code == "1007") {
+        wx.showToast({ title: "保存成功" });
       }
+      app.globalData.userinfo.nickname=nickname;
+      app.globalData.userinfo.phone=phone;
+      app.globalData.userinfo.birth=birth;
     })
 
   },
 
-  // resetForm(){
-  //   this.setData({
-  //     "formData.nickname":"",
-  //     "formData.phone":"",
-  //     "formData.gender":"",
-  //     "formData.birth":""
-  //   })
-  // },
+  resetForm(){
+    this.setData({
+      "nickname":"",
+      "phone":"",
+      "gender":"",
+      "birth":""
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
     this.setData({
       nickname:app.globalData.userinfo.nickname,
       gender:app.globalData.userinfo.gender,
@@ -102,8 +98,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    console.log(app.globalData)
-    console.log(this.data)
+
   },
 
   /**

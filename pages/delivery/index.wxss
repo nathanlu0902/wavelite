@@ -72,6 +72,10 @@
   align-items: center;
 }
 
+.dishPrice{
+  color:var(--primary-color);
+}
+
 
 
 
