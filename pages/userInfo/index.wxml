@@ -66,13 +66,13 @@
         <picker
           name="birth"
           mode="date"
-          value="{{date}}"
+          value="{{birth}}"
           start="1910-01-01"
           end="{{pickerEndDate}}"
           bindchange="onDateChange"
         >
           <view class="picker">
-            生日: {{typeof(date)=="string"?date:"请选择"}}
+           {{birth?birth:"请选择"}}
           </view>
         </picker>
       </mp-cell>

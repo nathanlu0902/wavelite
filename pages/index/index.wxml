@@ -40,7 +40,7 @@
   <view class="btn-area" bindtap="onBindUserTap">
     <image class="pic"></image>
     <view class="member-info">
-      <text class="text-large">Hi，{{formData.nickname}}</text>
+      <text class="text-large iconfont icon-my">Hi，{{formData.nickname}}</text>
       <view class="points text-small">积分:20</view>
     </view>
   </view>

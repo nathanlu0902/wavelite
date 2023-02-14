@@ -1,0 +1,8 @@
+<view class="wrapper">
+  <image class="icon" src=""></image>
+  <text>欢迎来到Wave</text>
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信手机号一键绑定</button>
+  <button bindtap="register">register</button>
+
+</view>
+

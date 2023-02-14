@@ -1,7 +1,7 @@
+@import "./styles/iconfont.wxss";
 
-
-.primary-color{
-  color:#ff5801 !important;
+page{
+  --primary-color:#ff5801
 }
 
 .grey-color{

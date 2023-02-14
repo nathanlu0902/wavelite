@@ -1,4 +1,4 @@
-/* components/tabbar.wxss */
+@import "../styles/iconfont.wxss";
 .tabbar-wrapper{
   display:flex;
   flex-direction:row;
@@ -24,7 +24,10 @@
   align-items: center;
 }
 
-
+.icon{
+  width:1.2em;
+  height:1.2em;
+}
 
 .text{
   font-size: 22rpx;

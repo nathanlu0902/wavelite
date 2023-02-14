@@ -3,11 +3,10 @@
     "pages/index/index",
     "pages/delivery/index",
     "pages/mine/index",
-    "pages/subscribe/index",
     "pages/goods/index",
     "pages/cart/index",
     "pages/userInfo/index",
-    "pages/register/index"
+    "pages/login/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -25,8 +24,8 @@
         "text": "首页"
       },
       {
-        "pagePath":"pages/subscribe/index",
-        "text": "订阅"
+        "pagePath":"pages/delivery/index",
+        "text": "外卖"
       },
       {
         "pagePath": "pages/mine/index",

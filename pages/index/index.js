@@ -1,10 +1,9 @@
 const app=getApp();
-import { login } from "../../utils/api";
 
 Page({
   data: {
     formData:{
-      nickname:"",
+      nickname:null,
     },
     top:app.globalData.menuTop+(app.globalData.menuTop-app.globalData.statusBarHeight)+app.globalData.menuHeight,
     bnrUrl:[
@@ -22,6 +21,7 @@ Page({
   },
   //options(Object)
   onLoad: function() {
+    console.log(`存在用户名${wx.getStorageSync('nickname')}`);
     if(wx.getStorageSync('nickname')){
       this.setData({
         "formData.nickname":wx.getStorageSync('nickname'),
@@ -32,9 +32,11 @@ Page({
       })
     }
   },
+
   onReady: function() {
     
   },
+
   onShow: function() {
     if(typeof this.getTabBar==='function'&&this.getTabBar()){
       this.getTabBar().setData({
@@ -72,7 +74,7 @@ Page({
     })
     }else{
       wx.navigateTo({
-        url: '../register/index',
+        url: '../login/index',
       })
     }
   },

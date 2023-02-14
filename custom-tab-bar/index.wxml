@@ -1,6 +1,7 @@
 <view class="tabbar-wrapper">
   <view class="tabbar-item-wrapper" wx:for="{{list}}"  wx:key="text" bindtap="switchTab" data-path="{{item.path}}" data-index="{{index}}">
-    <van-icon class="icon" name="{{selected===index?item.iconSelectedName:item.iconName}}" size="1.2em"/>
+    <image class="icon iconfont {{selected===index?item.iconSelectedClass:item.iconClass}}"/>
+    <!-- <van-icon class="icon" name="{{selected===index?item.iconSelectedName:item.iconName}}" size="1.2em"/> -->
     <view class="text">{{item.text}}</view>
   </view>
 </view>
