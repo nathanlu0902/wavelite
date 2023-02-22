@@ -36,7 +36,7 @@ App({
     wx.login({
       success(res){
         request({
-          url:"http://127.0.0.1:8000/api/login",
+          url:"/login",
           data:{code:res.code},
           header:{
             "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
@@ -63,6 +63,13 @@ App({
       }
     })
    
-  }
+  },
 
+  // handleDestruction(res) {
+  //   const {
+  //     data = []
+  //   } = res; // 设默认值为 [] 以免获取数据失败时发生错误
+  //   console.log("des data",data)
+  //   return data;
+  // }
 })

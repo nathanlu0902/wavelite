@@ -11,18 +11,18 @@ bind:change="onChange"
 <scroll-view class="left-menu" scroll-y="true" enable-flex="true">
   <view 
     class="left-item {{currentIndexL==index?'active-text':''}}" 
-    wx:for="{{typeList}}" 
+    wx:for="{{goodsCategoryData}}" 
     wx:key="*this"
     bindtap="bindLeftItemTap"
-    data-index="{{index}}"
+    data-id="{{item.id}}"
     >
-    <view>{{item}}</view>
+    <view>{{item.category}}</view>
   </view>
 </scroll-view>
 <scroll-view class="right-menu" scroll-y="true" enable-flex="true">
   <view 
     class="right-item"
-    wx:for="{{goodsList[currentType]}}"
+    wx:for="{{goodsList[goodsCategoryId==currentId]}}"
     wx:key="id"
   >
   <block wx:if="{{item.type==currentType}}">

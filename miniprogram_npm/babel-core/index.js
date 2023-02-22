@@ -4,11 +4,11 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {}, _tempexport
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = __MODS__[modId].m; m._exports = m._tempexports; var desp = Object.getOwnPropertyDescriptor(m, "exports"); if (desp && desp.configurable) Object.defineProperty(m, "exports", { set: function (val) { if(typeof val === "object" && val !== m._exports) { m._exports.__proto__ = val.__proto__; Object.keys(val).forEach(function (k) { m._exports[k] = val[k]; }); } m._tempexports = val }, get: function () { return m._tempexports; } }); __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1675480657628, function(require, module, exports) {
+__DEFINE__(1676544235542, function(require, module, exports) {
 module.exports = require("./lib/api/node.js");
 
-}, function(modId) {var map = {"./lib/api/node.js":1675480657629}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657629, function(require, module, exports) {
+}, function(modId) {var map = {"./lib/api/node.js":1676544235543}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235543, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -188,8 +188,8 @@ function parse(code) {
 
   return ast.program;
 }
-}, function(modId) { var map = {"../transformation":1675480657630,"../util":1675480657656,"../types":1675480657641,"../transformation/file":1675480657678,"../transformation/plugin":1675480657634,"../transformation/transformer":1675480657633,"../transformation/pipeline":1675480657631,"../traversal":1675480657636,"../tools/build-external-helpers":1675480657791,"./register/node-polyfill":1675480657792,"../polyfill":1675480657793}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657630, function(require, module, exports) {
+}, function(modId) { var map = {"../transformation":1676544235544,"../util":1676544235570,"../types":1676544235555,"../transformation/file":1676544235592,"../transformation/plugin":1676544235548,"../transformation/transformer":1676544235547,"../transformation/pipeline":1676544235545,"../traversal":1676544235550,"../tools/build-external-helpers":1676544235705,"./register/node-polyfill":1676544235706,"../polyfill":1676544235707}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235544, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -270,8 +270,8 @@ transform.fromAst = pipeline.transformFromAst.bind(pipeline);
 transform.pipeline = pipeline;
 exports["default"] = transform;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./pipeline":1675480657631,"./transformers":1675480657719,"./transformers/filters":1675480657790}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657631, function(require, module, exports) {
+}, function(modId) { var map = {"./pipeline":1676544235545,"./transformers":1676544235633,"./transformers/filters":1676544235704}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235545, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -495,8 +495,8 @@ var Pipeline = (function () {
 
 exports["default"] = Pipeline;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./file/plugin-manager":1675480657632,"../helpers/normalize-ast":1675480657718,"./plugin":1675480657634,"../helpers/object":1675480657660,"./file":1675480657678}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657632, function(require, module, exports) {
+}, function(modId) { var map = {"./file/plugin-manager":1676544235546,"../helpers/normalize-ast":1676544235632,"./plugin":1676544235548,"../helpers/object":1676544235574,"./file":1676544235592}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235546, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -724,8 +724,8 @@ var PluginManager = (function () {
 
 exports["default"] = PluginManager;
 module.exports = exports["default"];
-}, function(modId) { var map = {"../transformer":1675480657633,"../plugin":1675480657634,"../../types":1675480657641,"../../messages":1675480657655,"../../traversal":1675480657636,"../../helpers/parse":1675480657657}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657633, function(require, module, exports) {
+}, function(modId) { var map = {"../transformer":1676544235547,"../plugin":1676544235548,"../../types":1676544235555,"../../messages":1676544235569,"../../traversal":1676544235550,"../../helpers/parse":1676544235571}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235547, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -760,8 +760,8 @@ var Transformer = function Transformer(key, obj) {
 
 exports["default"] = Transformer;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./plugin":1675480657634}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657634, function(require, module, exports) {
+}, function(modId) { var map = {"./plugin":1676544235548}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235548, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -893,8 +893,8 @@ var Plugin = (function () {
 
 exports["default"] = Plugin;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./plugin-pass":1675480657635,"../messages":1675480657655,"../traversal":1675480657636,"./file":1675480657678,"../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657635, function(require, module, exports) {
+}, function(modId) { var map = {"./plugin-pass":1676544235549,"../messages":1676544235569,"../traversal":1676544235550,"./file":1676544235592,"../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235549, function(require, module, exports) {
 
 
 /**
@@ -954,8 +954,8 @@ var PluginPass = (function () {
 
 exports["default"] = PluginPass;
 module.exports = exports["default"];
-}, function(modId) { var map = {"../traversal":1675480657636}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657636, function(require, module, exports) {
+}, function(modId) { var map = {"../traversal":1676544235550}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235550, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -1107,8 +1107,8 @@ traverse.hasType = function (tree, scope, type, blacklistTypes) {
   return state.has;
 };
 module.exports = exports["default"];
-}, function(modId) { var map = {"./context":1675480657637,"./visitors":1675480657677,"../messages":1675480657655,"../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657637, function(require, module, exports) {
+}, function(modId) { var map = {"./context":1676544235551,"./visitors":1676544235591,"../messages":1676544235569,"../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235551, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -1265,8 +1265,8 @@ var TraversalContext = (function () {
 
 exports["default"] = TraversalContext;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./path":1675480657638,"../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657638, function(require, module, exports) {
+}, function(modId) { var map = {"./path":1676544235552,"../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235552, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -1478,8 +1478,8 @@ for (var type in virtualTypes) {
   if (_ret2 === "continue") continue;
 }
 module.exports = exports["default"];
-}, function(modId) { var map = {"./lib/virtual-types":1675480657639,"../index":1675480657636,"../scope":1675480657654,"../../types":1675480657641,"./ancestry":1675480657661,"./inference":1675480657662,"./replacement":1675480657665,"./evaluation":1675480657667,"./conversion":1675480657668,"./introspection":1675480657669,"./context":1675480657670,"./removal":1675480657671,"./modification":1675480657673,"./family":1675480657675,"./comments":1675480657676}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657639, function(require, module, exports) {
+}, function(modId) { var map = {"./lib/virtual-types":1676544235553,"../index":1676544235550,"../scope":1676544235568,"../../types":1676544235555,"./ancestry":1676544235575,"./inference":1676544235576,"./replacement":1676544235579,"./evaluation":1676544235581,"./conversion":1676544235582,"./introspection":1676544235583,"./context":1676544235584,"./removal":1676544235585,"./modification":1676544235587,"./family":1676544235589,"./comments":1676544235590}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235553, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -1688,8 +1688,8 @@ var Flow = {
   }
 };
 exports.Flow = Flow;
-}, function(modId) { var map = {"../../../transformation/helpers/react":1675480657640,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657640, function(require, module, exports) {
+}, function(modId) { var map = {"../../../transformation/helpers/react":1676544235554,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235554, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -1786,8 +1786,8 @@ function buildChildren(node) {
 
   return elems;
 }
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657641, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235555, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -2234,8 +2234,8 @@ _lodashObjectAssign2["default"](t, require("./retrievers"));
 _lodashObjectAssign2["default"](t, require("./validators"));
 _lodashObjectAssign2["default"](t, require("./converters"));
 _lodashObjectAssign2["default"](t, require("./flow"));
-}, function(modId) { var map = {"./definitions/init":1675480657642,"./definitions":1675480657643,"./retrievers":1675480657650,"./validators":1675480657651,"./converters":1675480657652,"./flow":1675480657653}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657642, function(require, module, exports) {
+}, function(modId) { var map = {"./definitions/init":1676544235556,"./definitions":1676544235557,"./retrievers":1676544235564,"./validators":1676544235565,"./converters":1676544235566,"./flow":1676544235567}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235556, function(require, module, exports) {
 
 
 require("./index");
@@ -2251,8 +2251,8 @@ require("./jsx");
 require("./misc");
 
 require("./experimental");
-}, function(modId) { var map = {"./index":1675480657643,"./core":1675480657644,"./es2015":1675480657645,"./flow":1675480657646,"./jsx":1675480657647,"./misc":1675480657648,"./experimental":1675480657649}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657643, function(require, module, exports) {
+}, function(modId) { var map = {"./index":1676544235557,"./core":1676544235558,"./es2015":1676544235559,"./flow":1676544235560,"./jsx":1676544235561,"./misc":1676544235562,"./experimental":1676544235563}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235557, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -2286,7 +2286,7 @@ function defineType(type) {
   BUILDER_KEYS[type] = opts.builder;
 }
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657644, function(require, module, exports) {
+__DEFINE__(1676544235558, function(require, module, exports) {
 
 
 // istanbul ignore next
@@ -2541,8 +2541,8 @@ _index2["default"]("WithStatement", {
   visitor: ["object", "body"],
   aliases: ["Statement"]
 });
-}, function(modId) { var map = {"./index":1675480657643}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657645, function(require, module, exports) {
+}, function(modId) { var map = {"./index":1676544235557}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235559, function(require, module, exports) {
 
 
 // istanbul ignore next
@@ -2685,8 +2685,8 @@ _index2["default"]("YieldExpression", {
   visitor: ["argument"],
   aliases: ["Expression", "Terminatorless"]
 });
-}, function(modId) { var map = {"./index":1675480657643}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657646, function(require, module, exports) {
+}, function(modId) { var map = {"./index":1676544235557}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235560, function(require, module, exports) {
 
 
 // istanbul ignore next
@@ -2885,8 +2885,8 @@ _index2["default"]("UnionTypeAnnotation", {
 _index2["default"]("VoidTypeAnnotation", {
   aliases: ["Flow", "FlowBaseAnnotation"]
 });
-}, function(modId) { var map = {"./index":1675480657643}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657647, function(require, module, exports) {
+}, function(modId) { var map = {"./index":1676544235557}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235561, function(require, module, exports) {
 
 
 // istanbul ignore next
@@ -2944,8 +2944,8 @@ _index2["default"]("JSXSpreadAttribute", {
   visitor: ["argument"],
   aliases: ["JSX"]
 });
-}, function(modId) { var map = {"./index":1675480657643}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657648, function(require, module, exports) {
+}, function(modId) { var map = {"./index":1676544235557}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235562, function(require, module, exports) {
 
 
 // istanbul ignore next
@@ -2964,8 +2964,8 @@ _index2["default"]("ParenthesizedExpression", {
   visitor: ["expression"],
   aliases: ["Expression"]
 });
-}, function(modId) { var map = {"./index":1675480657643}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657649, function(require, module, exports) {
+}, function(modId) { var map = {"./index":1676544235557}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235563, function(require, module, exports) {
 
 
 // istanbul ignore next
@@ -3008,8 +3008,8 @@ _index2["default"]("SpreadProperty", {
   visitor: ["argument"],
   aliases: ["UnaryLike"]
 });
-}, function(modId) { var map = {"./index":1675480657643}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657650, function(require, module, exports) {
+}, function(modId) { var map = {"./index":1676544235557}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235564, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -3104,8 +3104,8 @@ getBindingIdentifiers.keys = {
   VariableDeclaration: ["declarations"],
   VariableDeclarator: ["id"]
 };
-}, function(modId) { var map = {"./index":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657651, function(require, module, exports) {
+}, function(modId) { var map = {"./index":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235565, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -3362,8 +3362,8 @@ function isImmutable(node) {
 
   return false;
 }
-}, function(modId) { var map = {"./retrievers":1675480657650,"./index":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657652, function(require, module, exports) {
+}, function(modId) { var map = {"./retrievers":1676544235564,"./index":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235566, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -3703,8 +3703,8 @@ function valueToNode(value) {
 
   throw new Error("don't know how to turn this value into a node");
 }
-}, function(modId) { var map = {"../traversal":1675480657636,"./index":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657653, function(require, module, exports) {
+}, function(modId) { var map = {"../traversal":1676544235550,"./index":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235567, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -3835,8 +3835,8 @@ function createTypeAnnotationBasedOnTypeof(type) {
     throw new Error("Invalid typeof value");
   }
 }
-}, function(modId) { var map = {"./index":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657654, function(require, module, exports) {
+}, function(modId) { var map = {"./index":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235568, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -4998,8 +4998,8 @@ var Scope = (function () {
 
 exports["default"] = Scope;
 module.exports = exports["default"];
-}, function(modId) { var map = {"../index":1675480657636,"../../messages":1675480657655,"./binding":1675480657659,"../../helpers/object":1675480657660,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657655, function(require, module, exports) {
+}, function(modId) { var map = {"../index":1676544235550,"../../messages":1676544235569,"./binding":1676544235573,"../../helpers/object":1676544235574,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235569, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -5100,8 +5100,8 @@ function parseArgs(args) {
     }
   });
 }
-}, function(modId) { var map = {"util":1675480657656}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657656, function(require, module, exports) {
+}, function(modId) { var map = {"util":1676544235570}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235570, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -5424,8 +5424,8 @@ try {
   if (err.code !== "MODULE_NOT_FOUND") throw err;
   exports.templates = loadTemplates();
 }
-}, function(modId) { var map = {"./messages":1675480657655,"./traversal":1675480657636,"./helpers/parse":1675480657657,"./types":1675480657641,"util":1675480657656,"../templates.json":1675480657658}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657657, function(require, module, exports) {
+}, function(modId) { var map = {"./messages":1676544235569,"./traversal":1676544235550,"./helpers/parse":1676544235571,"./types":1676544235555,"util":1676544235570,"../templates.json":1676544235572}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235571, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -5466,10 +5466,10 @@ exports["default"] = function (code) {
 
 module.exports = exports["default"];
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657658, function(require, module, exports) {
+__DEFINE__(1676544235572, function(require, module, exports) {
 module.exports = {"abstract-expression-call":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"PROPERTY"},"property":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Identifier","name":"referenceGet"},"computed":false},"computed":true},"arguments":[{"type":"Identifier","name":"OBJECT"}]},"property":{"type":"Identifier","name":"call"},"computed":false},"arguments":[{"type":"Identifier","name":"OBJECT"}]}}]},"abstract-expression-delete":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"PROPERTY"},"property":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Identifier","name":"referenceDelete"},"computed":false},"computed":true},"arguments":[{"type":"Identifier","name":"OBJECT"}]}}]},"abstract-expression-get":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"PROPERTY"},"property":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Identifier","name":"referenceGet"},"computed":false},"computed":true},"arguments":[{"type":"Identifier","name":"OBJECT"}]}}]},"abstract-expression-set":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"PROPERTY"},"property":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Identifier","name":"referenceSet"},"computed":false},"computed":true},"arguments":[{"type":"Identifier","name":"OBJECT"},{"type":"Identifier","name":"VALUE"}]}}]},"array-comprehension-container":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"KEY"},"init":{"type":"ArrayExpression","elements":[]}}],"kind":"var"},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"KEY"}}]},"parenthesizedExpression":true},"arguments":[]}}]},"array-from":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Array"},"property":{"type":"Identifier","name":"from"},"computed":false},"arguments":[{"type":"Identifier","name":"VALUE"}]}}]},"array-push":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"KEY"},"property":{"type":"Identifier","name":"push"},"computed":false},"arguments":[{"type":"Identifier","name":"STATEMENT"}]}}]},"call":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"OBJECT"},"property":{"type":"Identifier","name":"call"},"computed":false},"arguments":[{"type":"Identifier","name":"CONTEXT"}]}}]},"class-decorator":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"CLASS_REF"},"right":{"type":"LogicalExpression","left":{"type":"CallExpression","callee":{"type":"Identifier","name":"DECORATOR"},"arguments":[{"type":"Identifier","name":"CLASS_REF"}]},"operator":"||","right":{"type":"Identifier","name":"CLASS_REF"}}}}]},"class-derived-default-constructor":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Super"},"arguments":[{"type":"SpreadElement","argument":{"type":"Identifier","name":"arguments"}}]}}]},"parenthesizedExpression":true}}]},"default-parameter-assign":{"type":"Program","body":[{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"VARIABLE_NAME"},"operator":"===","right":{"type":"Identifier","name":"undefined"}},"consequent":{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"VARIABLE_NAME"},"right":{"type":"Identifier","name":"DEFAULT_VALUE"}}},"alternate":null}]},"default-parameter":{"type":"Program","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"VARIABLE_NAME"},"init":{"type":"ConditionalExpression","test":{"type":"LogicalExpression","left":{"type":"BinaryExpression","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"ARGUMENTS"},"property":{"type":"Identifier","name":"length"},"computed":false},"operator":"<=","right":{"type":"Identifier","name":"ARGUMENT_KEY"}},"operator":"||","right":{"type":"BinaryExpression","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"ARGUMENTS"},"property":{"type":"Identifier","name":"ARGUMENT_KEY"},"computed":true},"operator":"===","right":{"type":"Identifier","name":"undefined"}}},"consequent":{"type":"Identifier","name":"DEFAULT_VALUE"},"alternate":{"type":"MemberExpression","object":{"type":"Identifier","name":"ARGUMENTS"},"property":{"type":"Identifier","name":"ARGUMENT_KEY"},"computed":true}}}],"kind":"let"}]},"exports-assign":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"exports"},"property":{"type":"Identifier","name":"KEY"},"computed":false},"right":{"type":"Identifier","name":"VALUE"}}}]},"exports-default-assign":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"module"},"property":{"type":"Identifier","name":"exports"},"computed":false},"right":{"type":"Identifier","name":"VALUE"}}}]},"exports-from-assign":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"defineProperty"},"computed":false},"arguments":[{"type":"Identifier","name":"exports"},{"type":"Identifier","name":"ID"},{"type":"ObjectExpression","properties":[{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"enumerable"},"value":{"type":"Literal","value":true},"kind":"init"},{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"get"},"value":{"type":"FunctionExpression","id":{"type":"Identifier","name":"get"},"generator":false,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"Identifier","name":"INIT"}}]}},"kind":"init"}]}]}}]},"exports-module-declaration-loose":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"exports"},"property":{"type":"Identifier","name":"__esModule"},"computed":false},"right":{"type":"Literal","value":true}}}]},"exports-module-declaration":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"defineProperty"},"computed":false},"arguments":[{"type":"Identifier","name":"exports"},{"type":"Literal","value":"__esModule"},{"type":"ObjectExpression","properties":[{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"value"},"value":{"type":"Literal","value":true},"kind":"init"}]}]}}]},"for-of-array":{"type":"Program","body":[{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"KEY"},"init":{"type":"Literal","value":0}}],"kind":"var"},"test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"KEY"},"operator":"<","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"ARR"},"property":{"type":"Identifier","name":"length"},"computed":false}},"update":{"type":"UpdateExpression","operator":"++","prefix":false,"argument":{"type":"Identifier","name":"KEY"}},"body":{"type":"ExpressionStatement","expression":{"type":"Identifier","name":"BODY"}}}]},"for-of-loose":{"type":"Program","body":[{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"LOOP_OBJECT"},"init":{"type":"Identifier","name":"OBJECT"}},{"type":"VariableDeclarator","id":{"type":"Identifier","name":"IS_ARRAY"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Array"},"property":{"type":"Identifier","name":"isArray"},"computed":false},"arguments":[{"type":"Identifier","name":"LOOP_OBJECT"}]}},{"type":"VariableDeclarator","id":{"type":"Identifier","name":"INDEX"},"init":{"type":"Literal","value":0}},{"type":"VariableDeclarator","id":{"type":"Identifier","name":"LOOP_OBJECT"},"init":{"type":"ConditionalExpression","test":{"type":"Identifier","name":"IS_ARRAY"},"consequent":{"type":"Identifier","name":"LOOP_OBJECT"},"alternate":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"LOOP_OBJECT"},"property":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Identifier","name":"iterator"},"computed":false},"computed":true},"arguments":[]}}}],"kind":"var"},"test":null,"update":null,"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"ID"},"init":null}],"kind":"var"},{"type":"IfStatement","test":{"type":"Identifier","name":"IS_ARRAY"},"consequent":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"INDEX"},"operator":">=","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"LOOP_OBJECT"},"property":{"type":"Identifier","name":"length"},"computed":false}},"consequent":{"type":"BreakStatement","label":null},"alternate":null},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"ID"},"right":{"type":"MemberExpression","object":{"type":"Identifier","name":"LOOP_OBJECT"},"property":{"type":"UpdateExpression","operator":"++","prefix":false,"argument":{"type":"Identifier","name":"INDEX"}},"computed":true}}}]},"alternate":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"INDEX"},"right":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"LOOP_OBJECT"},"property":{"type":"Identifier","name":"next"},"computed":false},"arguments":[]}}},{"type":"IfStatement","test":{"type":"MemberExpression","object":{"type":"Identifier","name":"INDEX"},"property":{"type":"Identifier","name":"done"},"computed":false},"consequent":{"type":"BreakStatement","label":null},"alternate":null},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"ID"},"right":{"type":"MemberExpression","object":{"type":"Identifier","name":"INDEX"},"property":{"type":"Identifier","name":"value"},"computed":false}}}]}}]}}]},"for-of":{"type":"Program","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"ITERATOR_COMPLETION"},"init":{"type":"Literal","value":true}}],"kind":"var"},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"ITERATOR_HAD_ERROR_KEY"},"init":{"type":"Literal","value":false}}],"kind":"var"},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"ITERATOR_ERROR_KEY"},"init":{"type":"Identifier","name":"undefined"}}],"kind":"var"},{"type":"TryStatement","block":{"type":"BlockStatement","body":[{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"ITERATOR_KEY"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"OBJECT"},"property":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Identifier","name":"iterator"},"computed":false},"computed":true},"arguments":[]}},{"type":"VariableDeclarator","id":{"type":"Identifier","name":"STEP_KEY"},"init":null}],"kind":"var"},"test":{"type":"UnaryExpression","operator":"!","prefix":true,"argument":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"ITERATOR_COMPLETION"},"right":{"type":"MemberExpression","object":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"STEP_KEY"},"right":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"ITERATOR_KEY"},"property":{"type":"Identifier","name":"next"},"computed":false},"arguments":[]},"parenthesizedExpression":true},"property":{"type":"Identifier","name":"done"},"computed":false},"parenthesizedExpression":true}},"update":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"ITERATOR_COMPLETION"},"right":{"type":"Literal","value":true}},"body":{"type":"BlockStatement","body":[]}}]},"handler":{"type":"CatchClause","param":{"type":"Identifier","name":"err"},"body":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"ITERATOR_HAD_ERROR_KEY"},"right":{"type":"Literal","value":true}}},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"ITERATOR_ERROR_KEY"},"right":{"type":"Identifier","name":"err"}}}]}},"guardedHandlers":[],"finalizer":{"type":"BlockStatement","body":[{"type":"TryStatement","block":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"UnaryExpression","operator":"!","prefix":true,"argument":{"type":"Identifier","name":"ITERATOR_COMPLETION"}},"operator":"&&","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"ITERATOR_KEY"},"property":{"type":"Literal","value":"return"},"computed":true}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"ITERATOR_KEY"},"property":{"type":"Literal","value":"return"},"computed":true},"arguments":[]}}]},"alternate":null}]},"handler":null,"guardedHandlers":[],"finalizer":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"Identifier","name":"ITERATOR_HAD_ERROR_KEY"},"consequent":{"type":"BlockStatement","body":[{"type":"ThrowStatement","argument":{"type":"Identifier","name":"ITERATOR_ERROR_KEY"}}]},"alternate":null}]}}]}}]},"helper-async-to-generator":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"fn"}],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"gen"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"fn"},"property":{"type":"Identifier","name":"apply"},"computed":false},"arguments":[{"type":"ThisExpression"},{"type":"Identifier","name":"arguments"}]}}],"kind":"var"},{"type":"ReturnStatement","argument":{"type":"NewExpression","callee":{"type":"Identifier","name":"Promise"},"arguments":[{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"resolve"},{"type":"Identifier","name":"reject"}],"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"callNext"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"step"},"property":{"type":"Identifier","name":"bind"},"computed":false},"arguments":[{"type":"Literal","value":null,"rawValue":null},{"type":"Literal","value":"next"}]}}],"kind":"var"},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"callThrow"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"step"},"property":{"type":"Identifier","name":"bind"},"computed":false},"arguments":[{"type":"Literal","value":null,"rawValue":null},{"type":"Literal","value":"throw"}]}}],"kind":"var"},{"type":"FunctionDeclaration","id":{"type":"Identifier","name":"step"},"generator":false,"expression":false,"params":[{"type":"Identifier","name":"key"},{"type":"Identifier","name":"arg"}],"body":{"type":"BlockStatement","body":[{"type":"TryStatement","block":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"info"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"gen"},"property":{"type":"Identifier","name":"key"},"computed":true},"arguments":[{"type":"Identifier","name":"arg"}]}}],"kind":"var"},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"value"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"info"},"property":{"type":"Identifier","name":"value"},"computed":false}}],"kind":"var"}]},"handler":{"type":"CatchClause","param":{"type":"Identifier","name":"error"},"body":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"reject"},"arguments":[{"type":"Identifier","name":"error"}]}},{"type":"ReturnStatement","argument":null}]}},"guardedHandlers":[],"finalizer":null},{"type":"IfStatement","test":{"type":"MemberExpression","object":{"type":"Identifier","name":"info"},"property":{"type":"Identifier","name":"done"},"computed":false},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"resolve"},"arguments":[{"type":"Identifier","name":"value"}]}}]},"alternate":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Promise"},"property":{"type":"Identifier","name":"resolve"},"computed":false},"arguments":[{"type":"Identifier","name":"value"}]},"property":{"type":"Identifier","name":"then"},"computed":false},"arguments":[{"type":"Identifier","name":"callNext"},{"type":"Identifier","name":"callThrow"}]}}]}}]}},{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"callNext"},"arguments":[]}}]}}]}}]}}}]},"parenthesizedExpression":true}}]},"helper-bind":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"MemberExpression","object":{"type":"MemberExpression","object":{"type":"Identifier","name":"Function"},"property":{"type":"Identifier","name":"prototype"},"computed":false},"property":{"type":"Identifier","name":"bind"},"computed":false}}]},"helper-class-call-check":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"instance"},{"type":"Identifier","name":"Constructor"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"UnaryExpression","operator":"!","prefix":true,"argument":{"type":"BinaryExpression","left":{"type":"Identifier","name":"instance"},"operator":"instanceof","right":{"type":"Identifier","name":"Constructor"},"parenthesizedExpression":true}},"consequent":{"type":"BlockStatement","body":[{"type":"ThrowStatement","argument":{"type":"NewExpression","callee":{"type":"Identifier","name":"TypeError"},"arguments":[{"type":"Literal","value":"Cannot call a class as a function"}]}}]},"alternate":null}]},"parenthesizedExpression":true}}]},"helper-create-class":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"FunctionDeclaration","id":{"type":"Identifier","name":"defineProperties"},"generator":false,"expression":false,"params":[{"type":"Identifier","name":"target"},{"type":"Identifier","name":"props"}],"body":{"type":"BlockStatement","body":[{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"i"},"init":{"type":"Literal","value":0}}],"kind":"var"},"test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"i"},"operator":"<","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"props"},"property":{"type":"Identifier","name":"length"},"computed":false}},"update":{"type":"UpdateExpression","operator":"++","prefix":false,"argument":{"type":"Identifier","name":"i"}},"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"descriptor"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"props"},"property":{"type":"Identifier","name":"i"},"computed":true}}],"kind":"var"},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"enumerable"},"computed":false},"right":{"type":"LogicalExpression","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"enumerable"},"computed":false},"operator":"||","right":{"type":"Literal","value":false}}}},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"configurable"},"computed":false},"right":{"type":"Literal","value":true}}},{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Literal","value":"value"},"operator":"in","right":{"type":"Identifier","name":"descriptor"}},"consequent":{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"writable"},"computed":false},"right":{"type":"Literal","value":true}}},"alternate":null},{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"defineProperty"},"computed":false},"arguments":[{"type":"Identifier","name":"target"},{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"key"},"computed":false},{"type":"Identifier","name":"descriptor"}]}}]}}]}},{"type":"ReturnStatement","argument":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"Constructor"},{"type":"Identifier","name":"protoProps"},{"type":"Identifier","name":"staticProps"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"Identifier","name":"protoProps"},"consequent":{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"defineProperties"},"arguments":[{"type":"MemberExpression","object":{"type":"Identifier","name":"Constructor"},"property":{"type":"Identifier","name":"prototype"},"computed":false},{"type":"Identifier","name":"protoProps"}]}},"alternate":null},{"type":"IfStatement","test":{"type":"Identifier","name":"staticProps"},"consequent":{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"defineProperties"},"arguments":[{"type":"Identifier","name":"Constructor"},{"type":"Identifier","name":"staticProps"}]}},"alternate":null},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"Constructor"}}]}}}]},"parenthesizedExpression":true},"arguments":[]}}]},"helper-create-decorated-class":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"FunctionDeclaration","id":{"type":"Identifier","name":"defineProperties"},"generator":false,"expression":false,"params":[{"type":"Identifier","name":"target"},{"type":"Identifier","name":"descriptors"},{"type":"Identifier","name":"initializers"}],"body":{"type":"BlockStatement","body":[{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"i"},"init":{"type":"Literal","value":0}}],"kind":"var"},"test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"i"},"operator":"<","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptors"},"property":{"type":"Identifier","name":"length"},"computed":false}},"update":{"type":"UpdateExpression","operator":"++","prefix":false,"argument":{"type":"Identifier","name":"i"}},"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"descriptor"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptors"},"property":{"type":"Identifier","name":"i"},"computed":true}}],"kind":"var"},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"decorators"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"decorators"},"computed":false}}],"kind":"var"},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"key"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"key"},"computed":false}}],"kind":"var"},{"type":"ExpressionStatement","expression":{"type":"UnaryExpression","operator":"delete","prefix":true,"argument":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor","leadingComments":null},"property":{"type":"Identifier","name":"key"},"computed":false,"leadingComments":null},"leadingComments":null}},{"type":"ExpressionStatement","expression":{"type":"UnaryExpression","operator":"delete","prefix":true,"argument":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"decorators"},"computed":false}}},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"enumerable"},"computed":false},"right":{"type":"LogicalExpression","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"enumerable"},"computed":false},"operator":"||","right":{"type":"Literal","value":false}}}},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"configurable"},"computed":false},"right":{"type":"Literal","value":true}}},{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"BinaryExpression","left":{"type":"Literal","value":"value"},"operator":"in","right":{"type":"Identifier","name":"descriptor"}},"operator":"||","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"initializer"},"computed":false}},"consequent":{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"writable"},"computed":false},"right":{"type":"Literal","value":true}}},"alternate":null},{"type":"IfStatement","test":{"type":"Identifier","name":"decorators"},"consequent":{"type":"BlockStatement","body":[{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"f"},"init":{"type":"Literal","value":0}}],"kind":"var"},"test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"f"},"operator":"<","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"decorators"},"property":{"type":"Identifier","name":"length"},"computed":false}},"update":{"type":"UpdateExpression","operator":"++","prefix":false,"argument":{"type":"Identifier","name":"f"}},"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"decorator"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"decorators"},"property":{"type":"Identifier","name":"f"},"computed":true}}],"kind":"var"},{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"decorator"}},"operator":"===","right":{"type":"Literal","value":"function"}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"descriptor"},"right":{"type":"LogicalExpression","left":{"type":"CallExpression","callee":{"type":"Identifier","name":"decorator"},"arguments":[{"type":"Identifier","name":"target"},{"type":"Identifier","name":"key"},{"type":"Identifier","name":"descriptor"}]},"operator":"||","right":{"type":"Identifier","name":"descriptor"}}}}]},"alternate":{"type":"BlockStatement","body":[{"type":"ThrowStatement","argument":{"type":"NewExpression","callee":{"type":"Identifier","name":"TypeError"},"arguments":[{"type":"BinaryExpression","left":{"type":"BinaryExpression","left":{"type":"BinaryExpression","left":{"type":"Literal","value":"The decorator for method "},"operator":"+","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"key"},"computed":false}},"operator":"+","right":{"type":"Literal","value":" is of the invalid type "}},"operator":"+","right":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"decorator"}}}]}}]}}]}},{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"initializer"},"computed":false},"operator":"!==","right":{"type":"Identifier","name":"undefined"}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"initializers"},"property":{"type":"Identifier","name":"key"},"computed":true},"right":{"type":"Identifier","name":"descriptor"}}},{"type":"ContinueStatement","label":null}]},"alternate":null}]},"alternate":null},{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"defineProperty"},"computed":false},"arguments":[{"type":"Identifier","name":"target"},{"type":"Identifier","name":"key"},{"type":"Identifier","name":"descriptor"}]}}]}}]}},{"type":"ReturnStatement","argument":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"Constructor"},{"type":"Identifier","name":"protoProps"},{"type":"Identifier","name":"staticProps"},{"type":"Identifier","name":"protoInitializers"},{"type":"Identifier","name":"staticInitializers"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"Identifier","name":"protoProps"},"consequent":{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"defineProperties"},"arguments":[{"type":"MemberExpression","object":{"type":"Identifier","name":"Constructor"},"property":{"type":"Identifier","name":"prototype"},"computed":false},{"type":"Identifier","name":"protoProps"},{"type":"Identifier","name":"protoInitializers"}]}},"alternate":null},{"type":"IfStatement","test":{"type":"Identifier","name":"staticProps"},"consequent":{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"defineProperties"},"arguments":[{"type":"Identifier","name":"Constructor"},{"type":"Identifier","name":"staticProps"},{"type":"Identifier","name":"staticInitializers"}]}},"alternate":null},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"Constructor"}}]}}}]},"parenthesizedExpression":true},"arguments":[]}}]},"helper-create-decorated-object":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"descriptors"}],"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"target"},"init":{"type":"ObjectExpression","properties":[]}}],"kind":"var"},{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"i"},"init":{"type":"Literal","value":0}}],"kind":"var"},"test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"i"},"operator":"<","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptors"},"property":{"type":"Identifier","name":"length"},"computed":false}},"update":{"type":"UpdateExpression","operator":"++","prefix":false,"argument":{"type":"Identifier","name":"i"}},"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"descriptor"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptors"},"property":{"type":"Identifier","name":"i"},"computed":true}}],"kind":"var"},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"decorators"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"decorators"},"computed":false}}],"kind":"var"},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"key"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"key"},"computed":false}}],"kind":"var"},{"type":"ExpressionStatement","expression":{"type":"UnaryExpression","operator":"delete","prefix":true,"argument":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor","leadingComments":null},"property":{"type":"Identifier","name":"key"},"computed":false,"leadingComments":null},"leadingComments":null}},{"type":"ExpressionStatement","expression":{"type":"UnaryExpression","operator":"delete","prefix":true,"argument":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"decorators"},"computed":false}}},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"enumerable"},"computed":false},"right":{"type":"Literal","value":true}}},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"configurable"},"computed":false},"right":{"type":"Literal","value":true}}},{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"BinaryExpression","left":{"type":"Literal","value":"value"},"operator":"in","right":{"type":"Identifier","name":"descriptor"}},"operator":"||","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"initializer"},"computed":false}},"consequent":{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"writable"},"computed":false},"right":{"type":"Literal","value":true}}},"alternate":null},{"type":"IfStatement","test":{"type":"Identifier","name":"decorators"},"consequent":{"type":"BlockStatement","body":[{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"f"},"init":{"type":"Literal","value":0}}],"kind":"var"},"test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"f"},"operator":"<","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"decorators"},"property":{"type":"Identifier","name":"length"},"computed":false}},"update":{"type":"UpdateExpression","operator":"++","prefix":false,"argument":{"type":"Identifier","name":"f"}},"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"decorator"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"decorators"},"property":{"type":"Identifier","name":"f"},"computed":true}}],"kind":"var"},{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"decorator"}},"operator":"===","right":{"type":"Literal","value":"function"}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"descriptor"},"right":{"type":"LogicalExpression","left":{"type":"CallExpression","callee":{"type":"Identifier","name":"decorator"},"arguments":[{"type":"Identifier","name":"target"},{"type":"Identifier","name":"key"},{"type":"Identifier","name":"descriptor"}]},"operator":"||","right":{"type":"Identifier","name":"descriptor"}}}}]},"alternate":{"type":"BlockStatement","body":[{"type":"ThrowStatement","argument":{"type":"NewExpression","callee":{"type":"Identifier","name":"TypeError"},"arguments":[{"type":"BinaryExpression","left":{"type":"BinaryExpression","left":{"type":"BinaryExpression","left":{"type":"Literal","value":"The decorator for method "},"operator":"+","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"key"},"computed":false}},"operator":"+","right":{"type":"Literal","value":" is of the invalid type "}},"operator":"+","right":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"decorator"}}}]}}]}}]}}]},"alternate":null},{"type":"IfStatement","test":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"initializer"},"computed":false},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"value"},"computed":false},"right":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"initializer"},"computed":false},"property":{"type":"Identifier","name":"call"},"computed":false},"arguments":[{"type":"Identifier","name":"target"}]}}}]},"alternate":null},{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"defineProperty"},"computed":false},"arguments":[{"type":"Identifier","name":"target"},{"type":"Identifier","name":"key"},{"type":"Identifier","name":"descriptor"}]}}]}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"target"}}]},"parenthesizedExpression":true}}]},"helper-default-props":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"defaultProps"},{"type":"Identifier","name":"props"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"Identifier","name":"defaultProps"},"consequent":{"type":"BlockStatement","body":[{"type":"ForInStatement","left":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"propName"},"init":null}],"kind":"var"},"right":{"type":"Identifier","name":"defaultProps"},"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"MemberExpression","object":{"type":"Identifier","name":"props"},"property":{"type":"Identifier","name":"propName"},"computed":true}},"operator":"===","right":{"type":"Literal","value":"undefined"}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"props"},"property":{"type":"Identifier","name":"propName"},"computed":true},"right":{"type":"MemberExpression","object":{"type":"Identifier","name":"defaultProps"},"property":{"type":"Identifier","name":"propName"},"computed":true}}}]},"alternate":null}]}}]},"alternate":null},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"props"}}]},"parenthesizedExpression":true}}]},"helper-defaults":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"obj"},{"type":"Identifier","name":"defaults"}],"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"keys"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"getOwnPropertyNames"},"computed":false},"arguments":[{"type":"Identifier","name":"defaults"}]}}],"kind":"var"},{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"i"},"init":{"type":"Literal","value":0}}],"kind":"var"},"test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"i"},"operator":"<","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"keys"},"property":{"type":"Identifier","name":"length"},"computed":false}},"update":{"type":"UpdateExpression","operator":"++","prefix":false,"argument":{"type":"Identifier","name":"i"}},"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"key"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"keys"},"property":{"type":"Identifier","name":"i"},"computed":true}}],"kind":"var"},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"value"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"getOwnPropertyDescriptor"},"computed":false},"arguments":[{"type":"Identifier","name":"defaults"},{"type":"Identifier","name":"key"}]}}],"kind":"var"},{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"LogicalExpression","left":{"type":"Identifier","name":"value"},"operator":"&&","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"value"},"property":{"type":"Identifier","name":"configurable"},"computed":false}},"operator":"&&","right":{"type":"BinaryExpression","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"obj"},"property":{"type":"Identifier","name":"key"},"computed":true},"operator":"===","right":{"type":"Identifier","name":"undefined"}}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"defineProperty"},"computed":false},"arguments":[{"type":"Identifier","name":"obj"},{"type":"Identifier","name":"key"},{"type":"Identifier","name":"value"}]}}]},"alternate":null}]}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"obj"}}]},"parenthesizedExpression":true}}]},"helper-define-decorated-property-descriptor":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"target"},{"type":"Identifier","name":"key"},{"type":"Identifier","name":"descriptors"}],"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"_descriptor"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptors"},"property":{"type":"Identifier","name":"key"},"computed":true}}],"kind":"var"},{"type":"IfStatement","test":{"type":"UnaryExpression","operator":"!","prefix":true,"argument":{"type":"Identifier","name":"_descriptor"}},"consequent":{"type":"ReturnStatement","argument":null,"leadingComments":null,"trailingComments":null},"alternate":null},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"descriptor","leadingComments":null},"init":{"type":"ObjectExpression","properties":[]},"leadingComments":null}],"kind":"var"},{"type":"ForInStatement","left":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"_key"},"init":null}],"kind":"var"},"right":{"type":"Identifier","name":"_descriptor"},"body":{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"_key"},"computed":true},"right":{"type":"MemberExpression","object":{"type":"Identifier","name":"_descriptor"},"property":{"type":"Identifier","name":"_key"},"computed":true}},"trailingComments":null}},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor","leadingComments":null},"property":{"type":"Identifier","name":"value"},"computed":false,"leadingComments":null},"right":{"type":"ConditionalExpression","test":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"initializer"},"computed":false},"consequent":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"MemberExpression","object":{"type":"Identifier","name":"descriptor"},"property":{"type":"Identifier","name":"initializer"},"computed":false},"property":{"type":"Identifier","name":"call"},"computed":false},"arguments":[{"type":"Identifier","name":"target"}]},"alternate":{"type":"Identifier","name":"undefined"}},"leadingComments":null}},{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"defineProperty"},"computed":false},"arguments":[{"type":"Identifier","name":"target"},{"type":"Identifier","name":"key"},{"type":"Identifier","name":"descriptor"}]}}]},"parenthesizedExpression":true}}]},"helper-define-property":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"obj"},{"type":"Identifier","name":"key"},{"type":"Identifier","name":"value"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"key","leadingComments":null},"operator":"in","right":{"type":"Identifier","name":"obj"},"leadingComments":null},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"defineProperty"},"computed":false},"arguments":[{"type":"Identifier","name":"obj"},{"type":"Identifier","name":"key"},{"type":"ObjectExpression","properties":[{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"value"},"value":{"type":"Identifier","name":"value"},"kind":"init"},{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"enumerable"},"value":{"type":"Literal","value":true},"kind":"init"},{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"configurable"},"value":{"type":"Literal","value":true},"kind":"init"},{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"writable"},"value":{"type":"Literal","value":true},"kind":"init"}]}]}}]},"alternate":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"obj"},"property":{"type":"Identifier","name":"key"},"computed":true},"right":{"type":"Identifier","name":"value"}}}]}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"obj"}}]},"parenthesizedExpression":true}}]},"helper-extends":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"LogicalExpression","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"assign"},"computed":false},"operator":"||","right":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"target"}],"body":{"type":"BlockStatement","body":[{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"i"},"init":{"type":"Literal","value":1}}],"kind":"var"},"test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"i"},"operator":"<","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"arguments"},"property":{"type":"Identifier","name":"length"},"computed":false}},"update":{"type":"UpdateExpression","operator":"++","prefix":false,"argument":{"type":"Identifier","name":"i"}},"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"source"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"arguments"},"property":{"type":"Identifier","name":"i"},"computed":true}}],"kind":"var"},{"type":"ForInStatement","left":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"key"},"init":null}],"kind":"var"},"right":{"type":"Identifier","name":"source"},"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"MemberExpression","object":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"prototype"},"computed":false},"property":{"type":"Identifier","name":"hasOwnProperty"},"computed":false},"property":{"type":"Identifier","name":"call"},"computed":false},"arguments":[{"type":"Identifier","name":"source"},{"type":"Identifier","name":"key"}]},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"target"},"property":{"type":"Identifier","name":"key"},"computed":true},"right":{"type":"MemberExpression","object":{"type":"Identifier","name":"source"},"property":{"type":"Identifier","name":"key"},"computed":true}}}]},"alternate":null}]}}]}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"target"}}]}}}}]},"helper-get":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":{"type":"Identifier","name":"get"},"generator":false,"expression":false,"params":[{"type":"Identifier","name":"object"},{"type":"Identifier","name":"property"},{"type":"Identifier","name":"receiver"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"object"},"operator":"===","right":{"type":"Literal","value":null,"rawValue":null}},"consequent":{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"object"},"right":{"type":"MemberExpression","object":{"type":"Identifier","name":"Function"},"property":{"type":"Identifier","name":"prototype"},"computed":false}}},"alternate":null},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"desc"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"getOwnPropertyDescriptor"},"computed":false},"arguments":[{"type":"Identifier","name":"object"},{"type":"Identifier","name":"property"}]}}],"kind":"var"},{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"desc"},"operator":"===","right":{"type":"Identifier","name":"undefined"}},"consequent":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"parent"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"getPrototypeOf"},"computed":false},"arguments":[{"type":"Identifier","name":"object"}]}}],"kind":"var"},{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"parent"},"operator":"===","right":{"type":"Literal","value":null,"rawValue":null}},"consequent":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"Identifier","name":"undefined"}}]},"alternate":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"CallExpression","callee":{"type":"Identifier","name":"get"},"arguments":[{"type":"Identifier","name":"parent"},{"type":"Identifier","name":"property"},{"type":"Identifier","name":"receiver"}]}}]}}]},"alternate":{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Literal","value":"value"},"operator":"in","right":{"type":"Identifier","name":"desc"}},"consequent":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"MemberExpression","object":{"type":"Identifier","name":"desc"},"property":{"type":"Identifier","name":"value"},"computed":false}}]},"alternate":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"getter"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"desc"},"property":{"type":"Identifier","name":"get"},"computed":false}}],"kind":"var"},{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"getter"},"operator":"===","right":{"type":"Identifier","name":"undefined"}},"consequent":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"Identifier","name":"undefined"}}]},"alternate":null},{"type":"ReturnStatement","argument":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"getter"},"property":{"type":"Identifier","name":"call"},"computed":false},"arguments":[{"type":"Identifier","name":"receiver"}]}}]}}}]},"parenthesizedExpression":true}}]},"helper-has-own":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"MemberExpression","object":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"prototype"},"computed":false},"property":{"type":"Identifier","name":"hasOwnProperty"},"computed":false}}]},"helper-inherits":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"subClass"},{"type":"Identifier","name":"superClass"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"BinaryExpression","left":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"superClass"}},"operator":"!==","right":{"type":"Literal","value":"function"}},"operator":"&&","right":{"type":"BinaryExpression","left":{"type":"Identifier","name":"superClass"},"operator":"!==","right":{"type":"Literal","value":null,"rawValue":null}}},"consequent":{"type":"BlockStatement","body":[{"type":"ThrowStatement","argument":{"type":"NewExpression","callee":{"type":"Identifier","name":"TypeError"},"arguments":[{"type":"BinaryExpression","left":{"type":"Literal","value":"Super expression must either be null or a function, not "},"operator":"+","right":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"superClass"}}}]}}]},"alternate":null},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"subClass"},"property":{"type":"Identifier","name":"prototype"},"computed":false},"right":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"create"},"computed":false},"arguments":[{"type":"LogicalExpression","left":{"type":"Identifier","name":"superClass"},"operator":"&&","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"superClass"},"property":{"type":"Identifier","name":"prototype"},"computed":false}},{"type":"ObjectExpression","properties":[{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"constructor"},"value":{"type":"ObjectExpression","properties":[{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"value"},"value":{"type":"Identifier","name":"subClass"},"kind":"init"},{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"enumerable"},"value":{"type":"Literal","value":false},"kind":"init"},{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"writable"},"value":{"type":"Literal","value":true},"kind":"init"},{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"configurable"},"value":{"type":"Literal","value":true},"kind":"init"}]},"kind":"init"}]}]}}},{"type":"IfStatement","test":{"type":"Identifier","name":"superClass"},"consequent":{"type":"ExpressionStatement","expression":{"type":"ConditionalExpression","test":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"setPrototypeOf"},"computed":false},"consequent":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"setPrototypeOf"},"computed":false},"arguments":[{"type":"Identifier","name":"subClass"},{"type":"Identifier","name":"superClass"}]},"alternate":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"subClass"},"property":{"type":"Identifier","name":"__proto__"},"computed":false},"right":{"type":"Identifier","name":"superClass"}}}},"alternate":null}]},"parenthesizedExpression":true}}]},"helper-instanceof":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"left"},{"type":"Identifier","name":"right"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"BinaryExpression","left":{"type":"Identifier","name":"right"},"operator":"!=","right":{"type":"Literal","value":null,"rawValue":null}},"operator":"&&","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"right"},"property":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Identifier","name":"hasInstance"},"computed":false},"computed":true}},"consequent":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"right"},"property":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Identifier","name":"hasInstance"},"computed":false},"computed":true},"arguments":[{"type":"Identifier","name":"left"}]}}]},"alternate":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"BinaryExpression","left":{"type":"Identifier","name":"left"},"operator":"instanceof","right":{"type":"Identifier","name":"right"}}}]}}]},"parenthesizedExpression":true}}]},"helper-interop-export-wildcard":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"obj"},{"type":"Identifier","name":"defaults"}],"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"newObj"},"init":{"type":"CallExpression","callee":{"type":"Identifier","name":"defaults"},"arguments":[{"type":"ObjectExpression","properties":[]},{"type":"Identifier","name":"obj"}]}}],"kind":"var"},{"type":"ExpressionStatement","expression":{"type":"UnaryExpression","operator":"delete","prefix":true,"argument":{"type":"MemberExpression","object":{"type":"Identifier","name":"newObj"},"property":{"type":"Literal","value":"default"},"computed":true}}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"newObj"}}]},"parenthesizedExpression":true}}]},"helper-interop-require-default":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"obj"}],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"ConditionalExpression","test":{"type":"LogicalExpression","left":{"type":"Identifier","name":"obj"},"operator":"&&","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"obj"},"property":{"type":"Identifier","name":"__esModule"},"computed":false}},"consequent":{"type":"Identifier","name":"obj"},"alternate":{"type":"ObjectExpression","properties":[{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Literal","value":"default"},"value":{"type":"Identifier","name":"obj"},"kind":"init"}]}}}]},"parenthesizedExpression":true}}]},"helper-interop-require-wildcard":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"obj"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"Identifier","name":"obj"},"operator":"&&","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"obj"},"property":{"type":"Identifier","name":"__esModule"},"computed":false}},"consequent":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"Identifier","name":"obj"}}]},"alternate":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"newObj"},"init":{"type":"ObjectExpression","properties":[]}}],"kind":"var"},{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"obj"},"operator":"!=","right":{"type":"Literal","value":null,"rawValue":null}},"consequent":{"type":"BlockStatement","body":[{"type":"ForInStatement","left":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"key"},"init":null}],"kind":"var"},"right":{"type":"Identifier","name":"obj"},"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"MemberExpression","object":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"prototype"},"computed":false},"property":{"type":"Identifier","name":"hasOwnProperty"},"computed":false},"property":{"type":"Identifier","name":"call"},"computed":false},"arguments":[{"type":"Identifier","name":"obj"},{"type":"Identifier","name":"key"}]},"consequent":{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"newObj"},"property":{"type":"Identifier","name":"key"},"computed":true},"right":{"type":"MemberExpression","object":{"type":"Identifier","name":"obj"},"property":{"type":"Identifier","name":"key"},"computed":true}}},"alternate":null}]}}]},"alternate":null},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"newObj"},"property":{"type":"Literal","value":"default"},"computed":true},"right":{"type":"Identifier","name":"obj"}}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"newObj"}}]}}]},"parenthesizedExpression":true}}]},"helper-interop-require":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"obj"}],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"ConditionalExpression","test":{"type":"LogicalExpression","left":{"type":"Identifier","name":"obj"},"operator":"&&","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"obj"},"property":{"type":"Identifier","name":"__esModule"},"computed":false}},"consequent":{"type":"MemberExpression","object":{"type":"Identifier","name":"obj"},"property":{"type":"Literal","value":"default"},"computed":true},"alternate":{"type":"Identifier","name":"obj"}}}]},"parenthesizedExpression":true}}]},"helper-new-arrow-check":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"innerThis"},{"type":"Identifier","name":"boundThis"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"innerThis"},"operator":"!==","right":{"type":"Identifier","name":"boundThis"}},"consequent":{"type":"BlockStatement","body":[{"type":"ThrowStatement","argument":{"type":"NewExpression","callee":{"type":"Identifier","name":"TypeError"},"arguments":[{"type":"Literal","value":"Cannot instantiate an arrow function"}]}}]},"alternate":null}]},"parenthesizedExpression":true}}]},"helper-object-destructuring-empty":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"obj"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"obj"},"operator":"==","right":{"type":"Literal","value":null,"rawValue":null}},"consequent":{"type":"ThrowStatement","argument":{"type":"NewExpression","callee":{"type":"Identifier","name":"TypeError"},"arguments":[{"type":"Literal","value":"Cannot destructure undefined"}]}},"alternate":null}]},"parenthesizedExpression":true}}]},"helper-object-without-properties":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"obj"},{"type":"Identifier","name":"keys"}],"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"target"},"init":{"type":"ObjectExpression","properties":[]}}],"kind":"var"},{"type":"ForInStatement","left":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"i"},"init":null}],"kind":"var"},"right":{"type":"Identifier","name":"obj"},"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"keys"},"property":{"type":"Identifier","name":"indexOf"},"computed":false},"arguments":[{"type":"Identifier","name":"i"}]},"operator":">=","right":{"type":"Literal","value":0}},"consequent":{"type":"ContinueStatement","label":null},"alternate":null},{"type":"IfStatement","test":{"type":"UnaryExpression","operator":"!","prefix":true,"argument":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"MemberExpression","object":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"prototype"},"computed":false},"property":{"type":"Identifier","name":"hasOwnProperty"},"computed":false},"property":{"type":"Identifier","name":"call"},"computed":false},"arguments":[{"type":"Identifier","name":"obj"},{"type":"Identifier","name":"i"}]}},"consequent":{"type":"ContinueStatement","label":null},"alternate":null},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"target"},"property":{"type":"Identifier","name":"i"},"computed":true},"right":{"type":"MemberExpression","object":{"type":"Identifier","name":"obj"},"property":{"type":"Identifier","name":"i"},"computed":true}}}]}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"target"}}]},"parenthesizedExpression":true}}]},"helper-self-global":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"ConditionalExpression","test":{"type":"BinaryExpression","left":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"global"}},"operator":"===","right":{"type":"Literal","value":"undefined"}},"consequent":{"type":"Identifier","name":"self"},"alternate":{"type":"Identifier","name":"global"}}}]},"helper-set":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":{"type":"Identifier","name":"set"},"generator":false,"expression":false,"params":[{"type":"Identifier","name":"object"},{"type":"Identifier","name":"property"},{"type":"Identifier","name":"value"},{"type":"Identifier","name":"receiver"}],"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"desc"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"getOwnPropertyDescriptor"},"computed":false},"arguments":[{"type":"Identifier","name":"object"},{"type":"Identifier","name":"property"}]}}],"kind":"var"},{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"desc"},"operator":"===","right":{"type":"Identifier","name":"undefined"}},"consequent":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"parent"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"getPrototypeOf"},"computed":false},"arguments":[{"type":"Identifier","name":"object"}]}}],"kind":"var"},{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"parent"},"operator":"!==","right":{"type":"Literal","value":null,"rawValue":null}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"set"},"arguments":[{"type":"Identifier","name":"parent"},{"type":"Identifier","name":"property"},{"type":"Identifier","name":"value"},{"type":"Identifier","name":"receiver"}]}}]},"alternate":null}]},"alternate":{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"BinaryExpression","left":{"type":"Literal","value":"value"},"operator":"in","right":{"type":"Identifier","name":"desc"}},"operator":"&&","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"desc"},"property":{"type":"Identifier","name":"writable"},"computed":false}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"desc"},"property":{"type":"Identifier","name":"value"},"computed":false},"right":{"type":"Identifier","name":"value"}}}]},"alternate":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"setter"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"desc"},"property":{"type":"Identifier","name":"set"},"computed":false}}],"kind":"var"},{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"setter"},"operator":"!==","right":{"type":"Identifier","name":"undefined"}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"setter"},"property":{"type":"Identifier","name":"call"},"computed":false},"arguments":[{"type":"Identifier","name":"receiver"},{"type":"Identifier","name":"value"}]}}]},"alternate":null}]}}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"value"}}]},"parenthesizedExpression":true}}]},"helper-slice":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"MemberExpression","object":{"type":"MemberExpression","object":{"type":"Identifier","name":"Array"},"property":{"type":"Identifier","name":"prototype"},"computed":false},"property":{"type":"Identifier","name":"slice"},"computed":false}}]},"helper-sliced-to-array-loose":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"arr"},{"type":"Identifier","name":"i"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Array"},"property":{"type":"Identifier","name":"isArray"},"computed":false},"arguments":[{"type":"Identifier","name":"arr"}]},"consequent":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"Identifier","name":"arr"}}]},"alternate":{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Identifier","name":"iterator"},"computed":false},"operator":"in","right":{"type":"CallExpression","callee":{"type":"Identifier","name":"Object"},"arguments":[{"type":"Identifier","name":"arr"}]}},"consequent":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"_arr"},"init":{"type":"ArrayExpression","elements":[]}}],"kind":"var"},{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"_iterator"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"arr"},"property":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Identifier","name":"iterator"},"computed":false},"computed":true},"arguments":[]}},{"type":"VariableDeclarator","id":{"type":"Identifier","name":"_step"},"init":null}],"kind":"var"},"test":{"type":"UnaryExpression","operator":"!","prefix":true,"argument":{"type":"MemberExpression","object":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"_step"},"right":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"_iterator"},"property":{"type":"Identifier","name":"next"},"computed":false},"arguments":[]},"parenthesizedExpression":true},"property":{"type":"Identifier","name":"done"},"computed":false}},"update":null,"body":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"_arr"},"property":{"type":"Identifier","name":"push"},"computed":false},"arguments":[{"type":"MemberExpression","object":{"type":"Identifier","name":"_step"},"property":{"type":"Identifier","name":"value"},"computed":false}]}},{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"Identifier","name":"i"},"operator":"&&","right":{"type":"BinaryExpression","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"_arr"},"property":{"type":"Identifier","name":"length"},"computed":false},"operator":"===","right":{"type":"Identifier","name":"i"}}},"consequent":{"type":"BreakStatement","label":null},"alternate":null}]}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"_arr"}}]},"alternate":{"type":"BlockStatement","body":[{"type":"ThrowStatement","argument":{"type":"NewExpression","callee":{"type":"Identifier","name":"TypeError"},"arguments":[{"type":"Literal","value":"Invalid attempt to destructure non-iterable instance"}]}}]}}}]},"parenthesizedExpression":true}}]},"helper-sliced-to-array":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"FunctionDeclaration","id":{"type":"Identifier","name":"sliceIterator","leadingComments":null},"generator":false,"expression":false,"params":[{"type":"Identifier","name":"arr"},{"type":"Identifier","name":"i"}],"body":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"_arr","leadingComments":null},"init":{"type":"ArrayExpression","elements":[]},"leadingComments":null}],"kind":"var"},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"_n"},"init":{"type":"Literal","value":true}}],"kind":"var"},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"_d"},"init":{"type":"Literal","value":false}}],"kind":"var"},{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"_e"},"init":{"type":"Identifier","name":"undefined"}}],"kind":"var"},{"type":"TryStatement","block":{"type":"BlockStatement","body":[{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"_i"},"init":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"arr"},"property":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Identifier","name":"iterator"},"computed":false},"computed":true},"arguments":[]}},{"type":"VariableDeclarator","id":{"type":"Identifier","name":"_s"},"init":null}],"kind":"var"},"test":{"type":"UnaryExpression","operator":"!","prefix":true,"argument":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"_n"},"right":{"type":"MemberExpression","object":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"_s"},"right":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"_i"},"property":{"type":"Identifier","name":"next"},"computed":false},"arguments":[]},"parenthesizedExpression":true},"property":{"type":"Identifier","name":"done"},"computed":false},"parenthesizedExpression":true}},"update":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"_n"},"right":{"type":"Literal","value":true}},"body":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"_arr"},"property":{"type":"Identifier","name":"push"},"computed":false},"arguments":[{"type":"MemberExpression","object":{"type":"Identifier","name":"_s"},"property":{"type":"Identifier","name":"value"},"computed":false}]}},{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"Identifier","name":"i"},"operator":"&&","right":{"type":"BinaryExpression","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"_arr"},"property":{"type":"Identifier","name":"length"},"computed":false},"operator":"===","right":{"type":"Identifier","name":"i"}}},"consequent":{"type":"BreakStatement","label":null},"alternate":null}]}}]},"handler":{"type":"CatchClause","param":{"type":"Identifier","name":"err"},"body":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"_d"},"right":{"type":"Literal","value":true}}},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"Identifier","name":"_e"},"right":{"type":"Identifier","name":"err"}}}]}},"guardedHandlers":[],"finalizer":{"type":"BlockStatement","body":[{"type":"TryStatement","block":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"UnaryExpression","operator":"!","prefix":true,"argument":{"type":"Identifier","name":"_n"}},"operator":"&&","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"_i"},"property":{"type":"Literal","value":"return"},"computed":true}},"consequent":{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"_i"},"property":{"type":"Literal","value":"return"},"computed":true},"arguments":[]}},"alternate":null}]},"handler":null,"guardedHandlers":[],"finalizer":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"Identifier","name":"_d"},"consequent":{"type":"ThrowStatement","argument":{"type":"Identifier","name":"_e"}},"alternate":null}]}}]}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"_arr"}}]}},{"type":"ReturnStatement","argument":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"arr"},{"type":"Identifier","name":"i"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Array"},"property":{"type":"Identifier","name":"isArray"},"computed":false},"arguments":[{"type":"Identifier","name":"arr"}]},"consequent":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"Identifier","name":"arr"}}]},"alternate":{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Identifier","name":"iterator"},"computed":false},"operator":"in","right":{"type":"CallExpression","callee":{"type":"Identifier","name":"Object"},"arguments":[{"type":"Identifier","name":"arr"}]}},"consequent":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"CallExpression","callee":{"type":"Identifier","name":"sliceIterator"},"arguments":[{"type":"Identifier","name":"arr"},{"type":"Identifier","name":"i"}]}}]},"alternate":{"type":"BlockStatement","body":[{"type":"ThrowStatement","argument":{"type":"NewExpression","callee":{"type":"Identifier","name":"TypeError"},"arguments":[{"type":"Literal","value":"Invalid attempt to destructure non-iterable instance"}]}}]}}}]}}}]},"parenthesizedExpression":true},"arguments":[]}}]},"helper-tagged-template-literal-loose":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"strings"},{"type":"Identifier","name":"raw"}],"body":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"strings"},"property":{"type":"Identifier","name":"raw"},"computed":false},"right":{"type":"Identifier","name":"raw"}}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"strings"}}]},"parenthesizedExpression":true}}]},"helper-tagged-template-literal":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"strings"},{"type":"Identifier","name":"raw"}],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"freeze"},"computed":false},"arguments":[{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"defineProperties"},"computed":false},"arguments":[{"type":"Identifier","name":"strings"},{"type":"ObjectExpression","properties":[{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"raw"},"value":{"type":"ObjectExpression","properties":[{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"value"},"value":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Object"},"property":{"type":"Identifier","name":"freeze"},"computed":false},"arguments":[{"type":"Identifier","name":"raw"}]},"kind":"init"}]},"kind":"init"}]}]}]}}]},"parenthesizedExpression":true}}]},"helper-temporal-assert-defined":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"val"},{"type":"Identifier","name":"name"},{"type":"Identifier","name":"undef"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"val"},"operator":"===","right":{"type":"Identifier","name":"undef"}},"consequent":{"type":"BlockStatement","body":[{"type":"ThrowStatement","argument":{"type":"NewExpression","callee":{"type":"Identifier","name":"ReferenceError"},"arguments":[{"type":"BinaryExpression","left":{"type":"Identifier","name":"name"},"operator":"+","right":{"type":"Literal","value":" is not defined - temporal dead zone"}}]}}]},"alternate":null},{"type":"ReturnStatement","argument":{"type":"Literal","value":true}}]},"parenthesizedExpression":true}}]},"helper-temporal-undefined":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"ObjectExpression","properties":[],"parenthesizedExpression":true}}]},"helper-to-array":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"arr"}],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"ConditionalExpression","test":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Array"},"property":{"type":"Identifier","name":"isArray"},"computed":false},"arguments":[{"type":"Identifier","name":"arr"}]},"consequent":{"type":"Identifier","name":"arr"},"alternate":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Array"},"property":{"type":"Identifier","name":"from"},"computed":false},"arguments":[{"type":"Identifier","name":"arr"}]}}}]},"parenthesizedExpression":true}}]},"helper-to-consumable-array":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"arr"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Array"},"property":{"type":"Identifier","name":"isArray"},"computed":false},"arguments":[{"type":"Identifier","name":"arr"}]},"consequent":{"type":"BlockStatement","body":[{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"i"},"init":{"type":"Literal","value":0}},{"type":"VariableDeclarator","id":{"type":"Identifier","name":"arr2"},"init":{"type":"CallExpression","callee":{"type":"Identifier","name":"Array"},"arguments":[{"type":"MemberExpression","object":{"type":"Identifier","name":"arr"},"property":{"type":"Identifier","name":"length"},"computed":false}]}}],"kind":"var"},"test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"i"},"operator":"<","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"arr"},"property":{"type":"Identifier","name":"length"},"computed":false}},"update":{"type":"UpdateExpression","operator":"++","prefix":false,"argument":{"type":"Identifier","name":"i"}},"body":{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"arr2"},"property":{"type":"Identifier","name":"i"},"computed":true},"right":{"type":"MemberExpression","object":{"type":"Identifier","name":"arr"},"property":{"type":"Identifier","name":"i"},"computed":true}}}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"arr2"}}]},"alternate":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Array"},"property":{"type":"Identifier","name":"from"},"computed":false},"arguments":[{"type":"Identifier","name":"arr"}]}}]}}]},"parenthesizedExpression":true}}]},"helper-typeof-react-element":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"LogicalExpression","left":{"type":"LogicalExpression","left":{"type":"LogicalExpression","left":{"type":"BinaryExpression","left":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"Symbol"}},"operator":"===","right":{"type":"Literal","value":"function"}},"operator":"&&","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Literal","value":"for"},"computed":true}},"operator":"&&","right":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"Symbol"},"property":{"type":"Literal","value":"for"},"computed":true},"arguments":[{"type":"Literal","value":"react.element"}]}},"operator":"||","right":{"type":"Literal","value":60103}}}]},"helper-typeof":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"obj"}],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"ConditionalExpression","test":{"type":"LogicalExpression","left":{"type":"Identifier","name":"obj"},"operator":"&&","right":{"type":"BinaryExpression","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"obj"},"property":{"type":"Identifier","name":"constructor"},"computed":false},"operator":"===","right":{"type":"Identifier","name":"Symbol"}}},"consequent":{"type":"Literal","value":"symbol"},"alternate":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"obj"}}}}]},"parenthesizedExpression":true}}]},"let-scoping-return":{"type":"Program","body":[{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"RETURN"}},"operator":"===","right":{"type":"Literal","value":"object"}},"consequent":{"type":"ReturnStatement","argument":{"type":"MemberExpression","object":{"type":"Identifier","name":"RETURN"},"property":{"type":"Identifier","name":"v"},"computed":false}},"alternate":null}]},"named-function":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"FunctionDeclaration","id":{"type":"Identifier","name":"GET_OUTER_ID"},"generator":false,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"Identifier","name":"FUNCTION_ID"}}]}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"FUNCTION"}}]},"parenthesizedExpression":true},"arguments":[]}}]},"property-method-assignment-wrapper-generator":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"FUNCTION_KEY"}],"body":{"type":"BlockStatement","body":[{"type":"FunctionDeclaration","id":{"type":"Identifier","name":"FUNCTION_ID"},"generator":true,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"YieldExpression","delegate":true,"argument":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"FUNCTION_KEY"},"property":{"type":"Identifier","name":"apply"},"computed":false},"arguments":[{"type":"ThisExpression"},{"type":"Identifier","name":"arguments"}]}}}]}},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"FUNCTION_ID"},"property":{"type":"Identifier","name":"toString"},"computed":false},"right":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"FUNCTION_KEY"},"property":{"type":"Identifier","name":"toString"},"computed":false},"arguments":[]}}]}}}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"FUNCTION_ID"}}]},"parenthesizedExpression":true},"arguments":[{"type":"Identifier","name":"FUNCTION"}]}}]},"property-method-assignment-wrapper":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"FUNCTION_KEY"}],"body":{"type":"BlockStatement","body":[{"type":"FunctionDeclaration","id":{"type":"Identifier","name":"FUNCTION_ID"},"generator":false,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"FUNCTION_KEY"},"property":{"type":"Identifier","name":"apply"},"computed":false},"arguments":[{"type":"ThisExpression"},{"type":"Identifier","name":"arguments"}]}}]}},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"FUNCTION_ID"},"property":{"type":"Identifier","name":"toString"},"computed":false},"right":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"FUNCTION_KEY"},"property":{"type":"Identifier","name":"toString"},"computed":false},"arguments":[]}}]}}}},{"type":"ReturnStatement","argument":{"type":"Identifier","name":"FUNCTION_ID"}}]},"parenthesizedExpression":true},"arguments":[{"type":"Identifier","name":"FUNCTION"}]}}]},"prototype-identifier":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"MemberExpression","object":{"type":"Identifier","name":"CLASS_NAME"},"property":{"type":"Identifier","name":"prototype"},"computed":false}}]},"require-assign-key":{"type":"Program","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"VARIABLE_NAME"},"init":{"type":"MemberExpression","object":{"type":"CallExpression","callee":{"type":"Identifier","name":"require"},"arguments":[{"type":"Identifier","name":"MODULE_NAME"}]},"property":{"type":"Identifier","name":"KEY"},"computed":false}}],"kind":"var"}]},"require":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"require"},"arguments":[{"type":"Identifier","name":"MODULE_NAME"}]}}]},"rest":{"type":"Program","body":[{"type":"ForStatement","init":{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"LEN"},"init":{"type":"MemberExpression","object":{"type":"Identifier","name":"ARGUMENTS"},"property":{"type":"Identifier","name":"length"},"computed":false}},{"type":"VariableDeclarator","id":{"type":"Identifier","name":"ARRAY"},"init":{"type":"CallExpression","callee":{"type":"Identifier","name":"Array"},"arguments":[{"type":"Identifier","name":"ARRAY_LEN"}]}},{"type":"VariableDeclarator","id":{"type":"Identifier","name":"KEY"},"init":{"type":"Identifier","name":"START"}}],"kind":"var"},"test":{"type":"BinaryExpression","left":{"type":"Identifier","name":"KEY"},"operator":"<","right":{"type":"Identifier","name":"LEN"}},"update":{"type":"UpdateExpression","operator":"++","prefix":false,"argument":{"type":"Identifier","name":"KEY"}},"body":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"ARRAY"},"property":{"type":"Identifier","name":"ARRAY_KEY"},"computed":true},"right":{"type":"MemberExpression","object":{"type":"Identifier","name":"ARGUMENTS"},"property":{"type":"Identifier","name":"KEY"},"computed":true}}}]}}]},"self-contained-helpers-head":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"exports"},"property":{"type":"Literal","value":"default"},"computed":true},"right":{"type":"Identifier","name":"HELPER"}}},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"exports"},"property":{"type":"Identifier","name":"__esModule"},"computed":false},"right":{"type":"Literal","value":true}}}]},"system":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"MemberExpression","object":{"type":"Identifier","name":"System"},"property":{"type":"Identifier","name":"register"},"computed":false},"arguments":[{"type":"Identifier","name":"MODULE_NAME"},{"type":"Identifier","name":"MODULE_DEPENDENCIES"},{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"EXPORT_IDENTIFIER"}],"body":{"type":"BlockStatement","body":[{"type":"ReturnStatement","argument":{"type":"ObjectExpression","properties":[{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"setters"},"value":{"type":"Identifier","name":"SETTERS"},"kind":"init"},{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"execute"},"value":{"type":"Identifier","name":"EXECUTE"},"kind":"init"}]}}]}}]}}]},"tail-call-body":{"type":"Program","body":[{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"AGAIN_ID"},"init":{"type":"Literal","value":true}}],"kind":"var"},{"type":"LabeledStatement","body":{"type":"WhileStatement","test":{"type":"Identifier","name":"AGAIN_ID"},"body":{"type":"ExpressionStatement","expression":{"type":"Identifier","name":"BLOCK"}}},"label":{"type":"Identifier","name":"FUNCTION_ID"}}]}]},"test-exports":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","left":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"exports"}},"operator":"!==","right":{"type":"Literal","value":"undefined"}}}]},"test-module":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"BinaryExpression","left":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"module"}},"operator":"!==","right":{"type":"Literal","value":"undefined"}}}]},"umd-commonjs-strict":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"root"},{"type":"Identifier","name":"factory"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"BinaryExpression","left":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"define"}},"operator":"===","right":{"type":"Literal","value":"function"}},"operator":"&&","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"define"},"property":{"type":"Identifier","name":"amd"},"computed":false}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"define"},"arguments":[{"type":"Identifier","name":"AMD_ARGUMENTS"},{"type":"Identifier","name":"factory"}]}}]},"alternate":{"type":"IfStatement","test":{"type":"BinaryExpression","left":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"exports"}},"operator":"===","right":{"type":"Literal","value":"object"}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"factory"},"arguments":[{"type":"Identifier","name":"COMMON_ARGUMENTS"}]}}]},"alternate":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"factory"},"arguments":[{"type":"Identifier","name":"BROWSER_ARGUMENTS"}]}}]}}}]},"parenthesizedExpression":true},"arguments":[{"type":"Identifier","name":"UMD_ROOT"},{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"FACTORY_PARAMETERS"}],"body":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"Identifier","name":"FACTORY_BODY"}}]}}]}}]},"umd-runner-body":{"type":"Program","body":[{"type":"ExpressionStatement","expression":{"type":"FunctionExpression","id":null,"generator":false,"expression":false,"params":[{"type":"Identifier","name":"global"},{"type":"Identifier","name":"factory"}],"body":{"type":"BlockStatement","body":[{"type":"IfStatement","test":{"type":"LogicalExpression","left":{"type":"BinaryExpression","left":{"type":"UnaryExpression","operator":"typeof","prefix":true,"argument":{"type":"Identifier","name":"define"}},"operator":"===","right":{"type":"Literal","value":"function"}},"operator":"&&","right":{"type":"MemberExpression","object":{"type":"Identifier","name":"define"},"property":{"type":"Identifier","name":"amd"},"computed":false}},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"define"},"arguments":[{"type":"Identifier","name":"AMD_ARGUMENTS"},{"type":"Identifier","name":"factory"}]}}]},"alternate":{"type":"IfStatement","test":{"type":"Identifier","name":"COMMON_TEST"},"consequent":{"type":"BlockStatement","body":[{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"factory"},"arguments":[{"type":"Identifier","name":"COMMON_ARGUMENTS"}]}}]},"alternate":{"type":"BlockStatement","body":[{"type":"VariableDeclaration","declarations":[{"type":"VariableDeclarator","id":{"type":"Identifier","name":"mod"},"init":{"type":"ObjectExpression","properties":[{"type":"Property","method":false,"shorthand":false,"computed":false,"key":{"type":"Identifier","name":"exports"},"value":{"type":"ObjectExpression","properties":[]},"kind":"init"}]}}],"kind":"var"},{"type":"ExpressionStatement","expression":{"type":"CallExpression","callee":{"type":"Identifier","name":"factory"},"arguments":[{"type":"MemberExpression","object":{"type":"Identifier","name":"mod"},"property":{"type":"Identifier","name":"exports"},"computed":false},{"type":"Identifier","name":"BROWSER_ARGUMENTS"}]}},{"type":"ExpressionStatement","expression":{"type":"AssignmentExpression","operator":"=","left":{"type":"MemberExpression","object":{"type":"Identifier","name":"global"},"property":{"type":"Identifier","name":"GLOBAL_ARG"},"computed":false},"right":{"type":"MemberExpression","object":{"type":"Identifier","name":"mod"},"property":{"type":"Identifier","name":"exports"},"computed":false}}}]}}}]},"parenthesizedExpression":true}}]}}
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657659, function(require, module, exports) {
+__DEFINE__(1676544235573, function(require, module, exports) {
 /**
  * This class is responsible for a binding inside of a scope.
  *
@@ -5582,7 +5582,7 @@ var Binding = (function () {
 exports["default"] = Binding;
 module.exports = exports["default"];
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657660, function(require, module, exports) {
+__DEFINE__(1676544235574, function(require, module, exports) {
 /**
  * Create an object with a `null` prototype.
  */
@@ -5597,7 +5597,7 @@ exports["default"] = function () {
 
 module.exports = exports["default"];
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657661, function(require, module, exports) {
+__DEFINE__(1676544235575, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -5842,8 +5842,8 @@ function inShadow(key) {
   } while (path = path.parentPath);
   return null;
 }
-}, function(modId) { var map = {"../../types":1675480657641,"./index":1675480657638}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657662, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555,"./index":1676544235552}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235576, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -5999,8 +5999,8 @@ function isGenericType(genericName) {
   var type = this.getTypeAnnotation();
   return t.isGenericTypeAnnotation(type) && t.isIdentifier(type.id, { name: genericName });
 }
-}, function(modId) { var map = {"./inferers":1675480657663,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657663, function(require, module, exports) {
+}, function(modId) { var map = {"./inferers":1676544235577,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235577, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -6258,8 +6258,8 @@ function resolveCall(callee) {
     }
   }
 }
-}, function(modId) { var map = {"../../../types":1675480657641,"./inferer-reference":1675480657664}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657664, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555,"./inferer-reference":1676544235578}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235578, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -6487,8 +6487,8 @@ function getConditionalAnnotation(path, name) {
   }
 }
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657665, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235579, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -6745,8 +6745,8 @@ function replaceInline(nodes) {
     return this.replaceWith(nodes);
   }
 }
-}, function(modId) { var map = {"../../helpers/code-frame":1675480657666,"../index":1675480657636,"./index":1675480657638,"../../helpers/parse":1675480657657,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657666, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/code-frame":1676544235580,"../index":1676544235550,"./index":1676544235552,"../../helpers/parse":1676544235571,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235580, function(require, module, exports) {
 //import lineNumbers from "line-numbers";
 
 
@@ -6895,7 +6895,7 @@ exports["default"] = function (lines, lineNumber, colNumber) {
 
 module.exports = exports["default"];
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657667, function(require, module, exports) {
+__DEFINE__(1676544235581, function(require, module, exports) {
 /* eslint eqeqeq: 0 */
 
 
@@ -7164,7 +7164,7 @@ function evaluate() {
   }
 }
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657668, function(require, module, exports) {
+__DEFINE__(1676544235582, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -7208,8 +7208,8 @@ function toComputedKey() {
 function ensureBlock() {
   return t.ensureBlock(this.node);
 }
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657669, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235583, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -7613,8 +7613,8 @@ function _resolve(dangerous, resolved) {
       }
     }
 }
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657670, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235584, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -7928,8 +7928,8 @@ function queueNode(path) {
     }
   }
 }
-}, function(modId) { var map = {"../index":1675480657636}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657671, function(require, module, exports) {
+}, function(modId) { var map = {"../index":1676544235550}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235585, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -8024,8 +8024,8 @@ function _assertUnremoved() {
     throw this.errorWithNode("NodePath has been removed so is read-only.");
   }
 }
-}, function(modId) { var map = {"./lib/removal-hooks":1675480657672}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657672, function(require, module, exports) {
+}, function(modId) { var map = {"./lib/removal-hooks":1676544235586}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235586, function(require, module, exports) {
 // this file contains hooks that handle ancestry cleanup of parent nodes when removing children
 
 
@@ -8160,8 +8160,8 @@ function (self, parent) {
   }
 }];
 exports.post = post;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657673, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235587, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -8417,8 +8417,8 @@ function hoist() {
   var hoister = new _libHoister2["default"](this, scope);
   return hoister.run();
 }
-}, function(modId) { var map = {"./lib/hoister":1675480657674,"./index":1675480657638,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657674, function(require, module, exports) {
+}, function(modId) { var map = {"./lib/hoister":1676544235588,"./index":1676544235552,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235588, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -8611,8 +8611,8 @@ var PathHoister = (function () {
 
 exports["default"] = PathHoister;
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../../transformation/helpers/react":1675480657640,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657675, function(require, module, exports) {
+}, function(modId) { var map = {"../../../transformation/helpers/react":1676544235554,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235589, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -8797,8 +8797,8 @@ function _getPattern(parts, context) {
 function getBindingIdentifiers(duplicates) {
   return t.getBindingIdentifiers(this.node, duplicates);
 }
-}, function(modId) { var map = {"./index":1675480657638,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657676, function(require, module, exports) {
+}, function(modId) { var map = {"./index":1676544235552,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235590, function(require, module, exports) {
 /**
  * Share comments amongst siblings.
  */
@@ -8858,7 +8858,7 @@ function addComments(type, comments) {
   }
 }
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657677, function(require, module, exports) {
+__DEFINE__(1676544235591, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -9110,8 +9110,8 @@ function mergePair(dest, src) {
     dest[key] = [].concat(dest[key] || [], src[key]);
   }
 }
-}, function(modId) { var map = {"./path/lib/virtual-types":1675480657639,"../messages":1675480657655,"../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657678, function(require, module, exports) {
+}, function(modId) { var map = {"./path/lib/virtual-types":1676544235553,"../messages":1676544235569,"../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235592, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -9961,8 +9961,8 @@ var File = (function () {
 
 exports["default"] = File;
 module.exports = exports["default"];
-}, function(modId) { var map = {"../modules":1675480657679,"./options/option-manager":1675480657692,"./plugin-manager":1675480657632,"../../traversal/path":1675480657638,"../../generation":1675480657696,"../../helpers/code-frame":1675480657666,"../../traversal":1675480657636,"./logger":1675480657716,"../plugin":1675480657634,"../../helpers/parse":1675480657657,"../../traversal/hub":1675480657717,"../../util":1675480657656,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657679, function(require, module, exports) {
+}, function(modId) { var map = {"../modules":1676544235593,"./options/option-manager":1676544235606,"./plugin-manager":1676544235546,"../../traversal/path":1676544235552,"../../generation":1676544235610,"../../helpers/code-frame":1676544235580,"../../traversal":1676544235550,"./logger":1676544235630,"../plugin":1676544235548,"../../helpers/parse":1676544235571,"../../traversal/hub":1676544235631,"../../util":1676544235570,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235593, function(require, module, exports) {
 /**
  * [Please add a description.]
  */
@@ -9981,8 +9981,8 @@ exports["default"] = {
   umd: require("./umd")
 };
 module.exports = exports["default"];
-}, function(modId) { var map = {"./common-strict":1675480657680,"./amd-strict":1675480657686,"./umd-strict":1675480657688,"./common":1675480657681,"./system":1675480657690,"./ignore":1675480657691,"./amd":1675480657687,"./umd":1675480657689}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657680, function(require, module, exports) {
+}, function(modId) { var map = {"./common-strict":1676544235594,"./amd-strict":1676544235600,"./umd-strict":1676544235602,"./common":1676544235595,"./system":1676544235604,"./ignore":1676544235605,"./amd":1676544235601,"./umd":1676544235603}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235594, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -10004,8 +10004,8 @@ var _strict2 = _interopRequireDefault(_strict);
 
 exports["default"] = _strict2["default"](_common2["default"]);
 module.exports = exports["default"];
-}, function(modId) { var map = {"./common":1675480657681,"./_strict":1675480657685}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657681, function(require, module, exports) {
+}, function(modId) { var map = {"./common":1676544235595,"./_strict":1676544235599}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235595, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -10192,8 +10192,8 @@ var CommonJSFormatter = (function (_DefaultFormatter) {
 
 exports["default"] = CommonJSFormatter;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./_default":1675480657682,"../../util":1675480657656,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657682, function(require, module, exports) {
+}, function(modId) { var map = {"./_default":1676544235596,"../../util":1676544235570,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235596, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -10596,8 +10596,8 @@ var DefaultFormatter = (function () {
 
 exports["default"] = DefaultFormatter;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./lib/metadata":1675480657683,"../../messages":1675480657655,"./lib/remaps":1675480657684,"../../helpers/object":1675480657660,"../../util":1675480657656,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657683, function(require, module, exports) {
+}, function(modId) { var map = {"./lib/metadata":1676544235597,"../../messages":1676544235569,"./lib/remaps":1676544235598,"../../helpers/object":1676544235574,"../../util":1676544235570,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235597, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -10798,8 +10798,8 @@ function Scope(node, parent, scope, formatter) {
     this.skip();
   }
 }
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657684, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235598, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -10998,8 +10998,8 @@ var Remaps = (function () {
 
 exports["default"] = Remaps;
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657685, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235599, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -11028,8 +11028,8 @@ exports["default"] = function (Parent) {
 };
 
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../util":1675480657656}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657686, function(require, module, exports) {
+}, function(modId) { var map = {"../../util":1676544235570}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235600, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -11051,8 +11051,8 @@ var _strict2 = _interopRequireDefault(_strict);
 
 exports["default"] = _strict2["default"](_amd2["default"]);
 module.exports = exports["default"];
-}, function(modId) { var map = {"./amd":1675480657687,"./_strict":1675480657685}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657687, function(require, module, exports) {
+}, function(modId) { var map = {"./amd":1676544235601,"./_strict":1676544235599}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235601, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -11275,8 +11275,8 @@ var AMDFormatter = (function (_DefaultFormatter) {
 
 exports["default"] = AMDFormatter;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./_default":1675480657682,"./common":1675480657681,"../../util":1675480657656,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657688, function(require, module, exports) {
+}, function(modId) { var map = {"./_default":1676544235596,"./common":1676544235595,"../../util":1676544235570,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235602, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -11298,8 +11298,8 @@ var _strict2 = _interopRequireDefault(_strict);
 
 exports["default"] = _strict2["default"](_umd2["default"]);
 module.exports = exports["default"];
-}, function(modId) { var map = {"./umd":1675480657689,"./_strict":1675480657685}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657689, function(require, module, exports) {
+}, function(modId) { var map = {"./umd":1676544235603,"./_strict":1676544235599}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235603, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -11438,8 +11438,8 @@ var UMDFormatter = (function (_AMDFormatter) {
 
 exports["default"] = UMDFormatter;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./_default":1675480657682,"./amd":1675480657687,"../../util":1675480657656,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657690, function(require, module, exports) {
+}, function(modId) { var map = {"./_default":1676544235596,"./amd":1676544235601,"../../util":1676544235570,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235604, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -11782,8 +11782,8 @@ var SystemFormatter = (function (_AMDFormatter) {
 
 exports["default"] = SystemFormatter;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./_default":1675480657682,"./amd":1675480657687,"../../util":1675480657656,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657691, function(require, module, exports) {
+}, function(modId) { var map = {"./_default":1676544235596,"./amd":1676544235601,"../../util":1676544235570,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235605, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -11852,8 +11852,8 @@ var IgnoreFormatter = (function (_DefaultFormatter) {
 
 exports["default"] = IgnoreFormatter;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./_default":1675480657682,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657692, function(require, module, exports) {
+}, function(modId) { var map = {"./_default":1676544235596,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235606, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -12102,8 +12102,8 @@ var OptionManager = (function () {
 
 exports["default"] = OptionManager;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./index":1675480657693,"../../../helpers/merge":1675480657695}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657693, function(require, module, exports) {
+}, function(modId) { var map = {"./index":1676544235607,"../../../helpers/merge":1676544235609}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235607, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -12163,8 +12163,8 @@ function normaliseOptions() {
 
   return options;
 }
-}, function(modId) { var map = {"./parsers":1675480657694}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657694, function(require, module, exports) {
+}, function(modId) { var map = {"./parsers":1676544235608}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235608, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -12247,8 +12247,8 @@ function booleanString(val) {
 function list(val) {
   return util.list(val);
 }
-}, function(modId) { var map = {"../../../util":1675480657656}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657695, function(require, module, exports) {
+}, function(modId) { var map = {"../../../util":1676544235570}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235609, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -12295,7 +12295,7 @@ exports["default"] = function (dest, src) {
 
 module.exports = exports["default"];
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657696, function(require, module, exports) {
+__DEFINE__(1676544235610, function(require, module, exports) {
 
 
 // istanbul ignore next
@@ -12842,8 +12842,8 @@ module.exports = function (ast, opts, code) {
 };
 
 module.exports.CodeGenerator = CodeGenerator;
-}, function(modId) { var map = {"./whitespace":1675480657697,"./node/printer":1675480657698,"./source-map":1675480657699,"./position":1675480657700,"../messages":1675480657655,"./buffer":1675480657701,"./node":1675480657702,"../types":1675480657641,"./generators/template-literals":1675480657705,"./generators/comprehensions":1675480657706,"./generators/expressions":1675480657707,"./generators/statements":1675480657708,"./generators/classes":1675480657709,"./generators/methods":1675480657710,"./generators/modules":1675480657711,"./generators/types":1675480657712,"./generators/flow":1675480657713,"./generators/base":1675480657714,"./generators/jsx":1675480657715}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657697, function(require, module, exports) {
+}, function(modId) { var map = {"./whitespace":1676544235611,"./node/printer":1676544235612,"./source-map":1676544235613,"./position":1676544235614,"../messages":1676544235569,"./buffer":1676544235615,"./node":1676544235616,"../types":1676544235555,"./generators/template-literals":1676544235619,"./generators/comprehensions":1676544235620,"./generators/expressions":1676544235621,"./generators/statements":1676544235622,"./generators/classes":1676544235623,"./generators/methods":1676544235624,"./generators/modules":1676544235625,"./generators/types":1676544235626,"./generators/flow":1676544235627,"./generators/base":1676544235628,"./generators/jsx":1676544235629}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235611, function(require, module, exports) {
 /**
  * Returns `i`th number from `base`, continuing from 0 when `max` is reached.
  * Useful for shifting `for` loop by a fixed number but going over all items.
@@ -12985,7 +12985,7 @@ var Whitespace = (function () {
 exports["default"] = Whitespace;
 module.exports = exports["default"];
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657698, function(require, module, exports) {
+__DEFINE__(1676544235612, function(require, module, exports) {
 /**
  * Printer for nodes, needs a `generator` and a `parent`.
  */
@@ -13081,7 +13081,7 @@ var NodePrinter = (function () {
 exports["default"] = NodePrinter;
 module.exports = exports["default"];
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657699, function(require, module, exports) {
+__DEFINE__(1676544235613, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -13175,8 +13175,8 @@ var SourceMap = (function () {
 
 exports["default"] = SourceMap;
 module.exports = exports["default"];
-}, function(modId) { var map = {"source-map":1675480657699,"../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657700, function(require, module, exports) {
+}, function(modId) { var map = {"source-map":1676544235613,"../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235614, function(require, module, exports) {
 /**
  * Track current position in code generation.
  */
@@ -13231,7 +13231,7 @@ var Position = (function () {
 exports["default"] = Position;
 module.exports = exports["default"];
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657701, function(require, module, exports) {
+__DEFINE__(1676544235615, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -13585,7 +13585,7 @@ var Buffer = (function () {
 exports["default"] = Buffer;
 module.exports = exports["default"];
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657702, function(require, module, exports) {
+__DEFINE__(1676544235616, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -13754,8 +13754,8 @@ _lodashCollectionEach2["default"](Node, function (fn, key) {
   };
 });
 module.exports = exports["default"];
-}, function(modId) { var map = {"./whitespace":1675480657703,"./parentheses":1675480657704,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657703, function(require, module, exports) {
+}, function(modId) { var map = {"./whitespace":1676544235617,"./parentheses":1676544235618,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235617, function(require, module, exports) {
 
 
 // istanbul ignore next
@@ -14006,8 +14006,8 @@ _lodashCollectionEach2["default"]({
     };
   });
 });
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657704, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235618, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -14261,8 +14261,8 @@ function AssignmentExpression(node) {
     return ConditionalExpression.apply(undefined, arguments);
   }
 }
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657705, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235619, function(require, module, exports) {
 /**
  * Prints TaggedTemplateExpression, prints tag and quasi.
  */
@@ -14310,7 +14310,7 @@ function TemplateLiteral(node, print) {
   this._push("`");
 }
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657706, function(require, module, exports) {
+__DEFINE__(1676544235620, function(require, module, exports) {
 /**
  * Prints ComprehensionBlock, prints left and right.
  */
@@ -14353,7 +14353,7 @@ function ComprehensionExpression(node, print) {
   this.push(node.generator ? ")" : "]");
 }
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657707, function(require, module, exports) {
+__DEFINE__(1676544235621, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -14714,8 +14714,8 @@ function MetaProperty(node, print) {
   this.push(".");
   print.plain(node.property);
 }
-}, function(modId) { var map = {"../node":1675480657702,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657708, function(require, module, exports) {
+}, function(modId) { var map = {"../node":1676544235616,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235622, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -15056,8 +15056,8 @@ function VariableDeclarator(node, print) {
     print.plain(node.init);
   }
 }
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657709, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235623, function(require, module, exports) {
 /**
  * Print ClassDeclaration, prints decorators, typeParameters, extends, implements, and body.
  */
@@ -15156,7 +15156,7 @@ function MethodDefinition(node, print) {
   this._method(node, print);
 }
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657710, function(require, module, exports) {
+__DEFINE__(1676544235624, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -15285,8 +15285,8 @@ function ArrowFunctionExpression(node, print) {
     this.push(")");
   }
 }
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657711, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235625, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -15479,8 +15479,8 @@ function ImportNamespaceSpecifier(node, print) {
   this.push("* as ");
   print.plain(node.local);
 }
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657712, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235626, function(require, module, exports) {
 /* eslint quotes: 0 */
 
 
@@ -15692,8 +15692,8 @@ function _stringLiteral(val) {
 
   return val;
 }
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657713, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235627, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -16172,8 +16172,8 @@ function TypeCastExpression(node, print) {
 function VoidTypeAnnotation() {
   this.push("void");
 }
-}, function(modId) { var map = {"../../types":1675480657641,"./types":1675480657712}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657714, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555,"./types":1676544235626}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235628, function(require, module, exports) {
 /**
  * Print File.program
  */
@@ -16224,7 +16224,7 @@ function BlockStatement(node, print) {
 
 function Noop() {}
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657715, function(require, module, exports) {
+__DEFINE__(1676544235629, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -16359,8 +16359,8 @@ function JSXClosingElement(node, print) {
  */
 
 function JSXEmptyExpression() {}
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657716, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235630, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -16469,7 +16469,7 @@ var Logger = (function () {
 exports["default"] = Logger;
 module.exports = exports["default"];
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657717, function(require, module, exports) {
+__DEFINE__(1676544235631, function(require, module, exports) {
 /**
  * [Please add a description.]
  */
@@ -16490,7 +16490,7 @@ var Hub = function Hub(file) {
 exports["default"] = Hub;
 module.exports = exports["default"];
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657718, function(require, module, exports) {
+__DEFINE__(1676544235632, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -16517,8 +16517,8 @@ exports["default"] = function (ast, comments, tokens) {
 };
 
 module.exports = exports["default"];
-}, function(modId) { var map = {"../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657719, function(require, module, exports) {
+}, function(modId) { var map = {"../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235633, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -16613,8 +16613,8 @@ exports["default"] = {
   "optimisation.modules.system": require("./optimisation/modules.system")
 };
 module.exports = exports["default"];
-}, function(modId) { var map = {"./other/strict":1675480657720,"./internal/validation":1675480657721,"./internal/hoist-directives":1675480657722,"./internal/modules":1675480657723,"./es6/spec.modules":1675480657724,"./es6/spec.arrow-functions":1675480657725,"./es6/spec.template-literals":1675480657726,"./es6/template-literals":1675480657727,"./es6/literals":1675480657728,"./spec/function-name":1675480657729,"./es7/class-properties":1675480657732,"./es7/trailing-function-commas":1675480657733,"./es7/async-functions":1675480657734,"./es7/decorators":1675480657735,"./validation/react":1675480657738,"./es6/arrow-functions":1675480657739,"./spec/block-scoped-functions":1675480657740,"./optimisation/react.inline-elements":1675480657741,"./es7/comprehensions":1675480657742,"./es6/classes":1675480657744,"./other/async-to-generator":1675480657748,"./other/bluebird-coroutines":1675480657750,"./es6/object-super":1675480657751,"./es7/object-rest-spread":1675480657752,"./es7/exponentiation-operator":1675480657753,"./es5/properties.mutators":1675480657756,"./es6/properties.shorthand":1675480657757,"./es6/properties.computed":1675480657758,"./optimisation/flow.for-of":1675480657759,"./es6/for-of":1675480657760,"./es6/regex.sticky":1675480657761,"./es6/regex.unicode":1675480657763,"./es6/constants":1675480657764,"./es7/export-extensions":1675480657765,"./es7/do-expressions":1675480657766,"./es6/spec.symbols":1675480657767,"./es7/function-bind":1675480657768,"./es6/spread":1675480657769,"./es6/parameters":1675480657770,"./es6/destructuring":1675480657774,"./es6/block-scoping":1675480657775,"./es6/spec.block-scoping":1675480657776,"./other/react-compat":1675480657777,"./other/react":1675480657779,"./other/regenerator":1675480657780,"./es6/modules":1675480657781,"./internal/module-formatter":1675480657782,"./es6/tail-call":1675480657783,"./internal/shadow-functions":1675480657784,"./es3/property-literals":1675480657785,"./es3/member-expression-literals":1675480657786,"./internal/block-hoist":1675480657787,"./other/flow":1675480657788,"./optimisation/modules.system":1675480657789}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657720, function(require, module, exports) {
+}, function(modId) { var map = {"./other/strict":1676544235634,"./internal/validation":1676544235635,"./internal/hoist-directives":1676544235636,"./internal/modules":1676544235637,"./es6/spec.modules":1676544235638,"./es6/spec.arrow-functions":1676544235639,"./es6/spec.template-literals":1676544235640,"./es6/template-literals":1676544235641,"./es6/literals":1676544235642,"./spec/function-name":1676544235643,"./es7/class-properties":1676544235646,"./es7/trailing-function-commas":1676544235647,"./es7/async-functions":1676544235648,"./es7/decorators":1676544235649,"./validation/react":1676544235652,"./es6/arrow-functions":1676544235653,"./spec/block-scoped-functions":1676544235654,"./optimisation/react.inline-elements":1676544235655,"./es7/comprehensions":1676544235656,"./es6/classes":1676544235658,"./other/async-to-generator":1676544235662,"./other/bluebird-coroutines":1676544235664,"./es6/object-super":1676544235665,"./es7/object-rest-spread":1676544235666,"./es7/exponentiation-operator":1676544235667,"./es5/properties.mutators":1676544235670,"./es6/properties.shorthand":1676544235671,"./es6/properties.computed":1676544235672,"./optimisation/flow.for-of":1676544235673,"./es6/for-of":1676544235674,"./es6/regex.sticky":1676544235675,"./es6/regex.unicode":1676544235677,"./es6/constants":1676544235678,"./es7/export-extensions":1676544235679,"./es7/do-expressions":1676544235680,"./es6/spec.symbols":1676544235681,"./es7/function-bind":1676544235682,"./es6/spread":1676544235683,"./es6/parameters":1676544235684,"./es6/destructuring":1676544235688,"./es6/block-scoping":1676544235689,"./es6/spec.block-scoping":1676544235690,"./other/react-compat":1676544235691,"./other/react":1676544235693,"./other/regenerator":1676544235694,"./es6/modules":1676544235695,"./internal/module-formatter":1676544235696,"./es6/tail-call":1676544235697,"./internal/shadow-functions":1676544235698,"./es3/property-literals":1676544235699,"./es3/member-expression-literals":1676544235700,"./internal/block-hoist":1676544235701,"./other/flow":1676544235702,"./optimisation/modules.system":1676544235703}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235634, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -16685,8 +16685,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657721, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235635, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -16739,8 +16739,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../messages":1675480657655,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657722, function(require, module, exports) {
+}, function(modId) { var map = {"../../../messages":1676544235569,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235636, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -16781,8 +16781,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657723, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235637, function(require, module, exports) {
 // in this transformer we have to split up classes and function declarations
 // from their exports. why? because sometimes we need to replace classes with
 // nodes that aren't allowed in the same contexts. also, if you're exporting
@@ -16931,8 +16931,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657724, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235638, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -16957,8 +16957,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657725, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235639, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -16992,8 +16992,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657726, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235640, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17030,8 +17030,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657727, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235641, function(require, module, exports) {
 /* eslint no-unused-vars: 0 */
 
 
@@ -17163,8 +17163,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657728, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235642, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17188,7 +17188,7 @@ var visitor = {
 };
 exports.visitor = visitor;
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657729, function(require, module, exports) {
+__DEFINE__(1676544235643, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17238,8 +17238,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../helpers/name-method":1675480657730}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657730, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/name-method":1676544235644}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235644, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17459,8 +17459,8 @@ function bare(node, parent, scope) {
   var state = visit(node, name, scope);
   return wrap(state, node, id, scope);
 }
-}, function(modId) { var map = {"./get-function-arity":1675480657731,"../../util":1675480657656,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657731, function(require, module, exports) {
+}, function(modId) { var map = {"./get-function-arity":1676544235645,"../../util":1676544235570,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235645, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17488,8 +17488,8 @@ exports["default"] = function (node) {
 };
 
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657732, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235646, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17499,7 +17499,7 @@ var metadata = {
 };
 exports.metadata = metadata;
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657733, function(require, module, exports) {
+__DEFINE__(1676544235647, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17508,7 +17508,7 @@ var metadata = {
 };
 exports.metadata = metadata;
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657734, function(require, module, exports) {
+__DEFINE__(1676544235648, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17517,7 +17517,7 @@ var metadata = {
 };
 exports.metadata = metadata;
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657735, function(require, module, exports) {
+__DEFINE__(1676544235649, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17589,8 +17589,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../helpers/memoise-decorators":1675480657736,"../../helpers/define-map":1675480657737,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657736, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/memoise-decorators":1676544235650,"../../helpers/define-map":1676544235651,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235650, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17637,8 +17637,8 @@ exports["default"] = function (decorators, scope) {
 };
 
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657737, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235651, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17788,8 +17788,8 @@ function toDefineObject(mutatorMap) {
 
   return toClassObject(mutatorMap);
 }
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657738, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235652, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17842,8 +17842,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../messages":1675480657655,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657739, function(require, module, exports) {
+}, function(modId) { var map = {"../../../messages":1676544235569,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235653, function(require, module, exports) {
 /**
  * Turn arrow functions into normal functions.
  *
@@ -17882,7 +17882,7 @@ var visitor = {
 };
 exports.visitor = visitor;
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657740, function(require, module, exports) {
+__DEFINE__(1676544235654, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -17946,8 +17946,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657741, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235655, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -18056,8 +18056,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../helpers/react":1675480657640,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657742, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/react":1676544235554,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235656, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -18156,8 +18156,8 @@ function array(node, parent, scope) {
 
   return container;
 }
-}, function(modId) { var map = {"../../helpers/build-comprehension":1675480657743,"../../../traversal":1675480657636,"../../../util":1675480657656,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657743, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/build-comprehension":1676544235657,"../../../traversal":1676544235550,"../../../util":1676544235570,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235657, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -18193,8 +18193,8 @@ function build(node, buildBody) {
 }
 
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657744, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235658, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -18250,8 +18250,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"./loose":1675480657745,"./vanilla":1675480657746,"../../../../types":1675480657641,"../../../helpers/name-method":1675480657730}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657745, function(require, module, exports) {
+}, function(modId) { var map = {"./loose":1676544235659,"./vanilla":1676544235660,"../../../../types":1676544235555,"../../../helpers/name-method":1676544235644}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235659, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -18317,8 +18317,8 @@ var LooseClassTransformer = (function (_VanillaTransformer) {
 
 exports["default"] = LooseClassTransformer;
 module.exports = exports["default"];
-}, function(modId) { var map = {"./vanilla":1675480657746,"../../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657746, function(require, module, exports) {
+}, function(modId) { var map = {"./vanilla":1676544235660,"../../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235660, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -19005,8 +19005,8 @@ var ClassTransformer = (function () {
 
 exports["default"] = ClassTransformer;
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../../helpers/memoise-decorators":1675480657736,"../../../helpers/replace-supers":1675480657747,"../../../helpers/name-method":1675480657730,"../../../helpers/define-map":1675480657737,"../../../../messages":1675480657655,"../../../../util":1675480657656,"../../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657747, function(require, module, exports) {
+}, function(modId) { var map = {"../../../helpers/memoise-decorators":1676544235650,"../../../helpers/replace-supers":1676544235661,"../../../helpers/name-method":1676544235644,"../../../helpers/define-map":1676544235651,"../../../../messages":1676544235569,"../../../../util":1676544235570,"../../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235661, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -19329,8 +19329,8 @@ var ReplaceSupers = (function () {
 
 exports["default"] = ReplaceSupers;
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../messages":1675480657655,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657748, function(require, module, exports) {
+}, function(modId) { var map = {"../../messages":1676544235569,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235662, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -19368,8 +19368,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../helpers/remap-async-to-generator":1675480657749,"./bluebird-coroutines":1675480657750}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657749, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/remap-async-to-generator":1676544235663,"./bluebird-coroutines":1676544235664}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235663, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -19465,8 +19465,8 @@ exports["default"] = function (path, callId) {
 };
 
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657750, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235664, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -19518,8 +19518,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../helpers/remap-async-to-generator":1675480657749,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657751, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/remap-async-to-generator":1676544235663,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235665, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -19587,8 +19587,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../helpers/replace-supers":1675480657747,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657752, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/replace-supers":1676544235661,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235666, function(require, module, exports) {
 // https://github.com/sebmarkbage/ecmascript-rest-spread
 
 
@@ -19663,8 +19663,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657753, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235667, function(require, module, exports) {
 // https://github.com/rwaldron/exponentiation-operator
 
 
@@ -19709,8 +19709,8 @@ var visitor = _helpersBuildBinaryAssignmentOperatorTransformer2["default"]({
   }
 });
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../helpers/build-binary-assignment-operator-transformer":1675480657754,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657754, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/build-binary-assignment-operator-transformer":1676544235668,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235668, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -19798,8 +19798,8 @@ exports["default"] = function (opts) {
 };
 
 module.exports = exports["default"];
-}, function(modId) { var map = {"./explode-assignable-expression":1675480657755,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657755, function(require, module, exports) {
+}, function(modId) { var map = {"./explode-assignable-expression":1676544235669,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235669, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -19890,8 +19890,8 @@ exports["default"] = function (node, nodes, file, scope, allowedSingleIdent) {
 };
 
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657756, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235670, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -19971,8 +19971,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../helpers/define-map":1675480657737,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657757, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/define-map":1676544235651,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235671, function(require, module, exports) {
 /**
  * [Please add a description.]
  */
@@ -19998,7 +19998,7 @@ var visitor = {
 };
 exports.visitor = visitor;
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657758, function(require, module, exports) {
+__DEFINE__(1676544235672, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -20131,8 +20131,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657759, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235673, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -20161,8 +20161,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../es6/for-of":1675480657760}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657760, function(require, module, exports) {
+}, function(modId) { var map = {"../es6/for-of":1676544235674}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235674, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -20372,8 +20372,8 @@ var spec = function spec(node, parent, scope, file) {
     node: template
   };
 };
-}, function(modId) { var map = {"../../../messages":1675480657655,"../../../util":1675480657656,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657761, function(require, module, exports) {
+}, function(modId) { var map = {"../../../messages":1676544235569,"../../../util":1676544235570,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235675, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -20405,8 +20405,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../helpers/regex":1675480657762,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657762, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/regex":1676544235676,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235676, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -20446,8 +20446,8 @@ function pullFlag(node, flag) {
   _lodashArrayPull2["default"](flags, flag);
   node.regex.flags = flags.join("");
 }
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657763, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235677, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -20484,8 +20484,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../helpers/regex":1675480657762}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657764, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/regex":1676544235676}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235678, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -20548,8 +20548,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../messages":1675480657655}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657765, function(require, module, exports) {
+}, function(modId) { var map = {"../../../messages":1676544235569}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235679, function(require, module, exports) {
 // https://github.com/leebyron/ecmascript-more-export-from
 
 
@@ -20615,8 +20615,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657766, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235680, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -20654,8 +20654,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657767, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235681, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -20723,8 +20723,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657768, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235682, function(require, module, exports) {
 // https://github.com/zenparsing/es-function-bind
 
 
@@ -20811,8 +20811,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657769, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235683, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -20971,8 +20971,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657770, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235684, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -21003,8 +21003,8 @@ exports.metadata = metadata;
 
 var visitor = visitors.merge([rest.visitor, def.visitor]);
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../../traversal/visitors":1675480657677,"./default":1675480657771,"./rest":1675480657773}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657771, function(require, module, exports) {
+}, function(modId) { var map = {"../../../../traversal/visitors":1676544235591,"./default":1676544235685,"./rest":1676544235687}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235685, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -21170,8 +21170,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../helpers/call-delegate":1675480657772,"../../../helpers/get-function-arity":1675480657731,"../../../../util":1675480657656,"../../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657772, function(require, module, exports) {
+}, function(modId) { var map = {"../../../helpers/call-delegate":1676544235686,"../../../helpers/get-function-arity":1676544235645,"../../../../util":1676544235570,"../../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235686, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -21233,8 +21233,8 @@ exports["default"] = function (node, scope) {
 };
 
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657773, function(require, module, exports) {
+}, function(modId) { var map = {"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235687, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -21504,8 +21504,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../../util":1675480657656,"../../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657774, function(require, module, exports) {
+}, function(modId) { var map = {"../../../../util":1676544235570,"../../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235688, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -22130,8 +22130,8 @@ var DestructuringTransformer = (function () {
 
   return DestructuringTransformer;
 })();
-}, function(modId) { var map = {"../../../messages":1675480657655,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657775, function(require, module, exports) {
+}, function(modId) { var map = {"../../../messages":1676544235569,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235689, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -22920,8 +22920,8 @@ var BlockScoping = (function () {
 
   return BlockScoping;
 })();
-}, function(modId) { var map = {"../../../traversal":1675480657636,"../../../helpers/object":1675480657660,"../../../util":1675480657656,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657776, function(require, module, exports) {
+}, function(modId) { var map = {"../../../traversal":1676544235550,"../../../helpers/object":1676544235574,"../../../util":1676544235570,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235690, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -23037,8 +23037,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657777, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235691, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -23094,8 +23094,8 @@ var visitor = require("../../helpers/build-react-transformer")({
   }
 });
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../helpers/react":1675480657640,"../../../types":1675480657641,"../../helpers/build-react-transformer":1675480657778}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657778, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/react":1676544235554,"../../../types":1676544235555,"../../helpers/build-react-transformer":1676544235692}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235692, function(require, module, exports) {
 // Based upon the excellent jsx-transpiler by Ingvar Stepanyan (RReverser)
 // https://github.com/RReverser/jsx-transpiler
 
@@ -23311,8 +23311,8 @@ exports["default"] = function (opts) {
 };
 
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../messages":1675480657655,"./react":1675480657640,"../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657779, function(require, module, exports) {
+}, function(modId) { var map = {"../../messages":1676544235569,"./react":1676544235554,"../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235693, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -23393,8 +23393,8 @@ visitor.Program = function (node, parent, scope, file) {
     return t.memberExpression(object, property);
   }));
 };
-}, function(modId) { var map = {"../../helpers/react":1675480657640,"../../../types":1675480657641,"../../helpers/build-react-transformer":1675480657778}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657780, function(require, module, exports) {
+}, function(modId) { var map = {"../../helpers/react":1676544235554,"../../../types":1676544235555,"../../helpers/build-react-transformer":1676544235692}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235694, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -23500,8 +23500,8 @@ function convertNodePath(path) {
 
   return nodePath;
 }
-}, function(modId) { var map = {"regenerator":1675480657780,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657781, function(require, module, exports) {
+}, function(modId) { var map = {"regenerator":1676544235694,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235695, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -23614,8 +23614,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657782, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235696, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -23655,7 +23655,7 @@ var visitor = {
 };
 exports.visitor = visitor;
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657783, function(require, module, exports) {
+__DEFINE__(1676544235697, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -24176,8 +24176,8 @@ var TailCallTransformer = (function () {
 
   return TailCallTransformer;
 })();
-}, function(modId) { var map = {"../../../messages":1675480657655,"../../../util":1675480657656,"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657784, function(require, module, exports) {
+}, function(modId) { var map = {"../../../messages":1676544235569,"../../../util":1676544235570,"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235698, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -24277,8 +24277,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657785, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235699, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -24333,8 +24333,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657786, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235700, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -24388,8 +24388,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657787, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235701, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -24448,7 +24448,7 @@ var visitor = {
 };
 exports.visitor = visitor;
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657788, function(require, module, exports) {
+__DEFINE__(1676544235702, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -24540,8 +24540,8 @@ var visitor = {
   }
 };
 exports.visitor = visitor;
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657789, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235703, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -24600,8 +24600,8 @@ var optimizeSettersVisitor = {
     return t.assignmentExpression("=", memberNode, node.arguments[1]);
   }
 };
-}, function(modId) { var map = {"../../../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657790, function(require, module, exports) {
+}, function(modId) { var map = {"../../../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235704, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -24661,7 +24661,7 @@ function optional(transformer, opts) {
   if (transformer.metadata.optional && !_lodashCollectionIncludes2["default"](opts.optional, transformer.key)) return false;
 }
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657791, function(require, module, exports) {
+__DEFINE__(1676544235705, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -24789,8 +24789,8 @@ exports["default"] = function (whitelist) {
 };
 
 module.exports = exports["default"];
-}, function(modId) { var map = {"../generation":1675480657696,"../messages":1675480657655,"../util":1675480657656,"../transformation/file":1675480657678,"../types":1675480657641}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657792, function(require, module, exports) {
+}, function(modId) { var map = {"../generation":1676544235610,"../messages":1676544235569,"../util":1676544235570,"../transformation/file":1676544235592,"../types":1676544235555}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235706, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -24804,8 +24804,8 @@ var _node = require("./node");
 
 exports["default"] = _interopRequire(_node);
 module.exports = exports["default"];
-}, function(modId) { var map = {"../../polyfill":1675480657793,"./node":1675480657794}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657793, function(require, module, exports) {
+}, function(modId) { var map = {"../../polyfill":1676544235707,"./node":1676544235708}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235707, function(require, module, exports) {
 
 
 require("core-js/shim");
@@ -24817,7 +24817,7 @@ if (global._babelPolyfill) {
 }
 global._babelPolyfill = true;
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657794, function(require, module, exports) {
+__DEFINE__(1676544235708, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -25088,8 +25088,8 @@ exports["default"] = function () {
 };
 
 module.exports = exports["default"];
-}, function(modId) { var map = {"./cache":1675480657795,"../../transformation/file/options/option-manager":1675480657692,"../node":1675480657629,"../../util":1675480657656}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657795, function(require, module, exports) {
+}, function(modId) { var map = {"./cache":1676544235709,"../../transformation/file/options/option-manager":1676544235606,"../node":1676544235543,"../../util":1676544235570}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235709, function(require, module, exports) {
 
 
 exports.__esModule = true;
@@ -25154,7 +25154,7 @@ function get() {
   return data;
 }
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1675480657628);
+return __REQUIRE__(1676544235542);
 })()
 //miniprogram-npm-outsideDeps=["lodash/lang/isFunction","babylon","fs","../transformation/file/options/config","../../package","./transformers/deprecated","./transformers/aliases","lodash/object/assign","try-resolve","lodash/lang/clone","lodash/collection/includes","to-fast-properties","lodash/array/compact","lodash/collection/each","lodash/array/uniq","esutils","lodash/lang/isPlainObject","lodash/lang/isNumber","lodash/lang/isRegExp","lodash/lang/isString","repeating","lodash/object/defaults","globals","lodash/array/flatten","lodash/object/extend","lodash/string/escapeRegExp","lodash/string/startsWith","lodash/lang/cloneDeep","lodash/lang/isBoolean","minimatch","lodash/collection/contains","lodash/lang/isEmpty","path","lodash/object/has","slash","path-exists","js-tokens","chalk","convert-source-map","shebang-regex","source-map","lodash/object/values","lodash/array/last","lodash/collection/map","json5","path-is-absolute","./config","lodash/object/merge","detect-indent","trim-right","lodash/collection/some","is-integer","debug/node","babel-plugin-constant-folding","babel-plugin-eval","babel-plugin-remove-debugger","babel-plugin-remove-console","babel-plugin-inline-environment-variables","babel-plugin-dead-code-elimination","babel-plugin-react-display-name","babel-plugin-undeclared-variables-check","babel-plugin-react-constant-elements","babel-plugin-proto-to-assign","babel-plugin-undefined-to-void","babel-plugin-runtime","babel-plugin-member-expression-literals","babel-plugin-property-literals","babel-plugin-jscript","lodash/array/pull","regexpu/rewrite-pattern","lodash/collection/reduceRight","lodash/collection/sortBy","core-js/shim","regenerator/runtime","source-map-support","home-or-tmp"]
 //# sourceMappingURL=index.js.map

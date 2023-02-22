@@ -23,18 +23,6 @@
     data-url="/pages/delivery/index"
   >外卖
   </button>
-  <button
-    class="subscribe btn"
-    bindtap="switchTab"
-    data-url="/pages/subscribe/index"
-  >订阅
-  </button>
-  <button
-    class="mine btn"
-    bindtap="switchTab"
-    data-url="/pages/mine/index"
-  >个人中心
-  </button>
 </view>
 <view class="userCard">
   <view class="btn-area" bindtap="onBindUserTap">

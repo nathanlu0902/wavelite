@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {}, _tempexport
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = __MODS__[modId].m; m._exports = m._tempexports; var desp = Object.getOwnPropertyDescriptor(m, "exports"); if (desp && desp.configurable) Object.defineProperty(m, "exports", { set: function (val) { if(typeof val === "object" && val !== m._exports) { m._exports.__proto__ = val.__proto__; Object.keys(val).forEach(function (k) { m._exports[k] = val[k]; }); } m._tempexports = val }, get: function () { return m._tempexports; } }); __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1675480657923, function(require, module, exports) {
+__DEFINE__(1676544235838, function(require, module, exports) {
 var types = require("./lib/types");
 var parse = require("./lib/parser").parse;
 var Printer = require("./lib/printer").Printer;
@@ -105,8 +105,8 @@ Object.defineProperties(exports, {
     }
 });
 
-}, function(modId) {var map = {"./lib/types":1675480657924,"./lib/parser":1675480657925,"./lib/printer":1675480657933}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657924, function(require, module, exports) {
+}, function(modId) {var map = {"./lib/types":1676544235839,"./lib/parser":1676544235840,"./lib/printer":1676544235848}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235839, function(require, module, exports) {
 // This module was originally created so that Recast could add its own
 // custom types to the AST type system (in particular, the File type), but
 // those types are now incorporated into ast-types, so this module doesn't
@@ -114,7 +114,7 @@ __DEFINE__(1675480657924, function(require, module, exports) {
 module.exports = require("ast-types");
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657925, function(require, module, exports) {
+__DEFINE__(1676544235840, function(require, module, exports) {
 var assert = require("assert");
 var types = require("./types");
 var n = types.namedTypes;
@@ -274,8 +274,8 @@ TCp.copy = function(node) {
   return copy;
 };
 
-}, function(modId) { var map = {"./types":1675480657924,"./patcher":1675480657926,"./options":1675480657928,"./lines":1675480657927,"./comments":1675480657932,"./util":1675480657929}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657926, function(require, module, exports) {
+}, function(modId) { var map = {"./types":1676544235839,"./patcher":1676544235841,"./options":1676544235843,"./lines":1676544235842,"./comments":1676544235847,"./util":1676544235844}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235841, function(require, module, exports) {
 var assert = require("assert");
 var linesModule = require("./lines");
 var types = require("./types");
@@ -812,8 +812,8 @@ function findChildReprints(newPath, oldPath, reprints) {
     return true;
 }
 
-}, function(modId) { var map = {"./lines":1675480657927,"./types":1675480657924,"./util":1675480657929,"./fast-path":1675480657931}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657927, function(require, module, exports) {
+}, function(modId) { var map = {"./lines":1676544235842,"./types":1676544235839,"./util":1676544235844,"./fast-path":1676544235846}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235842, function(require, module, exports) {
 var assert = require("assert");
 var sourceMap = require("source-map");
 var normalizeOptions = require("./options").normalize;
@@ -1710,8 +1710,8 @@ Lp.concat = function(other) {
 // Lines.prototype will be fully populated.
 var emptyLines = fromString("");
 
-}, function(modId) { var map = {"./options":1675480657928,"./types":1675480657924,"./util":1675480657929,"./mapping":1675480657930}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657928, function(require, module, exports) {
+}, function(modId) { var map = {"./options":1676544235843,"./types":1676544235839,"./util":1676544235844,"./mapping":1676544235845}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235843, function(require, module, exports) {
 var defaults = {
     // If you want to use a different branch of esprima, or any other
     // module that supports a .parse function, pass that module object to
@@ -1841,7 +1841,7 @@ exports.normalize = function(options) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657929, function(require, module, exports) {
+__DEFINE__(1676544235844, function(require, module, exports) {
 var assert = require("assert");
 var types = require("./types");
 var getFieldValue = types.getFieldValue;
@@ -2156,8 +2156,8 @@ util.isTrailingCommaEnabled = function(options, context) {
   return !!trailingComma;
 };
 
-}, function(modId) { var map = {"./types":1675480657924}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657930, function(require, module, exports) {
+}, function(modId) { var map = {"./types":1676544235839}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235845, function(require, module, exports) {
 var assert = require("assert");
 var types = require("./types");
 var isString = types.builtInTypes.string;
@@ -2436,8 +2436,8 @@ function skipChars(
     return sourceCursor;
 }
 
-}, function(modId) { var map = {"./types":1675480657924,"./lines":1675480657927,"./util":1675480657929}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657931, function(require, module, exports) {
+}, function(modId) { var map = {"./types":1676544235839,"./lines":1676544235842,"./util":1676544235844}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235846, function(require, module, exports) {
 var assert = require("assert");
 var types = require("./types");
 var n = types.namedTypes;
@@ -2925,8 +2925,8 @@ FPp.firstInStatement = function() {
     return true;
 };
 
-}, function(modId) { var map = {"./types":1675480657924}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657932, function(require, module, exports) {
+}, function(modId) { var map = {"./types":1676544235839}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235847, function(require, module, exports) {
 var assert = require("assert");
 var types = require("./types");
 var n = types.namedTypes;
@@ -3279,8 +3279,8 @@ exports.printComments = function(path, print) {
     return concat(leadingParts);
 };
 
-}, function(modId) { var map = {"./types":1675480657924,"./lines":1675480657927,"./util":1675480657929}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657933, function(require, module, exports) {
+}, function(modId) { var map = {"./types":1676544235839,"./lines":1676544235842,"./util":1676544235844}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235848, function(require, module, exports) {
 var assert = require("assert");
 var sourceMap = require("source-map");
 var printComments = require("./comments").printComments;
@@ -5292,8 +5292,8 @@ function maybeAddSemicolon(lines) {
     return lines;
 }
 
-}, function(modId) { var map = {"./comments":1675480657932,"./lines":1675480657927,"./options":1675480657928,"./patcher":1675480657926,"./types":1675480657924,"./fast-path":1675480657931,"./util":1675480657929}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1675480657923);
+}, function(modId) { var map = {"./comments":1676544235847,"./lines":1676544235842,"./options":1676544235843,"./patcher":1676544235841,"./types":1676544235839,"./fast-path":1676544235846,"./util":1676544235844}; return __REQUIRE__(map[modId], modId); })
+return __REQUIRE__(1676544235838);
 })()
 //miniprogram-npm-outsideDeps=["fs","ast-types","assert","source-map","private","esprima","os"]
 //# sourceMappingURL=index.js.map

@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {}, _tempexport
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = __MODS__[modId].m; m._exports = m._tempexports; var desp = Object.getOwnPropertyDescriptor(m, "exports"); if (desp && desp.configurable) Object.defineProperty(m, "exports", { set: function (val) { if(typeof val === "object" && val !== m._exports) { m._exports.__proto__ = val.__proto__; Object.keys(val).forEach(function (k) { m._exports[k] = val[k]; }); } m._tempexports = val }, get: function () { return m._tempexports; } }); __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1675480657934, function(require, module, exports) {
+__DEFINE__(1676544235849, function(require, module, exports) {
 var path = require("path");
 var Commoner = require("./lib/commoner").Commoner;
 exports.Commoner = Commoner;
@@ -22,8 +22,8 @@ defCallback("version");
 defCallback("resolve");
 defCallback("process");
 
-}, function(modId) {var map = {"./lib/commoner":1675480657935}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657935, function(require, module, exports) {
+}, function(modId) {var map = {"./lib/commoner":1676544235850}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235850, function(require, module, exports) {
 var assert = require("assert");
 var path = require("path");
 var fs = require("fs");
@@ -409,8 +409,8 @@ function getConfigP(workingDir, configFile) {
 
 exports.Commoner = Commoner;
 
-}, function(modId) { var map = {"./cache":1675480657936,"./watcher":1675480657938,"./context":1675480657940,"./reader":1675480657944,"./output":1675480657948,"../package.json":1675480657951}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657936, function(require, module, exports) {
+}, function(modId) { var map = {"./cache":1676544235851,"./watcher":1676544235853,"./context":1676544235855,"./reader":1676544235859,"./output":1676544235863,"../package.json":1676544235866}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235851, function(require, module, exports) {
 var assert = require("assert");
 var Q = require("q");
 var fs = require("fs");
@@ -530,7 +530,7 @@ function orNull(err) {
 exports.ReadFileCache = ReadFileCache;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657938, function(require, module, exports) {
+__DEFINE__(1676544235853, function(require, module, exports) {
 var assert = require("assert");
 var path = require("path");
 var fs = require("graceful-fs");
@@ -787,8 +787,8 @@ DWp.close = function() {
 
 exports.Watcher = Watcher;
 
-}, function(modId) { var map = {"./cache":1675480657936}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657940, function(require, module, exports) {
+}, function(modId) { var map = {"./cache":1676544235851}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235855, function(require, module, exports) {
 var assert = require("assert");
 var path = require("path");
 var Q = require("q");
@@ -1055,8 +1055,8 @@ BCp.getProvidedId = function(source) {
 
 exports.BuildContext = BuildContext;
 
-}, function(modId) { var map = {"./cache":1675480657936,"./grep":1675480657942}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657942, function(require, module, exports) {
+}, function(modId) { var map = {"./cache":1676544235851,"./grep":1676544235857}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235857, function(require, module, exports) {
 var assert = require("assert");
 var path = require("path");
 var Q = require("q");
@@ -1108,7 +1108,7 @@ module.exports = function(pattern, sourceDir) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657944, function(require, module, exports) {
+__DEFINE__(1676544235859, function(require, module, exports) {
 var assert = require("assert");
 var path = require("path");
 var fs = require("fs");
@@ -1436,8 +1436,8 @@ Module.prototype = {
     }
 };
 
-}, function(modId) { var map = {"./context":1675480657940,"./relative":1675480657946}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657946, function(require, module, exports) {
+}, function(modId) { var map = {"./context":1676544235855,"./relative":1676544235861}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235861, function(require, module, exports) {
 var assert = require("assert");
 var Q = require("q");
 var path = require("path");
@@ -1526,8 +1526,8 @@ Rp.relativizeP = function(moduleId, requiredId) {
     });
 };
 
-}, function(modId) { var map = {"./reader":1675480657944}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657948, function(require, module, exports) {
+}, function(modId) { var map = {"./reader":1676544235859}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1676544235863, function(require, module, exports) {
 var assert = require("assert");
 var util = require("./util");
 var log = util.log;
@@ -1588,7 +1588,7 @@ TOp.outputModule = function(module) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1675480657951, function(require, module, exports) {
+__DEFINE__(1676544235866, function(require, module, exports) {
 module.exports = {
   "author": {
     "name": "Ben Newman",
@@ -1644,7 +1644,7 @@ module.exports = {
 }
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1675480657934);
+return __REQUIRE__(1676544235849);
 })()
 //miniprogram-npm-outsideDeps=["path","assert","fs","q","iconv-lite","./util","commander","events","graceful-fs","child_process","glob","crypto","detective","recast"]
 //# sourceMappingURL=index.js.map

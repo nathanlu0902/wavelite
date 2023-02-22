@@ -24,10 +24,6 @@
         "text": "首页"
       },
       {
-        "pagePath":"pages/delivery/index",
-        "text": "外卖"
-      },
-      {
         "pagePath": "pages/mine/index",
         "text": "我的"
       }

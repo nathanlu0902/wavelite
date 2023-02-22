@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":[],"mappings":";;;;;;;AAAA;AACA;AACA;AACA;AACA","file":"index.js","sourcesContent":["\nmodule.exports = 'npm_config_username' in process.env ||\n\t'npm_package_name' in process.env ||\n\t'npm_config_heading' in process.env;\n"]}

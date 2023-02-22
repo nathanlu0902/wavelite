@@ -50,7 +50,7 @@ Page({
     const {nickname,phone,birth}=e.detail.value;
     let that=this;
     request({
-      url: "http://127.0.0.1:8000/api/updateUser",
+      url: "/updateUser",
       data: {
         nickname: nickname,
         phone: phone,

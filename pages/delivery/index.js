@@ -1,19 +1,16 @@
-import {goodsList} from "../../model/goods.js"
+import {request} from "../../request/index"
 const app=getApp();
 Page({
   data: {
+    goodsCategoryData:[],
     height:app.globalData.SCREENHEIGHT*750/app.globalData.SCREENWIDTH,
-    typeList:["波奇","意面","沙拉","咖啡","咖啡","咖啡","咖啡","咖啡","咖啡","咖啡"],
-
+    currentId:1
   },
 
-
   bindLeftItemTap:function(e){
-    let {index}=e.currentTarget.dataset,
-        type=this.data.typeList[index];
+    let {id}=e.currentTarget.dataset;
     this.setData({
-      currentIndexL:index,
-      currentType:type
+      currentId:id
     })
   },
 
@@ -54,62 +51,40 @@ Page({
     })
   } ,
 
-  onLoad(options) {
-    this.setData({
-      currentIndexL:0,
-      goodsList:goodsList,
-      currentType:"波奇",
-      totalPrice:0,
-      totalSum:0,
-    })
+  onLoad() {
+    this.getGoodsCategory();
+    this.getGoodsList();
 },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
+  async getGoodsList(){
+    let res=await request({
+      url:"/Goods",
+      method:"GET"
+    })
+    this.setData({
+      goodsList:res.data
+    })
+    console.log(this.data.goodsList)
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
+  async getGoodsCategory(){
+    let res=await request({
+      url:"/GoodsCategory",
+      method:"GET",
+    })
+    //res.data为字符串，需要转成list
+    this.setData({
+      "goodsCategoryData":res.data
+    })
+    console.log(this.data.goodsCategoryData)
+  },
+
   onShow() {
-   
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
+  
 })

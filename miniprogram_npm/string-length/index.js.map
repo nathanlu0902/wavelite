@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":[],"mappings":";;;;;;;AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"index.js","sourcesContent":["\nvar stripAnsi = require('strip-ansi');\n\nmodule.exports = function (str) {\n\tvar reAstral = /[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]/g;\n\n\treturn stripAnsi(str).replace(reAstral, ' ').length;\n};\n"]}
