@@ -2,13 +2,13 @@ import { request } from "./request/index";
 
 // app.js
 App({
-  "globalData":{
-    "navHeight":0,
-    "menuTop":'',
-    "statusBarHeight":'',
-    "menuHeight":'',
-    "SCREENHEIGHT":'',
-    "SCREENWIDTH":'',
+  globalData:{
+    navHeight:0,
+    menuTop:'',
+    statusBarHeight:'',
+    menuHeight:'',
+    SCREENHEIGHT:'',
+    SCREENWIDTH:'',
     userinfo:{
       nickname:"",
       phone:"",
@@ -35,41 +35,32 @@ App({
     
     wx.login({
       success(res){
+        let code=res.code;
         request({
-          url:"/login",
-          data:{code:res.code},
-          header:{
-            "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
-          },
-          method:"POST",
+          url:`/${code}/login`,
+          method:"GET"
         }).then(res=>{
-          //已找到用户
-          if(res.data.code=="1005"){
+          console.log(res)
+          if(res.statusCode=="204"){
+            console.log("user is not registered")
+          }
+          else if(res.statusCode=="200"){
             console.log(`已读取用户名:${res.data.nickname},openid:${res.data.openid}`);
             wx.setStorageSync("nickname",res.data.nickname);
+            wx.setStorageSync("openid",res.data.openid)
             that.globalData.userinfo.nickname=res.data.nickname;
             that.globalData.userinfo.phone=res.data.phone;
             that.globalData.userinfo.gender=res.data.gender;
             that.globalData.userinfo.birth=res.data.birth;
             that.globalData.userinfo.loggedIn=true;
-          }else if(res.data.code=="1004"){
-            console.log(`this user is not registered yet,received openid:${res.data.openid}`);
           }
-          wx.setStorageSync("openid",res.data.openid);
-        })
-      },
-      fail(err){
-        alert(err);
+        }
+          
+        )},
+      fail(e){
+          console.log(e)
+        }
       }
-    })
+    )}
    
-  },
-
-  // handleDestruction(res) {
-  //   const {
-  //     data = []
-  //   } = res; // 设默认值为 [] 以免获取数据失败时发生错误
-  //   console.log("des data",data)
-  //   return data;
-  // }
 })

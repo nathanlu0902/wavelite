@@ -33,27 +33,32 @@ Page({
 
   register(){
     if(getApp().globalData.userinfo.loggedIn==false){
-      console.log("openid is"+wx.getStorageSync("openid"))
-      request({
-        url:"/registerUser",
-        method:"POST",
-        data:{
-          phone:"1321",
-          openid:wx.getStorageSync("openid")
-        },
-        header:{
-          "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
-        },
-      }).then(res=>{
-        console.log(res)
-        if(res.data.code=="1006"){
-          getApp().globalData.userinfo.loggedIn=true
-          wx.showToast({title:"用户已创建"})
-        }
+      wx.login({
+        success:res=>{
+          let wx_code=res.code;
+          request({
+            url:`/${wx_code}/create`,
+            method:"POST",
+            data:{
+              phone:"1321",
+              wx_code:wx_code
+            },
+            header:{
+              "content-type": "application/x-www-form-urlencoded"		//使用POST方法要带上这个header
+            },
+        }).then(res=>{
+          if(res.statusCode=="201"){
+            getApp().globalData.userinfo.loggedIn=true
+            wx.showToast({title:"用户已创建"})
+          }else{
+            wx.showToast({title:"Error creating user"})
+          }
+        })
+      },fail(e){
+        console.log(e)
       }
-      )
-    }
-  },
+    })  
+  }},
 
 
   /**

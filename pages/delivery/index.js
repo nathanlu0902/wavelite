@@ -4,13 +4,15 @@ Page({
   data: {
     goodsCategoryData:[],
     height:app.globalData.SCREENHEIGHT*750/app.globalData.SCREENWIDTH,
-    currentId:1
+    currentCategory:"波奇"
   },
 
   bindLeftItemTap:function(e){
-    let {id}=e.currentTarget.dataset;
+    let {goodsCategory}=e.currentTarget.dataset;
+    let right_items=this.goodsList.map(item=>item.goodsCategory==goodsCategory)
     this.setData({
-      currentId:id
+      currentCategory:goodsCategory,
+      right_items:right_items
     })
   },
 
@@ -58,7 +60,7 @@ Page({
 
   async getGoodsList(){
     let res=await request({
-      url:"/Goods",
+      url:"/goods",
       method:"GET"
     })
     this.setData({
@@ -70,12 +72,12 @@ Page({
 
   async getGoodsCategory(){
     let res=await request({
-      url:"/GoodsCategory",
+      url:"/goodsCategory",
       method:"GET",
     })
     //res.data为字符串，需要转成list
     this.setData({
-      "goodsCategoryData":res.data
+      goodsCategoryData:res.data
     })
     console.log(this.data.goodsCategoryData)
   },
