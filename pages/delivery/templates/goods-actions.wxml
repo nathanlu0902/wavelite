@@ -6,7 +6,7 @@
       </view>
       <view class="action-qty">{{qty}}</view>
     </block>
-    <view class="goodsBtn" bindtap="add"  data-id="{{id}}">
+    <view class="goodsBtn" bindtap="add" data-id="{{id}}" data-qty="{{qty}}">
       <image src="/images/delivery_btn/plus.svg" class="goods-btn_img"></image>
     </view>
   </view>

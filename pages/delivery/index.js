@@ -4,50 +4,49 @@ Page({
   data: {
     goodsCategoryData:[],
     height:app.globalData.SCREENHEIGHT*750/app.globalData.SCREENWIDTH,
-    currentCategory:"波奇"
+
   },
 
-  bindLeftItemTap:function(e){
-    let {goodsCategory}=e.currentTarget.dataset;
-    let right_items=this.goodsList.map(item=>item.goodsCategory==goodsCategory)
+  onLeftItemTap:function(e){
+    let {index}=e.currentTarget.dataset;
+    //设置scroll-into-view的参考对象
     this.setData({
-      currentCategory:goodsCategory,
-      right_items:right_items
+      viewid:"goods"+index
     })
   },
 
   add:function(e){
     let {id}=e.currentTarget.dataset;
-    this.data.goodsList[this.data.currentType][id].qty+=1;
+    let goodsList=this.data.goodsList;
+    let good=goodsList.filter(item=>item.id==id)[0]
+    good.qty+=1;
     this.setData({
-      goodsList:this.data.goodsList
+      goodsList:goodsList
     })
     this.getTotalPrice();
   },
 
   minus:function(e){
     let {id,qty}=e.currentTarget.dataset;
+    let goodsList=this.data.goodsList;
+    let good=goodsList.filter(item=>item.id==id)[0]
     if(qty>0){
-      this.data.goodsList[this.data.currentType][id].qty-=1;;
+      good.qty-=1;
     }
     this.setData({
-      goodsList:this.data.goodsList
+      goodsList:goodsList
     })
     this.getTotalPrice();
   },
 
-
   getTotalPrice:function(){
-    let totalPrice=0,
-        goodsList=this.data.goodsList,
-        index,
-        i
-    for (index in this.data.typeList){
-      let type=this.data.typeList[index];
-      for (i = 0;i<goodsList[type].length;i++){
-        totalPrice+=goodsList[type][i].qty*goodsList[type][i].dishPrice;
-      }
-    }
+    let totalPrice=0;
+    let goodsList=this.data.goodsList;
+    const initialValue=0;
+    //累加对象里的值必须提供initialValue
+    totalPrice=goodsList.reduce((pre,nxt)=>{
+        return pre+nxt.qty*nxt.goodsPrice
+      },initialValue)
     this.setData({
       totalPrice:totalPrice
     })
@@ -63,11 +62,12 @@ Page({
       url:"/goods",
       method:"GET"
     })
+    if(!wx.getStorageSync('goodsList')){
+      wx.setStorageSync('goodsList', res.data)
+    }
     this.setData({
       goodsList:res.data
     })
-    console.log(this.data.goodsList)
-
   },
 
   async getGoodsCategory(){
@@ -79,7 +79,20 @@ Page({
     this.setData({
       goodsCategoryData:res.data
     })
-    console.log(this.data.goodsCategoryData)
+  },
+
+  onRightItemTap(e){
+    let {goodsid}=e.currentTarget.dataset;
+    wx.navigateTo({
+      url: "../goodsDetail/index",
+      success(res){
+        res.eventChannel.emit('accept',{data:goodsid})
+      },
+      fail(err){
+        console.log(err)
+      }
+    })
+
   },
 
   onShow() {

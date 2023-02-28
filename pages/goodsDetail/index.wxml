@@ -1,0 +1,12 @@
+<view class="detail-swpier">
+  <swiper indicator-dots autoplay circular>
+    <swiper-item wx:for="good.pics" wx:key="id" bindtap="handlePreviewPic">
+      <image src="item.url" mode="widthFix"></image>
+    </swiper-item>
+  </swiper>
+</view>
+<view class="good-info-wrapper">
+  <text class="text-large goodsName">{{good.goodsName}}</text>
+  <view class="text-small grey-color goodsSale">月售 {{good.goodsSale}}</view>
+  <view class="text-large">{{good.goodsPrice}}</view>
+</view>

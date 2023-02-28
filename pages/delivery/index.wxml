@@ -12,33 +12,36 @@ bind:change="onChange"
   <view 
     class="left-item {{currentIndexL==index?'active-text':''}}" 
     wx:for="{{goodsCategoryData}}" 
+    wx:for-item="category"
     wx:key="*this"
-    bindtap="bindLeftItemTap"
-    data-category="{{item.goodsCategory}}"
+    bindtap="onLeftItemTap"
+    data-index="{{index}}"
     >
-    <view>{{item.goodsCategory}}</view>
+    <view>{{category.goodsCategory}}</view>
   </view>
 </scroll-view>
-<scroll-view class="right-menu" scroll-y="true" enable-flex="true">
+<scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-with-animation>
   <view 
     class="right-item"
-    wx:for="{{right_items}}"
+    wx:for="{{goodsList}}"
     wx:key="id"
+    id="{{'goods'+item.goodsCategoryID}}"
+    data-goodsid="{{item.id}}"
+    bindtap="onRightItemTap"
   >
-  <block wx:if="{{item.type==currentType}}">
-    <image class="img" mode="aspectFit" src="{{item.picURL}}"></image>
+  <block>
+    <image class="img" mode="aspectFit" src="{{item.goodsPic}}"></image>
     <view class="info-wrapper">
-      <view class="dishName text-bold">{{item.dish}}</view>
-      <view class="text-small grey-color">{{item.dishRemark}}</view>
-      <view class="text-small grey-color">月售{{item.sale}}份</view>
+      <view class="dishName text-bold">{{item.goodsName}}</view>
+      <view class="text-small grey-color">{{item.goodsRemark}}</view>
+      <view class="text-small grey-color">月售{{item.goodsSale}}份</view>
       <view class="price-action-wrapper">
-        <view class="dishPrice text-large">¥{{item.dishPrice}}</view>
+        <view class="dishPrice text-large">¥{{item.goodsPrice}}</view>
         <template is="goods-actions" data="{{id:item.id,qty:item.qty}}"/>
       </view>
     </view>
   </block> 
   </view>
-
 </scroll-view>
 </view>
 <checkout-bar class="checkout-bar" totalPrice="{{totalPrice}}"/>

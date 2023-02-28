@@ -40,7 +40,6 @@ App({
           url:`/${code}/login`,
           method:"GET"
         }).then(res=>{
-          console.log(res)
           if(res.statusCode=="204"){
             console.log("user is not registered")
           }
@@ -61,6 +60,18 @@ App({
           console.log(e)
         }
       }
-    )}
+    )
+    
+    var timestamp=Date.parse(new Date())
+    var expiration=timestamp+1800000 //半小时缓存
+    if(wx.getStorageSync('expiration')){
+      if(wx.getStorageSync('expiration')>expiration){
+        wx.clearStorageSync()
+        wx.setStorageSync('expiration', expiration)
+      }
+    }else{
+      wx.setStorageSync('expiration', expiration)
+    }
+  }
    
 })
