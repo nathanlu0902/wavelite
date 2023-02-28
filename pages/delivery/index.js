@@ -86,7 +86,7 @@ Page({
     wx.navigateTo({
       url: "../goodsDetail/index",
       success(res){
-        res.eventChannel.emit('accept',{data:goodsid})
+        res.eventChannel.emit('accept',goodsid)
       },
       fail(err){
         console.log(err)

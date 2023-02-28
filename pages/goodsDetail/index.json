@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "checkout-bar":"/components/checkout-bar"
+  }
 }

@@ -8,5 +8,7 @@
 <view class="good-info-wrapper">
   <text class="text-large goodsName">{{good.goodsName}}</text>
   <view class="text-small grey-color goodsSale">月售 {{good.goodsSale}}</view>
-  <view class="text-large">{{good.goodsPrice}}</view>
+  <view class="text-large">¥{{good.goodsPrice}}</view>
+  <button class="add-to-cart-btn" bindtap="onAddToCartBtnTap">+加入购物车</button>
 </view>
+<checkout-bar></checkout-bar>
