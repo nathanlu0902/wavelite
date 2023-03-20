@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "checkout-bar":"/components/checkout-bar"
+    "checkout-bar":"/components/checkout-bar",
+    "tabbar":"/components/tabbar",
+    "add-cart-btn":"/components/add-cart-btn/add-cart-btn"
   }
 }

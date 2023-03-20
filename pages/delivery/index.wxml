@@ -1,12 +1,4 @@
-<import src="templates/goods-actions.wxml"/>
 <view class="wrapper">
-<van-search 
-class="search-bar"
-value="{{value}}"
-placeholder="搜索菜品"
-bind:search="onSearch"
-bind:change="onChange"
-></van-search>
 <view class="menu-wrapper">
 <scroll-view class="left-menu" scroll-y="true" enable-flex="true">
   <view 
@@ -28,16 +20,17 @@ bind:change="onChange"
     id="{{'goods'+item.goodsCategoryID}}"
     data-goodsid="{{item.id}}"
     bindtap="onRightItemTap"
+    data-index="{{index}}"
   >
   <block>
-    <image class="img" mode="aspectFit" src="{{item.goodsPic}}"></image>
+    <image class="img" mode="aspectFit" src="{{item.goodsPic}}"/>
     <view class="info-wrapper">
       <view class="dishName text-bold">{{item.goodsName}}</view>
       <view class="text-small grey-color">{{item.goodsRemark}}</view>
       <view class="text-small grey-color">月售{{item.goodsSale}}份</view>
       <view class="price-action-wrapper">
         <view class="dishPrice text-large">¥{{item.goodsPrice}}</view>
-        <template is="goods-actions" data="{{id:item.id,qty:item.qty}}"/>
+        <add-cart-btn add_btn_text="+" good_id="{{item.id}}" good_qty="{{item.qty}}" bindpriceUpdate="priceUpdate" bindgoodUpdate="goodUpdate" />
       </view>
     </view>
   </block> 

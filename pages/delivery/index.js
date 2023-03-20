@@ -1,10 +1,12 @@
 import {request} from "../../request/index"
+import {add_cart, remove_cart,get_total_price} from "../../utils/utils"
+
 const app=getApp();
 Page({
   data: {
     goodsCategoryData:[],
     height:app.globalData.SCREENHEIGHT*750/app.globalData.SCREENWIDTH,
-
+    totalPrice:get_total_price()
   },
 
   onLeftItemTap:function(e){
@@ -15,47 +17,23 @@ Page({
     })
   },
 
-  add:function(e){
-    let {id}=e.currentTarget.dataset;
-    let goodsList=this.data.goodsList;
-    let good=goodsList.filter(item=>item.id==id)[0]
-    good.qty+=1;
-    this.setData({
-      goodsList:goodsList
-    })
-    this.getTotalPrice();
-  },
-
-  minus:function(e){
-    let {id,qty}=e.currentTarget.dataset;
-    let goodsList=this.data.goodsList;
-    let good=goodsList.filter(item=>item.id==id)[0]
-    if(qty>0){
-      good.qty-=1;
-    }
-    this.setData({
-      goodsList:goodsList
-    })
-    this.getTotalPrice();
-  },
-
-  getTotalPrice:function(){
-    let totalPrice=0;
-    let goodsList=this.data.goodsList;
-    const initialValue=0;
-    //累加对象里的值必须提供initialValue
-    totalPrice=goodsList.reduce((pre,nxt)=>{
-        return pre+nxt.qty*nxt.goodsPrice
-      },initialValue)
-    this.setData({
-      totalPrice:totalPrice
-    })
-  } ,
-
-  onLoad() {
+  onShow(){
     this.getGoodsCategory();
     this.getGoodsList();
-},
+    this.getCart();
+    this.setData({
+      totalPrice:get_total_price()
+    })
+  },
+  onLoad() {
+
+  },
+  getCart(){
+    let cart=wx.getStorageSync('cart');
+    this.setData({
+      cart:cart
+    })
+  },
 
   async getGoodsList(){
     let res=await request({
@@ -65,8 +43,19 @@ Page({
     if(!wx.getStorageSync('goodsList')){
       wx.setStorageSync('goodsList', res.data)
     }
+    let goodsList=res.data;
+    goodsList.map(item=>{
+      //取第一张图片作为列表封面
+      item.goodsPic=item.goodsPic.split(',')[0]
+      //获取cart中的good数量
+      let cart=wx.getStorageSync('cart')||[];
+      let index=cart.findIndex(v=>v.id===item.id);
+      if(index!=-1){
+        item.qty=cart[index].qty;
+      }
+    })
     this.setData({
-      goodsList:res.data
+      goodsList:goodsList
     })
   },
 
@@ -84,22 +73,30 @@ Page({
   onRightItemTap(e){
     let {goodsid}=e.currentTarget.dataset;
     wx.navigateTo({
-      url: "../goodsDetail/index",
+      url: '/pages/goodsDetail/index?id='+goodsid,
       success(res){
-        res.eventChannel.emit('accept',goodsid)
+        // res.eventChannel.emit('accept',goodsid)
       },
       fail(err){
         console.log(err)
       }
     })
-
   },
 
-  onShow() {
+  priceUpdate(e){
+    this.setData({
+      totalPrice:get_total_price()
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
+  goodUpdate(e){
+    let {id,qty}=e.detail;
+    let goodsList=this.data.goodsList;
+    goodsList.find(v=>v.id===id)['qty']=qty;
+    this.setData({
+      goodsList:goodsList
+    })
+  }
+
   
 })

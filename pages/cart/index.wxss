@@ -1,1 +1,38 @@
-/* pages/cart/index.wxss */
+.delivery-info-wrapper{
+  display:flex;
+  flex-direction: column;
+  border: 1px grey solid;
+  box-shadow: lightcyan;
+}
+
+.delivery-info{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+}
+
+.cart-content{
+  display:flex;
+  flex-direction: column;
+}
+
+.cart-item{
+  margin:20rpx;
+
+}
+
+.good-info-wrapper{
+  display:flex;
+  flex-direction: row;
+}
+
+.footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  left:0;
+  height:90rpx;
+  border-top:1px solid #ccc;
+  display:flex;
+}

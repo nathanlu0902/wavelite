@@ -1,4 +1,3 @@
-@import 'templates/goods-actions.wxss';
 
 .wrapper{
   display:flex;

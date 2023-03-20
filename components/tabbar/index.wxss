@@ -1,0 +1,16 @@
+.navItem{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  padding:15rpx 0;
+}
+
+.navBar{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.active{
+  border-bottom: 5rpx blue solid;
+}

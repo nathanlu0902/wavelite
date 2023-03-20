@@ -1,0 +1,6 @@
+<view class="navBar">
+  <view class="navItem {{item.isActive?'active':''}}" wx:for="{{tabItems}}" wx:key="id" bindtap="tabClicked" data-index="{{index}}">
+    {{item.value}}
+  </view>
+</view>
+<slot></slot>

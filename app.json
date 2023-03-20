@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/delivery/index",
     "pages/mine/index",
-    "pages/goods/index",
     "pages/cart/index",
     "pages/userInfo/index",
     "pages/login/index",

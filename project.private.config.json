@@ -27,6 +27,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/goodsDetail/index",
+          "query": "id=POKE001",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
