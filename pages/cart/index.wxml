@@ -9,29 +9,33 @@
       </view>
     </view>
     <view wx:else>
-      <view class="choose-address-content">
-        <view class="choose-address-btn" bindtap="chooseAddress">请选择收货地址</view>
+      <view class="choose-address-content delivery-item">
+        <view class="choose-address-btn delivery-item-text" bindtap="chooseAddress">请选择收货地址</view>
       </view>
     </view>
-    <view class="delivery-info eta">
-      <text>预计送达时间</text>
-      <view>{{eta}}</view>
+    <view class="delivery-item eta">
+      <text class="delivery-item-text">预计送达时间</text>
+      <view class="right-item">{{eta}}</view>
     </view>
-    <view class="delivery-info payment-method">
-      <text>支付方式</text>
-      <view>微信支付</view>
+    <view class=" delivery-item payment-method">
+      <text class="delivery-item-text">支付方式</text>
+      <view class="right-item">微信支付</view>
     </view>
   </view>
 
   <view class="cart-content">
     <view wx:for="{{cart}}" wx:key="id" class="cart-item">
-      <image src="{{item.goodsPic}}"></image>
-      <view class="cart-item">
+      <image mode="aspectFit" src="{{'../..'+item.goodsPic}}"></image>
+      <view class="cart-info">
         <view class="text-large">{{item.goodsName}}</view>
         <view class="grey-color text-small">✖️{{item.qty}}</view>
-        <view class="text-bold" >{{item.goodsPrice}}</view>
       </view>
+      <view class="text-bold" >{{item.goodsPrice}}</view>
     </view>
+  </view>
+
+  <view class="additional-info">
+    <view class></view>
   </view>
 
   <view class="footer">

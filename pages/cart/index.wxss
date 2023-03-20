@@ -1,25 +1,45 @@
 .delivery-info-wrapper{
   display:flex;
   flex-direction: column;
-  border: 1px grey solid;
-  box-shadow: lightcyan;
+  border: 1px lightgray solid;
+  border-radius: 10px;
+  margin:20rpx;
 }
 
-.delivery-info{
+.delivery-item{
+  height:100%;
   display:flex;
   flex-direction: row;
-  justify-content: space-between;
-  border-bottom: 1px solid grey;
+  align-items: center;
+}
+
+.delivery-item-text{
+  margin-left:20rpx;
+}
+
+.right-item{
+  position:absolute;
+  right:30rpx;
 }
 
 .cart-content{
   display:flex;
   flex-direction: column;
+  border:1px solid lightgray;
+  border-radius: 10px;
+  margin:20rpx;
 }
 
 .cart-item{
   margin:20rpx;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
+.cart-item image{
+  width:60rpx;
+  height:60rpx;
 }
 
 .good-info-wrapper{
@@ -35,4 +55,14 @@
   height:90rpx;
   border-top:1px solid #ccc;
   display:flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+.totalPrice{
+  order:1;
+}
+
+.pay-btn{
+  border-radius: 20%;
+  background-color:lightblue;
 }
