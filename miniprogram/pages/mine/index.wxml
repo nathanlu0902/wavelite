@@ -1,0 +1,6 @@
+<mp-cells>
+  <mp-cell icon="" value="地址管理" link="true"></mp-cell>
+  <mp-cell icon="" value="关注公众号" link="true"></mp-cell>
+  <mp-cell icon="" value="联系我们" link="true"></mp-cell>
+  <mp-cell icon="" value="设置" link="true"></mp-cell>
+</mp-cells>

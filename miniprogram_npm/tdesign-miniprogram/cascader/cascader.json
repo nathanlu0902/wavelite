@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "t-icon": "../icon/icon",
-    "t-popup": "../popup/popup",
-    "t-radio-group": "../radio-group/radio-group"
-  }
-}

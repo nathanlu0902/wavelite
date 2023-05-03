@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.js"],"names":[],"mappings":";;;;;;;AAAA;AACA;AACA;AACA;AACA;AACA;AACA","file":"index.js","sourcesContent":["\nmodule.exports = function (scope) {\n\tvar rc = require('rc')('npm', {registry: 'https://registry.npmjs.org/'});\n\tvar url = rc[scope + ':registry'] || rc.registry;\n\treturn url.slice(-1) === '/' ? url : url + '/';\n};\n"]}

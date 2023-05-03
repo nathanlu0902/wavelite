@@ -1,0 +1,25 @@
+{
+  "name": "miniprogram-1",
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.10.14",
+    "moments": "^0.0.2",
+    "weui-miniprogram": "^1.2.7"
+  },
+  "description": "1. 首页页面     - 轮播图     - 模块入口     - 宣传图片 2. 个人中心页面     - 个人信息展示，跳转信息修改页面     - 地址管理，跳转地址列表页面     - 订单列表页，展示不同状态订单 3. 外卖列表页面     - 分类及菜品滑动展示     - 优惠展示     - 自动计算价格     - 点击详情展示已选商品     - 点击跳转结算页面     - 点击跳转商品详情页 4. 商品详情页面     - 轮播图     - 商品详情，价格，评价     - 添加购物车     - 自动计算     - 点击跳转结算页     - 分享     - 与客服聊天 5. 购物车页面     - 无商品展示默认提示信息     - 有商品可以修改商品数量，删除商品     - 自动计算商品价格     - 点击结算跳转支付页面 6. 支付页面     - 有默认地址则选择默认地址     - 点击支付创建订单",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanlu0902/wavelite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nathanlu0902/wavelite/issues"
+  },
+  "homepage": "https://github.com/nathanlu0902/wavelite#readme",
+  "keywords": []
+}
