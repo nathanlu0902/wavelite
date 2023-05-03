@@ -6,10 +6,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    add_btn_text:{
-      type:String,
-      value:""
-    },
+    // add_btn_text:{
+    //   type:String,
+    //   value:""
+    // },
     good_id:{
       type:String,
       value:""
@@ -42,11 +42,12 @@ Component({
     },
 
     add:function(){
-      this.properties.good_qty+=1;
-      // this.setData({
-      //   good_qty:this.properties.good_qty+1
-      // })
-      add_cart(this.properties.good_id);
+      wx.cloud.callFunction({
+        name:"add_cart",
+        data:{
+          _id:this.properties.good_id,
+        }
+      })
       this.updatePrice();
       this.updateGood();
 

@@ -18,45 +18,53 @@ Page({
   onShow(){
     this.getGoodsCategory();
     this.getGoodsList();
-    this.getCart();
     this.setData({
       totalPrice:get_total_price()
     })
   },
-  getCart(){
-    let cart=wx.getStorageSync('cart');
-    this.setData({
-      cart:cart
+
+  async getCart(){
+    let cart=await wx.cloud.callFunction({
+      name:"get_cart"
     })
+    return cart
+    // wx.cloud.callFunction({
+    //   name:"get_cart"
+    // }).then(res=>{
+    //   console.log(res.result)
+    //   return res.result;
+
+    // })
   },
 
- getGoodsList(){
+  getGoodsList(){
+    let cart=this.getCart();
+    console.log(cart);
+    //更新商品数量
     wx.cloud.callFunction({
       name:"getGoodsList"
     }).then(res=>{
       let goodsList=res.result.res;
-      // if(!wx.getStorageSync('goodsList')||wx.getStorageSync('goodsList').length==0) {
-      //   wx.setStorageSync('goodsList', goodsList)
-      // }
-      goodsList.map(item=>{
-        //获取cart中的good数量
-        let cart=wx.getStorageSync('cart')||[];
-        let index=cart.findIndex(v=>v.id===item.id);
+      goodsList.forEach(item=>{
+        console.log(cart)
+        let index=cart.findIndex(v=>v._id===item._id);
         if(index!=-1){
           item.qty=cart[index].qty;
+        }else{
+          item.qty=0;
         }
       })
       this.setData({
         goodsList:goodsList
       })
     })
+
   },
 
   getGoodsCategory(){
     wx.cloud.callFunction({
       name:"getGoodsCategory"
     }).then(res=>{
-      console.log(res);
       let goodsCategory=res.result.res;
       this.setData({
         goodsCategory:goodsCategory
@@ -65,9 +73,9 @@ Page({
   },
 
   onRightItemTap(e){
-    let {goodsid}=e.currentTarget.dataset;
+    let {_id}=e.currentTarget.dataset;
     wx.navigateTo({
-      url: '/pages/goodsDetail/index?goodsid='+goodsid,
+      url: '../../pages/goodsDetail/index?goodsid='+_id,
       success(res){
         // res.eventChannel.emit('accept',goodsid)
       },
