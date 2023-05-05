@@ -27,12 +27,23 @@
       <view class="text-small grey-color">月售{{item.goodsSale}}份</view>
       <view class="price-action-wrapper">
         <view class="dishPrice text-large">¥{{item.goodsPrice}}</view>
-        <add-cart-btn good_id="{{item._id}}" good_qty="{{item.qty}}" bindpriceUpdate="priceUpdate" bindgoodUpdate="goodUpdate" />
+        <view class="btn-wrapper">
+          <block wx:if="{{item.qty>0}}">
+              <view class="minus_btn" catchtap="minus" data-_id="{{item._id}}" data-index="{{index}}">
+                <image src="/images/delivery_btn/minus.svg" class="goods-btn_img"></image>
+              </view>
+              <view class="qty">{{item.qty}}</view>
+          </block>
+          <view class="add_btn" catchtap="add" data-_id="{{item._id}}" data-index="{{index}}">
+            <image src="/images/delivery_btn/plus.svg" class="goods-btn_img"></image>
+          </view>
+        </view>
+        <!-- <add-cart-btn good_id="{{item._id}}" good_qty="{{item.qty}}" bindpriceUpdate="priceUpdate" bindgoodUpdate="goodUpdate" /> -->
       </view>
     </view>
   </block> 
   </view>
 </scroll-view>
 </view>
-<checkout-bar class="checkout-bar" totalPrice="{{totalPrice}}"/>
+<checkout-bar class="checkout-bar" totalCount="{{totalCount}}" totalPrice="{{totalPrice}}"/>
 </view>

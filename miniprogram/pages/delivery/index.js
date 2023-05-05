@@ -4,7 +4,6 @@ const app=getApp();
 Page({
   data: {
     height:app.globalData.SCREENHEIGHT*750/app.globalData.SCREENWIDTH,
-    totalPrice:get_total_price()
   },
 
   onLeftItemTap:function(e){
@@ -17,46 +16,45 @@ Page({
 
   onShow(){
     this.getGoodsCategory();
+    this.getCart();
     this.getGoodsList();
-    this.setData({
-      totalPrice:get_total_price()
+    this.updateQty();
+    this.getTotal();
+  },
+
+  getCart(){
+    wx.cloud.callFunction({
+      name:"getCartList"
+    }).then(res=>{
+      wx.setStorageSync('cart', res.result);
     })
   },
 
-  async getCart(){
-    let cart=await wx.cloud.callFunction({
-      name:"get_cart"
+  updateQty(){
+    let goodsList=wx.getStorageSync('goodsList');
+    goodsList.forEach(item=>{
+      if(wx.getStorageSync('cart')){
+        var cart=wx.getStorageSync('cart')
+      }
+      let index=cart.findIndex(v=>v._id===item._id);
+      if(index!=-1){
+        item.qty=cart[index].qty;
+      }else{
+        item.qty=0;
+      }
     })
-    return cart
-    // wx.cloud.callFunction({
-    //   name:"get_cart"
-    // }).then(res=>{
-    //   console.log(res.result)
-    //   return res.result;
-
-    // })
+    this.setData({
+      goodsList:goodsList
+    })
   },
 
   getGoodsList(){
-    let cart=this.getCart();
-    console.log(cart);
     //更新商品数量
     wx.cloud.callFunction({
       name:"getGoodsList"
     }).then(res=>{
       let goodsList=res.result.res;
-      goodsList.forEach(item=>{
-        console.log(cart)
-        let index=cart.findIndex(v=>v._id===item._id);
-        if(index!=-1){
-          item.qty=cart[index].qty;
-        }else{
-          item.qty=0;
-        }
-      })
-      this.setData({
-        goodsList:goodsList
-      })
+      wx.setStorageSync('goodsList', goodsList)
     })
 
   },
@@ -84,21 +82,52 @@ Page({
       }
     })
   },
+  add:function(e){
+    let _id=e.currentTarget.dataset._id;
+    let index=e.currentTarget.dataset.index;
+    let item=this.data.goodsList[index]
+    wx.cloud.callFunction({
+      name:"addToCart",
+      data:{
+        item:item
+      }
+    }).then(res=>{
+      this.getCart();
+      this.updateQty();
+      this.getTotal();
+      }
+    )
+  },
 
-  priceUpdate(e){
-    this.setData({
-      totalPrice:get_total_price()
+  minus:function(e){
+    let _id=e.currentTarget.dataset._id;
+    wx.cloud.callFunction({
+      name:"removeFromCart",
+      data:{
+        _id:_id
+      }
+    }).then(res=>{
+      this.getCart();
+      this.updateQty();
+      this.getTotal();
     })
   },
 
-  goodUpdate(e){
-    let {id,qty}=e.detail;
-    let goodsList=this.data.goodsList;
-    goodsList.find(v=>v.id===id)['qty']=qty;
+  getTotal(){
+    let totalCount=0;
+    let totalPrice=0;
+    let cart=wx.getStorageSync('cart');
+    cart.forEach(v=>{
+      totalCount+=v.qty;
+      totalPrice+=v.qty*v.goodsPrice;
+    })
+    console.log(totalCount,totalPrice)
     this.setData({
-      goodsList:goodsList
+      totalCount:totalCount,
+      totalPrice:totalPrice
     })
   }
+
 
   
 })

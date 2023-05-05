@@ -6,14 +6,12 @@ const db=cloud.database();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  let {_id}=event;
-  console.log(_id)
-  //,goodsCategoryID,goodsName,goodsPic,goodsPrice,goodsRemark,goodsSale
+  const good=event.item;
   const _=db.command;
+  console.log(good)
   try{
     //购物车已经存在
-    let res=await db.collection("cart").doc(_id).get();
-    await db.collection("cart").doc(_id).update({
+    await db.collection("cart").doc(good._id).update({
       data:{
         qty:_.inc(1)
       }
@@ -22,11 +20,14 @@ exports.main = async (event, context) => {
     //购物车不存在
     await db.collection("cart").add({
       data:{
-        _id:_id,
-        // goodsCategoryID,
-        // goodsName,
-        qty:1,
-        // goodsPic,goodsPrice,goodsRemark,goodsSale
+       _id:good._id,
+       goodsCategoryID:good.goodsCategoryID,
+       goodsName:good.goodsName,
+       goodsPic:good.goodsPic,
+       goodsPrice:good.goodsPrice,
+       goodsRemark:good.goodsRemark,
+       goodsSale:good.goodsSale,
+       qty:1
       }
     })
 

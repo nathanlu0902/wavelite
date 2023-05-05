@@ -1,5 +1,6 @@
 <view class="bar-wrapper">
   <van-icon name="cart-o" size="60rpx" bindtap="expand"/>
+  <view class="totalCount">{{totalCount}}</view>
   <view class="totalPrice">¥{{totalPrice}}</view>
   <view class="checkout-btn" bindtap="checkout">去结算</view>
 </view>
