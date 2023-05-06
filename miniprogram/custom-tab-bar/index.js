@@ -19,12 +19,6 @@ Component({
         text: "首页"
       },
       {
-        path:"/pages/delivery/index",
-        iconSelectedClass: "shop",
-        iconClass: "shop-o",
-        text: "外卖"
-      },
-      {
         path:"/pages/mine/index",
         iconSelectedClass: "icon-myfill",
         iconClass: "icon-my",

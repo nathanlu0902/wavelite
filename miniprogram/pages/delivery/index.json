@@ -1,7 +1,6 @@
 {
   "usingComponents": {
     "price":"../../components/price/price",
-    "checkout-bar":"../../components/checkout-bar/index",
-    "add-cart-btn":"../../components/add-cart-btn/add-cart-btn"
+    "checkout-bar":"../../components/checkout-bar/index"
   }
 }

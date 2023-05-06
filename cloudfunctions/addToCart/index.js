@@ -8,9 +8,9 @@ const db=cloud.database();
 exports.main = async (event, context) => {
   const good=event.item;
   const _=db.command;
-  console.log(good)
   try{
-    //购物车已经存在
+    //要用res承载不然报错，要用await得到结果
+    let res=await db.collection("cart").doc(good._id).get()
     await db.collection("cart").doc(good._id).update({
       data:{
         qty:_.inc(1)
@@ -28,8 +28,7 @@ exports.main = async (event, context) => {
        goodsRemark:good.goodsRemark,
        goodsSale:good.goodsSale,
        qty:1
-      }
-    })
+      }})
 
   }
 }

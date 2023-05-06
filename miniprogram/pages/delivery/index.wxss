@@ -20,13 +20,11 @@
 }
 
 .left-item{
-  height:80rpx;
   text-align: center;
-  line-height: 80rpx;
   flex:none;
   font-size:28rpx;
   font-weight: 500;
-  padding:15rpx 20rpx;
+  margin:25rpx 0;
 }
 
 .active-text{
@@ -42,26 +40,31 @@
 }
 
 .right-item{
-  display:flex;
+  /* display:flex;
   flex-direction: row;
   align-items:flex-start;
   margin-left:20rpx;
-  justify-content: space-around;
-  margin-bottom:40rpx;
+  justify-content: space-around; */
+  margin-bottom:5rpx;
 }
 
 .img{
-  width:150rpx;
-  height:150rpx;
+  position:relative;
+  width:100%;
+  height:300rpx;
+  z-index: 0;
 }
 
 .info-wrapper{
+  position:relative;
   display:flex;
   flex-direction:column;
   justify-content: flex-start;
   flex:auto;
   margin-left:20rpx;
   line-height: 1.5;
+  z-index:1;
+  top:-60rpx;
 }
 
 .price-action-wrapper{

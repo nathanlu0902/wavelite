@@ -8,7 +8,15 @@
   <view class="text-small grey-color goodsSale">月售 {{good.goodsSale}}</view>
   <view class="price-btn-wrapper">
     <view class="text-large price">¥{{good.goodsPrice}}</view>
-    <add-cart-btn good_id="{{good.id}}" good_qty="{{good.qty}}" bindpriceUpdate="priceUpdate" bindgoodUpdate="goodUpdate"></add-cart-btn>
+    <block wx:if="{{good.qty>0}}">
+        <view class="minus_btn" catchtap="minus">
+          <image src="../../images/delivery_btn/minus.svg" class="goods-btn_img"></image>
+        </view>
+        <view class="qty">{{good.qty}}</view>
+    </block>
+    <view class="add_btn" catchtap="add">
+      <image src="../../images/delivery_btn/plus.svg" class="goods-btn_img"></image>
+    </view>
   </view>  
 </view>
 <tabbar tabItems="{{tabItems}}" bindTabClicked="handleTabClicked">
@@ -18,4 +26,4 @@
     <view class="group" wx:elif="{{tabItems[2].isActive}}">搭配</view>
   </view> 
 </tabbar>
-<checkout-bar class="checkout-bar" totalPrice="{{totalPrice}}" bindtap="checkout"/>
+<checkout-bar class="checkout-bar" totalCount="{{totalCount}}" totalPrice="{{totalPrice}}" bindtap="checkout"/>

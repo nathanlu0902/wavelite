@@ -16,6 +16,9 @@
     </swiper-item>
   </block>
 </swiper>
+<view class="btn-area">
+  <navigator class="delivery-nav" url="../delivery/index" hover-class="changestyle">外卖</navigator>
+</view>
 <view wx:if="{{currentOrder}}">
   <view class="order-status">
     <view>下单时间：{{currentOrder.order_time}}</view>

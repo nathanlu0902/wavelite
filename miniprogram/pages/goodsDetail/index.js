@@ -1,4 +1,4 @@
-import {get_total_price} from "../../utils/utils"
+
 Page({
   data: {
     tabItems:[
@@ -20,19 +20,21 @@ Page({
     ],
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-    let goodsid=options.goodsid;
-    if(wx.getStorageSync('goodsList')){
-      var good=wx.getStorageSync('goodsList').find(item=>item.id==goodsid);
-    }
-    good.goodsPic=good.goodsPic.split(",");
-    let totalPrice=get_total_price();
-    this.setData({
-        good:good,
-        totalPrice:totalPrice
+  onLoad() {
+    this.loadGood()
+    this.getCart()
+  },
+
+  loadGood(){
+    let goodsList=wx.getStorageSync('goodsList');
+    //获取前一个页面传入的index
+    let eventChannel=this.getOpenerEventChannel();
+    eventChannel.on("passGood",res=>{
+      let index=res.data;
+      this.setData({
+        index:index,
+        good:goodsList[index]
+      })
     })
   },
 
@@ -55,17 +57,26 @@ Page({
     })
   },
 
-  goodUpdate(e){
-    let {qty}=e.detail;
-    this.data.good.qty=qty;
-    this.setData({
-      good:this.data.good
-    })
+  add:function(){
+    wx.cloud.callFunction({
+      name:"addToCart",
+      data:{
+        item:this.data.good
+      }
+    }).then(()=>{
+      this.getCart();
+      }
+    )
   },
 
-  priceUpdate(){
-    this.setData({
-      totalPrice:get_total_price()
+  minus:function(){
+    wx.cloud.callFunction({
+      name:"removeFromCart",
+      data:{
+        _id:this.data.good._id
+      }
+    }).then(()=>{
+      this.getCart();
     })
   },
  
@@ -73,5 +84,27 @@ Page({
     wx.navigateTo({
       url: '../cart/index',
     })
-  }
+  },
+
+  getCart(){
+    wx.cloud.callFunction({
+      name:"getCartList"
+    }).then(res=>{
+      let {totalCount,totalPrice,cart}=res.result;
+      //更新goodslist中的qty
+      let goodsList=wx.getStorageSync('goodsList');
+      let index=cart.findIndex(v=>v._id===this.data.good._id);
+      if(index!=-1){
+        goodsList[this.data.index].qty=cart[index].qty;
+      }else{
+        goodsList[this.data.index].qty=0;
+      }
+      this.setData({
+        good:goodsList[this.data.index],
+        totalCount:totalCount,
+        totalPrice:totalPrice
+      })
+    })
+  },
+
 })

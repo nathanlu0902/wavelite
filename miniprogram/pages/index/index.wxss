@@ -59,3 +59,10 @@
   width:100%;
   overflow:hidden;
 }
+
+.delivery-nav{
+  border: 1px solid black;
+  width:100rpx;
+  height:100rpx;
+  background-color: cornsilk;
+}

@@ -16,35 +16,32 @@ Page({
 
   onShow(){
     this.getGoodsCategory();
-    this.getCart();
     this.getGoodsList();
-    this.updateQty();
-    this.getTotal();
+    this.getCart();
   },
 
   getCart(){
     wx.cloud.callFunction({
       name:"getCartList"
     }).then(res=>{
-      wx.setStorageSync('cart', res.result);
-    })
-  },
-
-  updateQty(){
-    let goodsList=wx.getStorageSync('goodsList');
-    goodsList.forEach(item=>{
-      if(wx.getStorageSync('cart')){
-        var cart=wx.getStorageSync('cart')
-      }
-      let index=cart.findIndex(v=>v._id===item._id);
-      if(index!=-1){
-        item.qty=cart[index].qty;
-      }else{
-        item.qty=0;
-      }
-    })
-    this.setData({
-      goodsList:goodsList
+      console.log(res.result)
+      let {totalCount,totalPrice,cart}=res.result;
+      //更新goodslist中的qty
+      let goodsList=wx.getStorageSync('goodsList');
+      goodsList.forEach(item=>{
+        let index=cart.findIndex(v=>v._id===item._id);
+        if(index!=-1){
+          item.qty=cart[index].qty;
+        }else{
+          item.qty=0;
+        }
+      })
+      this.setData({
+        totalCount:totalCount,
+        totalPrice:totalPrice,
+        goodsList:goodsList
+      })
+      wx.setStorageSync("goodsList",goodsList)
     })
   },
 
@@ -71,11 +68,11 @@ Page({
   },
 
   onRightItemTap(e){
-    let {_id}=e.currentTarget.dataset;
+    let {index}=e.currentTarget.dataset;
     wx.navigateTo({
-      url: '../../pages/goodsDetail/index?goodsid='+_id,
+      url: '../../pages/goodsDetail/index?goodsid',
       success(res){
-        // res.eventChannel.emit('accept',goodsid)
+        res.eventChannel.emit('passGood',{data:index})
       },
       fail(err){
         console.log(err)
@@ -83,18 +80,15 @@ Page({
     })
   },
   add:function(e){
-    let _id=e.currentTarget.dataset._id;
     let index=e.currentTarget.dataset.index;
-    let item=this.data.goodsList[index]
+    let item=this.data.goodsList[index];
     wx.cloud.callFunction({
       name:"addToCart",
       data:{
         item:item
       }
-    }).then(res=>{
+    }).then(()=>{
       this.getCart();
-      this.updateQty();
-      this.getTotal();
       }
     )
   },
@@ -106,28 +100,9 @@ Page({
       data:{
         _id:_id
       }
-    }).then(res=>{
+    }).then(()=>{
       this.getCart();
-      this.updateQty();
-      this.getTotal();
     })
   },
 
-  getTotal(){
-    let totalCount=0;
-    let totalPrice=0;
-    let cart=wx.getStorageSync('cart');
-    cart.forEach(v=>{
-      totalCount+=v.qty;
-      totalPrice+=v.qty*v.goodsPrice;
-    })
-    console.log(totalCount,totalPrice)
-    this.setData({
-      totalCount:totalCount,
-      totalPrice:totalPrice
-    })
-  }
-
-
-  
 })
