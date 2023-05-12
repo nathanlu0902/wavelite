@@ -1,0 +1,16 @@
+<view>
+  <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+    <mp-cells>
+      <mp-cell title="昵称" name="nickname">
+        <input name="nickname" bindinput="formInputChange" placeholder="请输入昵称"/>
+      </mp-cell>
+      <mp-cell title="手机号码*" name="phone">
+        <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取微信手机号</button>
+      </mp-cell>
+    </mp-cells>
+    <view class="btn-area">
+      <button bindtap="submitForm">提交</button>
+    </view>
+  </mp-form>
+  
+</view>

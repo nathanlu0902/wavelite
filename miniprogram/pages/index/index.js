@@ -12,22 +12,31 @@ Page({
      },
      {link:'',
      imgUrl:'http://www.wagas.com.cn/admin/img/indeximg/bc4bb4740548b7348f6ef04b9219d21f.jpg'
-    }
-    ]
+    },
+    ],
+    showRegister:false
     
   },
   //options(Object)
   onLoad: function() {
-    console.log(`存在用户名${wx.getStorageSync('nickname')}`);
-    if(wx.getStorageSync('nickname')){
-      this.setData({
-        "userinfo.nickname":wx.getStorageSync('nickname'),
-      })
-    }else{
-      this.setData({
-        "userinfo.nickname":"Wave用户"
-      })
-    }
+    wx.cloud.callFunction({
+      name:"login"
+    }).then(res=>{
+      //res.result返回一个数组
+      if(res.result[0].openid){
+        let {openid,nickname}=res.result[0];
+        this.setData({
+          registered:true,
+          "userinfo.nickname":nickname
+        })
+      }else{
+        this.setData({
+          registered:false,
+          "userinfo.nickname":"Waver"
+        })
+      }
+    })
+    this.registerPopup=this.selectComponent("#popup")
   },
 
   onShow: function() {
@@ -38,8 +47,11 @@ Page({
     }
   },
   
-  //item(index,pagePath,text)
-  onTabItemTap:function(item) {
+  showRegister:function(){
+    this.setData({
+      showRegister:true
+    })
+    this.registerPopup.showModal();
 
   },
 

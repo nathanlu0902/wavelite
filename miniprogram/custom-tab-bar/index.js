@@ -19,10 +19,16 @@ Component({
         text: "首页"
       },
       {
+        path:"/pages/delivery/index",
+        iconSelectedName: "wap-delivery",
+        iconName: "wap-delivery-o",
+        text: "外卖"
+      },
+      {
         path:"/pages/mine/index",
         iconSelectedClass: "icon-myfill",
         iconClass: "icon-my",
-        text: "个人"
+        text: "个人中心"
       }
     ]
   },

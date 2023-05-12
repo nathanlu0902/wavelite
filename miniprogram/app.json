@@ -5,8 +5,6 @@
     "pages/delivery/index",
     "pages/mine/index",
     "pages/cart/index",
-    "pages/userInfo/index",
-    "pages/login/index",
     "pages/goodsDetail/index",
     "pages/chooseAddress/index",
     "pages/addAddress/index"
@@ -27,8 +25,12 @@
         "text": "首页"
       },
       {
+        "pagePath": "pages/delivery/index",
+        "text": "外卖"
+      },
+      {
         "pagePath": "pages/mine/index",
-        "text": "我的"
+        "text": "个人中心"
       }
     ]
   },
