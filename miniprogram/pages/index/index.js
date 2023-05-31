@@ -1,5 +1,4 @@
-const app=getApp();
-
+const app=getApp()
 Page({
   data: {
     top:app.globalData.menuTop+(app.globalData.menuTop-app.globalData.statusBarHeight)+app.globalData.menuHeight,
@@ -22,17 +21,22 @@ Page({
     wx.cloud.callFunction({
       name:"login"
     }).then(res=>{
+      console.log(res)
       //res.result返回一个数组
-      if(res.result[0].openid){
-        let {openid,nickname}=res.result[0];
+      if(res.result.length>0){
+        let userinfo=res.result[0];
+        wx.setStorageSync('loggedIn', true)
+        wx.setStorageSync('userinfo', res.result[0])
         this.setData({
           registered:true,
-          "userinfo.nickname":nickname
+          nickname:userinfo.nickname,
+          points:userinfo.points
         })
       }else{
+        wx.setStorageSync('loggedIn', false)
         this.setData({
-          registered:false,
-          "userinfo.nickname":"Waver"
+          nickname:"Waver",
+          registered:false
         })
       }
     })
@@ -55,8 +59,22 @@ Page({
 
   },
 
+  registerCompleted:function(e){
+    if(e.detail=="registered"){
+      this.registerPopup.hideModal();
+      wx.setStorageSync('loggedIn', true)
+      this.onLoad()
+    }else{
+      wx.showModal({
+        title: '注册失败',
+        content: '注册失败',
+        }
+      )
+    }
+  },
+
   onBindUserTap:function(){
-    if(app.globalData.userinfo.loggedIn==true){
+    if(wx.getStorageSync('loggedIn')==true){
       wx.navigateTo({
         url: '/pages/userInfo/index',
     })

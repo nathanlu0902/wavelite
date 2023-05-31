@@ -1,4 +1,5 @@
-// components/register/register.js
+const app=getApp()
+
 Component({
   /**
    * 组件的属性列表
@@ -46,7 +47,14 @@ Component({
               phone:this.data.formData.phone
             }
           }).then(res=>{
-            console.log(res)
+            if(res.result.code=="200"){
+              wx.showToast({
+                title: '用户注册成功',
+              }).then(res=>{
+                wx.setStorageSync('loggedIn', true)
+                this.triggerEvent("registerCompleted","registered")
+              })
+            }
           })
         }
       }

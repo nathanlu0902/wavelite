@@ -1,10 +1,8 @@
 // app.js
 App({
   globalData:{
-    navHeight:0,
-    menuTop:'',
-    statusBarHeight:'',
-    menuHeight:'',
+    statusBarHeight:0,
+    navBarHeight:0,
     SCREENHEIGHT:'',
     SCREENWIDTH:'',
     userinfo:{
@@ -24,47 +22,16 @@ App({
       env:"cloud1-8gf4k3n9d3a701cc"
     })
     wx.getSystemInfo({
-      success: (result) => {
-       this.globalData.statusBarHeight=result.statusBarHeight;
-       this.globalData.SCREENHEIGHT=result.screenHeight;
-       this.globalData.SCREENWIDTH=result.screenWidth;
-      },fail(err){
-        console.log(err)
-      }
+      success:(res)=>{
+        let custom=wx.getMenuButtonBoundingClientRect();
+        this.globalData.statusBarHeight=res.statusBarHeight;
+        this.globalData.navBarHeight=custom.height + (custom.top - res.statusBarHeight) * 2
+    }
+      
+      //  this.globalData.statusBarHeight=result.statusBarHeight;
+      //  this.globalData.SCREENHEIGHT=result.screenHeight;
+      //  this.globalData.SCREENWIDTH=result.screenWidth;
     })
-    let menu=wx.getMenuButtonBoundingClientRect();
-    this.globalData.menuTop=menu.top;
-    this.globalData.menuHeight=menu.height;
-    
-    // wx.login({
-    //   success(res){
-    //     let code=res.code;
-    //     request({
-    //       url:`/${code}/login`,
-    //       method:"GET"
-    //     }).then(res=>{
-    //       if(res.statusCode=="204"){
-    //         console.log("user is not registered")
-    //       }
-    //       else if(res.statusCode=="200"){
-    //         console.log(`已读取用户名:${res.data.nickname},openid:${res.data.openid}`);
-    //         wx.setStorageSync('userinfo', res.data)
-            // that.globalData.userinfo.nickname=res.data.nickname;
-            // that.globalData.userinfo.phone=res.data.phone;
-            // that.globalData.userinfo.gender=res.data.gender;
-            // that.globalData.userinfo.birth=res.data.birth;
-            // that.globalData.userinfo.loggedIn=true;
-            // that.globalData.userinfo.userid=res.data.userid;
-            // that.globalData.userinfo.addressList=res.data.addressList;
-      //     }
-      //   }
-          
-      //   )},
-      // fail(e){
-      //     console.log(e)
-      //   }
-      // }
-    // )
     
     var timestamp=Date.parse(new Date())
     var expiration=timestamp+1800000 //半小时缓存

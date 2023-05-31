@@ -12,10 +12,11 @@
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Wave Lite"
+    "navigationBarTitleText": "Wave Lite",
+    "navigationStyle": "custom"
   },
   "tabBar": {
-    "custom": true,
+    "custom": false,
     "backgroundColor": "#FFFFFF",
     "color": "#D3D3D3",
     "selectedColor": "#000000",

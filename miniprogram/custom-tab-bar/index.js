@@ -37,7 +37,6 @@ Component({
    */
   methods: {
     switchTab(e){
-      console.log(e);
       let {index}=e.currentTarget.dataset;
       let {path}=e.currentTarget.dataset;
       this.setData({

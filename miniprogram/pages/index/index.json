@@ -2,5 +2,6 @@
   "usingComponents": {
     "register":"../../components/register/register",
     "popup":"../../components/popup/popup"
-  }
+  },
+  "navigationStyle": "custom"
 }

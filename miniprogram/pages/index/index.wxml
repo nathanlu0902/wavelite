@@ -35,7 +35,7 @@
 <view wx:else>
   <view bindtap="showRegister">加入Wave</view>
   <popup id="popup">
-    <register slot="popup-page"></register>
+    <register bindregisterCompleted="registerCompleted" slot="popup-page"></register>
   </popup>
 </view>
 <view class="pic-wrapper">

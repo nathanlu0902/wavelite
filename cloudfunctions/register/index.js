@@ -8,8 +8,7 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   let {OPENID}=wxContext;
   let {phone,nickname}=event;
-  console.log(OPENID)
-  db.collection("wavelite_user").add({
+  return db.collection("wavelite_user").add({
     data:{
       openid:OPENID,
       phone:phone,

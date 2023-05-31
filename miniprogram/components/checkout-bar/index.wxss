@@ -9,7 +9,7 @@
   height:80rpx;
   width:550rpx;
   margin:0 auto;
-  bottom:100rpx;
+  bottom:0;
   position:fixed;
   right:0;
   left:0

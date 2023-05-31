@@ -1,0 +1,40 @@
+.nav-wrapper{
+  /* position:fixed; */
+  width:750rpx;
+  top:0;
+  left:0;
+  right:0;
+  background-color: #fff;
+  z-index: 9999999;
+  transform: translate3d(0, 0, 0);
+  position:fixed;
+
+}
+
+.nav-info{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.currentLocation{
+  width:100rpx;
+  margin-left:20rpx;
+}
+
+.distance{
+  font-size:0.7em;
+  color:#999;
+  width:120rpx;
+  margin-left:20rpx;
+}
+
+.back-btn{
+  width:32rpx;
+  height:36rpx;
+}
+
+.search-bar{
+  border:1px solid black;
+  border-radius: 10px;
+}

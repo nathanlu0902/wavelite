@@ -1,48 +1,60 @@
-<view class="wrapper">
+<custom-nav-bar navBarData="{{navBarData}}" currentDistance="100" currentLocation="丰隆汇"/>
+<view class="person-info-wrapper">
+  <view class="name">{{nickname}}</view>
+  <view class="phone"></view>
+</view>
+<swiper class="banner-swiper">
+  <swiper-item wx:for="{{bannerList}}">
+    <image src="{{item.url}}"/>
+  </swiper-item>
+</swiper>
+<view class="start-config-btn">定制你的波奇</view>
 <view class="menu-wrapper">
 <scroll-view class="left-menu" scroll-y="true" enable-flex="true">
   <view 
-    class="left-item {{currentIndexL==index?'active-text':''}}" 
+    class="left-item {{currentIndex==index?'active':''}}" 
     wx:for="{{goodsCategory}}" 
-    wx:key="*this"
+    wx:key="_id"
     bindtap="onLeftItemTap"
+    data-categoryID="{{item.categoryID}}"
     data-index="{{index}}"
     >
     <view>{{item.category}}</view>
   </view>
 </scroll-view>
-<scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-with-animation>
-  <view 
-    class="right-item"
-    wx:for="{{goodsList}}"
-    wx:key="_id"
-    data-index="{{index}}"
-    bindtap="onRightItemTap"
-  >
-  <block>
-    <image class="img" mode="scaleToFill" src="{{item.goodsPic[0]}}"/>
-    <view class="info-wrapper">
-      <view class="dishName text-bold" style="color:black">{{item.goodsName}}</view>
-      <view class="text-small grey-color">{{item.goodsRemark}}</view>
-      <!-- <view class="text-small grey-color">月售{{item.goodsSale}}份</view> -->
-      <view class="price-action-wrapper">
-        <view class="dishPrice text-large">¥{{item.goodsPrice}}</view>
-        <view class="btn-wrapper">
-          <block wx:if="{{item.qty>0}}">
-              <view class="minus_btn" catchtap="minus" data-_id="{{item._id}}" data-index="{{index}}">
-                <image src="/images/delivery_btn/minus.svg" class="goods-btn_img"></image>
-              </view>
-              <view class="qty">{{item.qty}}</view>
-          </block>
-          <view class="add_btn" catchtap="add" data-_id="{{item._id}}" data-index="{{index}}">
-            <image src="/images/delivery_btn/plus.svg" class="goods-btn_img"></image>
+<scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-top="{{scrollTop}}" bindscroll="onScroll" scroll-with-animation>
+  <view class="right-category" wx:key="key" wx:for="{{goodsList}}" wx:for-index="key" wx:for-item="value">
+    <view id="{{key}}" class="{{key==goodsCategory[currentIndex].categoryID?'fixed':''}}">{{value[0].category}}</view>
+    <view class="item-list">
+    <view class="right-item" wx:for="{{value}}" bindtap="onRightItemTap" wx:key="_id" data-index="{{index}}">
+    <block>
+      <image class="img" mode="scaleToFill" src="{{item.goodsPic[0]}}"/>
+      <view class="info-wrapper">
+        <view class="dishName text-bold" style="color:black">{{item.goodsName}}</view>
+        <view class="text-small grey-color">{{item.goodsRemark}}</view>
+        <!-- <view class="text-small grey-color">月售{{item.goodsSale}}份</view> -->
+        <view class="price-action-wrapper">
+          <view class="dishPrice text-large">¥{{item.goodsPrice}}</view>
+          <view class="btn-wrapper">
+            <block wx:if="{{item.qty>0}}">
+                <view class="minus_btn" catchtap="minus" data-_id="{{item._id}}" data-index="{{index}}" data-category="{{item.category}}">
+                  <image src="/images/delivery_btn/minus.svg" class="goods-btn_img"></image>
+                </view>
+                <view class="qty">{{item.qty}}</view>
+            </block>
+            <view class="add_btn" catchtap="add" data-category="{{item.category}}" data-_id="{{item._id}}" data-index="{{index}}">
+              <image src="/images/delivery_btn/plus.svg" class="goods-btn_img"></image>
+            </view>
           </view>
         </view>
       </view>
+    </block> 
     </view>
-  </block> 
+    </view>
   </view>
 </scroll-view>
 </view>
+<popup id="popup">
+  <register slot="popup-page"></register>
+</popup>
 <checkout-bar class="checkout-bar" totalCount="{{totalCount}}" totalPrice="{{totalPrice}}"/>
-</view>

@@ -1,16 +1,30 @@
-import {get_total_price} from "../../utils/utils"
-
 const app=getApp();
 Page({
   data: {
-    height:app.globalData.SCREENHEIGHT*750/app.globalData.SCREENWIDTH,
+    // height:app.globalData.SCREENHEIGHT*750/app.globalData.SCREENWIDTH,
+    currentIndex:0,
+    navBarData:{
+      showLocation:true,
+      showBack:false,
+      showDistance:true,
+      showSearch:true
+    },
+    bannerList:[]
+    
+  },
+  onScroll:function(e){
+    let {scrollTop}=e.detail;
+    //计算scrolltop为多少时设置currentIndex为多少
+
   },
 
   onLeftItemTap:function(e){
-    let {index}=e.currentTarget.dataset;
+    let {categoryid,index}=e.currentTarget.dataset;
     //设置scroll-into-view的参考对象
+    //id不能为中文，key全小写
     this.setData({
-      viewid:"goods"+index
+      viewid:categoryid,
+      currentIndex:index
     })
   },
 
@@ -18,24 +32,39 @@ Page({
     this.getGoodsCategory();
     this.getGoodsList();
     this.getCart();
+    if(wx.getStorageSync('userinfo')){
+      let nickname=wx.getStorageSync('userinfo')[0].nickname;
+      this.setData({
+        nickname:nickname
+      })
+    }else{
+      console.log("no user info")
+      this.setData({
+        nickname:"waver"
+      })
+    }
+    
+
   },
 
   getCart(){
     wx.cloud.callFunction({
       name:"getCartList"
     }).then(res=>{
-      console.log(res.result)
       let {totalCount,totalPrice,cart}=res.result;
       //更新goodslist中的qty
       let goodsList=wx.getStorageSync('goodsList');
-      goodsList.forEach(item=>{
-        let index=cart.findIndex(v=>v._id===item._id);
-        if(index!=-1){
-          item.qty=cart[index].qty;
-        }else{
-          item.qty=0;
-        }
-      })
+      for (let key in goodsList){
+        goodsList[key].forEach(item=>{
+            let index=cart.findIndex(v=>v._id===item._id);
+            if(index!=-1){
+              item.qty=cart[index].qty;
+            }else{
+              item.qty=0;
+            }
+          }
+        )
+      }
       this.setData({
         totalCount:totalCount,
         totalPrice:totalPrice,
@@ -50,8 +79,11 @@ Page({
     wx.cloud.callFunction({
       name:"getGoodsList"
     }).then(res=>{
-      let goodsList=res.result.res;
+      let goodsList=res.result;
       wx.setStorageSync('goodsList', goodsList)
+      this.setData({
+        goodsList:goodsList
+      })
     })
 
   },
@@ -61,6 +93,9 @@ Page({
       name:"getGoodsCategory"
     }).then(res=>{
       let goodsCategory=res.result.res;
+      goodsCategory.forEach(item=>{
+        item.fixed=false;
+      })
       this.setData({
         goodsCategory:goodsCategory
       })
@@ -80,17 +115,24 @@ Page({
     })
   },
   add:function(e){
-    let index=e.currentTarget.dataset.index;
-    let item=this.data.goodsList[index];
-    wx.cloud.callFunction({
-      name:"addToCart",
-      data:{
-        item:item
-      }
-    }).then(()=>{
-      this.getCart();
-      }
-    )
+    //用户未登录则跳转至提示注册界面
+    if(wx.getStorageSync('loggedIn')==false){
+      this.registerPopup=this.selectComponent("#popup");
+      this.registerPopup.showModal();
+    }else{
+      let {index,category}=e.currentTarget.dataset;
+      let item=this.data.goodsList[category][index];
+      wx.cloud.callFunction({
+        name:"addToCart",
+        data:{
+          item:item
+        }
+      }).then(()=>{
+        this.getCart();
+        }
+      )
+    }
+    
   },
 
   minus:function(e){

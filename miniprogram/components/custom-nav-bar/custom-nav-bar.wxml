@@ -1,0 +1,13 @@
+<view class="nav-wrapper" style="height: {{navBarHeight}}px;">
+  <view class="nav-info" style="margin-top:{{statusBarHeight}}px">
+    <view wx:if="{{navBarData.showBack}}" class="back" style="margin-top:{{statusBarHeight}}px;height: {{navBarHeight}}px;" bindtap="_back">
+      <view class="back-btn"></view>
+    </view>
+    <view wx:if="{{navBarData.showLocation}}" class="currentLocation">{{currentLocation}}</view>
+    <view wx:if="{{navBarData.showDistance}}" class="distance">距您{{currentDistance}}km
+    </view>
+    <view wx:if="{{navBarData.showSearch}}">
+      <input class="search-bar" placeholder="请输入搜索内容"/>
+    </view>
+  </view>
+</view>
