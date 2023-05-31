@@ -24,7 +24,9 @@ App({
     wx.getSystemInfo({
       success:(res)=>{
         let custom=wx.getMenuButtonBoundingClientRect();
+        //手机状态栏高度
         this.globalData.statusBarHeight=res.statusBarHeight;
+        //custom.top 上边界距离屏幕顶部px，custom.height 胶囊高度
         this.globalData.navBarHeight=custom.height + (custom.top - res.statusBarHeight) * 2
     }
       

@@ -1,7 +1,8 @@
+<view>
 <custom-nav-bar navBarData="{{navBarData}}" currentDistance="100" currentLocation="丰隆汇"/>
-<view class="person-info-wrapper">
+<view class="person-info-wrapper" style="margin-top: {{navBarHeight+statusBarHeight}}px;">
   <view class="name">{{nickname}}</view>
-  <view class="phone"></view>
+  <view class="phone">122</view>
 </view>
 <swiper class="banner-swiper">
   <swiper-item wx:for="{{bannerList}}">
@@ -22,10 +23,9 @@
     <view>{{item.category}}</view>
   </view>
 </scroll-view>
-<scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-top="{{scrollTop}}" bindscroll="onScroll" scroll-with-animation>
-  <view class="right-category" wx:key="key" wx:for="{{goodsList}}" wx:for-index="key" wx:for-item="value">
-    <view id="{{key}}" class="{{key==goodsCategory[currentIndex].categoryID?'fixed':''}}">{{value[0].category}}</view>
-    <view class="item-list">
+<scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-top="{{scrollTop}}" scroll-with-animation>
+  <view class="right-category" wx:key="key" wx:for="{{goodsList}}" wx:for-index="key" wx:for-item="value"  id="{{key}}">
+    <view class="category-header">{{value[0].category}}</view> 
     <view class="right-item" wx:for="{{value}}" bindtap="onRightItemTap" wx:key="_id" data-index="{{index}}">
     <block>
       <image class="img" mode="scaleToFill" src="{{item.goodsPic[0]}}"/>
@@ -50,7 +50,6 @@
       </view>
     </block> 
     </view>
-    </view>
   </view>
 </scroll-view>
 </view>
@@ -58,3 +57,4 @@
   <register slot="popup-page"></register>
 </popup>
 <checkout-bar class="checkout-bar" totalCount="{{totalCount}}" totalPrice="{{totalPrice}}"/>
+</view>

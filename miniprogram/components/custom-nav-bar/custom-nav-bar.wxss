@@ -1,9 +1,6 @@
 .nav-wrapper{
-  /* position:fixed; */
-  width:750rpx;
+  width:100%;
   top:0;
-  left:0;
-  right:0;
   background-color: #fff;
   z-index: 9999999;
   transform: translate3d(0, 0, 0);

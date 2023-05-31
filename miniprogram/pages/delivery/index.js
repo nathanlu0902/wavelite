@@ -12,11 +12,6 @@ Page({
     bannerList:[]
     
   },
-  onScroll:function(e){
-    let {scrollTop}=e.detail;
-    //计算scrolltop为多少时设置currentIndex为多少
-
-  },
 
   onLeftItemTap:function(e){
     let {categoryid,index}=e.currentTarget.dataset;
@@ -32,8 +27,13 @@ Page({
     this.getGoodsCategory();
     this.getGoodsList();
     this.getCart();
+    this.setData({
+      navBarHeight:app.globalData.navBarHeight,
+      statusBarHeight:app.globalData.statusBarHeight
+    })
     if(wx.getStorageSync('userinfo')){
-      let nickname=wx.getStorageSync('userinfo')[0].nickname;
+      let nickname=wx.getStorageSync('userinfo').nickname;
+
       this.setData({
         nickname:nickname
       })
