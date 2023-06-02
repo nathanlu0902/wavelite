@@ -1,4 +1,8 @@
 /* components/tabbar.wxss */
+.wrapper{
+  position:absolute
+}
+
 .bar-wrapper{
   display:flex;
   flex-direction:row;
@@ -6,13 +10,15 @@
   justify-content: space-around;
   box-shadow: 0 0 16px rgba(0,0,0,.2);
   border-radius: 30px;
+  background-color: white;
   height:80rpx;
   width:550rpx;
   margin:0 auto;
   bottom:0;
-  position:fixed;
+  left:0;
   right:0;
-  left:0
+  position:fixed;
+  z-index: 999;
 }
 
 
@@ -34,7 +40,3 @@
   border-radius: 30rpx;
 }
 
-.popup-cart{
-  position:relative;
-  z-index: 999;
-}

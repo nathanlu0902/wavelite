@@ -1,8 +1,10 @@
-<view class="bar-wrapper">
-  <view class="totalCount" bindtap="expand_cart">{{totalCount}}</view>
-  <view class="totalPrice">¥{{totalPrice}}</view>
-  <view class="checkout-btn" bindtap="checkout">去结算</view>
+<view class="wrapper">
   <popup class="popup-cart" id="popup-cart">
-    <view>hello</view>
+      <view>hello</view>
   </popup>
+  <view class="bar-wrapper">
+    <view class="totalCount" bindtap="expand_cart">{{totalCount}}</view>
+    <view class="totalPrice">¥{{totalPrice}}</view>
+    <view class="checkout-btn" bindtap="checkout">去结算</view>
+  </view>
 </view>
