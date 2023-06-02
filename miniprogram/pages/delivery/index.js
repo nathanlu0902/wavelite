@@ -9,7 +9,20 @@ Page({
       showDistance:true,
       showSearch:true
     },
-    bannerList:[]
+    bannerList:[
+      {link:'',
+       imgUrl:'http://www.wagas.com.cn/admin/img/indeximg/bc4bb4740548b7348f6ef04b9219d21f.jpg',
+       title:"test1"
+      },
+      {link:'',
+      imgUrl:'http://www.wagas.com.cn/admin/img/indeximg/bc4bb4740548b7348f6ef04b9219d21f.jpg',
+      title:"test1"
+     },
+     {link:'',
+     imgUrl:'http://www.wagas.com.cn/admin/img/indeximg/bc4bb4740548b7348f6ef04b9219d21f.jpg',
+     title:"test1"
+    },
+    ]
     
   },
 
@@ -33,7 +46,6 @@ Page({
     })
     if(wx.getStorageSync('userinfo')){
       let nickname=wx.getStorageSync('userinfo').nickname;
-
       this.setData({
         nickname:nickname
       })
@@ -93,6 +105,7 @@ Page({
       name:"getGoodsCategory"
     }).then(res=>{
       let goodsCategory=res.result.res;
+      console.log(goodsCategory)
       goodsCategory.forEach(item=>{
         item.fixed=false;
       })
@@ -117,11 +130,11 @@ Page({
   add:function(e){
     //用户未登录则跳转至提示注册界面
     if(wx.getStorageSync('loggedIn')==false){
-      this.registerPopup=this.selectComponent("#popup");
+      this.registerPopup=this.selectComponent("#popup-register");
       this.registerPopup.showModal();
     }else{
-      let {index,category}=e.currentTarget.dataset;
-      let item=this.data.goodsList[category][index];
+      let {index,categoryid}=e.currentTarget.dataset;
+      let item=this.data.goodsList[categoryid][index];
       wx.cloud.callFunction({
         name:"addToCart",
         data:{

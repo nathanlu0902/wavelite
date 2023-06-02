@@ -6,21 +6,16 @@
   left:0;
   background: #000000;
   opacity: 0.2;
-  z-index: 1000;
+  z-index: 0;
   color:#fff
 }
 
 .popup{
   height:900rpx;
-  width:100%;
+  width:500rpx;
   overflow:hidden;
-  position:fixed;
+  z-index:1;
   bottom:0;
   left:0;
-  z-index:2000;
   background: #fff;
-}
-
-.popup-page{
-  z-index:3000;
 }

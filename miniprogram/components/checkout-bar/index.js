@@ -17,12 +17,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    checkout:()=>{
+    checkout:function(){
 
     },
 
-    expand:()=>{
-
+    expand_cart:function(){
+      this.cartpopup=this.selectComponent("#popup-cart")
+      this.cartpopup.showModal()
     }
   }
 })

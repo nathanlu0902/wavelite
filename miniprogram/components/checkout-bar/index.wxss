@@ -33,3 +33,8 @@
   background-color: #0765f3be;
   border-radius: 30rpx;
 }
+
+.popup-cart{
+  position:relative;
+  z-index: 999;
+}

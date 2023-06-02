@@ -4,11 +4,14 @@
   <view class="name">{{nickname}}</view>
   <view class="phone">122</view>
 </view>
-<swiper class="banner-swiper">
-  <swiper-item wx:for="{{bannerList}}">
-    <image src="{{item.url}}"/>
-  </swiper-item>
-</swiper>
+<view class="banner">
+  <view wx:for="{{bannerList}}" >
+    <view class="banner_item-wrapper">
+      <image class="banner_item-image" src="{{item.imgUrl}}"/>
+      <view>{{item.title}}</view>
+    </view>
+  </view>
+</view>
 <view class="start-config-btn">定制你的波奇</view>
 <view class="menu-wrapper">
 <scroll-view class="left-menu" scroll-y="true" enable-flex="true">
@@ -42,7 +45,7 @@
                 </view>
                 <view class="qty">{{item.qty}}</view>
             </block>
-            <view class="add_btn" catchtap="add" data-category="{{item.category}}" data-_id="{{item._id}}" data-index="{{index}}">
+            <view class="add_btn" catchtap="add" data-categoryID="{{item.categoryID}}" data-_id="{{item._id}}" data-index="{{index}}">
               <image src="/images/delivery_btn/plus.svg" class="goods-btn_img"></image>
             </view>
           </view>
@@ -53,8 +56,9 @@
   </view>
 </scroll-view>
 </view>
-<popup id="popup">
-  <register slot="popup-page"></register>
+<popup id="popup-register">
+  <register/>
 </popup>
+
 <checkout-bar class="checkout-bar" totalCount="{{totalCount}}" totalPrice="{{totalPrice}}"/>
 </view>
