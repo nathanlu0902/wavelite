@@ -7,7 +7,8 @@
     "pages/cart/index",
     "pages/goodsDetail/index",
     "pages/chooseAddress/index",
-    "pages/addAddress/index"
+    "pages/addAddress/index",
+    "pages/profile/profile"
   ],
   "window": {
     "navigationBarTextStyle": "black",

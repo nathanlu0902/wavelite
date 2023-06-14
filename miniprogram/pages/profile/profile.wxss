@@ -1,0 +1,34 @@
+.avatar-wrapper{
+  background-color:transparent;
+}
+
+.avatar-wrapper::after{
+  border:none
+}
+
+.avatar{
+  width:200rpx;
+  height:200rpx;
+  border-radius: 50%;
+}
+.userinfo-form{
+  display:flex;
+  flex-direction: column;
+  margin:30rpx auto;
+  width:500rpx;
+}
+
+.userinfo-form .userinfo-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin:15rpx 0;
+}
+.userinfo-form .userinfo-item .userinfo-label{
+  flex:1;
+}
+.userinfo-form .userinfo-item .userinfo-input{
+  border:1px solid grey;
+  text-align: center;
+  border-radius: 20rpx;
+}

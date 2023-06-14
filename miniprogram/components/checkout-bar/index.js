@@ -18,7 +18,9 @@ Component({
    */
   methods: {
     checkout:function(){
-
+      wx.navigateTo({
+        url: '../../pages/cart/index',
+      })
     },
 
     expand_cart:function(){

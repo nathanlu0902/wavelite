@@ -1,23 +1,92 @@
-/* pages/mine/index.wxss */
-.mine_wrap{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+page{
+  background-color:#edece8;
+  position:relative;
 }
-.user_info_wrap{
-  width: 100%;
+.avatar{
+  width:100rpx;
+  height:100rpx;
+}
+
+.small-link{
+  font-size: 20rpx;
+  color:grey;  
+  position:absolute;
+  bottom:0;
+  right:0;
+}
+
+.userinfo-wrapper{
+  height:200rpx;
   display:flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top:300rpx;
-  text-align: center;
+  flex-direction: row;
+  justify-content: space-around;
+  width:200rpx;
+  position:relative;
+  top:100rpx;
+  left:20rpx;
 }
 
 
-.menu_wrap{
-  display:flex;
-  flex-direction: column;
-  margin-top:80px;
+.info-wrapper{
+  position:absolute;
   width:90%;
-
+  left:50%;
+  transform:translateX(-50%);
 }
+
+.star-wrapper{
+  margin-top:30rpx;
+  height:200rpx;
+  display:relative;
+}
+
+.star-wrapper .star-info{
+  display: flex;
+  justify-content: space-between;
+}
+
+.star-wrapper .starStatus-bar{
+  width:100%;
+  display:flex;
+  flex-direction: row;
+}
+
+.benefit-wrapper{
+  margin-top:30rpx;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height:180rpx;
+}
+
+.benefit-item{
+  border:1px solid;
+  width:50%;
+  height:100%;
+  position:relative;
+}
+
+.benefit-item .benefit-info{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%)
+}
+
+.useful-wrapper{
+  margin-top:100rpx;
+}
+
+.useful-title{
+  font-size:40rpx;
+  font-weight: 500;
+}
+.useful-wrapper .item-wrapper{
+  margin-top:40rpx;
+}
+
+.useful-wrapper .useful_item{
+  border-bottom:1px solid grey;
+  height:80rpx;
+}
+

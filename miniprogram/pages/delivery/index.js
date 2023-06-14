@@ -116,7 +116,7 @@ Page({
   },
 
   onRightItemTap(e){
-    let {index}=e.currentTarget.dataset;
+    let {category,index}=e.currentTarget.dataset;
     wx.navigateTo({
       url: '../../pages/goodsDetail/index?goodsid',
       success(res){

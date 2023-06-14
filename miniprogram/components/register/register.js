@@ -41,10 +41,11 @@ Component({
         if(!valid){}
         else{
           wx.cloud.callFunction({
-            name:"register",
+            name:"user",
             data:{
               nickname:this.data.formData.nickname,
-              phone:this.data.formData.phone
+              phone:"1232",
+              type:"create_user"
             }
           }).then(res=>{
             if(res.result.code=="200"){

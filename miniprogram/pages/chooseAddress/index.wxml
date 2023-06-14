@@ -1,10 +1,21 @@
+<block wx:if="{{addressList.length==0}}">
+  <view class="no-address-remind">
+    <image src=""></image>
+    <view>没有地址</view>
+    <view>您还没有常用地址，快去添加一个</view>
+    <button class="add-address-btn" bindtap="add_address">新建地址</button>
+  </view>
+</block>
+
+<block wx:else>
 <view class="address-list">
   <view wx:for="{{addressList}}" class="address-item" wx:for-item="address" wx:key="id">
-    <view class="address-title">{{address.title}}</view>
+    <view class="address-title">{{address.location}}</view>
     <view class="address-info-wrapper">
-      <view class="address-username text-small grey-color">{{address.username}}</view>
+      <view class="address-username text-small grey-color">{{address.receiver}}</view>
       <view class="address-phone text-small grey-color">{{address.phone}}</view>
     </view>
   </view>
 </view>
 <view class="add-address-btn" bindtap="add_address">添加新地址</view>
+</block>

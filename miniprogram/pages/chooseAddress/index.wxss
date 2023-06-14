@@ -20,7 +20,12 @@
 .add-address-btn{
   border: 1px solid black;
   width:200rpx;
-  position:fixed;
-  bottom:30rpx;
+  margin:100rpx auto;
+  text-align: center;
+}
+
+.no-address-remind{
+  width:500rpx;
+  margin:0 auto;
   text-align: center;
 }

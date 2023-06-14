@@ -23,6 +23,20 @@
           "query": "index=0",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/profile/profile",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/cart/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

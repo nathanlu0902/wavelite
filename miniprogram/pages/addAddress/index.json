@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText":"添加新地址"
+  "navigationBarTitleText":"添加新地址",
+  "navigationStyle": "default"
 }

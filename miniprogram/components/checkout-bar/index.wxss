@@ -1,6 +1,7 @@
 /* components/tabbar.wxss */
 .wrapper{
-  position:absolute
+  position:relative;
+  width:550rpx;
 }
 
 .bar-wrapper{
@@ -38,5 +39,11 @@
   color:#fff;
   background-color: #0765f3be;
   border-radius: 30rpx;
+}
+
+.popup-cart{
+  position:absolute;
+  bottom:980rpx;
+  left:25%;
 }
 

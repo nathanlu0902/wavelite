@@ -6,9 +6,8 @@
     "custom-nav-bar":"../../components/custom-nav-bar/custom-nav-bar",
     "popup":"../../components/popup/popup"
   },
-  "window":{
-    "navigationStyle": "custom"
-  },
+  "navigationStyle": "custom"
+  ,
   
   "disableScroll": true
 }

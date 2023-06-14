@@ -29,7 +29,7 @@
 <scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-top="{{scrollTop}}" scroll-with-animation>
   <view class="right-category" wx:key="key" wx:for="{{goodsList}}" wx:for-index="key" wx:for-item="value"  id="{{key}}">
     <view class="category-header">{{value[0].category}}</view> 
-    <view class="right-item" wx:for="{{value}}" bindtap="onRightItemTap" wx:key="_id" data-index="{{index}}">
+    <view class="right-item" wx:for="{{value}}" bindtap="onRightItemTap" wx:key="_id" data-index="{{index}}" data-category="{{key}}">
     <block>
       <image class="img" mode="scaleToFill" src="{{item.goodsPic[0]}}"/>
       <view class="info-wrapper">
