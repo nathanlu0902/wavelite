@@ -29,11 +29,13 @@ App({
         //custom.top 上边界距离屏幕顶部px，custom.height 胶囊高度
         this.globalData.navBarHeight=custom.height + (custom.top - res.statusBarHeight) * 2
     }
-      
-      //  this.globalData.statusBarHeight=result.statusBarHeight;
-      //  this.globalData.SCREENHEIGHT=result.screenHeight;
-      //  this.globalData.SCREENWIDTH=result.screenWidth;
+
     })
+    
+    if(!wx.getStorageSync('cart')){
+      let cart=[];
+      wx.setStorageSync('cart', cart) 
+    }
     
     var timestamp=Date.parse(new Date())
     var expiration=timestamp+1800000 //半小时缓存

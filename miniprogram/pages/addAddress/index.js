@@ -70,9 +70,7 @@ Page({
           title: '保存成功',
         })
         wx.setStorageSync('userinfo', userinfo)
-        wx.navigateTo({
-          url: '../chooseAddress/index',
-        })
+        wx.navigateBack()
       }else{
         wx.showToast({
           title: '保存失败',

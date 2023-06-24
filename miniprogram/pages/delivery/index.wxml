@@ -17,7 +17,7 @@
 <scroll-view class="left-menu" scroll-y="true" enable-flex="true">
   <view 
     class="left-item {{currentIndex==index?'active':''}}" 
-    wx:for="{{goodsCategory}}" 
+    wx:for="{{goodsList}}" 
     wx:key="_id"
     bindtap="onLeftItemTap"
     data-categoryID="{{item.categoryID}}"
@@ -27,25 +27,25 @@
   </view>
 </scroll-view>
 <scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-top="{{scrollTop}}" scroll-with-animation>
-  <view class="right-category" wx:key="key" wx:for="{{goodsList}}" wx:for-index="key" wx:for-item="value"  id="{{key}}">
-    <view class="category-header">{{value[0].category}}</view> 
-    <view class="right-item" wx:for="{{value}}" bindtap="onRightItemTap" wx:key="_id" data-index="{{index}}" data-category="{{key}}">
+  <view class="right-category" wx:key="index" wx:for="{{goodsList}}" wx:for-index="category_index" wx:for-item="category_item"  id="{{index}}">
+    <view class="category-header">{{category_item.category}}</view> 
+    <view class="right-item" wx:for="{{category_item.goodsList}}" bindtap="onRightItemTap" wx:key="id" wx:for-index="good_index" data-index="{{good_index}}" wx:for-item="good_item">
     <block>
-      <image class="img" mode="scaleToFill" src="{{item.goodsPic[0]}}"/>
+      <image class="img" mode="scaleToFill" src="{{good_item.goodsPic[0]}}"/>
       <view class="info-wrapper">
-        <view class="dishName text-bold" style="color:black">{{item.goodsName}}</view>
-        <view class="text-small grey-color">{{item.goodsRemark}}</view>
+        <view class="dishName text-bold" style="color:black">{{good_item.goodsName}}</view>
+        <view class="text-small grey-color">{{good_item.goodsRemark}}</view>
         <!-- <view class="text-small grey-color">月售{{item.goodsSale}}份</view> -->
         <view class="price-action-wrapper">
-          <view class="dishPrice text-large">¥{{item.goodsPrice}}</view>
+          <view class="dishPrice text-large">¥{{good_item.goodsPrice}}</view>
           <view class="btn-wrapper">
-            <block wx:if="{{item.qty>0}}">
-                <view class="minus_btn" catchtap="minus" data-_id="{{item._id}}" data-index="{{index}}" data-category="{{item.category}}">
+            <block wx:if="{{good_item.qty>0}}">
+                <view class="minus_btn" catchtap="minus" data-_id="{{good_item.id}}" data-category_index="{{category_index}}" data-good_index="{{good_index}}">
                   <image src="/images/delivery_btn/minus.svg" class="goods-btn_img"></image>
                 </view>
-                <view class="qty">{{item.qty}}</view>
+                <view class="qty">{{good_item.qty}}</view>
             </block>
-            <view class="add_btn" catchtap="add" data-categoryID="{{item.categoryID}}" data-_id="{{item._id}}" data-index="{{index}}">
+            <view class="add_btn" catchtap="add" data-category_index="{{category_index}}" data-good_index="{{good_index}}">
               <image src="/images/delivery_btn/plus.svg" class="goods-btn_img"></image>
             </view>
           </view>

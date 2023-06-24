@@ -1,20 +1,14 @@
-import {get_total_price} from "../../utils/utils"
-
 Page({
   data:{
-    eta:"now",
-    defaultAddress:""
+    eta:"now"
   },
 
   onShow(){
-    if(wx.getStorageSync('userinfo').addressList){
-      var defaultAddress=wx.getStorageSync('userinfo').addressList.find(item=>item.default==true)
-    }
+    var userinfo=wx.getStorageSync('userinfo')
+    let cart=wx.getStorageSync('cart')
     this.setData({
-      defaultAddress:defaultAddress,
+      addressChosen:userinfo.addressChosen,
       cart:wx.getStorageSync('cart'),
-      address:wx.getStorageSync('address'),
-      totalPrice:get_total_price()
     })
 
   },
@@ -23,6 +17,7 @@ Page({
       url: '/pages/chooseAddress/index',
     })
   },
+
 
   handlePayment(){
 

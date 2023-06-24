@@ -37,7 +37,7 @@ Page({
   },
 
   onShow(){
-    this.getGoodsCategory();
+    // this.getGoodsCategory();
     this.getGoodsList();
     this.getCart();
     this.setData({
@@ -55,6 +55,9 @@ Page({
         nickname:"waver"
       })
     }
+
+    var cart=wx.getStorageSync('cart')
+
     
 
   },
@@ -66,16 +69,18 @@ Page({
       let {totalCount,totalPrice,cart}=res.result;
       //更新goodslist中的qty
       let goodsList=wx.getStorageSync('goodsList');
-      for (let key in goodsList){
-        goodsList[key].forEach(item=>{
-            let index=cart.findIndex(v=>v._id===item._id);
-            if(index!=-1){
-              item.qty=cart[index].qty;
-            }else{
-              item.qty=0;
-            }
+      for(var i=0;i<goodsList.length;i++){
+        var item=goodsList[i];
+        for(var j=0;j<item.length;j++){
+          var good_item=item[j];
+          let index=cart.findIndex(v=>v._id===good_item.id)
+          if(index!=-1){
+            good_item.qty=cart[index].qty;
+          }else{
+            good_item.qty=0
           }
-        )
+        
+        }
       }
       this.setData({
         totalCount:totalCount,
@@ -91,7 +96,7 @@ Page({
     wx.cloud.callFunction({
       name:"getGoodsList"
     }).then(res=>{
-      let goodsList=res.result;
+      let goodsList=res.result.data;
       wx.setStorageSync('goodsList', goodsList)
       this.setData({
         goodsList:goodsList
@@ -100,20 +105,20 @@ Page({
 
   },
 
-  getGoodsCategory(){
-    wx.cloud.callFunction({
-      name:"getGoodsCategory"
-    }).then(res=>{
-      let goodsCategory=res.result.res;
-      console.log(goodsCategory)
-      goodsCategory.forEach(item=>{
-        item.fixed=false;
-      })
-      this.setData({
-        goodsCategory:goodsCategory
-      })
-    })
-  },
+  // getGoodsCategory(){
+  //   wx.cloud.callFunction({
+  //     name:"getGoodsCategory"
+  //   }).then(res=>{
+  //     let goodsCategory=res.result.res;
+  //     console.log(goodsCategory)
+  //     goodsCategory.forEach(item=>{
+  //       item.fixed=false;
+  //     })
+  //     this.setData({
+  //       goodsCategory:goodsCategory
+  //     })
+  //   })
+  // },
 
   onRightItemTap(e){
     let {category,index}=e.currentTarget.dataset;
@@ -133,12 +138,23 @@ Page({
       this.registerPopup=this.selectComponent("#popup-register");
       this.registerPopup.showModal();
     }else{
-      let {index,categoryid}=e.currentTarget.dataset;
-      let item=this.data.goodsList[categoryid][index];
+      let {category_index,good_index}=e.currentTarget.dataset;
+      let good=this.data.goodsList[category_index]["goodsList"][good_index];
+      var cart=wx.getStorageSync('cart')
+      const existingItem=cart.find(cart_item=>{
+        cart_item.id===good.id
+      })
+      if(existingItem){
+        existingItem.qty+=1
+      }else{
+        good.qty=1
+        cart.push(good)
+      }
+      
       wx.cloud.callFunction({
         name:"addToCart",
         data:{
-          item:item
+          good:good
         }
       }).then(()=>{
         this.getCart();

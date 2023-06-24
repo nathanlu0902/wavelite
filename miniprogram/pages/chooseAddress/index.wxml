@@ -10,10 +10,12 @@
 <block wx:else>
 <view class="address-list">
   <view wx:for="{{addressList}}" class="address-item" wx:for-item="address" wx:key="id">
-    <view class="address-title">{{address.location}}</view>
-    <view class="address-info-wrapper">
-      <view class="address-username text-small grey-color">{{address.receiver}}</view>
-      <view class="address-phone text-small grey-color">{{address.phone}}</view>
+    <view class="choose-btn" bindtap="chooseAddress" data-index="{{index}}">
+      <view class="address-title">{{address.location}}</view>
+      <view class="address-info-wrapper">
+        <view class="address-username text-small grey-color">{{address.receiver}}</view>
+        <view class="address-phone text-small grey-color">{{address.phone}}</view>
+      </view>
     </view>
   </view>
 </view>

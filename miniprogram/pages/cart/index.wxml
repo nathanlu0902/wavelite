@@ -1,30 +1,24 @@
-<view>
-  <view class="delivery-info-wrapper">
-  <!--如果地址存在，显示用户名和手机号-->
-    <view wx:if="{{address}}">
-      <view class="address-info-wrapper">
-        <view>{{address.detail}}</view>
-        <view>{{address.name}}</view>
-        <view>{{address.phone}}</view>
+
+<view class="delivery-info-wrapper">
+  <view class="address-wrapper">
+    <view wx:if="{{addressChosen}}">
+      <view class="person-info">
+        <view>{{addressChosen.receiver}}</view>
+        <view>{{addressChosen.phone}}</view>
+        <view bindtap="chooseAddress" class="chooseAddressBtn">更换地址</view>
       </view>
+      <view>{{addressChosen.location}}</view>
     </view>
-    <view wx:else>
-      <view class="choose-address-content delivery-item">
-        <view class="choose-address-btn delivery-item-text" bindtap="chooseAddress">
-        <view wx:if="{{defaultAddress}}">{{defaultAddress}}</view>
-        <view wx:else>请选择收货地址</view>
-        </view>
-      </view>
-    </view>
-    <view class="delivery-item eta">
-      <text class="delivery-item-text">预计送达时间</text>
-      <view class="right-item">{{eta}}</view>
-    </view>
-    <view class=" delivery-item payment-method">
-      <text class="delivery-item-text">支付方式</text>
-      <view class="right-item">微信支付</view>
+    <view wx:else bindtap="chooseAddress">
+      请选择地址
     </view>
   </view>
+  <view class="eta">
+    <view>即刻送出</view>
+    <view>{{eta}}</view>
+  </view>
+
+</view>
 
   <view class="cart-content">
     <view wx:for="{{cart}}" wx:key="id" class="cart-item">
@@ -37,13 +31,8 @@
     </view>
   </view>
 
-  <view class="additional-info">
-    <view class></view>
-  </view>
 
   <view class="footer">
     <view class="totalPrice">总计:¥{{totalPrice}}</view>
     <view class="pay-btn" bindtap="handlePayment">去支付</view>
   </view>
-
-</view>
