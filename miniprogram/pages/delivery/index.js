@@ -93,11 +93,11 @@ Page({
   },
 
   onRightItemTap(e){
-    let {category,index}=e.currentTarget.dataset;
+    let {good_index,category_index}=e.currentTarget.dataset;
     wx.navigateTo({
       url: '../../pages/goodsDetail/index?goodsid',
       success(res){
-        res.eventChannel.emit('passGood',{data:index})
+        res.eventChannel.emit('passGood',{data:{good_index:good_index,category_index:category_index}})
       },
       fail(err){
         console.log(err)

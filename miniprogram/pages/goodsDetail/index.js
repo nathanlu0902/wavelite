@@ -1,4 +1,5 @@
-
+var goodsList=wx.getStorageSync('goodsList')
+var cart=wx.getStorageSync('cart')
 Page({
   data: {
     tabItems:[
@@ -21,20 +22,24 @@ Page({
   },
 
   onLoad() {
-    this.loadGood()
-    this.getCart()
-  },
-
-  loadGood(){
-    let goodsList=wx.getStorageSync('goodsList');
-    //获取前一个页面传入的index
-    let eventChannel=this.getOpenerEventChannel();
-    eventChannel.on("passGood",res=>{
-      let index=res.data;
-      this.setData({
-        index:index,
-        good:goodsList[index]
-      })
+     //获取前一个页面传入的index
+     let eventChannel=this.getOpenerEventChannel();
+     var good;
+     eventChannel.on("passGood",res=>{
+       let {category_index,good_index}=res.data;
+       good=goodsList[category_index]["goodsList"][good_index]
+     })
+     //获取该good在cart中的数量
+     let cart_item=cart.find(item=>{
+       return item.id===good.id
+     })
+     if(cart_item){
+       good.qty=cart_item.qty
+     }else{
+       good.qty=0
+     }
+     this.setData({
+      good:good
     })
   },
 
@@ -57,28 +62,53 @@ Page({
     })
   },
 
-  add:function(){
-    wx.cloud.callFunction({
-      name:"addToCart",
-      data:{
-        item:this.data.good
+  add(e){
+    //用户未登录则跳转至提示注册界面
+    if(wx.getStorageSync('loggedIn')==false){
+      this.registerPopup=this.selectComponent("#popup-register");
+      this.registerPopup.showModal();
+    }else{
+      let good=this.data.good
+      const existingItem=cart.find(cart_item=>{
+        return cart_item.id===good.id
+      })
+      if(existingItem){
+        existingItem.qty+=1
+        good.qty+=1
+      }else{
+        good.qty=1
+        cart.push(good)
       }
-    }).then(()=>{
-      this.getCart();
-      }
-    )
+      wx.setStorageSync("cart",cart);
+      this.setData({
+        good:good
+      })
+    
+      // this.updateCheckoutBar();
+
+    }
+    
   },
 
-  minus:function(){
-    wx.cloud.callFunction({
-      name:"removeFromCart",
-      data:{
-        _id:this.data.good._id
-      }
-    }).then(()=>{
-      this.getCart();
+  minus(e){
+    let good=this.data.good
+    const index=cart.findIndex(cart_item=>{
+      return cart_item.id===good.id
     })
+    if(cart[index].qty===1){
+      cart.splice(index,1)
+      good.qty=0
+    }else{
+      cart[index].qty-=1
+      good.qty-=1
+    }
+    wx.setStorageSync('cart', cart)
+    this.setData({
+      good:good
+    })
+    // this.updateCheckoutBar();
   },
+
  
   checkout(){
     wx.navigateTo({
@@ -86,25 +116,6 @@ Page({
     })
   },
 
-  getCart(){
-    wx.cloud.callFunction({
-      name:"getCartList"
-    }).then(res=>{
-      let {totalCount,totalPrice,cart}=res.result;
-      //更新goodslist中的qty
-      let goodsList=wx.getStorageSync('goodsList');
-      let index=cart.findIndex(v=>v._id===this.data.good._id);
-      if(index!=-1){
-        goodsList[this.data.index].qty=cart[index].qty;
-      }else{
-        goodsList[this.data.index].qty=0;
-      }
-      this.setData({
-        good:goodsList[this.data.index],
-        totalCount:totalCount,
-        totalPrice:totalPrice
-      })
-    })
-  },
+
 
 })
