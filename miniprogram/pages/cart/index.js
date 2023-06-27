@@ -1,3 +1,5 @@
+var cart=wx.getStorageSync('cart')
+
 Page({
   data:{
     eta:"now"
@@ -5,10 +7,9 @@ Page({
 
   onShow(){
     var userinfo=wx.getStorageSync('userinfo')
-    let cart=wx.getStorageSync('cart')
     this.setData({
       addressChosen:userinfo.addressChosen,
-      cart:wx.getStorageSync('cart'),
+      cart:cart
     })
 
   },

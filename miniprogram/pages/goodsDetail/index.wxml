@@ -1,3 +1,4 @@
+<custom-nav-bar navBarData="{{navBarData}}"/>
 <swiper indicator-dots autoplay circular>
     <swiper-item wx:for="{{good.goodsPic}}" wx:key="index" bindtap="handlePreviewPic" data-index="{{index}}" data-current="{{item}}" >
       <image src="{{item}}" mode="widthFix"></image>

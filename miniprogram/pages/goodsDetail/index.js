@@ -2,6 +2,12 @@ var goodsList=wx.getStorageSync('goodsList')
 var cart=wx.getStorageSync('cart')
 Page({
   data: {
+    navBarData:{
+      showSearch:false,
+      showBack:true,
+      showLocation:false,
+      showDistance:false
+    },
     tabItems:[
       {
         id:0,
@@ -41,6 +47,7 @@ Page({
      this.setData({
       good:good
     })
+    this.updateCheckoutBar()
   },
 
   handleTabClicked:function(e){
@@ -75,6 +82,7 @@ Page({
       if(existingItem){
         existingItem.qty+=1
         good.qty+=1
+      
       }else{
         good.qty=1
         cart.push(good)
@@ -84,7 +92,7 @@ Page({
         good:good
       })
     
-      // this.updateCheckoutBar();
+      this.updateCheckoutBar();
 
     }
     
@@ -106,10 +114,22 @@ Page({
     this.setData({
       good:good
     })
-    // this.updateCheckoutBar();
+    this.updateCheckoutBar();
   },
 
- 
+  updateCheckoutBar(){
+    let totalPrice=0;
+    let totalCount=0;
+    cart.forEach(item=>{
+      totalPrice+=item.qty*item.goodsPrice;
+      totalCount+=item.qty
+    })
+    this.setData({
+      totalCount:totalCount,
+      totalPrice:totalPrice
+    })
+  },
+
   checkout(){
     wx.navigateTo({
       url: '../cart/index',
