@@ -65,7 +65,24 @@ Page({
     wx.cloud.callFunction({
       name:"getGoodsList"
     }).then(res=>{
-      wx.setStorageSync('goodsList', res.result.data)
+      let goodsList=res.result.data
+      let category_type=[]
+      //初始化所有分类的默认选项为单品
+      for(let i=0;i<goodsList.length;i++){
+        category_type[i]="single";
+        let category_goodsList=goodsList[i].goodsList
+        // 遍历goods，将stock=0的项移至末位
+        for(let j=0;j<category_goodsList.length;j++){
+          if(category_goodsList[j].stock===0){
+            category_goodsList.push(category_goodsList.splice(j,1)[0])
+            console.log(category_goodsList)
+          }
+        }
+      }
+      this.setData({
+        category_type:category_type
+      })
+      wx.setStorageSync('goodsList', goodsList)
     })
   },
 
@@ -160,6 +177,14 @@ Page({
       totalCount:totalCount,
       totalPrice:totalPrice
     })
-  }
+  },
 
+  change_category_type(e){
+    let {type,index}=e.currentTarget.dataset;
+    let category_type=this.data.category_type;
+    category_type[index]=type
+    this.setData({
+      category_type:category_type
+    })
+  }
 })

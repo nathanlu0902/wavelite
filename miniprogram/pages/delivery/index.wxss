@@ -28,7 +28,7 @@
   display:flex;
   flex-direction: row;
   padding:0 32rpx 100rpx;
-  height:800rpx;
+  height:1800rpx;
 }
 
 
@@ -73,6 +73,13 @@
   margin-top:50rpx;
 }
 
+.category-header-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width:300rpx;
+}
+
 .img{
   position:relative;
   width:200rpx;
@@ -108,6 +115,11 @@
   justify-content: space-around;
   align-items: center;
   height:50rpx; /*固定高度防抖动*/
+}
+
+.minus-qty-wrapper{
+  display:flex;
+  flex-direction:row;
 }
 
 .qty{

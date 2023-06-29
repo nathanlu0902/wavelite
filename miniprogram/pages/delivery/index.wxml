@@ -1,4 +1,4 @@
-<view>
+
 <custom-nav-bar navBarData="{{navBarData}}" currentDistance="100" currentLocation="丰隆汇"/>
 <view class="person-info-wrapper" style="margin-top: {{navBarHeight+statusBarHeight}}px;">
   <view class="name">{{nickname}}</view>
@@ -28,30 +28,40 @@
 </scroll-view>
 <scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-top="{{scrollTop}}" scroll-with-animation>
   <view class="right-category" wx:key="index" wx:for="{{goodsList}}" wx:for-index="category_index" wx:for-item="category_item"  id="{{index}}">
+  <view class="category-header-wrapper">
     <view class="category-header">{{category_item.category}}</view> 
-    <view class="right-item" wx:for="{{category_item.goodsList}}" bindtap="onRightItemTap" wx:key="id" wx:for-index="good_index" data-good_index="{{good_index}}" data-category_index="{{category_index}}" wx:for-item="good_item">
-    <block>
-      <image class="img" mode="scaleToFill" src="{{good_item.goodsPic[0]}}"/>
-      <view class="info-wrapper">
-        <view class="dishName text-bold" style="color:black">{{good_item.goodsName}}</view>
-        <view class="text-small grey-color">{{good_item.goodsRemark}}</view>
-        <!-- <view class="text-small grey-color">月售{{item.goodsSale}}份</view> -->
-        <view class="price-action-wrapper">
-          <view class="dishPrice text-large">¥{{good_item.goodsPrice}}</view>
-          <view class="btn-wrapper">
-            <block wx:if="{{good_item.qty>0}}">
-                <view class="minus_btn" catchtap="minus" data-_id="{{good_item.id}}" data-category_index="{{category_index}}" data-good_index="{{good_index}}">
-                  <image src="/images/delivery_btn/minus.svg" class="goods-btn_img"></image>
-                </view>
-                <view class="qty">{{good_item.qty}}</view>
-            </block>
+    <view class="single-btn" bindtap="change_category_type" data-type="single" data-index="{{category_index}}">单品</view>
+    <view class="set-btn" bindtap="change_category_type" data-type="set" data-index="{{category_index}}">套餐</view>
+  </view>
+    <view class="right-item" wx:for="{{category_item.goodsList}}" bindtap="onRightItemTap" wx:if="{{good_item.type==category_type[category_index]}}" wx:key="id" wx:for-index="good_index" data-good_index="{{good_index}}" data-category_index="{{category_index}}" wx:for-item="good_item">
+
+    <image class="img" mode="scaleToFill" src="{{good_item.goodsPic[0]}}"/>
+    <view class="info-wrapper">
+      <view class="dishName text-bold" style="color:black">{{good_item.goodsName}}</view>
+      <view class="text-small grey-color">{{good_item.goodsRemark}}</view>
+      <!-- <view class="text-small grey-color">月售{{item.goodsSale}}份</view> -->
+      <view class="price-action-wrapper">
+        <view class="dishPrice text-large">¥{{good_item.goodsPrice}}</view>
+    
+        <view wx:if="{{good_item.stock>0}}">
+          <view wx:if="{{good_item.needConfig==true}}">去配置</view>
+          <view wx:else class="btn-wrapper">
+            <view wx:if="{{good_item.qty>0}}" class="minus-qty-wrapper" >
+              <view class="minus_btn" catchtap="minus" data-_id="{{good_item.id}}" data-category_index="{{category_index}}" data-good_index="{{good_index}}">
+                <image src="/images/delivery_btn/minus.svg" class="goods-btn_img"></image>
+              </view>
+              <view class="qty">{{good_item.qty}}</view>
+            </view>
             <view class="add_btn" catchtap="add" data-category_index="{{category_index}}" data-good_index="{{good_index}}">
               <image src="/images/delivery_btn/plus.svg" class="goods-btn_img"></image>
             </view>
           </view>
-        </view>
+        </view>  
+        <view wx:else>已售罄</view>
+        
       </view>
-    </block> 
+    </view>
+    
     </view>
   </view>
 </scroll-view>
@@ -61,4 +71,3 @@
 </popup>
 
 <checkout-bar class="checkout-bar" totalCount="{{totalCount}}" totalPrice="{{totalPrice}}"/>
-</view>

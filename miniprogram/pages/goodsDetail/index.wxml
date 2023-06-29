@@ -7,17 +7,20 @@
 <view class="good-info-wrapper">
   <text class="text-large goodsName">{{good.goodsName}}</text>
   <view class="text-small grey-color goodsSale">月售 {{good.goodsSale}}</view>
-  <view class="price-btn-wrapper">
+  <view >
     <view class="text-large price">¥{{good.goodsPrice}}</view>
-    <block wx:if="{{good.qty>0}}">
-        <view class="minus_btn" catchtap="minus">
-          <image src="../../images/delivery_btn/minus.svg" class="goods-btn_img"></image>
-        </view>
-        <view class="qty">{{good.qty}}</view>
-    </block>
-    <view class="add_btn" catchtap="add">
-      <image src="../../images/delivery_btn/plus.svg" class="goods-btn_img"></image>
+    <view wx:if="{{good.stock>0}}" class="price-btn-wrapper">
+      <block wx:if="{{good.qty>0}}" >
+          <view class="minus_btn" catchtap="minus">
+            <image src="../../images/delivery_btn/minus.svg" class="goods-btn_img"></image>
+          </view>
+          <view class="qty">{{good.qty}}</view>
+      </block>
+      <view class="add_btn" catchtap="add">
+        <image src="../../images/delivery_btn/plus.svg" class="goods-btn_img"></image>
+      </view>
     </view>
+    <view wx:else>已售罄</view>
   </view>  
 </view>
 <tabbar tabItems="{{tabItems}}" bindTabClicked="handleTabClicked">
