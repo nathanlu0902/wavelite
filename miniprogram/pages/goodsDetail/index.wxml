@@ -23,11 +23,18 @@
     <view wx:else>已售罄</view>
   </view>  
 </view>
-<tabbar tabItems="{{tabItems}}" bindTabClicked="handleTabClicked">
-  <view class="content-wrapper">
-    <view class="detail" wx:if="{{tabItems[0].isActive}}">详情</view>
-    <view class="review" wx:elif="{{tabItems[1].isActive}}">评论</view>
-    <view class="group" wx:elif="{{tabItems[2].isActive}}">搭配</view>
-  </view> 
-</tabbar>
+<view class="standard">
+  <view>基本配置</view>
+  <view wx:for="{{good.gradient}}" wx:if="{{standard_item.type==='standard'}}" wx:for-item="standard_item">{{standard_item.name}}</view>
+</view>
+
+<radio-group bindchange="onBaseChange" class="chooseBase">
+  <view>选择基底</view>
+  <radio wx:for="{{good.gradient}}" wx:if="{{base_item.type==='base'}}" wx:for-item="base_item" name="{{base_item.name}}" value="{{base_item.name}}" checked="{{base_item.checked}}">{{base_item.name}}</radio>
+</radio-group>
+
+<view class="description">
+  <view>产品特点</view>
+  <view>{{good.description}}</view>
+</view>
 <checkout-bar class="checkout-bar" totalCount="{{totalCount}}" totalPrice="{{totalPrice}}" bindtap="checkout"/>

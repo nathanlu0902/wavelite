@@ -1,31 +1,17 @@
 @import "../../styles/iconfont.wxss";
 .nav-wrapper{
   width:100%;
-  background-color: #fff;
-  z-index: 9999999;
-  transform: translate3d(0, 0, 0);
   position:fixed;
-  display: flex;
-  flex-direction: row;
-
 }
 
-
-.currentLocation{
-  width:100rpx;
-  margin-left:20rpx;
+.searchArea{
+  position:relative;
+}
+.icon{
+  position: absolute;
+  left:247px;
+  width:80rpx;
+  height:80rpx;
+  
 }
 
-.distance{
-  font-size:0.7em;
-  color:#999;
-  width:120rpx;
-  margin-left:20rpx;
-}
-
-
-.search-bar{
-  border:1px solid black;
-  border-radius: 10px;
-  width:200rpx;
-}

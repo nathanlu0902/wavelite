@@ -1,18 +1,27 @@
-
-<custom-nav-bar navBarData="{{navBarData}}" currentDistance="100" currentLocation="丰隆汇"/>
-<view class="person-info-wrapper" style="margin-top: {{navBarHeight+statusBarHeight}}px;">
-  <view class="name">{{nickname}}</view>
-  <view class="phone">122</view>
-</view>
-<view class="banner">
-  <view wx:for="{{bannerList}}" >
-    <view class="banner_item-wrapper">
-      <image class="banner_item-image" src="{{item.imgUrl}}"/>
-      <view>{{item.title}}</view>
-    </view>
+<custom-nav-bar navBarData="{{navBarData}}"/>
+<view class="top-background" style="top: -{{statusBarHeight}}px;"></view>
+<view class="match-shop" style="margin-top: {{navBarHeight+statusBarHeight}}px;">
+  <view class="address-wrapper">
+    <view class="iconfont icon-check"></view>
+    <view wx:if="{{loggedIn===true}}" class="address">{{userinfo.address[0].location}}</view>
+    <view wx:else bindtap="login" class="address">{{loggedIn}}</view>
+  </view>
+  <view class="shop-wrapper">
+    <view class="iconfont icon-check"></view>
+    <view class="shop">{{shopList[0].name}}</view>
   </view>
 </view>
-<view class="start-config-btn">定制你的波奇</view>
+<view class="notification-wrapper">
+  <view class="iconfont icon-check"></view>
+  <swiper class="notification-swiper" autoplay="true" interval="4000" vertical="true" circular="true">
+    <swiper-item class="notification-item" wx:for="{{notification_list}}">{{item}}</swiper-item>
+  </swiper>
+</view>
+<swiper class="banner-swiper" autoplay="false" 	display-multiple-items="2" >
+  <swiper-item class="banner_item-wrapper" wx:for="{{bannerList}}">
+    <image class="banner_item-image" src="{{item.imgUrl}}"/>
+  </swiper-item>>
+</swiper>
 <view class="menu-wrapper">
 <scroll-view class="left-menu" scroll-y="true" enable-flex="true">
   <view 
@@ -23,18 +32,20 @@
     data-categoryID="{{item.categoryID}}"
     data-index="{{index}}"
     >
+    <image class="cat-icon iconfont icon-check " src="{{item.icon}}"></image>
     <view>{{item.category}}</view>
   </view>
 </scroll-view>
-<scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-top="{{scrollTop}}" scroll-with-animation>
-  <view class="right-category" wx:key="index" wx:for="{{goodsList}}" wx:for-index="category_index" wx:for-item="category_item"  id="{{index}}">
-  <view class="category-header-wrapper">
+<scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-with-animation>
+  <view class="right-category" wx:key="category_index" wx:for="{{goodsList}}" wx:for-index="category_index" wx:for-item="category_item"  id="{{index}}">
+  <!-- 分类名称（大地波奇） -->
     <view class="category-header">{{category_item.category}}</view> 
-    <view class="single-btn" bindtap="change_category_type" data-type="single" data-index="{{category_index}}">单品</view>
-    <view class="set-btn" bindtap="change_category_type" data-type="set" data-index="{{category_index}}">套餐</view>
-  </view>
-    <view class="right-item" wx:for="{{category_item.goodsList}}" bindtap="onRightItemTap" wx:if="{{good_item.type==category_type[category_index]}}" wx:key="id" wx:for-index="good_index" data-good_index="{{good_index}}" data-category_index="{{category_index}}" wx:for-item="good_item">
-
+    <view class="filter">
+      <view class="filter-btn" bindtap="change_type" data-type="single" data-category_index="{{category_index}}">单品</view>
+      <view class="filter-btn" bindtap="change_type" data-type="set" data-category_index="{{category_index}}">套餐</view>
+    </view> 
+    <view class="{{good_item.stock===0?'sold-out':'right-item'}}" wx:for="{{category_item.goodsList}}" bindtap="onRightItemTap" wx:if="{{good_item.type===category_item.type}}" wx:key="id" wx:for-index="good_index" data-good_index="{{good_index}}" data-category_index="{{category_index}}" wx:for-item="good_item">
+  
     <image class="img" mode="scaleToFill" src="{{good_item.goodsPic[0]}}"/>
     <view class="info-wrapper">
       <view class="dishName text-bold" style="color:black">{{good_item.goodsName}}</view>
@@ -58,7 +69,6 @@
           </view>
         </view>  
         <view wx:else>已售罄</view>
-        
       </view>
     </view>
     

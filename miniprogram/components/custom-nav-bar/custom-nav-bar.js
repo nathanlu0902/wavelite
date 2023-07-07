@@ -21,7 +21,8 @@ Component({
    */
   data: {
     navBarHeight:app.globalData.navBarHeight,
-    statusBarHeight:app.globalData.statusBarHeight
+    statusBarHeight:app.globalData.statusBarHeight,
+    active:false
   },
   
   /**
@@ -30,6 +31,17 @@ Component({
   methods: {
     goBack(){
       wx.navigateBack();
+    },
+    toggleInput(){
+      this.setData({
+        active:!this.data.active
+      })
+      console.log(this.data)
+    },
+    goSearch(){
+      wx.navigateTo({
+        url: '../../pages/search/search',
+      })
     }
   }
 })

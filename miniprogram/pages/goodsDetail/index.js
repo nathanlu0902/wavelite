@@ -8,23 +8,7 @@ Page({
       showLocation:false,
       showDistance:false
     },
-    tabItems:[
-      {
-        id:0,
-        value:"详情",
-        isActive:true
-      },
-      {
-        id:1,
-        value:"评论",
-        isActive:false
-      },
-      {
-        id:2,
-        value:"搭配",
-        isActive:false
-      }
-    ],
+  
   },
 
   onLoad() {
@@ -50,14 +34,6 @@ Page({
     this.updateCheckoutBar()
   },
 
-  handleTabClicked:function(e){
-    let index=e.detail;
-    let {tabItems}=this.data;
-    tabItems.forEach((v,i)=>i===index?v.isActive=true:v.isActive=false)
-    this.setData({
-      tabItems
-    })
-  },
   handlePreviewPic(e){
     let {current}=e.currentTarget.dataset;
     wx.previewImage({
@@ -129,7 +105,10 @@ Page({
       totalPrice:totalPrice
     })
   },
+  onBaseChange(e){
+    
 
+  },
   checkout(){
     wx.navigateTo({
       url: '../cart/index',

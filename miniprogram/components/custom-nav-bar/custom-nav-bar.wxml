@@ -1,11 +1,8 @@
-<view class="nav-wrapper" style="height: {{navBarHeight}}px;top:{{statusBarHeight}}px">
+<view class="nav-wrapper" style="height: {{navBarHeight}}px;line-height:{{navBarHeight}}px;top:{{statusBarHeight}}px">
   <view wx:if="{{navBarData.showBack==true}}" style="height: {{navBarHeight}}px;" class="back-btn-wrapper">
-    <view class="iconfont icon-back" bindtap="goBack"></view>
+    <view class="icon iconfont icon-back" bindtap="goBack"></view>
   </view>
-  <view wx:if="{{navBarData.showLocation}}" class="currentLocation">{{currentLocation}}</view>
-  <view wx:if="{{navBarData.showDistance}}" class="distance">距您{{currentDistance}}km
-  </view>
-  <view wx:if="{{navBarData.showSearch}}">
-    <input class="search-bar" placeholder="请输入搜索内容"/>
+  <view wx:if="{{navBarData.showSearch}}" class="searchArea">
+    <image class="icon iconfont icon-search" bindtap="toggleInput" bindtap="goSearch"></image>
   </view>
 </view>

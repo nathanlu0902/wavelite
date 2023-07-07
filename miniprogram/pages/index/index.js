@@ -1,4 +1,6 @@
 const app=getApp()
+var userinfo=wx.getStorageSync('userinfo')
+
 Page({
   data: {
     top:app.globalData.menuTop+(app.globalData.menuTop-app.globalData.statusBarHeight)+app.globalData.menuHeight,
@@ -18,28 +20,18 @@ Page({
   },
   //options(Object)
   onLoad: function() {
-    wx.cloud.callFunction({
-      name:"login"
-    }).then(res=>{
-      console.log(res)
-      //res.result返回一个数组
-      if(res.result.length>0){
-        let userinfo=res.result[0];
-        wx.setStorageSync('loggedIn', true)
-        wx.setStorageSync('userinfo', res.result[0])
-        this.setData({
-          registered:true,
-          nickname:userinfo.nickname,
-          points:userinfo.points
-        })
-      }else{
-        wx.setStorageSync('loggedIn', false)
-        this.setData({
-          nickname:"Waver",
-          registered:false
-        })
+    if(app.globalData.registered===true){
+      this.setData({
+        registered:true,
+        nickname:userinfo.nickname,
+        points:userinfo.points
+      })
+    }else{
+      this.setData({
+        nickname:userinfo.nickname,
+        registered:false
+      })
       }
-    })
     this.registerPopup=this.selectComponent("#popup")
   },
 

@@ -5,15 +5,10 @@ App({
     navBarHeight:0,
     SCREENHEIGHT:'',
     SCREENWIDTH:'',
-    userinfo:{
-      nickname:"",
-      phone:"",
-      gender:"",
-      oepnid:"",
-      addressList:[],
-      userid:"",
-      loggedIn:false
-    }
+    shopList:[{
+      name:"苏州丰隆城市中心店"
+    }]
+    
   },
 
   onLaunch(){
@@ -31,10 +26,23 @@ App({
     }
 
     })
-    
+    let that=this;
+    wx.cloud.callFunction({
+      name:"login"
+    }).then(res=>{
+      if(res.result.length>0){
+        that.globalData.loggedIn=true;
+        wx.setStorageSync('userinfo', res.result[0])
+      }else{
+        that.globalData.loggedIn=false;
+        let userinfo={}
+        userinfo.nickname="waver"
+        userinfo.registered=false
+        wx.setStorageSync('userinfo', userinfo)
+      }
+    })
     if(!wx.getStorageSync('cart')){
-      let cart=[];
-      wx.setStorageSync('cart', cart) 
+      wx.setStorageSync('cart', [])
     }
     
     var timestamp=Date.parse(new Date())

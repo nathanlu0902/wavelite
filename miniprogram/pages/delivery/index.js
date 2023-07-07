@@ -1,12 +1,16 @@
-const app=getApp();
+var app=getApp();
+var userinfo=wx.getStorageSync('userinfo')
 Page({
+  goodsList:[],
   data: {
-    // height:app.globalData.SCREENHEIGHT*750/app.globalData.SCREENWIDTH,
     currentIndex:0,
+    notification_list:[
+      'hi',
+      'ssegegegwgegegege',
+      'efefefefefefe'
+    ],
     navBarData:{
-      showLocation:true,
       showBack:false,
-      showDistance:true,
       showSearch:true
     },
     bannerList:[
@@ -36,53 +40,47 @@ Page({
     })
   },
 
-  onShow(){
+  onLoad(){
     this.getGoodsList();
     this.updateQty();
     this.updateCheckoutBar();
-    this.setData({
-      navBarHeight:app.globalData.navBarHeight,
-      statusBarHeight:app.globalData.statusBarHeight
-    })
 
     //设置用户信息
-    if(wx.getStorageSync('userinfo')){
-      let nickname=wx.getStorageSync('userinfo').nickname;
-      this.setData({
-        nickname:nickname
-      })
-    }else{
-      console.log("no user info")
-      this.setData({
-        nickname:"waver"
-      })
-    }
+    this.setData({
+      userinfo:userinfo,
+      //不用setdata的话会获取不到globaldata的loggedIn，但是其他变量可以获取到，不懂
+      loggedIn:app.globalData.loggedIn,
+      navBarHeight:app.globalData.navBarHeight,
+      statusBarHeight:app.globalData.statusBarHeight,
+      shopList:app.globalData.shopList
+    })
 
   },
 
   getGoodsList(){
-    //更新商品数量
     wx.cloud.callFunction({
       name:"getGoodsList"
     }).then(res=>{
       let goodsList=res.result.data
-      let category_type=[]
-      //初始化所有分类的默认选项为单品
+      //初始化所有分类的默认type为单品
       for(let i=0;i<goodsList.length;i++){
-        category_type[i]="single";
-        let category_goodsList=goodsList[i].goodsList
+        goodsList[i].type="single";
         // 遍历goods，将stock=0的项移至末位
+        let category_goodsList=goodsList[i].goodsList
         for(let j=0;j<category_goodsList.length;j++){
-          if(category_goodsList[j].stock===0){
+          let good=category_goodsList[j];
+          if(good.stock===0){
             category_goodsList.push(category_goodsList.splice(j,1)[0])
-            console.log(category_goodsList)
+          }
+          //更新价格,加上标配价格
+          console.log(good.gradient)
+          if(good.gradient){
+            for(let k in good.gradient["标配"]){
+              good.goodsPrice+=good.gradient["标配"][k]
+            }
           }
         }
       }
-      this.setData({
-        category_type:category_type
-      })
-      wx.setStorageSync('goodsList', goodsList)
     })
   },
 
@@ -124,7 +122,7 @@ Page({
 
   add(e){
     //用户未登录则跳转至提示注册界面
-    if(wx.getStorageSync('loggedIn')==false){
+    if(!this.data.loggedIn){
       this.registerPopup=this.selectComponent("#popup-register");
       this.registerPopup.showModal();
     }else{
@@ -179,12 +177,11 @@ Page({
     })
   },
 
-  change_category_type(e){
-    let {type,index}=e.currentTarget.dataset;
-    let category_type=this.data.category_type;
-    category_type[index]=type
+  change_type(e){
+    let {type,category_index}=e.currentTarget.dataset;
+    //仅更改该分类的type
     this.setData({
-      category_type:category_type
+      [`goodsList[${category_index}].type`]:type
     })
   }
 })
