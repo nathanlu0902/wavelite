@@ -1,2 +1,29 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class="search-wrapper">
+  <image class="search-icon iconfont icon-search"></image>
+  <input class="search-input" value="{{keyword}}" placeholder="{{default}}" focus="true" confirm-type="search" bindconfirm="onConfirmSearch"/>
+  <view class="cancel-btn" bindtap="onCancel">取消</view>
+</view>
+<view class="section-wrapper">
+  <view wx:if="{{result_list.length==0}}" class="history section">
+    <view class="header">搜索历史</view>
+    <view class="wrapper">
+      <view class="item" wx:for="{{search_history}}">{{item}}</view>
+    </view>
+  </view>
+  <view wx:if="{{result_list.length==0}}" class="recommend section">
+    <view class="header">热门推荐</view>
+    <view class="wrapper">
+      <view class="item" wx:for="{{recommend}}">{{item}}</view>
+    </view>
+  </view>
+  <view wx:if="{{result_list.length>0}}" class="result-list">
+    <view wx:for="{{result_list}}" wx:key="id" class="good-item">
+      <image class="goods-pic" src="{{item.goodsPic[0]}}"></image>
+      <view class="goods-name">{{item.goodsName}}</view>
+      <view class="goods-price">¥{{item.goodsPrice}}</view>
+    </view>
+  </view>
+  <view wx:if="{{not_found}}&">
+    <view>没有找到</view>
+  </view>
+</view>

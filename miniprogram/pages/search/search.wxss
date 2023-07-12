@@ -1,1 +1,90 @@
-/* pages/search/search.wxss */
+@import "../../styles/iconfont.wxss";
+
+.search-wrapper{
+  position:relative;
+  height:50px;
+  width:100%;
+  top:30px;
+}
+
+.search-icon{
+  width:20px;
+  height:20px;
+  z-index:999;
+  position:absolute;
+  left:35px;
+  top:5px;
+}
+
+.search-input{
+  position:absolute;
+  left:24px;
+  top:0;
+  width:260px;
+  height:30px;
+  border-radius: 20px;
+  border:1px solid #DEDEDE;
+  padding-left:30px;
+  z-index:999;
+}
+
+.cancel-btn{
+  position: absolute;
+  right:10px;
+}
+
+.section-wrapper{
+  margin:62px auto auto 24px;
+  
+}
+
+.section{
+  margin-top:62px;
+}
+
+.header{
+  font-size:16px;
+  font-weight: 400;
+}
+.wrapper{
+  display: flex;
+  flex-direction: row;
+  margin-top:16rpx;
+}
+
+.item{
+  border:1px solid #D9D9D9;
+  border-radius: 20px;
+  width:fit-content;
+  padding:0 15rpx;
+  margin:0 20rpx;
+  font-size: 12px;
+  font-weight: 300;
+}
+.result-list{
+  display: flex;
+  flex-direction: column;
+}
+
+.good-item .goods-pic{
+  width: 36px;
+  height:36px;
+
+}
+
+.good-item{
+  position:relative;
+  display: flex;
+  flex-direction: row;
+  margin-top:15px;
+  justify-content: flex-start;
+}
+.good-item .goods-name{
+  position:absolute;
+  left:50px;
+}
+
+.good-item .goods-price{
+  position: absolute;
+  right:15px;
+}
