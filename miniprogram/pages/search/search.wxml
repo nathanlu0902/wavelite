@@ -1,16 +1,17 @@
 <view class="search-wrapper">
   <image class="search-icon iconfont icon-search"></image>
-  <input class="search-input" value="{{keyword}}" placeholder="{{default}}" focus="true" confirm-type="search" bindconfirm="onConfirmSearch"/>
+  <input class="search-input" value="{{keyword}}" placeholder="{{default}}" focus="true" confirm-type="search" bindinput="onInputChange" bindconfirm="onConfirmSearch"/>
   <view class="cancel-btn" bindtap="onCancel">取消</view>
 </view>
 <view class="section-wrapper">
-  <view wx:if="{{result_list.length==0}}" class="history section">
+  <view wx:if="{{!keyword&&result_list.length==0}}" class="history section">
     <view class="header">搜索历史</view>
+    <view class="clean-btn" bindtap="empty_history">清空</view>
     <view class="wrapper">
       <view class="item" wx:for="{{search_history}}">{{item}}</view>
     </view>
   </view>
-  <view wx:if="{{result_list.length==0}}" class="recommend section">
+  <view wx:if="{{!keyword&&result_list.length==0}}" class="recommend section">
     <view class="header">热门推荐</view>
     <view class="wrapper">
       <view class="item" wx:for="{{recommend}}">{{item}}</view>
@@ -23,7 +24,7 @@
       <view class="goods-price">¥{{item.goodsPrice}}</view>
     </view>
   </view>
-  <view wx:if="{{not_found}}&">
+  <view wx:if="{{result_list.length==0&&keyword}}">
     <view>没有找到</view>
   </view>
 </view>

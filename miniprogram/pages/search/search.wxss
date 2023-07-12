@@ -35,17 +35,29 @@
 
 .section-wrapper{
   margin:62px auto auto 24px;
+
   
 }
 
-.section{
+.serction-wrapper .section{
   margin-top:62px;
+}
+.section-wrapper .history{
+  position:relative;
 }
 
 .header{
   font-size:16px;
   font-weight: 400;
 }
+
+.clean-btn{
+  position: absolute;
+  inset: 0px 10px auto 280px;
+
+}
+
+
 .wrapper{
   display: flex;
   flex-direction: row;
