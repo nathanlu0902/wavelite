@@ -4,37 +4,55 @@
       <image src="{{item}}" mode="widthFix"></image>
     </swiper-item>
 </swiper>
+
 <view class="good-info-wrapper">
-  <text class="text-large goodsName">{{good.goodsName}}</text>
-  <view class="text-small grey-color goodsSale">月售 {{good.goodsSale}}</view>
-  <view >
-    <view class="text-large price">¥{{good.goodsPrice}}</view>
-    <view wx:if="{{good.stock>0}}" class="price-btn-wrapper">
-      <block wx:if="{{good.qty>0}}" >
-          <view class="minus_btn" catchtap="minus">
-            <image src="../../images/delivery_btn/minus.svg" class="goods-btn_img"></image>
-          </view>
-          <view class="qty">{{good.qty}}</view>
-      </block>
-      <view class="add_btn" catchtap="add">
-        <image src="../../images/delivery_btn/plus.svg" class="goods-btn_img"></image>
+  <view class="text-large goodsName">{{good.goodsName}}</view>
+  <view class="label-wrapper">
+    <view class="label-item" wx:for="{{label}}">{{item}}</view>
+  </view>
+  <view class="description">{{good.description}}</view>
+  <block wx:if="{{good.needConfig}}">
+    <view class="info">
+      <view class="title">自选基底：</view>
+      <view class="label-wrapper">
+        <view wx:for="{{base}}" class="label-item selection {{item.selected?'selected':''}}" bindtap="onBaseChange" data-calories="{{item.calories}}" data-base_price="{{item.price}}" data-index="{{index}}">{{item.name}}</view>  
       </view>
     </view>
-    <view wx:else>已售罄</view>
-  </view>  
-</view>
-<view class="standard">
-  <view>基本配置</view>
-  <view wx:for="{{good.gradient}}" wx:if="{{standard_item.type==='standard'}}" wx:for-item="standard_item">{{standard_item.name}}</view>
+  
+  </block>
+  <view class="info">
+    <view class="title">主要原材料：</view>
+    <view class="content text-small">{{good.material_desc}}</view>
+  </view>
+  <view class="info">
+    <view class="title">热量：</view>
+    <view class="content text-small">{{good.calories}}kCal</view>
+  </view>
+  <view class="info">
+    <view class="title">产品特点：</view>
+    <view class="content text-small ">{{good.special}}</view>
+  </view>
+  <view class="info" style="color:#999DAE;font-size: 10px;">*由于天气炎热，下单后2小时内食用口感最佳</view>
+ 
 </view>
 
-<radio-group bindchange="onBaseChange" class="chooseBase">
-  <view>选择基底</view>
-  <radio wx:for="{{good.gradient}}" wx:if="{{base_item.type==='base'}}" wx:for-item="base_item" name="{{base_item.name}}" value="{{base_item.name}}" checked="{{base_item.checked}}">{{base_item.name}}</radio>
-</radio-group>
 
-<view class="description">
-  <view>产品特点</view>
-  <view>{{good.description}}</view>
+<view class="checkout-wrapper">
+  <view class="checkout-info-wrapper">
+    <view class="calories-info">约{{totalCalories}}kcal</view>
+    <view class="qty-control">
+      <view class="minus_btn" catchtap="minus">
+        <image src="../../images/delivery_btn/minus.svg" class="goods-btn_img"></image>
+      </view>
+        <view class="qty">{{good.new_qty}}</view>
+      <view class="add_btn" catchtap="add">
+        <image src="../../images/delivery_btn/plus.svg" class="goods-btn_img"></image>
+      </view>     
+    </view>
+  </view>
+  <view wx:if="{{good.stock>0}}" class="add-cart-btn" bindtap="add_cart">加入购物车 ￥{{good.totalPrice}}</view>
+  <view wx:else>已售罄</view>
 </view>
-<checkout-bar class="checkout-bar" totalCount="{{totalCount}}" totalPrice="{{totalPrice}}" bindtap="checkout"/>
+<popup id="popup-register">
+  <register></register>
+</popup>

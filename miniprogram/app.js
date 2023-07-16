@@ -26,24 +26,6 @@ App({
     }
 
     })
-    let that=this;
-    wx.cloud.callFunction({
-      name:"login"
-    }).then(res=>{
-      if(res.result.length>0){
-        that.globalData.loggedIn=true;
-        wx.setStorageSync('userinfo', res.result[0])
-      }else{
-        that.globalData.loggedIn=false;
-        let userinfo={}
-        userinfo.nickname="waver"
-        userinfo.registered=false
-        wx.setStorageSync('userinfo', userinfo)
-      }
-    })
-    if(!wx.getStorageSync('cart')){
-      wx.setStorageSync('cart', [])
-    }
     
     var timestamp=Date.parse(new Date())
     var expiration=timestamp+1800000 //半小时缓存

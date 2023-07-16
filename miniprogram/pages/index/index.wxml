@@ -22,7 +22,7 @@
     <view>订单状态：{{currentOrder.order_status}}</view>
   </view>
 </view>
-<view wx:if="{{registered}}" class="userCard">
+<view wx:if="{{loggedIn}}" class="userCard">
   <view class="btn-area" bindtap="onBindUserTap">
     <image class="pic"></image>
     <view class="member-info">

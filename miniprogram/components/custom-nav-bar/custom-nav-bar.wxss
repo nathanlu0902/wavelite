@@ -2,6 +2,11 @@
 .nav-wrapper{
   width:100%;
   position:fixed;
+  z-index:999;
+}
+.nav-wrapper .back-btn-wrapper{
+  position: absolute;
+  left:0;
 }
 
 .searchArea{
@@ -9,9 +14,12 @@
 }
 .icon{
   position: absolute;
-  left:247px;
   width:80rpx;
   height:80rpx;
   
+}
+
+.icon-search{
+  left:247px;
 }
 

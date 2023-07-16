@@ -73,7 +73,6 @@ Page({
             category_goodsList.push(category_goodsList.splice(j,1)[0])
           }
           //更新价格,加上标配价格
-          console.log(good.gradient)
           if(good.gradient){
             for(let k in good.gradient["标配"]){
               good.goodsPrice+=good.gradient["标配"][k]
@@ -81,6 +80,7 @@ Page({
           }
         }
       }
+      wx.setStorageSync('goodsList', goodsList)
     })
   },
 
@@ -108,9 +108,9 @@ Page({
   },
 
   onRightItemTap(e){
-    let {good_index,category_index}=e.currentTarget.dataset;
+    let {good_index,category_index,id}=e.currentTarget.dataset;
     wx.navigateTo({
-      url: '../../pages/goodsDetail/index?goodsid',
+      url: '../../pages/goodsDetail/index?id='+id,
       success(res){
         res.eventChannel.emit('passGood',{data:{good_index:good_index,category_index:category_index}})
       },

@@ -41,6 +41,10 @@ Page({
      //如果已经存在同样的搜索记录，将旧记录删除，头部添加新记录
      let history=wx.getStorageSync('searchHistory')
      if(history.length>0){
+       //最多储存15个记录
+       if(history.length==15){
+         history.pop()
+       }
        for(let i=0;i<history.length;i++){
          if(history[i]===keyword){
            history.splice(i,1)
@@ -96,5 +100,35 @@ Page({
       search_history:[]
     })
     wx.setStorageSync('searchHistory', [])
+  },
+
+  direct_search(e){
+    console.log(e.currentTarget)
+    let {keyword}=e.currentTarget.dataset;
+    this.search(keyword);
+    let history=wx.getStorageSync('searchHistory')
+     if(history.length>0){
+       for(let i=0;i<history.length;i++){
+         if(history[i]===keyword){
+           history.splice(i,1)
+         }
+       }
+       history.unshift(keyword) 
+     }else{
+       history.unshift(keyword)
+     }
+     wx.setStorageSync('searchHistory', history)
+     this.setData({
+       search_history:history,
+       keyword:keyword
+     })
+
+  },
+
+  toDetail(e){
+    let {id}=e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '../../pages/goodsDetail/index?id='+id
+    })
   }
 })

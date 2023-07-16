@@ -36,7 +36,6 @@ Component({
       this.setData({
         active:!this.data.active
       })
-      console.log(this.data)
     },
     goSearch(){
       wx.navigateTo({

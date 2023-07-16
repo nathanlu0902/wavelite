@@ -20,18 +20,31 @@ Page({
   },
   //options(Object)
   onLoad: function() {
-    if(app.globalData.registered===true){
-      this.setData({
-        registered:true,
-        nickname:userinfo.nickname,
-        points:userinfo.points
-      })
-    }else{
-      this.setData({
-        nickname:userinfo.nickname,
-        registered:false
-      })
+    wx.cloud.callFunction({
+      name:"login"
+    }).then(res=>{
+      if(res.result.length>0){
+        this.setData({
+          loggedIn:true,
+          nickname:userinfo.nickname,
+          points:userinfo.points
+        })
+        app.globalData.loggedIn=true;
+        wx.setStorageSync('userinfo', res.result[0])
+      }else{
+        let userinfo={}
+        userinfo.nickname="waver"
+        this.setData({
+          nickname:userinfo.nickname,
+          loggedIn:false
+        })
+        app.globalData.loggedIn=false;
+        wx.setStorageSync('userinfo', userinfo)
       }
+    })
+    if(!wx.getStorageSync('cart')){
+      wx.setStorageSync('cart', [])
+    }
     this.registerPopup=this.selectComponent("#popup")
   },
 

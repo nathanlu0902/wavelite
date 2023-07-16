@@ -8,17 +8,17 @@
     <view class="header">搜索历史</view>
     <view class="clean-btn" bindtap="empty_history">清空</view>
     <view class="wrapper">
-      <view class="item" wx:for="{{search_history}}">{{item}}</view>
+      <view class="item" bindtap="direct_search" data-keyword="{{item}}" wx:for="{{search_history}}">{{item}}</view>
     </view>
   </view>
   <view wx:if="{{!keyword&&result_list.length==0}}" class="recommend section">
     <view class="header">热门推荐</view>
     <view class="wrapper">
-      <view class="item" wx:for="{{recommend}}">{{item}}</view>
+      <view class="item" bindtap="direct_search" data-keyword="{{item}}" wx:for="{{recommend}}">{{item}}</view>
     </view>
   </view>
   <view wx:if="{{result_list.length>0}}" class="result-list">
-    <view wx:for="{{result_list}}" wx:key="id" class="good-item">
+    <view wx:for="{{result_list}}" wx:key="id" class="good-item" bindtap="toDetail" data-id="{{item.id}}">
       <image class="goods-pic" src="{{item.goodsPic[0]}}"></image>
       <view class="goods-name">{{item.goodsName}}</view>
       <view class="goods-price">¥{{item.goodsPrice}}</view>
