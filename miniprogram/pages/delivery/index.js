@@ -1,7 +1,9 @@
 var app=getApp();
 var userinfo=wx.getStorageSync('userinfo')
+var goodsList=[]
+var cart=wx.getStorageSync('cart')
+
 Page({
-  goodsList:[],
   data: {
     currentIndex:0,
     notification_list:[
@@ -42,7 +44,7 @@ Page({
 
   onLoad(){
     this.getGoodsList();
-    this.updateQty();
+    // this.updateQty();
     this.updateCheckoutBar();
 
     //设置用户信息
@@ -61,7 +63,7 @@ Page({
     wx.cloud.callFunction({
       name:"getGoodsList"
     }).then(res=>{
-      let goodsList=res.result.data
+      goodsList=res.result.data
       //初始化所有分类的默认type为单品
       for(let i=0;i<goodsList.length;i++){
         goodsList[i].type="single";
@@ -73,38 +75,40 @@ Page({
             category_goodsList.push(category_goodsList.splice(j,1)[0])
           }
           //更新价格,加上标配价格
-          if(good.gradient){
-            for(let k in good.gradient["标配"]){
-              good.goodsPrice+=good.gradient["标配"][k]
+          if(good.material){
+            for(let k in good.material["标配"]){
+              good.goodsPrice+=good.material["标配"][k]
             }
           }
         }
       }
-      wx.setStorageSync('goodsList', goodsList)
+      this.updateQty();
     })
   },
 
   updateQty(){
-    let goodsList=wx.getStorageSync('goodsList')
     //遍历goodsList和cart，更新goodsList的qty
-    let cart=wx.getStorageSync('cart')
+    let new_cart=wx.getStorageSync('cart')
     goodsList.forEach(category=>{
       category.goodsList.forEach(good=>{
-        let item=cart.find(item=>{
-          return item.id===good.id 
-        })
-        if(item){
-          good.qty=item.qty
+        var spu_qty=0;
+        if(new_cart.length==0){
+          good.spu_qty=spu_qty;
+          return;
         }else{
-          good.qty=0
-        }
-      })
-    })
+          for(let index in new_cart){
+            if(new_cart[index].id==good.id){
+              spu_qty+=new_cart[index].sku_qty;
+              new_cart.splice(index,1);
+            }
+          }
+          good.spu_qty=spu_qty;
+        }  
+    })})
     wx.setStorageSync('goodsList', goodsList)
     this.setData({
       goodsList:goodsList
     })
-
   },
 
   onRightItemTap(e){
@@ -133,9 +137,13 @@ Page({
         return cart_item.id===good.id
       })
       if(existingItem){
-        existingItem.qty+=1
+        existingItem.sku_qty+=1
+        existingItem.spu_qty+=1
+        existingItem.totalPrice=existingItem.sku_qty*existingItem.goodsPrice
       }else{
-        good.qty=1
+        good.sku_qty=1
+        good.spu_qty=1
+        good.totalPrice=good.sku_qty*good.goodsPrice
         cart.push(good)
       }
       wx.setStorageSync("cart",cart);
@@ -153,26 +161,24 @@ Page({
     const index=cart.findIndex(cart_item=>{
       return cart_item.id===good.id
     })
-    if(cart[index].qty===1){
+    if(cart[index].sku_qty===1){
       cart.splice(index,1)
-    }else(
-      cart[index].qty-=1
-    )
+    }else{
+      cart[index].sku_qty-=1
+      cart[index].spu_qty-=1
+      cart[index].totalPrice=cart[index].sku_qty*cart[index].goodsPrice
+    }
     wx.setStorageSync('cart', cart)
     this.updateQty();
     this.updateCheckoutBar();
   },
 
   updateCheckoutBar(){
-    let cart=wx.getStorageSync('cart')
     let totalPrice=0;
-    let totalCount=0;
     cart.forEach(item=>{
-      totalPrice+=item.qty*item.goodsPrice;
-      totalCount+=item.qty
+      totalPrice+=item.totalPrice;
     })
     this.setData({
-      totalCount:totalCount,
       totalPrice:totalPrice
     })
   },

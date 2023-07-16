@@ -44,7 +44,7 @@
       <view class="minus_btn" catchtap="minus">
         <image src="../../images/delivery_btn/minus.svg" class="goods-btn_img"></image>
       </view>
-        <view class="qty">{{good.new_qty}}</view>
+        <view class="qty">{{good.sku_qty}}</view>
       <view class="add_btn" catchtap="add">
         <image src="../../images/delivery_btn/plus.svg" class="goods-btn_img"></image>
       </view>     

@@ -1,12 +1,12 @@
 <custom-nav-bar navBarData="{{navBarData}}"/>
 <view class="top-background" style="top: -{{statusBarHeight}}px;"></view>
 <view class="match-shop" style="margin-top: {{navBarHeight+statusBarHeight}}px;">
-  <view class="address-wrapper">
+  <view class="item-wrapper">
     <view class="iconfont icon-check"></view>
     <view wx:if="{{loggedIn===true}}" class="address">{{userinfo.address[0].location}}</view>
     <view wx:else bindtap="login" class="address">{{loggedIn}}</view>
   </view>
-  <view class="shop-wrapper">
+  <view class="item-wrapper">
     <view class="iconfont icon-check"></view>
     <view class="shop">{{shopList[0].name}}</view>
   </view>
@@ -55,13 +55,13 @@
         <view class="dishPrice text-large">¥{{good_item.goodsPrice}}</view>
     
         <view wx:if="{{good_item.stock>0}}">
-          <view wx:if="{{good_item.needConfig==true}}">去配置</view>
+          <view wx:if="{{good_item.needConfig===true}}" class="config-btn" >去配置</view>
           <view wx:else class="btn-wrapper">
-            <view wx:if="{{good_item.qty>0}}" class="minus-qty-wrapper" >
+            <view wx:if="{{good_item.spu_qty>0}}" class="minus-qty-wrapper" >
               <view class="minus_btn" catchtap="minus" data-_id="{{good_item.id}}" data-category_index="{{category_index}}" data-good_index="{{good_index}}">
                 <image src="/images/delivery_btn/minus.svg" class="goods-btn_img"></image>
               </view>
-              <view class="qty">{{good_item.qty}}</view>
+              <view class="qty">{{good_item.spu_qty}}</view>
             </view>
             <view class="add_btn" catchtap="add" data-category_index="{{category_index}}" data-good_index="{{good_index}}">
               <image src="/images/delivery_btn/plus.svg" class="goods-btn_img"></image>
@@ -76,8 +76,16 @@
   </view>
 </scroll-view>
 </view>
+
+<view class="checkout-bar-wrapper">
+  <image class="cart-icon iconfont icon-cart"></image>
+  <view class="info-wrapper">
+    <view class="totalPrice">¥{{totalPrice}}</view>
+    <view class="remark">满¥20起送</view>
+  </view>
+</view>
+
 <popup id="popup-register">
   <register/>
 </popup>
-
-<checkout-bar class="checkout-bar" totalCount="{{totalCount}}" totalPrice="{{totalPrice}}"/>
+<!-- <checkout-bar class="checkout-bar" totalCount="{{totalCount}}" totalPrice="{{totalPrice}}"/> -->

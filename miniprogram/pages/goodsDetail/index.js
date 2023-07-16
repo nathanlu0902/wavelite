@@ -25,7 +25,7 @@ Page({
         if(category_goodsList[j].id==good_id){
           good=category_goodsList[j]
           //初始数量为1
-          good.new_qty=1;
+          good.sku_qty=1;
           //初始totalprice
           good.totalPrice=good.goodsPrice
           this.setData({
@@ -60,7 +60,7 @@ Page({
       this.registerPopup.showModal();
     }else{
       let good=this.data.good
-      good.new_qty+=1;
+      good.sku_qty+=1;
       this.setData({
         good:good
       })
@@ -73,8 +73,8 @@ Page({
 
   minus(e){
     let good=this.data.good
-    if(good.new_qty>0){
-      good.new_qty-=1;
+    if(good.sku_qty>0){
+      good.sku_qty-=1;
     }
     this.setData({
       good:good
@@ -83,7 +83,7 @@ Page({
   },
 
   updateCheckoutBar(){
-    let totalPrice=this.data.good.new_qty*this.data.good.goodsPrice;
+    let totalPrice=this.data.good.sku_qty*this.data.good.goodsPrice;
     this.setData({
       'good.totalPrice':totalPrice
     })
@@ -122,7 +122,7 @@ Page({
         try{
           //购物车中已有同样id，同样base的，增加qty
           if(cart_item.id==good.id&&cart_item.base==good.base){
-            cart_item.qty+=good.new_qty;
+            cart_item.sku_qty+=good.sku_qty;
             cart_item.totalPrice+=good.totalPrice;
             wx.showToast({
               title: '添加购物车成功',
