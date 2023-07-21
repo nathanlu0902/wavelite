@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3891628 */
-  src: url('//at.alicdn.com/t/c/font_3891628_cz0bs45huwu.woff2?t=1676185145622') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3891628_cz0bs45huwu.woff?t=1676185145622') format('woff'),
-       url('//at.alicdn.com/t/c/font_3891628_cz0bs45huwu.ttf?t=1676185145622') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3891628_eqdy46qmtiv.woff2?t=1689752765140') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3891628_eqdy46qmtiv.woff?t=1689752765140') format('woff'),
+       url('//at.alicdn.com/t/c/font_3891628_eqdy46qmtiv.ttf?t=1689752765140') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bianji:before {
+  content: "\e8ac";
+}
+
+.icon-dingwei-01:before {
+  content: "\e610";
+}
+
+.icon-search1:before {
+  content: "\e67d";
+}
+
+.icon-arrow-right:before {
+  content: "\e665";
+}
+
+.icon-direction-left:before {
+  content: "\e66c";
 }
 
 .icon-check:before {

@@ -19,4 +19,13 @@ page{
 .text-bold{
   font-weight:500;
 }
-
+.main-black-button{
+  width:100%;
+  position: fixed;
+  bottom: 34px;
+  text-align: center;
+  background-color: black;
+  color: #fff;
+  height:45px;
+  line-height: 45px;
+}

@@ -15,7 +15,7 @@
     <view class="info">
       <view class="title">自选基底：</view>
       <view class="label-wrapper">
-        <view wx:for="{{base}}" class="label-item selection {{item.selected?'selected':''}}" bindtap="onBaseChange" data-calories="{{item.calories}}" data-base_price="{{item.price}}" data-index="{{index}}">{{item.name}}</view>  
+        <view wx:for="{{base}}" class="label-item selection {{item.selected?'selected':''}}" bindtap="onBaseChange" data-index="{{index}}">{{item.name}}</view>  
       </view>
     </view>
   

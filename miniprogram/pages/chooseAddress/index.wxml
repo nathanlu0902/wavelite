@@ -1,23 +1,45 @@
-<block wx:if="{{addressList.length==0}}">
-  <view class="no-address-remind">
-    <image src=""></image>
-    <view>没有地址</view>
-    <view>您还没有常用地址，快去添加一个</view>
-    <button class="add-address-btn" bindtap="add_address">新建地址</button>
+<view class="wrapper">
+  <view class="title">
+    <image class="iconfont icon-dingwei-01" style="width:16px;height:16px"/>
+    <view style="font-size: 14px;">当前定位</view>
   </view>
-</block>
+  <view style="font-size: 12px;">定位失败，无法获取</view>
+  <view class="enable-gps-btn">开启定位</view>
+</view>
 
-<block wx:else>
-<view class="address-list">
-  <view wx:for="{{addressList}}" class="address-item" wx:for-item="address" wx:key="id">
-    <view class="choose-btn" bindtap="chooseAddress" data-index="{{index}}">
-      <view class="address-title">{{address.location}}</view>
+<view class="wrapper">
+  <view class="title">
+    <image class="iconfont icon-dingwei-01" style="width:16px;height:16px"></image>
+    <view style="font-size: 14px;">我的收获地址</view>
+  </view>
+  <block wx:if="{{addressList.length==0}}">
+    <view class="no-address-remind">
+      <image class="iconfont icon-dingwei-01"></image>
+      <view>没有地址</view>
+      <view>您还没有常用地址，快去添加一个</view>
+      <button class="add-address-btn" bindtap="add_address">新建地址</button>
+    </view>
+  </block>
+
+  <block wx:else>
+  <view class="address-list">
+    <view wx:for="{{addressList}}" class="address-item" wx:for-item="address" wx:key="id">
+      <view wx:if="{{index===0}}" class="default-icon">默认</view>
+      <radio-group bindchange="onRadioChange" >
+        <radio class="radio" checked="{{address.checked}}" value="{{index}}"></radio>
+      </radio-group>
       <view class="address-info-wrapper">
+        <view class="address-title" style="display: inline;">{{address.city}} | </view>
+        <view class="address-title" style="display: inline;">{{address.short_address}}</view>
         <view class="address-username text-small grey-color">{{address.receiver}}</view>
-        <view class="address-phone text-small grey-color">{{address.phone}}</view>
+        <view class="address-phone text-small grey-color">{{address.phone}}</view>  
+        <view class="out-of-range" wx:if="{{address.out_of_range}}">超出配送范围</view>
+      </view>
+      <view class="edit-btn-wrapper">
+        <navigator url="../cart/index"><image class="edit-btn iconfont icon-bianji"></image></navigator>
       </view>
     </view>
   </view>
+  </block>  
 </view>
-<view class="add-address-btn" bindtap="add_address">添加新地址</view>
-</block>
+<view class="main-black-button" bindtap="add_address">添加新地址</view>

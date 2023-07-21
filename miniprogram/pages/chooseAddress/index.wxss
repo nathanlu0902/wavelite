@@ -1,28 +1,117 @@
+@import "../../styles/iconfont.wxss";
+.title{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.wrapper{
+  position: relative;
+  padding:16px;
+  border-bottom: 1px dashed #E9ECF1;
+}
+
+.enable-gps-btn{
+  position: absolute;
+  right:16px;
+  top:32px;
+  font-size: 12px;
+  color: #00BEBE;
+}
+
 .address-list{
-  display:flex;
-  flex-direction: column;
+
 }
 
 .address-item{
+  position:relative;
   border-bottom: 0.5px solid lightgray;
-  padding-left:20rpx;
+  background-color: #F6F6F6;
+  margin-bottom:16px;
+  width:343px;
+  height:71px;
+
+}
+.default-icon{
+  position:absolute;
+  top:0;
+  right:0;
+  width:32px;
+  height:15px;
+  background-color: #DCDEE4;
+  font-size: 10px;
+  text-align: center;
+  line-height: 15px;
 }
 
-.address-info-wrapper{
-  display: flex;
-  flex-direction: row;
+.radio{
+  position:absolute;
+  top:27px;
+  left:16px;
+  transform:scale(0.7); /*修改radio大小 */
+}
+
+.address-item .address-info-wrapper{
+  width: 253px;
+  height:39px;
+  position: absolute;
+  /* inset:16px auto 16px 43px; */
+  left:50px;
+  top:16px;
+}
+.address-item .address-info-wrapper .address-title{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.address-item .address-info-wrapper .out-of-range{
+  border: 1px solid black;
+  width:64px;
+  height:15px;
+  font-size: 9px;
+  text-align: center;
+  line-height: 15px;
+  position:absolute;
+  top:8rpx;
+  right:12px;
 }
 
 .address-phone{
-  margin-left:20rpx;
+  position: absolute;
+  bottom:0px;
+  top: 25px;
+  left:60px;
 }
 
-.add-address-btn{
-  border: 1px solid black;
-  width:200rpx;
-  margin:100rpx auto;
-  text-align: center;
+.address-username {
+  position: absolute;
+  bottom:0px;
+  top: 25px;
 }
+
+.address-item .edit-btn-wrapper{
+  position: absolute;
+  font-size: 20px;
+  inset:28px 16px 28px auto;
+  width:16px;
+  height:16px;
+  text-align: center;
+  line-height: 16px;
+
+}
+
+.address-item .edit-btn-wrapper .edit-btn{
+  position: absolute;
+  right:0px;
+  width:16px;
+  height:16px;
+}
+
+
+
+
 
 .no-address-remind{
   width:500rpx;

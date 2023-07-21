@@ -28,6 +28,8 @@ Page({
           good.sku_qty=1;
           //初始totalprice
           good.totalPrice=good.goodsPrice
+          //初始base
+          good.base=this.data.base[0]
           this.setData({
             good:good
           })
@@ -36,9 +38,6 @@ Page({
       }
     }
     this.updateCheckoutBar()
-    this.setData({
-      totalCalories:good.calories
-    })
 
   },
 
@@ -83,20 +82,21 @@ Page({
   },
 
   updateCheckoutBar(){
-    let totalPrice=this.data.good.sku_qty*this.data.good.goodsPrice;
+    let good=this.data.good;
+    good.totalPrice=(good.goodsPrice+good.base.price)*good.sku_qty
+    let totalCalories=good.calories+good.base.calories
     this.setData({
-      'good.totalPrice':totalPrice
+      "good.totalPrice":good.totalPrice,
+      totalCalories:totalCalories
     })
   },
   onBaseChange(e){
     let good=this.data.good;
-    let {calories,base_price,index}=e.currentTarget.dataset;
-    //更新价格
-    let totalCalories=good.calories+calories
+    let {index}=e.currentTarget.dataset;
     let base=this.data.base;
-    good.totalPrice=good.totalPrice+base_price;
-    good.base=base[index].name
-
+    //更新价格
+    let good_base=this.data.base[index];
+    good.base=good_base;
     base.forEach((item,item_index)=>{
       if(item_index==index){
         item.selected=true
@@ -104,12 +104,11 @@ Page({
         item.selected=false
       }
     })
-
     this.setData({
-      totalCalories:totalCalories,
       good:good,
       base:base
     })
+    this.updateCheckoutBar();
 
   },
   add_cart(){
@@ -121,7 +120,8 @@ Page({
         let good=this.data.good;
         try{
           //购物车中已有同样id，同样base的，增加qty
-          if(cart_item.id==good.id&&cart_item.base==good.base){
+          console.log(cart_item.id===good.id&&cart_item.base===good.base)
+          if(cart_item.id===good.id&&cart_item.base===good.base){
             cart_item.sku_qty+=good.sku_qty;
             cart_item.totalPrice+=good.totalPrice;
             wx.showToast({

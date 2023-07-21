@@ -1,12 +1,5 @@
-
-
-// export function get_total_price(){
-//   let cart=wx.getStorageSync('cart')||[];
-//   let totalPrice=0;
-//   const initialValue=0;
-//   //累加对象里的值必须提供initialValue
-//   totalPrice=cart.reduce((pre,nxt)=>{
-//       return pre+nxt.qty*nxt.goodsPrice
-//     },initialValue)
-//   return totalPrice;
-// }
+export function shorten_address(long_address){
+  let city=long_address.match(/省(.*市)/)[1]//提取省后面的xx市
+  let short_address=long_address.match(/区(.*)/)[1] //提取区后面的所有字符
+  return {city:city,short_address:short_address}
+}

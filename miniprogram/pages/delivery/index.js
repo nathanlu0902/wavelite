@@ -1,11 +1,13 @@
 var app=getApp();
 var userinfo=wx.getStorageSync('userinfo')
-var goodsList=[]
+var category=[]
+var categoryObj={}
 var cart=wx.getStorageSync('cart')
 
 Page({
   data: {
     currentIndex:0,
+    category:[{id:"poke",name:"波奇",icon:""},{id:"drink",name:"饮品",icon:""}],
     notification_list:[
       'hi',
       'ssegegegwgegegege',
@@ -32,21 +34,7 @@ Page({
     
   },
 
-  onLeftItemTap:function(e){
-    let {categoryid,index}=e.currentTarget.dataset;
-    //设置scroll-into-view的参考对象
-    //id不能为中文，key全小写
-    this.setData({
-      viewid:categoryid,
-      currentIndex:index
-    })
-  },
-
   onLoad(){
-    this.getGoodsList();
-    // this.updateQty();
-    this.updateCheckoutBar();
-
     //设置用户信息
     this.setData({
       userinfo:userinfo,
@@ -56,67 +44,83 @@ Page({
       statusBarHeight:app.globalData.statusBarHeight,
       shopList:app.globalData.shopList
     })
+  },
+  onShow(){
+    this.getGoodsList();
+    // this.updateCheckoutBar();
 
+  },
+
+  onLeftItemTap:function(e){
+    let {name}=e.currentTarget.dataset;
+    //设置scroll-into-view的参考对象
+    //id不能为中文，key全小写
+    this.setData({
+      viewid:name
+    })
   },
 
   getGoodsList(){
     wx.cloud.callFunction({
-      name:"getGoodsList"
+      name:"category",
+      data:{
+        type:"get"
+      }
     }).then(res=>{
-      goodsList=res.result.data
+      category=res.result.data
       //初始化所有分类的默认type为单品
-      for(let i=0;i<goodsList.length;i++){
-        goodsList[i].type="single";
-        // 遍历goods，将stock=0的项移至末位
-        let category_goodsList=goodsList[i].goodsList
-        for(let j=0;j<category_goodsList.length;j++){
-          let good=category_goodsList[j];
+      for(let i=0;i<category.length;i++){
+        let category_item=category[i];
+        let category_name=Object.keys(category_item)[1] //获取分类名称，比如poke
+        categoryObj[category_name]=[] //创建新对象储存goodsList
+        
+        for(let index in category_item[category_name].goodsList){
+          let good=category_item[category_name].goodsList[index];
+          good.type="single";
+          //将stock=0的项移至末位
           if(good.stock===0){
-            category_goodsList.push(category_goodsList.splice(j,1)[0])
+            category_item[category_name].goodsList.push(category_item[category_name].goodsList.splice(index,1)[0])
           }
+
           //更新价格,加上标配价格
           if(good.material){
             for(let k in good.material["标配"]){
               good.goodsPrice+=good.material["标配"][k]
             }
           }
+          categoryObj[category_name][good.id]=good //调整一下对象的格式
         }
-      }
+        }
+      
       this.updateQty();
     })
   },
 
   updateQty(){
-    //遍历goodsList和cart，更新goodsList的qty
-    let new_cart=wx.getStorageSync('cart')
-    goodsList.forEach(category=>{
-      category.goodsList.forEach(good=>{
-        var spu_qty=0;
-        if(new_cart.length==0){
-          good.spu_qty=spu_qty;
-          return;
-        }else{
-          for(let index in new_cart){
-            if(new_cart[index].id==good.id){
-              spu_qty+=new_cart[index].sku_qty;
-              new_cart.splice(index,1);
-            }
-          }
-          good.spu_qty=spu_qty;
-        }  
-    })})
-    wx.setStorageSync('goodsList', goodsList)
+    if(cart.length>0){
+      cart.forEach(item=>{
+        if(item.sku_qty>0){
+          categoryObj[item.category][item.id].qty+=item.sku_qty
+        }
+      })
+    }
+    console.log(categoryObj)
+    wx.setStorageSync('categoryObj', categoryObj)
+    console.log(wx.getStorageSync('categoryObj'))
     this.setData({
-      goodsList:goodsList
+      categoryObj:categoryObj
     })
+    
+    
+
   },
 
   onRightItemTap(e){
-    let {good_index,category_index,id}=e.currentTarget.dataset;
+    let {category_name,id}=e.currentTarget.dataset;
     wx.navigateTo({
       url: '../../pages/goodsDetail/index?id='+id,
       success(res){
-        res.eventChannel.emit('passGood',{data:{good_index:good_index,category_index:category_index}})
+        res.eventChannel.emit('passGood',{data:{gcategory_name:category_name,id:id}})
       },
       fail(err){
         console.log(err)
@@ -132,7 +136,6 @@ Page({
     }else{
       let {category_index,good_index}=e.currentTarget.dataset;
       let good=this.data.goodsList[category_index]["goodsList"][good_index];
-      var cart=wx.getStorageSync('cart')
       const existingItem=cart.find(cart_item=>{
         return cart_item.id===good.id
       })
@@ -157,7 +160,6 @@ Page({
   minus(e){
     let {category_index,good_index}=e.currentTarget.dataset;
     let good=this.data.goodsList[category_index]["goodsList"][good_index];
-    var cart=wx.getStorageSync('cart');
     const index=cart.findIndex(cart_item=>{
       return cart_item.id===good.id
     })

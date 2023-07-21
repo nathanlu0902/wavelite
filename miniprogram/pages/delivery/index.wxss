@@ -221,12 +221,6 @@
   width:100%;
 }
 
-.start-config-btn{
-  width:100%;
-  background-color: gray;
-  height:50rpx;
-}
-
 .right-menu .category-header{
   position:sticky;
   top:0px;
@@ -275,14 +269,32 @@
   color:#999DAE;
 }
 
-.config-btn{
+
+
+.config-wrapper{
+  position:relative;
+}
+
+.config-wrapper .config-spu-qty{
+  position: absolute;
+  top:-12rpx;
+  right:0rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  width: 50rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+.config-wrapper .config-btn{
   border:1px solid #EBECEE;
   background:#EBECEE;
   font-size:11px;
   color:black;
   width:40px;
   height:15px;
-  padding:2px 8px
-  ;text-align: center;
+  padding:2px 8px;
+  text-align: center;
+  margin-top: 30rpx;
 }
+
 
