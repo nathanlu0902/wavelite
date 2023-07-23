@@ -1,0 +1,7 @@
+<view wx:if="{{good.spu_qty>0}}" class="minus_btn" catchtap="minus">
+	<image src="/images/delivery_btn/minus.svg" class="goods-btn_img"></image>
+	<view class="qty">{{good.spu_qty}}</view>
+</view>
+<view class="add_btn" catchtap="add">
+	<image src="/images/delivery_btn/plus.svg" class="goods-btn_img"></image>
+</view>

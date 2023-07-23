@@ -60,7 +60,8 @@
             <view class="config-btn">去配置</view>
           </view>
           <view wx:else class="btn-wrapper">
-            <view wx:if="{{good_item.spu_qty>0}}" class="minus-qty-wrapper" >
+            <qty-control category_name="{{category_name}}" goodid="{{good_id}}" good="{{good_item}}"/>
+            <!-- <view wx:if="{{good_item.spu_qty>0}}" class="minus-qty-wrapper" >
               <view class="minus_btn" catchtap="minus" data-_id="{{good_item.id}}" data-category_index="{{category_index}}" data-good_index="{{good_index}}">
                 <image src="/images/delivery_btn/minus.svg" class="goods-btn_img"></image>
               </view>
@@ -68,7 +69,7 @@
             </view>
             <view class="add_btn" catchtap="add" data-category_index="{{category_index}}" data-good_index="{{good_index}}">
               <image src="/images/delivery_btn/plus.svg" class="goods-btn_img"></image>
-            </view>
+            </view> -->
           </view>
         </view>  
         <view wx:else>已售罄</view>

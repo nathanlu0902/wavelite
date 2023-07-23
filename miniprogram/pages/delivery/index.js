@@ -1,8 +1,8 @@
 var app=getApp();
 var userinfo=wx.getStorageSync('userinfo')
 var category=[]
-var categoryObj={}
 var cart=wx.getStorageSync('cart')
+var category_obj={}
 
 Page({
   data: {
@@ -72,11 +72,9 @@ Page({
       for(let i=0;i<category.length;i++){
         let category_item=category[i];
         let category_name=Object.keys(category_item)[1] //获取分类名称，比如poke
-        categoryObj[category_name]=[] //创建新对象储存goodsList
-        
+        category_obj[category_name]={} //初始化
         for(let index in category_item[category_name].goodsList){
           let good=category_item[category_name].goodsList[index];
-          good.type="single";
           //将stock=0的项移至末位
           if(good.stock===0){
             category_item[category_name].goodsList.push(category_item[category_name].goodsList.splice(index,1)[0])
@@ -88,11 +86,13 @@ Page({
               good.goodsPrice+=good.material["标配"][k]
             }
           }
-          categoryObj[category_name][good.id]=good //调整一下对象的格式
+          
+          category_obj[category_name][good.id]=good //不能直接[category_name][good.id]=good,会报cant set property of undefined 错误
+          
         }
         }
-      
       this.updateQty();
+
     })
   },
 
@@ -100,18 +100,14 @@ Page({
     if(cart.length>0){
       cart.forEach(item=>{
         if(item.sku_qty>0){
-          categoryObj[item.category][item.id].qty+=item.sku_qty
+          category_obj[item.category][item.id].qty+=item.sku_qty
         }
       })
     }
-    console.log(categoryObj)
-    wx.setStorageSync('categoryObj', categoryObj)
-    console.log(wx.getStorageSync('categoryObj'))
+    wx.setStorageSync('category_obj', category_obj)
     this.setData({
-      categoryObj:categoryObj
+      category_obj:category_obj
     })
-    
-    
 
   },
 

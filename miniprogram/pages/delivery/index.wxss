@@ -196,7 +196,7 @@
   height:50rpx; /*固定高度防抖动*/
 }
 
-.minus-qty-wrapper{
+/* .minus-qty-wrapper{
   display:flex;
   flex-direction:row;
 }
@@ -219,7 +219,7 @@
 .goods-btn_img{
   height:100%;
   width:100%;
-}
+} */
 
 .right-menu .category-header{
   position:sticky;

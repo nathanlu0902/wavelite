@@ -4,7 +4,8 @@
     "checkout-bar":"../../components/checkout-bar/index",
     "register":"../../components/register/register",
     "custom-nav-bar":"../../components/custom-nav-bar/custom-nav-bar",
-    "popup":"../../components/popup/popup"
+    "popup":"../../components/popup/popup",
+    "qty-control":"../../components/qty-control/qty-control"
   },
   "navigationStyle": "custom"
   ,
