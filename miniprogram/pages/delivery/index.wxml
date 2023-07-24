@@ -15,11 +15,11 @@
 <view class="notification-wrapper">
   <view class="iconfont icon-check"></view>
   <swiper class="notification-swiper" autoplay="true" interval="4000" vertical="true" circular="true">
-    <swiper-item class="notification-item" wx:for="{{notification_list}}">{{item}}</swiper-item>
+    <swiper-item class="notification-item" wx:for="{{notification_list}}" wx:key="index">{{item}}</swiper-item>
   </swiper>
 </view>
 <swiper class="banner-swiper" autoplay="false" 	display-multiple-items="2" >
-  <swiper-item class="banner_item-wrapper" wx:for="{{bannerList}}">
+  <swiper-item class="banner_item-wrapper" wx:for="{{bannerList}}" wx:key="title">
     <image class="banner_item-image" src="{{item.imgUrl}}"/>
   </swiper-item>>
 </swiper>
@@ -28,7 +28,7 @@
   <view 
     class="left-item {{currentIndex==index?'active':''}}" 
     wx:for="{{category}}" 
-    wx:key="*this"
+    wx:key="index"
     bindtap="onLeftItemTap"
     data-name="{{item.name}}"
     >
@@ -37,16 +37,16 @@
   </view>
 </scroll-view>
 <scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-with-animation>
-  <view class="right-category" wx:key="category_index" wx:for="{{category}}" wx:for-item="category_item"  id="{{category_item.id}}" wx:key="{{category_item.id}}">
+  <view class="right-category" wx:for="{{category}}" wx:for-item="category_item"  id="{{category_item.id}}" wx:key="id">
   <!-- 分类名称（大地波奇） -->
     <view class="category-header">
       <view>{{category_item.name}}</view>
       <view class="filter">
-        <view class="filter-btn" bindtap="change_type" data-type="single">单品</view>
-        <view class="filter-btn" bindtap="change_type" data-type="set">套餐</view>
+        <view class="filter-btn" bindtap="change_type" data-type="single" data-category_id="category_item.id">单品</view>
+        <view class="filter-btn" bindtap="change_type" data-type="set"  data-category_id="category_item.id">套餐</view>
       </view> 
     </view> 
-    <view class="{{good_item.stock===0?'sold-out':'right-item'}}" wx:for="{{category_obj[category_item.id]}}" wx:for-index="good_id" wx:for-item="good_item" bindtap="onRightItemTap" wx:key="*this"  data-id="{{good_id}}" data-category_id="{{category_item.id}}" >
+    <view class="{{good_item.stock===0?'sold-out':'right-item'}}" wx:for="{{category_obj[category_item.id]}}" wx:for-index="good_id" wx:for-item="good_item" bindtap="onRightItemTap" wx:key="index"  data-id="{{good_id}}" data-category_id="{{category_item.id}}" >
       <image class="img" mode="scaleToFill" src="{{good_item.goodsPic[0]}}"/>
       <view class="info-wrapper">
       <view class="dishName text-bold" style="color:black">{{good_item.goodsName}}</view>
@@ -60,16 +60,7 @@
             <view class="config-btn">去配置</view>
           </view>
           <view wx:else class="btn-wrapper">
-            <qty-control id="qty-control" category_id="{{category_item.id}}" goodid="{{good_id}}" good="{{good_item}}"/>
-            <!-- <view wx:if="{{good_item.spu_qty>0}}" class="minus-qty-wrapper" >
-              <view class="minus_btn" catchtap="minus" data-_id="{{good_item.id}}" data-category_index="{{category_index}}" data-good_index="{{good_index}}">
-                <image src="/images/delivery_btn/minus.svg" class="goods-btn_img"></image>
-              </view>
-              <view class="qty">{{good_item.spu_qty}}</view>
-            </view>
-            <view class="add_btn" catchtap="add" data-category_index="{{category_index}}" data-good_index="{{good_index}}">
-              <image src="/images/delivery_btn/plus.svg" class="goods-btn_img"></image>
-            </view> -->
+            <qty-control  category_id="{{category_item.id}}" goodid="{{good_id}}"/>
           </view>
         </view>  
         <view wx:else>已售罄</view>

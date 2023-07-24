@@ -1,9 +1,7 @@
-
+let category_obj=wx.getStorageSync('category_obj')
+let cart=wx.getStorageSync('cart')
 Component({
   properties: {
-    good:{
-      type:Object
-    },
     category_id:{
       type:String
     },
@@ -13,9 +11,12 @@ Component({
   },
   lifetimes:{
     attached:function(){
-      console.log("1")
-      this.updateQty();
-      console.log("2")
+      
+      let good=category_obj[this.properties.category_id][this.properties.goodid]
+      this.setData({
+        good:good
+      })
+      // this.updateQty();
     }
   },
   data: {
@@ -31,33 +32,34 @@ Component({
       //   this.registerPopup=this.selectComponent("#popup-register");
       //   this.registerPopup.showModal();
       // }else{
-      const cart=wx.getStorageSync('cart')
-      const goodid=this.properties.goodid
-      const good=this.properties.good;
+      //更新购物车
       let existingItem=cart.find(cart_item=>{
-        return cart_item.id===goodid
+        return cart_item.id===this.properties.goodid
       })
       if(existingItem){
         existingItem.sku_qty+=1
-        good.spu_qty=1
         existingItem.totalPrice=existingItem.sku_qty*existingItem.goodsPrice
       }else{
+        let good=this.data.good
         good.sku_qty=1
-        good.spu_qty=1
         good.category_id=this.properties.category_id
         good.totalPrice=good.sku_qty*good.goodsPrice
         cart.push(good)
       }
-      wx.setStorageSync("cart",cart);
-    
+      wx.setStorageSync("cart",cart)
+      //更新category_obj
+      category_obj[this.properties.category_id][this.properties.goodid].spu_qty+=1
+      wx.setStorageSync('category_obj', category_obj)
+      this.setData({
+        good:category_obj[this.properties.category_id][this.properties.goodid]
+      })
       
     },
   
     minus(){
-      const goodid=this.properties.goodid
-      const cart=wx.getStorageSync('cart')
+      //更新购物车
       const index=cart.findIndex(cart_item=>{
-        return cart_item.id===goodid
+        return cart_item.id===this.properties.goodid
       })
       if(cart[index].sku_qty===1){
         cart.splice(index,1)
@@ -65,24 +67,27 @@ Component({
         cart[index].sku_qty-=1
         cart[index].totalPrice=cart[index].sku_qty*cart[index].goodsPrice
       }
+      //更新category_obj
       wx.setStorageSync('cart', cart)
+      category_obj[this.properties.category_id][this.properties.goodid].spu_qty-=1
+      wx.setStorageSync('category_obj', category_obj)
+      this.setData({
+        good:category_obj[this.properties.category_id][this.properties.goodid]
+      })
     },
 
     updateQty(){
-      console.log("hi")
-      const cart=wx.getStorageSync('cart')
-      const category_obj=wx.getStorageSync('category_obj')
       if(cart.length>0){
+
         cart.forEach(item=>{
           if(item.sku_qty>0){
-            console.log(item.category_id)
             category_obj[item.category_id][item.id].spu_qty+=item.sku_qty
           }
         })
       }
-      
+      wx.setStorageSync('category_obj', category_obj)
       this.setData({
-        category_obj:category_obj
+        good:category_obj[this.properties.category_id][this.properties.goodid]
       })
 
     }

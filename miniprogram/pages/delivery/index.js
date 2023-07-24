@@ -24,11 +24,11 @@ Page({
       },
       {link:'',
       imgUrl:'http://www.wagas.com.cn/admin/img/indeximg/bc4bb4740548b7348f6ef04b9219d21f.jpg',
-      title:"test1"
+      title:"test2"
      },
      {link:'',
      imgUrl:'http://www.wagas.com.cn/admin/img/indeximg/bc4bb4740548b7348f6ef04b9219d21f.jpg',
-     title:"test1"
+     title:"test3"
     },
     ]
     
@@ -90,35 +90,22 @@ Page({
           category_obj[category_id][good.id]=good //不能直接[category_id][good.id]=good,会报cant set property of undefined 错误
 
           wx.setStorageSync('category_obj', category_obj)
+          this.setData({
+            category_obj:category_obj
+          })
           
         }
         }
-      // this.selectComponent("#qty-control").updateQty();
 
     })
   },
 
-  // updateQty(){
-  //   console.log("ss")
-  //   if(cart.length>0){
-  //     cart.forEach(item=>{
-  //       if(item.sku_qty>0){
-  //         console.log(item.category_id)
-  //         category_obj[item.category_id][item.id].spu_qty+=item.sku_qty
-  //       }
-  //     })
-  //   }
-  //   wx.setStorageSync('category_obj', category_obj)
-  //   this.setData({
-  //     category_obj:category_obj
-  //   })
 
-  // },
 
   onRightItemTap(e){
     let {category_id,id}=e.currentTarget.dataset;
     wx.navigateTo({
-      url: '../../pages/goodsDetail/index?id='+id,
+      url: '../../pages/goodsDetail/index?id='+id+'&category_id='+category_id,
       success(res){
         res.eventChannel.emit('passGood',{data:{gcategory_id:category_id,id:id}})
       },
@@ -128,52 +115,6 @@ Page({
     })
   },
 
-  // add(e){
-  //   //用户未登录则跳转至提示注册界面
-  //   if(!this.data.loggedIn){
-  //     this.registerPopup=this.selectComponent("#popup-register");
-  //     this.registerPopup.showModal();
-  //   }else{
-  //     let {category_index,good_index}=e.currentTarget.dataset;
-  //     let good=this.data.goodsList[category_index]["goodsList"][good_index];
-  //     const existingItem=cart.find(cart_item=>{
-  //       return cart_item.id===good.id
-  //     })
-  //     if(existingItem){
-  //       existingItem.sku_qty+=1
-  //       existingItem.spu_qty+=1
-  //       existingItem.totalPrice=existingItem.sku_qty*existingItem.goodsPrice
-  //     }else{
-  //       good.sku_qty=1
-  //       good.spu_qty=1
-  //       good.totalPrice=good.sku_qty*good.goodsPrice
-  //       cart.push(good)
-  //     }
-  //     wx.setStorageSync("cart",cart);
-  //     this.updateQty();
-  //     this.updateCheckoutBar();
-
-  //   }
-    
-  // },
-
-  // minus(e){
-  //   let {category_index,good_index}=e.currentTarget.dataset;
-  //   let good=this.data.goodsList[category_index]["goodsList"][good_index];
-  //   const index=cart.findIndex(cart_item=>{
-  //     return cart_item.id===good.id
-  //   })
-  //   if(cart[index].sku_qty===1){
-  //     cart.splice(index,1)
-  //   }else{
-  //     cart[index].sku_qty-=1
-  //     cart[index].spu_qty-=1
-  //     cart[index].totalPrice=cart[index].sku_qty*cart[index].goodsPrice
-  //   }
-  //   wx.setStorageSync('cart', cart)
-  //   this.updateQty();
-  //   this.updateCheckoutBar();
-  // },
 
   updateCheckoutBar(){
     let totalPrice=0;
@@ -186,7 +127,7 @@ Page({
   },
 
   change_type(e){
-    let {type,category_index}=e.currentTarget.dataset;
+    let {type,category_id}=e.currentTarget.dataset;
     //仅更改该分类的type
     this.setData({
       [`goodsList[${category_index}].type`]:type

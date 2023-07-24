@@ -1,4 +1,4 @@
-var goodsList=wx.getStorageSync('goodsList')
+var category_obj=wx.getStorageSync('category_obj')
 var cart=wx.getStorageSync('cart')
 const app=getApp()
 import config from "../../config/config"
@@ -15,30 +15,13 @@ Page({
   },
 
   onLoad(options) {
-    let good_id=options.id;
-    var good;
-    
-    //遍历goodsList找到good
-    for(let i=0;i<goodsList.length;i++){
-      let category_goodsList=goodsList[i].goodsList;
-      for(let j=0;j<category_goodsList.length;j++){
-        if(category_goodsList[j].id==good_id){
-          good=category_goodsList[j]
-          //初始数量为1
-          good.sku_qty=1;
-          //初始totalprice
-          good.totalPrice=good.goodsPrice
-          //初始base
-          good.base=this.data.base[0]
-          this.setData({
-            good:good
-          })
-          break;
-        }
-      }
-    }
-    this.updateCheckoutBar()
-
+    let {category_id,id}=options;
+    console.log(options)
+    let good=category_obj[category_id][id]
+    this.setData({
+      good:good
+    })
+  
   },
 
   handlePreviewPic(e){
