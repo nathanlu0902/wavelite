@@ -1,33 +1,29 @@
 
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
     good:{
       type:Object
     },
-    category_name:{
+    category_id:{
       type:String
     },
     goodid:{
       type:String
     }
   },
-
-  /**
-   * 组件的初始数据
-   */
+  lifetimes:{
+    attached:function(){
+      console.log("1")
+      this.updateQty();
+      console.log("2")
+    }
+  },
   data: {
     
   },
 
-  /**
-   * 组件的方法列表
-   */
   methods: {
-    lifetimes:{
-    },
+    
   
     add(){
       //用户未登录则跳转至提示注册界面
@@ -37,7 +33,7 @@ Component({
       // }else{
       const cart=wx.getStorageSync('cart')
       const goodid=this.properties.goodid
-      let good=this.properties.good;
+      const good=this.properties.good;
       let existingItem=cart.find(cart_item=>{
         return cart_item.id===goodid
       })
@@ -48,6 +44,7 @@ Component({
       }else{
         good.sku_qty=1
         good.spu_qty=1
+        good.category_id=this.properties.category_id
         good.totalPrice=good.sku_qty*good.goodsPrice
         cart.push(good)
       }
@@ -70,5 +67,26 @@ Component({
       }
       wx.setStorageSync('cart', cart)
     },
+
+    updateQty(){
+      console.log("hi")
+      const cart=wx.getStorageSync('cart')
+      const category_obj=wx.getStorageSync('category_obj')
+      if(cart.length>0){
+        cart.forEach(item=>{
+          if(item.sku_qty>0){
+            console.log(item.category_id)
+            category_obj[item.category_id][item.id].spu_qty+=item.sku_qty
+          }
+        })
+      }
+      
+      this.setData({
+        category_obj:category_obj
+      })
+
+    }
   }
 })
+
+    
