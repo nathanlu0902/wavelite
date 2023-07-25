@@ -1,6 +1,4 @@
-var category_obj=wx.getStorageSync('category_obj')
 var cart=wx.getStorageSync('cart')
-const app=getApp()
 import config from "../../config/config"
 
 Page({
@@ -15,8 +13,8 @@ Page({
   },
 
   onLoad(options) {
+    let category_obj=wx.getStorageSync('category_obj')
     let {category_id,id}=options;
-    console.log(options)
     let good=category_obj[category_id][id]
     this.setData({
       good:good
@@ -35,51 +33,19 @@ Page({
     })
   },
 
-  add(e){
-    //用户未登录则跳转至提示注册界面
-    if(app.globalData.loggedIn==false){
-      this.registerPopup=this.selectComponent("#popup-register");
-      this.registerPopup.showModal();
-    }else{
-      let good=this.data.good
-      good.sku_qty+=1;
-      this.setData({
-        good:good
-      })
-    
-      this.updateCheckoutBar();
+  
 
-    }
-    
-  },
+  updateCheckout(){
+    let category_obj=wx.getStorageSync('category_obj')
+    let good=category_obj[category_id][id]
 
-  minus(e){
-    let good=this.data.good
-    if(good.sku_qty>0){
-      good.sku_qty-=1;
-    }
-    this.setData({
-      good:good
-    })
-    this.updateCheckoutBar();
-  },
-
-  updateCheckoutBar(){
-    let good=this.data.good;
-    good.totalPrice=(good.goodsPrice+good.base.price)*good.sku_qty
-    let totalCalories=good.calories+good.base.calories
-    this.setData({
-      "good.totalPrice":good.totalPrice,
-      totalCalories:totalCalories
-    })
   },
   onBaseChange(e){
     let good=this.data.good;
     let {index}=e.currentTarget.dataset;
     let base=this.data.base;
     //更新价格
-    let good_base=this.data.base[index];
-    good.base=good_base;
+    good.base=this.data.base[index];
     base.forEach((item,item_index)=>{
       if(item_index==index){
         item.selected=true
@@ -87,11 +53,12 @@ Page({
         item.selected=false
       }
     })
+    let totalCalories=good.calories+good.base.calories
     this.setData({
       good:good,
-      base:base
+      base:base,
+      totalCalories:totalCalories
     })
-    this.updateCheckoutBar();
 
   },
   add_cart(){
@@ -103,7 +70,6 @@ Page({
         let good=this.data.good;
         try{
           //购物车中已有同样id，同样base的，增加qty
-          console.log(cart_item.id===good.id&&cart_item.base===good.base)
           if(cart_item.id===good.id&&cart_item.base===good.base){
             cart_item.sku_qty+=good.sku_qty;
             cart_item.totalPrice+=good.totalPrice;

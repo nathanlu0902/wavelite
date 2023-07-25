@@ -1,7 +1,7 @@
 var app=getApp();
 var userinfo=wx.getStorageSync('userinfo')
 var category=[]
-var cart=wx.getStorageSync('cart')
+
 var category_obj={}
 
 Page({
@@ -44,6 +44,7 @@ Page({
       statusBarHeight:app.globalData.statusBarHeight,
       shopList:app.globalData.shopList
     })
+
   },
   onShow(){
     this.getGoodsList();
@@ -70,7 +71,7 @@ Page({
       category=res.result.data
       //初始化所有分类的默认type为单品
       for(let i=0;i<category.length;i++){
-        let category_item=category[i];
+        var category_item=category[i];
         let category_id=Object.keys(category_item)[1] //获取分类名称，比如poke
         category_obj[category_id]={} //初始化
         for(let index in category_item[category_id].goodsList){
@@ -86,16 +87,22 @@ Page({
               good.goodsPrice+=good.material["标配"][k]
             }
           }
-          
+          good.category_id=category_id
           category_obj[category_id][good.id]=good //不能直接[category_id][good.id]=good,会报cant set property of undefined 错误
-
-          wx.setStorageSync('category_obj', category_obj)
-          this.setData({
-            category_obj:category_obj
-          })
           
         }
         }
+      //查找购物车，更新spu_qty
+      let cart=wx.getStorageSync('cart')
+      for(let i=0;i<cart.length;i++){
+        let cart_item=cart[i]
+        category_obj[cart_item.category_id][cart_item.id].spu_qty+=cart_item.sku_qty
+      }
+
+      wx.setStorageSync('category_obj', category_obj)
+      this.setData({
+        category_obj:category_obj
+      })
 
     })
   },
@@ -118,6 +125,7 @@ Page({
 
   updateCheckout(){
     let totalPrice=0;
+    let cart=wx.getStorageSync('cart')
     cart.forEach(item=>{
       totalPrice+=item.totalPrice;
     })
@@ -128,7 +136,6 @@ Page({
 
   change_type(e){
     let {type,index}=e.currentTarget.dataset;
-    console.log(type,index)
     //仅更改该分类的type
     this.setData({
       [`category[${index}].type`]:type

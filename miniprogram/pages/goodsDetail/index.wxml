@@ -40,15 +40,7 @@
 <view class="checkout-wrapper">
   <view class="checkout-info-wrapper">
     <view class="calories-info">约{{totalCalories}}kcal</view>
-    <view class="qty-control">
-      <view class="minus_btn" catchtap="minus">
-        <image src="../../images/delivery_btn/minus.svg" class="goods-btn_img"></image>
-      </view>
-        <view class="qty">{{good.sku_qty}}</view>
-      <view class="add_btn" catchtap="add">
-        <image src="../../images/delivery_btn/plus.svg" class="goods-btn_img"></image>
-      </view>     
-    </view>
+    <qty-control category_id="{{good.category_id}}" goodid="{{good.id}}" class="qty-control" bindupdateCheckout="updateCheckout"></qty-control>
   </view>
   <view wx:if="{{good.stock>0}}" class="add-cart-btn" bindtap="add_cart">加入购物车 ￥{{good.totalPrice}}</view>
   <view wx:else>已售罄</view>
