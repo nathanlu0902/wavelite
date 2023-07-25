@@ -7,7 +7,7 @@ var category_obj={}
 Page({
   data: {
     currentIndex:0,
-    category:[{id:"poke",name:"波奇",icon:""},{id:"drink",name:"饮品",icon:""}],
+    category:[{id:"poke",name:"波奇",icon:"",type:"single"},{id:"drink",name:"饮品",icon:"",type:"single"}],
     notification_list:[
       'hi',
       'ssegegegwgegegege',
@@ -47,7 +47,7 @@ Page({
   },
   onShow(){
     this.getGoodsList();
-    // this.updateCheckoutBar();
+    this.updateCheckout();
 
   },
 
@@ -116,7 +116,7 @@ Page({
   },
 
 
-  updateCheckoutBar(){
+  updateCheckout(){
     let totalPrice=0;
     cart.forEach(item=>{
       totalPrice+=item.totalPrice;
@@ -127,10 +127,11 @@ Page({
   },
 
   change_type(e){
-    let {type,category_id}=e.currentTarget.dataset;
+    let {type,index}=e.currentTarget.dataset;
+    console.log(type,index)
     //仅更改该分类的type
     this.setData({
-      [`goodsList[${category_index}].type`]:type
+      [`category[${index}].type`]:type
     })
   }
 })

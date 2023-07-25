@@ -16,7 +16,6 @@ Component({
       this.setData({
         good:good
       })
-      // this.updateQty();
     }
   },
   data: {
@@ -53,6 +52,7 @@ Component({
       this.setData({
         good:category_obj[this.properties.category_id][this.properties.goodid]
       })
+      this.triggerEvent("updateCheckout")
       
     },
   
@@ -74,6 +74,7 @@ Component({
       this.setData({
         good:category_obj[this.properties.category_id][this.properties.goodid]
       })
+      this.triggerEvent("updateCheckout")
     },
 
     updateQty(){
