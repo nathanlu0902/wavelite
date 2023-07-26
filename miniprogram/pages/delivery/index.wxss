@@ -8,21 +8,21 @@
 }
 
 .match-shop{
-  position:relative;
-  left:24px;
   height:38px;
   width:140px;
-  margin-bottom:5px;
+  display: flex;
+  flex-direction: column;
+  margin-left:16px;
 }
 
 .match-shop .location-wrapper{
-  position:relative;
-  left:0;
   width:100%;
   height:15px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 6px;
 }
 
 .match-shop .location-wrapper .address{
@@ -30,38 +30,31 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  margin-left:5px;
 }
 
 .match-shop .shop-wrapper{
-  position: relative;
-  top:10px;
   width:100%;
   height:15px;
-  left:0;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.shop-icon{
-  position:absolute;
-  left:0;
-  top:0;
-}
 
-.shop{
+.match-shop .shop-wrapper .shop{
   font-size: 11px;
   color:#686D82;
-  position: absolute;
-  left:21px;
-  top:0;
+  margin-left:5px;
 }
 
 .notification-wrapper{
-  margin-top: 8px;
+  margin-top: 12px;
   height:22px;
   width:327px;
   position:relative;
+  left:16px;
 }
 
 .notification-swiper{
@@ -74,6 +67,7 @@
 
 .notification-item{
   text-overflow: ellipsis;
+  font-size: 14px;
 }
 
 
@@ -123,6 +117,7 @@
 .cat-icon{
   width:32px;
   height:32px;
+  font-size:24px;
   margin:0 auto;
 }
 
@@ -158,8 +153,9 @@
   background-color: #EBECEE;
   width:32px;
   height:15px;
-  font-size: 12px;
+  font-size: 11px;
   text-align: center;
+  line-height:15px;
   margin-right:16px;
  
 }

@@ -2,25 +2,25 @@
 <view class="top-background" style="top: -{{statusBarHeight}}px;"></view>
 <view class="match-shop" style="margin-top: {{navBarHeight+statusBarHeight}}px;">
   <view class="location-wrapper">
-    <view class="shop-icon iconfont icon-check"></view>
+    <view class="shop-icon iconfont icon-dianpu"></view>
     <view wx:if="{{loggedIn===true}}" class="address">{{userinfo.address[0].location}}</view>
     <view wx:else bindtap="login" class="address">{{loggedIn}}</view>
     <navigator url="../../pages/chooseAddress/index">></navigator>
   </view>
   <view class="shop-wrapper">
-    <view class="shop-icon iconfont icon-check"></view>
+    <view class="shop-icon iconfont icon-dingwei"></view>
     <view class="shop">{{shopList[0].name}}</view>
   </view>
 </view>
 <view class="notification-wrapper">
-  <view class="iconfont icon-check"></view>
+  <view class="iconfont icon-comment"></view>
   <swiper class="notification-swiper" autoplay="true" interval="4000" vertical="true" circular="true">
     <swiper-item class="notification-item" wx:for="{{notification_list}}" wx:key="index">{{item}}</swiper-item>
   </swiper>
 </view>
 <swiper class="banner-swiper" autoplay="false" 	display-multiple-items="2" >
   <swiper-item class="banner_item-wrapper" wx:for="{{bannerList}}" wx:key="title">
-    <image class="banner_item-image" src="{{item.imgUrl}}"/>
+    <image class="banner_item-image" mode="scaleToFill" src="{{item.imgUrl}}"/>
   </swiper-item>>
 </swiper>
 <view class="menu-wrapper">
@@ -32,7 +32,7 @@
     bindtap="onLeftItemTap"
     data-name="{{item.name}}"
     >
-    <image class="cat-icon iconfont icon-check " src="{{item.icon}}"></image>
+    <image class="cat-icon iconfont icon-a-008_shalaqingshi " src="{{item.icon}}"></image>
     <view>{{item.name}}</view>
   </view>
 </scroll-view>

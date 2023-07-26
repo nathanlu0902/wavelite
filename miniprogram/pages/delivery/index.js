@@ -9,9 +9,9 @@ Page({
     currentIndex:0,
     category:[{id:"poke",name:"波奇",icon:"",type:"single"},{id:"drink",name:"饮品",icon:"",type:"single"}],
     notification_list:[
-      'hi',
-      'ssegegegwgegegege',
-      'efefefefefefe'
+      '你知道吗',
+      'KC是',
+      'SB'
     ],
     navBarData:{
       showBack:false,
@@ -19,15 +19,15 @@ Page({
     },
     bannerList:[
       {link:'',
-       imgUrl:'http://www.wagas.com.cn/admin/img/indeximg/bc4bb4740548b7348f6ef04b9219d21f.jpg',
+       imgUrl:"../../images/kc.jpg",
        title:"test1"
       },
       {link:'',
-      imgUrl:'http://www.wagas.com.cn/admin/img/indeximg/bc4bb4740548b7348f6ef04b9219d21f.jpg',
+      imgUrl:"../../images/kc.jpg",
       title:"test2"
      },
      {link:'',
-     imgUrl:'http://www.wagas.com.cn/admin/img/indeximg/bc4bb4740548b7348f6ef04b9219d21f.jpg',
+     imgUrl:"../../images/kc.jpg",
      title:"test3"
     },
     ]
