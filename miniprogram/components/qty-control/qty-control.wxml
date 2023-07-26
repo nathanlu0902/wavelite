@@ -1,7 +1,11 @@
 <view class="btn-wrapper">
-	<view wx:if="{{good.spu_qty>0}}" class="minus-qty-wrapper" >
+	<view wx:if="{{!good.needConfig&&good.spu_qty>0}}" class="minus-qty-wrapper" >
 		<view class="iconfont icon-move goods-btn_img" catchtap="minus" ></view>
 		<view class="qty">{{good.spu_qty}}</view>
+	</view>
+  <view wx:if="{{good.needConfig}}" class="minus-qty-wrapper" >
+		<view class="iconfont icon-move goods-btn_img" catchtap="minus" ></view>
+		<view class="qty">{{good.temp_qty}}</view>
 	</view>
 	<view class="iconfont icon-add goods-btn_img" catchtap="add"></view>
 </view>

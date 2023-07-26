@@ -88,6 +88,9 @@ Page({
             }
           }
           good.category_id=category_id
+          if(good.needConfig){
+            good.temp_qty=1
+          }
           category_obj[category_id][good.id]=good //不能直接[category_id][good.id]=good,会报cant set property of undefined 错误
           
         }

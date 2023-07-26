@@ -10,26 +10,51 @@
 .match-shop{
   position:relative;
   left:24px;
-  display:flex;
-  flex-direction: column;
-  justify-content: space-between;
+  height:38px;
+  width:140px;
+  margin-bottom:5px;
 }
 
-.match-shop .item-wrapper{
-  width:115px;
+.match-shop .location-wrapper{
+  position:relative;
+  left:0;
+  width:100%;
   height:15px;
-  margin-bottom: 4px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-
-.item-wrapper .address{
+.match-shop .location-wrapper .address{
   font-size: 12px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.match-shop .shop-wrapper{
+  position: relative;
+  top:10px;
+  width:100%;
+  height:15px;
+  left:0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.shop-icon{
+  position:absolute;
+  left:0;
+  top:0;
+}
+
+.shop{
+  font-size: 11px;
+  color:#686D82;
+  position: absolute;
+  left:21px;
+  top:0;
 }
 
 .notification-wrapper{
@@ -51,10 +76,7 @@
   text-overflow: ellipsis;
 }
 
-.shop{
-  font-size: 11px;
-  color:#686D82;
-}
+
 
 .icon{
   height:12px;

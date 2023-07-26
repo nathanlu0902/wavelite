@@ -42,7 +42,7 @@
     <view class="calories-info">约{{totalCalories}}kcal</view>
     <qty-control category_id="{{good.category_id}}" goodid="{{good.id}}" class="qty-control" bindupdateCheckout="updateCheckout"></qty-control>
   </view>
-  <view wx:if="{{good.stock>0}}" class="add-cart-btn" bindtap="add_cart">加入购物车 ￥{{good.totalPrice}}</view>
+  <view wx:if="{{good.stock>0}}" class="add-cart-btn" bindtap="add_cart">加入购物车 ￥{{totalPrice}}</view>
   <view wx:else>已售罄</view>
 </view>
 <popup id="popup-register">
