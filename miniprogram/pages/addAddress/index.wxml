@@ -13,7 +13,7 @@
   </view>
   <view class="item-wrapper" >
     <text class="label">手机号</text>
-    <input class="input-item" name="phone" placeholder="请填写收货人手机号"></input>
+    <input class="input-item" name="phone" type="digit" placeholder="请填写收货人手机号"></input>
   </view>
   <view class="item-wrapper">
     <text class="label">收货地址</text>

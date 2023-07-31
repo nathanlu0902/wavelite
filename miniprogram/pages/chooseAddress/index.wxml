@@ -14,10 +14,7 @@
   </view>
   <block wx:if="{{addressList.length==0}}">
     <view class="no-address-remind">
-      <image class="iconfont icon-dingwei-01"></image>
-      <view>没有地址</view>
       <view>您还没有常用地址，快去添加一个</view>
-      <button class="add-address-btn" bindtap="add_address">新建地址</button>
     </view>
   </block>
 
@@ -26,7 +23,7 @@
     <view wx:for="{{addressList}}" class="address-item" wx:for-item="address" wx:key="id">
       <view wx:if="{{index===0}}" class="default-icon">默认</view>
       <radio-group bindchange="onRadioChange" >
-        <radio class="radio" checked="{{address.checked}}" value="{{index}}"></radio>
+        <radio class="radio" checked="{{address.selected}}" value="{{index}}"></radio>
       </radio-group>
       <view class="address-info-wrapper">
         <view class="address-title" style="display: inline;">{{address.city}} | </view>

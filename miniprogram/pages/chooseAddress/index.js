@@ -1,31 +1,29 @@
-let app=getApp();
+
 var userinfo=wx.getStorageSync('userinfo')
 var chosenAddress;
-
-import {shorten_address} from "../../utils/utils.js";
 
 Page({
   data: {
 
   },
 
-  onLoad(options) {
-    var addressList=userinfo.address;
-    for(let i=0;i<addressList.length;i++){
-      if(i==0){
-        addressList[i].checked=true;
-        addressList[i].out_of_range=true;
-      }else{
-        addressList[i].checked=false;
+  onShow(options) {
+    wx.cloud.callFunction({
+      name:"login"
+    }).then(res=>{
+      wx.setStorageSync('userinfo', res.result[0])
+      var addressList=userinfo.address;
+      for(let i=0;i<addressList.length;i++){
+      // if(){
+      //判断距离，判断out of range
+      // }
       }
-      let {city,short_address}=shorten_address(addressList[i].location)
-      addressList[i].city=city;
-      addressList[i].short_address=short_address;
-      
+      this.setData({
+        addressList:addressList
+      })
     }
-    this.setData({
-      addressList:addressList
-    })
+  )
+    
   },
 
   add_address(){
@@ -41,13 +39,13 @@ Page({
     for(let i=0;i<addressList.length;i++){
       let item=addressList[i];
       if(i===index){
-        item.checked=true;
+        item.selected=true;
       }else{
-        item.checked=false;
+        item.selected=false;
       }
     }
-    chosenAddress=addressList[index]
-    wx.setStorageSync('chosenAddress', chosenAddress)
+    // chosenAddress=addressList[index]
+    // wx.setStorageSync('chosenAddress', chosenAddress)
     this.setData({
       addressList:addressList
     })

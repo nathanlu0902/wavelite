@@ -1,38 +1,67 @@
-
-<view class="delivery-info-wrapper">
-  <view class="address-wrapper">
-    <view wx:if="{{addressChosen}}">
-      <view class="person-info">
-        <view>{{addressChosen.receiver}}</view>
-        <view>{{addressChosen.phone}}</view>
-        <view bindtap="chooseAddress" class="chooseAddressBtn">更换地址</view>
+<view class="cart-wrapper">
+  <view class="delivery-info-wrapper">
+    <view class="address-wrapper">
+      <view wx:if="{{chosenAddress}}">
+        <view class="address-item">{{chosenAddress.short_address}}</view>
+        <view bindtap="chooseAddress" class="address-item chooseAddressBtn">></view>
+        <view class="text-small grey-color">{{chosenAddress.receiver}}  {{chosenAddress.phone}}</view>
       </view>
-      <view>{{addressChosen.location}}</view>
+      <view wx:else bindtap="chooseAddress">
+        请选择地址
+      </view>
     </view>
-    <view wx:else bindtap="chooseAddress">
-      请选择地址
+    <view class="eta">
+      <view class="text-small grey-color" >配送时间</view>
+      <view class="time text-small grey-color">{{time}}</view>
+      <picker mode="time" value="{{time}}" start="{{start}}" end="{{close}}" bindchange="onTimeChange" class="text-small grey-color">></picker>
     </view>
-  </view>
-  <view class="eta">
-    <view>即刻送出</view>
-    <view>{{eta}}</view>
-  </view>
 
-</view>
+  </view>
 
   <view class="cart-content">
-    <view wx:for="{{cart}}" wx:key="id" class="cart-item">
-      <image mode="aspectFit" src="{{'../..'+item.goodsPic}}"></image>
+    <view>餐品详情</view>
+    <view wx:for="{{cart}}" wx:key="index" class="cart-item">
+      <image class="goodPic" mode="aspectFit" src="{{item.goodsPic[0]}}"></image>
       <view class="cart-info">
-        <view class="text-large">{{item.goodsName}}</view>
-        <view class="grey-color text-small">✖️{{item.qty}}</view>
+        <view >{{item.goodsName}}</view>
+        <view class="text-small grey-color">{{item.base.name}}</view>
+        <view >¥{{item.goodsPrice+item.base.price}}</view>
       </view>
-      <view class="text-bold" >{{item.goodsPrice}}</view>
+      <view class="text-bold qty" >{{item.sku_qty}}</view>
+    </view>
+    <view class="summary">
+      <view class="summary-item">
+        <view class="label">商品小计</view>
+        <view>¥{{rawTotal}}</view>
+      </view>
+      <view class="summary-item">
+        <view class="label">配送费</view>
+        <view>¥{{delivery_fee}}</view>
+      </view>
+      <view class="summary-item">
+        <view class="label">会员折扣</view>
+        <view>-¥{{member_discount}}</view>
+      </view>
+      <view class="summary-item">
+        <view class="label">商品优惠</view>
+        <view>-¥{{good_discount}}</view>
+      </view>
+      <view class="summary-item">
+        <view class="label">折扣券</view>
+        <view>-¥{{coupon}}</view>
+      </view>
+    </view>
+    <view class="subtotal-wrapper" style="border-top: 1px dashed lightgrey;">
+      <view class="subtotal">共{{totalCount}}件商品，总计¥{{totalPrice}}</view>
     </view>
   </view>
-
-
-  <view class="footer">
-    <view class="totalPrice">总计:¥{{totalPrice}}</view>
-    <view class="pay-btn" bindtap="handlePayment">去支付</view>
+</view>
+<view class="checkout-wrapper">
+  <view class="checkout-info-wrapper">
+    <view class="totalPrice"  style="display: inline;">¥{{totalPrice}}  </view>
+    <view class="discount" style="display: inline;">已优惠¥{{coupon+member_discount+good_discount}}</view>
+    <view class="calories">约{{totalCalories}}kcal</view>
   </view>
+  
+  <view class="pay-btn" bindtap="handlePayment">去支付</view>
+</view>

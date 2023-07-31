@@ -16,6 +16,13 @@
   font-size: 13px;
 }
 
+.location-btn{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+}
+
 .input-item{
   margin-top:20px;
   font-size: 13px;

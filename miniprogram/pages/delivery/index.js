@@ -1,7 +1,7 @@
 var app=getApp();
 var userinfo=wx.getStorageSync('userinfo')
 var category=[]
-
+import config from "../../config/config"
 var category_obj={}
 
 Page({
@@ -42,7 +42,7 @@ Page({
       loggedIn:app.globalData.loggedIn,
       navBarHeight:app.globalData.navBarHeight,
       statusBarHeight:app.globalData.statusBarHeight,
-      shopList:app.globalData.shopList
+      shopList:config.shopList
     })
 
   },
@@ -53,11 +53,12 @@ Page({
   },
 
   onLeftItemTap:function(e){
-    let {name}=e.currentTarget.dataset;
+    let {name,index}=e.currentTarget.dataset;
     //设置scroll-into-view的参考对象
     //id不能为中文，key全小写
     this.setData({
-      viewid:name
+      viewid:name,
+      currentIndex:index
     })
   },
 
@@ -142,6 +143,12 @@ Page({
     //仅更改该分类的type
     this.setData({
       [`category[${index}].type`]:type
+    })
+  },
+
+  checkout(){
+    wx.navigateTo({
+      url: '../../pages/cart/index',
     })
   }
 })

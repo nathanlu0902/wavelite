@@ -4,10 +4,7 @@ App({
     statusBarHeight:0,
     navBarHeight:0,
     SCREENHEIGHT:'',
-    SCREENWIDTH:'',
-    shopList:[{
-      name:"苏州丰隆城市中心店"
-    }]
+    SCREENWIDTH:''
     
   },
 

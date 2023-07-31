@@ -1,4 +1,9 @@
 export default{
+  "shopList":[{
+    name:"苏州丰隆城市中心店",
+    open:"10:00",
+    close:"19:00"
+  }],
   "base":[
     //按加价排序
     {

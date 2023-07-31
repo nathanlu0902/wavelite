@@ -1,18 +1,12 @@
 var userinfo=wx.getStorageSync('userinfo')
-var newAddress={}
+import {shorten_address} from "../../utils/utils"
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-    
+    newAddress:{}
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
     
   },
@@ -21,7 +15,9 @@ Page({
     wx.chooseLocation({
       success:e=>{
         let location=e.address;
-        newAddress.location=location
+        this.data.newAddress.location=location;
+        this.data.newAddress.short_address=shorten_address(location).short_address
+        this.data.newAddress.city=shorten_address(location).city
         this.setData({
           location:location
         })
@@ -36,26 +32,22 @@ Page({
   },
 
   formSubmit(e){
-    let address_fields=["detail_address","isDefault","phone","receiver","location"]
-    for(let index=0;index<address_fields.length;index++){
-      if(address_fields[index]!="location"){
-        var key=address_fields[index]
-        var value=e.detail.value[key]
-        newAddress[key]=value
-      }
-      if(!newAddress[key]){
-        wx.showToast({
-          title: `请输入${key}`,
-          icon:"error"
-        })
-        return;
+    let newAddress=this.data.newAddress;
+    let dataObj=e.detail.value;
+    for(let key in dataObj){
+      newAddress[key]=dataObj[key]
     }
-    }
+    console.log(dataObj,newAddress)
     //默认地址推到列表第一个
     if(newAddress.isDefault){
+      newAddress.selected=true;//默认选中
+      newAddress.default=true;
       userinfo.address.unshift(newAddress)
     }else{
+      newAddress.selected=false;
+      newAddress.default=false;
       userinfo.address.push(newAddress)
+
     }
   
     wx.cloud.callFunction({

@@ -1,23 +1,23 @@
 @import "../../styles/iconfont.wxss";
 .top-background{
   background-color: #D9D9D9;
-  height: 224px;
-  width:375px;
+  height: 448rpx;
+  width:100%;
   position: fixed;
   z-index:-999;
 }
 
 .match-shop{
-  height:38px;
-  width:140px;
+  height:76rpx;
+  width:280rpx;
   display: flex;
   flex-direction: column;
-  margin-left:16px;
+  margin-left:32rpx;
 }
 
 .match-shop .location-wrapper{
   width:100%;
-  height:15px;
+  height:30rpx;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -26,16 +26,16 @@
 }
 
 .match-shop .location-wrapper .address{
-  font-size: 12px;
+  font-size: 24rpx;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  margin-left:5px;
+  margin-left:10rpx;
 }
 
 .match-shop .shop-wrapper{
   width:100%;
-  height:15px;
+  height:30rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -44,42 +44,42 @@
 
 
 .match-shop .shop-wrapper .shop{
-  font-size: 11px;
+  font-size: 22rpx;
   color:#686D82;
-  margin-left:5px;
+  margin-left:10rpx;
 }
 
 .notification-wrapper{
-  margin-top: 12px;
-  height:22px;
-  width:327px;
+  margin-top: 24rpx;
+  height:44rpx;
+  width:100%;
   position:relative;
-  left:16px;
+  left:32rpx;
 }
 
 .notification-swiper{
   position: absolute;
-  inset:0 auto auto 18px;
-  height:22px;
+  inset:0 auto auto 36rpx;
+  height:44rpx;
   width:100%;
   text-overflow: ellipsis;
 }
 
 .notification-item{
   text-overflow: ellipsis;
-  font-size: 14px;
+  font-size: 28rpx;
 }
 
 
 
 .icon{
-  height:12px;
-  width: 12px;
+  height:24rpx;
+  width: 24rpx;
 }
 
 .banner-swiper{
-  width:352px;
-  height:72px;
+  width:100%;
+  height:144rpx;
   margin:22rpx 46rpx;
 }
 
@@ -92,12 +92,12 @@
   display:flex;
   flex-direction: row;
   height:1800rpx;
-  margin-top:18px;
+  margin-top:36rpx;
 }
 
 
 .left-menu{
-  width:68px;
+  width:136rpx;
   background-color:rgb(245, 246, 248);
   display:flex;
   flex-direction:column;
@@ -105,19 +105,19 @@
 }
 
 .left-item{
-  height:64px;
-  width:64px;
-  margin:10px 0;
+  height:128rpx;
+  width:128rpx;
+  margin:20rpx 0;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  font-size:9px;
+  font-size:18rpx;
   text-align: center;
 }
 .cat-icon{
-  width:32px;
-  height:32px;
-  font-size:24px;
+  width:64rpx;
+  height:64rpx;
+  font-size:48rpx;
   margin:0 auto;
 }
 
@@ -127,7 +127,6 @@
 }
 
 .right-menu{
-  width:600rpx;
   display:flex;
   flex-direction: column;
   height:800rpx;
@@ -137,31 +136,31 @@
   margin-bottom:64rpx;
   display: flex;
   flex-direction: column;
-  padding:0 12px;
+  padding:0 24rpx;
 }
 
 .right-category .filter{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width:100px;
-  padding:12px 0;
+  width:200rpx;
+  padding:24rpx 0;
 }
 
 .right-category .filter .filter-btn{
   border:1px solid black;
   background-color: #EBECEE;
-  width:32px;
-  height:15px;
-  font-size: 11px;
+  width:64rpx;
+  height:30rpx;
+  font-size: 22rpx;
   text-align: center;
-  line-height:15px;
-  margin-right:16px;
+  line-height:30rpx;
+  margin-right:32rpx;
  
 }
 
 .right-category .filter .filter-btn .selected{
-  border:1px solid black;
+  border:2rpx solid black;
   background-color: white;
 }
 
@@ -170,15 +169,14 @@
   display:flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-bottom:16px;
-  width:270px;
-  height:60px;
-  font-size:12px;
+  margin-bottom:32rpx;
+  height:120rpx;
+  font-size:24rpx;
 }
 
 .right-category .right-item .img{
-  width:60px;
-  height:60px;
+  width:120rpx;
+  height:120rpx;
   z-index: 0;
 }
 
@@ -197,11 +195,22 @@
   z-index:1;
 }
 
+.info-wrapper .small-desc{
+  width:260rpx;
+  height:28rpx;
+  overflow: hidden;
+  font-size: 20rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .price-action-wrapper{
   display:flex;
   flex-direction:row;
   justify-content: space-between;
   align-items: center;
+  margin-top:20rpx;
+  height:30rpx;
 }
 
 
@@ -212,32 +221,9 @@
   justify-content: space-around;
   align-items: center;
   height:50rpx; /*固定高度防抖动*/
+  position: relative;
+  right:20rpx;
 }
-
-/* .minus-qty-wrapper{
-  display:flex;
-  flex-direction:row;
-}
-
-.qty{
-  margin:0 15rpx;
-  font-size:24rpx;
-}
-
-.add_btn {
-  height:45rpx;
-  width:45rpx;
-}
-
-.minus_btn{
-  height:45rpx;
-  width:45rpx;
-}
-
-.goods-btn_img{
-  height:100%;
-  width:100%;
-} */
 
 .right-menu .category-header{
   position:sticky;
@@ -248,41 +234,41 @@
 
 .checkout-bar-wrapper{
   position:fixed;
-  width:110px;
-  height:44px;
+  width:220rpx;
+  height:88rpx;
   background-color: #fff;
   border:1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 0 3px 3px rgb(228, 227, 227);
+  border-radius: 20rpx;
+  box-shadow: 0 0 6rpx 6rpx rgb(228, 227, 227);
   z-index:999;
-  inset: auto 24px 8px auto;
+  inset: auto 48rpx 16rpx auto;
 }
 
 .checkout-bar-wrapper .cart-icon{
-  width:24px;
-  height:24px;
-  font-size:24px;
-  line-height: 24px;
+  width:48rpx;
+  height:48rpx;
+  font-size:48rpx;
+  line-height: 48rpx;
   position: absolute;
-  inset:8px auto 8px 16px;
+  inset:16rpx auto 16rpx 32rpx;
 }
 
 .checkout-bar-wrapper .info-wrapper{
   position:absolute;
-  inset:8px 16px 8px auto;
-  margin-left:12px;
-  width:42px;
-  height:28px;
+  inset:16rpx 32rpx 16rpx auto;
+  margin-left:24rpx;
+  width:84rpx;
+  height:56rpx;
 }
 
 .checkout-bar-wrapper .info-wrapper .totalPrice{
   z-index: 9999;
-  font-size:12px;
+  font-size:24rpx;
   font-weight:600;
 
 }
 .checkout-bar-wrapper .info-wrapper .remark{
-  font-size:8px;
+  font-size:16rpx;
   z-index:9999;
   color:#999DAE;
 }
@@ -291,28 +277,33 @@
 
 .config-wrapper{
   position:relative;
+  right:24rpx;
 }
 
 .config-wrapper .config-spu-qty{
   position: absolute;
-  top:-12rpx;
-  right:0rpx;
+  top:-20rpx;
+  right:-15rpx;
   height: 30rpx;
   line-height: 30rpx;
-  width: 50rpx;
+  width: 30rpx;
   text-align: center;
-  font-size: 24rpx;
+  font-size: 22rpx;
+  border:1px solid black;
+  background-color: black;
+  color:white;
+  border-radius: 50%;
 }
 .config-wrapper .config-btn{
-  border:1px solid #EBECEE;
+  border:2rpx solid #EBECEE;
   background:#EBECEE;
-  font-size:11px;
+  font-size:22rpx;
   color:black;
-  width:40px;
-  height:15px;
-  padding:2px 8px;
+  width:80rpx;
+  height:30rpx;
+  padding:4rpx 16rpx;
   text-align: center;
-  margin-top: 30rpx;
+  margin-top: 18rpx;
 }
 
 
