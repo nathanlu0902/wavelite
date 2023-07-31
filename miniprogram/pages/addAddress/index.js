@@ -15,9 +15,10 @@ Page({
     wx.chooseLocation({
       success:e=>{
         let location=e.address;
+        console.log(shorten_address(location))
         this.data.newAddress.location=location;
-        this.data.newAddress.short_address=shorten_address(location).short_address
-        this.data.newAddress.city=shorten_address(location).city
+        // this.data.newAddress.short_address=shorten_address(location).short_address
+        // this.data.newAddress.city=shorten_address(location).city
         this.setData({
           location:location
         })

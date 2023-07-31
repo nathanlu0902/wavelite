@@ -1,5 +1,5 @@
-var app=getApp();
-var userinfo=wx.getStorageSync('userinfo')
+
+
 var category=[]
 import config from "../../config/config"
 var category_obj={}
@@ -35,6 +35,8 @@ Page({
   },
 
   onLoad(){
+    var app=getApp();
+    var userinfo=wx.getStorageSync('userinfo')
     //设置用户信息
     this.setData({
       userinfo:userinfo,

@@ -22,7 +22,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 6px;
+  margin-bottom: 12rpx;
 }
 
 .match-shop .location-wrapper .address{
@@ -148,7 +148,7 @@
 }
 
 .right-category .filter .filter-btn{
-  border:1px solid black;
+  border:2rpx solid black;
   background-color: #EBECEE;
   width:64rpx;
   height:30rpx;
@@ -237,7 +237,7 @@
   width:220rpx;
   height:88rpx;
   background-color: #fff;
-  border:1px solid #ccc;
+  border:2rpx solid #ccc;
   border-radius: 20rpx;
   box-shadow: 0 0 6rpx 6rpx rgb(228, 227, 227);
   z-index:999;
@@ -289,7 +289,7 @@
   width: 30rpx;
   text-align: center;
   font-size: 22rpx;
-  border:1px solid black;
+  border:2rpx solid black;
   background-color: black;
   color:white;
   border-radius: 50%;

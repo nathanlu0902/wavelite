@@ -1,5 +1,3 @@
-
-var userinfo=wx.getStorageSync('userinfo')
 var chosenAddress;
 
 Page({
@@ -11,8 +9,10 @@ Page({
     wx.cloud.callFunction({
       name:"login"
     }).then(res=>{
+      console.log(res)
+      let userinfo=res.result[0];
       wx.setStorageSync('userinfo', res.result[0])
-      var addressList=userinfo.address;
+      let addressList=userinfo.address;
       for(let i=0;i<addressList.length;i++){
       // if(){
       //判断距离，判断out of range
@@ -21,6 +21,7 @@ Page({
       this.setData({
         addressList:addressList
       })
+      
     }
   )
     

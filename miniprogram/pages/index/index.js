@@ -24,6 +24,7 @@ Page({
       name:"login"
     }).then(res=>{
       if(res.result.length>0){
+        console.log("登陆完成")
         this.setData({
           loggedIn:true,
           nickname:userinfo.nickname,
