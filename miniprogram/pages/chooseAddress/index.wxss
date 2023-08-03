@@ -58,7 +58,17 @@
   /* inset:16px auto 16px 43px; */
   left:100rpx;
   top:32rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
+
+.address-item .address-info-wrapper .address-title-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
 .address-item .address-info-wrapper .address-title{
   text-overflow: ellipsis;
   overflow: hidden;

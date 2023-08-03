@@ -1,39 +1,40 @@
 
 .item-wrapper{
-  height:57px;
-  width:346px;
-  margin:0px 14px;
+  height:114rpx;
+  width:100%;
+  padding:0 28rpx;
+  margin:0px auto;
   display:flex;
   flex-direction: row;
-  border-bottom:1px solid #E9ECF1;
-  line-height:56px;
+  border-bottom:2rpx solid #E9ECF1;
+  line-height:112rpx;
   
 }
 
 .label{
-  margin-left:13px;
-  width:100px;
-  font-size: 13px;
+  margin-left:26rpx;
+  width:200rpx;
+  font-size: 26rpx;
 }
 
 .location-btn{
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  font-size: 13px;
+  font-size: 26rpx;
 }
 
 .input-item{
-  margin-top:20px;
-  font-size: 13px;
+  margin-top:40rpx;
+  font-size: 26rpx;
 }
 
 .gender-group{
-  font-size: 13px;
+  font-size: 26rpx;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width:130px;
+  width:260rpx;
 }
 
 .btn-wrapper{
@@ -42,12 +43,12 @@
 }
 
 .default-btn-wrapper{
-  position: absolute;
-  bottom:75px;
+  position: fixed;
+  bottom:150rpx;
 }
 
 .default-btn-wrapper .isDefault{
   transform: scale(0.8);
-  position: absolute;
-  right:10px;
+  position: fixed;
+  right:20rpx;
 }

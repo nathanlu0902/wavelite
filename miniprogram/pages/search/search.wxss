@@ -2,45 +2,45 @@
 
 .search-wrapper{
   position:relative;
-  height:50px;
+  height:100rpx;
   width:100%;
-  top:30px;
+  top:60rpx;
 }
 
 .search-icon{
-  width:20px;
-  height:20px;
+  width:40rpx;
+  height:40rpx;
   z-index:999;
   position:absolute;
-  left:35px;
-  top:5px;
+  left:70rpx;
+  top:10rpx;
 }
 
 .search-input{
   position:absolute;
-  left:24px;
+  left:48rpx;
   top:0;
-  width:260px;
-  height:30px;
-  border-radius: 20px;
+  width:520rpx;
+  height:60rpx;
+  border-radius: 40rpx;
   border:1px solid #DEDEDE;
-  padding-left:30px;
+  padding-left:60rpx;
   z-index:999;
 }
 
 .cancel-btn{
   position: absolute;
-  right:10px;
+  right:20rpx;
 }
 
 .section-wrapper{
-  margin:62px auto auto 24px;
+  margin:124rpx auto auto 48rpx;
 
   
 }
 
 .section-wrapper .section{
-  margin-top: 60px;
+  margin-top: 120rpx;
 }
 
 .section-wrapper .history{
@@ -48,13 +48,13 @@
 }
 
 .header{
-  font-size:16px;
+  font-size:32rpx;
   font-weight: 400;
 }
 
 .clean-btn{
   position: absolute;
-  inset: 0px 10px auto 280px;
+  inset: 0px 20rpx auto 560rpx;
 
 }
 
@@ -68,12 +68,12 @@
 
 .item{
   border:1px solid #D9D9D9;
-  border-radius: 20px;
+  border-radius: 40rpx;
   width:fit-content;
   padding:0 15rpx;
   margin:20rpx;
   text-align: center;
-  font-size: 12px;
+  font-size: 24rpx;
   font-weight: 300;
 }
 .result-list{
@@ -81,25 +81,3 @@
   flex-direction: column;
 }
 
-.good-item .goods-pic{
-  width: 36px;
-  height:36px;
-
-}
-
-.good-item{
-  position:relative;
-  display: flex;
-  flex-direction: row;
-  margin-top:15px;
-  justify-content: flex-start;
-}
-.good-item .goods-name{
-  position:absolute;
-  left:50px;
-}
-
-.good-item .goods-price{
-  position: absolute;
-  right:15px;
-}

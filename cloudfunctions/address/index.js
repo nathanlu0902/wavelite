@@ -9,6 +9,7 @@ exports.main = async (event, context) => {
   const {OPENID}=wxContext;
   const db=cloud.database();
   const {type,address}=event;
+  const _=db.command;
   //增
   if(type==="add_address"){
     //获取用户记录
@@ -19,16 +20,33 @@ exports.main = async (event, context) => {
         const user=res.data[0]
         db.collection("wavelite_user").doc(user._id).update({
           data:{
-            address:address
+            address:_.push(address)
           }
         })
       }
     }).then(()=>{
         return{
-          code:"ADDRESS_IS_UPDATED"
+          code:"ADDRESS_IS_ADDED"
         }
       })
     
-  }
+  }else if(type==="edit_address"){
+    let index=event.index;
+    return db.collection("wavelite_user").where({
+      openid:OPENID
+    }).get().then(res=>{
+      if(res.data.length>0){
+        const user=res.data[0]
+        db.collection("wavelite_user").doc(user._id).update({
+          data:{
+            [`address.${index}`]:address
+          }
+        })  
+      }}).then((res)=>{
+        return{
+          code:"ADDRESS_IS_UPDATED"
+        }
+      })
 
+}
 }

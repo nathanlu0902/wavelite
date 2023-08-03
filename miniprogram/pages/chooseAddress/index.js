@@ -13,14 +13,16 @@ Page({
       let userinfo=res.result[0];
       wx.setStorageSync('userinfo', res.result[0])
       let addressList=userinfo.address;
-      for(let i=0;i<addressList.length;i++){
-      // if(){
-      //判断距离，判断out of range
-      // }
+      if(addressList){
+        for(let i=0;i<addressList.length;i++){
+          // if(){
+          //判断距离，判断out of range
+          // }
+          }
+          this.setData({
+            addressList:addressList
+          })
       }
-      this.setData({
-        addressList:addressList
-      })
       
     }
   )
@@ -30,6 +32,9 @@ Page({
   add_address(){
     wx.navigateTo({
       url: '/pages/addAddress/index',
+      success:(res)=>{
+        res.eventChannel.emit("address",{type:'add_address'})
+      }
     })
   },
 
@@ -51,6 +56,16 @@ Page({
       addressList:addressList
     })
     
+  },
+
+  goEditAddress(e){
+    let {index}=e.currentTarget.dataset;
+    wx.navigateTo({
+      url: '../addAddress/index',
+      success:(res)=>{
+        res.eventChannel.emit("address",{type:'edit_address',index:index})
+      }
+    })
   }
  
 })

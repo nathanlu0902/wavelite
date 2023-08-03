@@ -26,14 +26,18 @@
         <radio class="radio" checked="{{address.selected}}" value="{{index}}"></radio>
       </radio-group>
       <view class="address-info-wrapper">
-        <view class="address-title" style="display: inline;">{{address.city}} | </view>
-        <view class="address-title" style="display: inline;">{{address.short_address}}</view>
+        <view class="address-title-wrapper">
+          <view class="address-title">{{address.city}} | </view>
+          <view class="address-title">{{address.short_address}}</view>
+        </view>
         <view class="address-username text-small grey-color">{{address.receiver}}</view>
         <view class="address-phone text-small grey-color">{{address.phone}}</view>  
         <view class="out-of-range" wx:if="{{address.out_of_range}}">超出配送范围</view>
       </view>
       <view class="edit-btn-wrapper">
-        <navigator url="../cart/index"><image class="edit-btn iconfont icon-bianji"></image></navigator>
+        <view bindtap="goEditAddress" data-index="{{index}}">
+          <image class="edit-btn iconfont icon-bianji"></image>
+        </view>
       </view>
     </view>
   </view>

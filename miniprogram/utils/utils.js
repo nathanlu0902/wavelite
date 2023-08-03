@@ -1,5 +1,5 @@
 export function shorten_address(long_address){
-  let city=long_address.match(/(.+市$)?/)//提取省后面的xx市
+  let city=long_address.match(/省([\u4E00-\u9FA5]{1,4}市)/)[1]//提取省后面的xx市
   let short_address=long_address.match(/区(.*)/)[1] //提取区后面的所有字符
   return {city:city,short_address:short_address}
 }
@@ -29,4 +29,8 @@ export function current_time(){
   return {
     hour:hour,minute:minute
   }
+}
+
+export function generateUuid (length=5){
+  return Number(Math.random().toString().substr(3, length) + Date.now()).toString(36);
 }
