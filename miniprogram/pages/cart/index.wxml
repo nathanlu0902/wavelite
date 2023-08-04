@@ -1,10 +1,10 @@
 <view class="cart-wrapper">
   <view class="delivery-info-wrapper">
     <view class="address-wrapper">
-      <view wx:if="{{chosenAddress}}">
-        <view class="address-item">{{chosenAddress.short_address}}</view>
+      <view wx:if="{{addressChosen}}">
+        <view class="address-item">{{addressChosen.short_address}}</view>
         <view bindtap="chooseAddress" class="address-item chooseAddressBtn">></view>
-        <view class="text-small grey-color">{{chosenAddress.receiver}}  {{chosenAddress.phone}}</view>
+        <view class="text-small grey-color">{{addressChosen.receiver}}  {{addressChosen.phone}}</view>
       </view>
       <view wx:else bindtap="chooseAddress">
         请选择地址
@@ -63,5 +63,6 @@
     <view class="calories">约{{totalCalories}}kcal</view>
   </view>
   
+  <!-- <view class="pay-btn" bindtap="handlePayment">去支付</view> -->
   <view class="pay-btn" bindtap="handlePayment">去支付</view>
 </view>

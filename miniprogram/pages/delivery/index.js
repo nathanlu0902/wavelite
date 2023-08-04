@@ -34,17 +34,7 @@ Page({
   },
 
   onLoad(){
-    var app=getApp();
-    var userinfo=wx.getStorageSync('userinfo')
-    //设置用户信息
-    this.setData({
-      userinfo:userinfo,
-      //不用setdata的话会获取不到globaldata的loggedIn，但是其他变量可以获取到，不懂
-      loggedIn:app.globalData.loggedIn,
-      navBarHeight:app.globalData.navBarHeight,
-      statusBarHeight:app.globalData.statusBarHeight,
-      shopList:config.shopList
-    })
+
 
   },
   onShow(){
@@ -55,11 +45,17 @@ Page({
     let chosenAddress=userinfo.address.filter(item=>{
       return item.selected===true
     })
-
+    var app=getApp();
+    //设置用户信息
     this.setData({
+      //不用setdata的话会获取不到globaldata的loggedIn，但是其他变量可以获取到，不懂
+      loggedIn:app.globalData.loggedIn,
+      navBarHeight:app.globalData.navBarHeight,
+      statusBarHeight:app.globalData.statusBarHeight,
+      shopList:config.shopList,
+      userinfo:userinfo,
       chosenAddress:chosenAddress[0]
     })
-
 
   },
 

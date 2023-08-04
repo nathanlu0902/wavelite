@@ -14,9 +14,10 @@ Page({
   },
 
   onShow(){
-    if(wx.getStorageSync('chosenAddress')){
-      var chosenAddress=wx.getStorageSync('chosenAddress')
-    }
+    let userinfo=wx.getStorageSync('userinfo')
+    let addressChosen=userinfo.address.filter(item=>{
+      return item.selected===true
+    })[0]
     let rawTotal=total_cart_price();
     let totalCount=total_cart_count();
     let totalPrice=rawTotal+this.data.delivery_fee-this.data.member_discount-this.data.good_discount-this.data.delivery_fee
@@ -26,7 +27,7 @@ Page({
     let start=(now.hour+1).toString()+":"+now.minute.toString().padStart(2,"0");//补0
 
     this.setData({
-      chosenAddress:chosenAddress,
+      addressChosen:addressChosen,
       cart:cart,
       rawTotal:rawTotal,
       totalCount:totalCount,

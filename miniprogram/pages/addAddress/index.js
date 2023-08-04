@@ -72,6 +72,7 @@ formSubmit(e){
     if(userinfo.address.length==0){
       this.data.newAddress.isDefault=true
       this.data.newAddress.selected=true //默认选中
+      userinfo.address.push(this.data.newAddress)
     }else{
       //已经有地址，若为默认地址则推到列表第一个
       if(this.data.newAddress.isDefault){
@@ -99,6 +100,7 @@ formSubmit(e){
       })
     }
   }
+
   wx.cloud.callFunction({
     name:"user",
     data:{
