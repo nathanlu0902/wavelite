@@ -3,10 +3,9 @@
 <view class="match-shop" style="margin-top: {{navBarHeight+statusBarHeight}}px;">
   <view class="location-wrapper">
     <view class="shop-icon iconfont icon-dianpu"></view>
-    <view wx:if="{{loggedIn===true&&userinfo.address.length>0}}" class="address">{{userinfo.address[0].short_address}}</view>
-    <view wx:elif="{{loggedIn===true&&userinfo.address.length==0}}" class="address">请添加地址</view>
+    <view wx:if="{{loggedIn===true&&userinfo.address.length>0}}" class="address" bindtap="chooseAddress">{{chosenAddress.short_address}} ></view>
+    <view wx:elif="{{loggedIn===true&&userinfo.address.length==0}}" class="address" bindtap="chooseAddress">请添加地址 ></view>
     <view wx:else bindtap="login" class="address">请登录</view>
-    <navigator url="../../pages/chooseAddress/index">></navigator>
   </view>
   <view class="shop-wrapper">
     <view class="shop-icon iconfont icon-dingwei"></view>

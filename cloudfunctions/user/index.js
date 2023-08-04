@@ -9,7 +9,7 @@ exports.main = async (event, context) => {
   let {OPENID}=wxContext;
   let {type}=event;
 
-  if(type=="create_user"){
+  if(type==="create_user"){
     let {nickname,phone}=event;
     return db.collection("wavelite_user").add({
       data:{
@@ -25,28 +25,24 @@ exports.main = async (event, context) => {
         msg:"user is created"
       }
     })
-  }else if(type=="update"){
-    let {userinfo}=event;
+  }else if(type==="update"){
+    //获取需要更新的用户字段和数据
+    let {field,field_data}=event;
     return db.collection("wavelite_user").where({
       openid:OPENID
     }).get().then(res=>{
+      //如果用户存在
       if(res.data.length>0){
-        const data=res.data[0];
-        db.collection("wavelite_user").doc(data._id).update({
+        const user=res.data[0];
+        db.collection("wavelite_user").doc(user._id).update({
           data:{
-            openid:OPENID,
-            phone:userinfo.phone,
-            nickname:userinfo.nickname,
-            avatarUrl:userinfo.avatarUrl,
-            gender:userinfo.gender,
-            birthday:userinfo.birthday
+            [`${field}`]:field_data
           }
         })
       }
     }).then(res=>{
       return {
-        code:"200",
-        msg:"user is updated"
+        code:`USER_IS_UPDATED`
       }
     })
   }

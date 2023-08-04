@@ -1,8 +1,7 @@
-
-
 var category=[]
 import config from "../../config/config"
 var category_obj={}
+
 
 Page({
   data: {
@@ -51,6 +50,16 @@ Page({
   onShow(){
     this.getGoodsList();
     this.updateCheckout();
+    var userinfo=wx.getStorageSync('userinfo')
+    //筛选选中的地址
+    let chosenAddress=userinfo.address.filter(item=>{
+      return item.selected===true
+    })
+
+    this.setData({
+      chosenAddress:chosenAddress[0]
+    })
+
 
   },
 
@@ -91,9 +100,8 @@ Page({
             }
           }
           good.category_id=category_id
-          if(good.needConfig){
-            good.temp_qty=1
-          }
+          good.temp_qty=1
+          
           category_obj[category_id][good.id]=good //不能直接[category_id][good.id]=good,会报cant set property of undefined 错误
           
         }
@@ -145,6 +153,11 @@ Page({
     //仅更改该分类的type
     this.setData({
       [`category[${index}].type`]:type
+    })
+  },
+  chooseAddress(){
+    wx.navigateTo({
+      url: '../chooseAddress/index',
     })
   },
 

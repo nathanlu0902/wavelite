@@ -21,7 +21,7 @@
   <block wx:else>
   <view class="address-list">
     <view wx:for="{{addressList}}" class="address-item" wx:for-item="address" wx:key="id">
-      <view wx:if="{{index===0}}" class="default-icon">默认</view>
+      <view wx:if="{{address.isDefault}}" class="default-icon">默认</view>
       <radio-group bindchange="onRadioChange" >
         <radio class="radio" checked="{{address.selected}}" value="{{index}}"></radio>
       </radio-group>
