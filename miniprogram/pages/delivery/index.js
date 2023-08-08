@@ -1,12 +1,11 @@
-var category=[]
+
 import config from "../../config/config"
-var category_obj={}
 
 
 Page({
   data: {
     currentIndex:0,
-    category:[{id:"poke",name:"波奇",icon:"",type:"single"},{id:"drink",name:"饮品",icon:"",type:"single"}],
+    // category:[{id:"poke",name:"波奇",icon:"",type:"single"},{id:"drink",name:"饮品",icon:"",type:"single"}],
     notification_list:[
       '你知道吗',
       'KC是',
@@ -54,6 +53,7 @@ Page({
       statusBarHeight:app.globalData.statusBarHeight,
       shopList:config.shopList,
       userinfo:userinfo,
+      category_list:config.category_list,
       chosenAddress:chosenAddress[0]
     })
 
@@ -77,15 +77,18 @@ Page({
       }
     }).then(res=>{
       //得到一个数组，每一项为category对象
-      categoryList=res.result.data
+      let categoryList=res.result.data
       for(let index in categoryList){
         //获取category对象
         var category_obj=categoryList[index];
         //获取category对象的key，即poke or xxx
-        let category_name=Object.keys(category_item)[1]
+        let category_name=Object.keys(category_obj)[1]
+        //category对象的type设置为single
+        category_obj[category_name].type="single";
+        
         // category_obj[category_id]={} //初始化
-        //获取category的goodsList
-        let goodsList=category_obj.category_name.goodsList;
+        //获取categoryobj的goodsList
+        var goodsList=category_obj[category_name].goodsList;
 
         for(let index=0;index<goodsList.length;index++){
           let good=goodsList[index]
@@ -102,7 +105,7 @@ Page({
               good.goodsPrice+=good.material["标配"][k]
             }
           }
-          good.category_name=category_name
+          // good.category_name=category_name
           good.temp_qty=1
           
           // category_obj[category_id][good.id]=good //不能直接[category_id][good.id]=good,会报cant set property of undefined 错误
@@ -112,7 +115,14 @@ Page({
       let cart=wx.getStorageSync('cart')
       for(let i=0;i<cart.length;i++){
         let cart_item=cart[i]
-        category_obj[cart_item.category_name][cart_item.id].spu_qty+=cart_item.sku_qty
+        let index=goodsList.findIndex(item=>{
+          item.id===cart_item.id
+        })
+        if(index!=-1){
+          goodsList[index].spu_qty+=cart_item.sku_qty;
+        }
+        // goodsList[cart_item.id].spu_qty+=cart_item.sku_qty;
+        // category_obj[cart_item.category_name][cart_item.id].spu_qty+=cart_item.sku_qty
       }
       wx.setStorageSync('category_obj', category_obj)
       this.setData({
@@ -150,10 +160,10 @@ Page({
   },
 
   change_type(e){
-    let {type,index}=e.currentTarget.dataset;
+    let {type,category_name}=e.currentTarget.dataset;
     //仅更改该分类的type
     this.setData({
-      [`category[${index}].type`]:type
+      [`category_obj[${category_name}].type`]:type
     })
   },
   chooseAddress(){

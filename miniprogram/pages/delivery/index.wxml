@@ -25,29 +25,31 @@
 </swiper>
 <view class="menu-wrapper">
 <scroll-view class="left-menu" scroll-y="true" enable-flex="true">
+
   <view 
     class="left-item {{currentIndex==index?'active':''}}" 
-    wx:for="{{category}}" 
-    wx:key="index"
+    wx:for="{{category_list}}" 
+    wx:key="id"
+    wx:for-item="category" 
     bindtap="onLeftItemTap"
-    data-id="{{item.id}}"
-    data-index="{{index}}"
+    data-id="id"
+    data-index="index"
     >
-    <image class="cat-icon iconfont icon-a-008_shalaqingshi " src="{{item.icon}}"></image>
-    <view>{{item.name}}</view>
+    <image class="cat-icon iconfont {{category.icon}}"></image>
+    <view>{{category.name}}</view>
   </view>
 </scroll-view>
 <scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-with-animation>
-  <view class="right-category" wx:for="{{category}}" wx:for-item="category_item"  id="{{category_item.id}}" wx:key="id">
+  <view class="right-category" wx:for="{{category_obj}}" wx:for-item="category_item" wx:for-index="category_name" id="{{category_item.id}}" wx:key="id">
   <!-- 分类名称（大地波奇） -->
     <view class="category-header">
-      <view>{{category_item.name}}</view>
+      <view>{{category_item.category}}</view>
       <view class="filter">
-        <view class="filter-btn" bindtap="change_type" data-type="single" data-index="{{index}}" data-category_id="category_item.id">单品</view>
-        <view class="filter-btn" bindtap="change_type" data-type="set"  data-index="{{index}}" data-category_id="category_item.id">套餐</view>
+        <view class="filter-btn" bindtap="change_type" data-type="single" data-category_name="{{category_name}}">单品</view>
+        <view class="filter-btn" bindtap="change_type" data-type="set" data-category_id="{{category_name}}">套餐</view>
       </view> 
     </view> 
-    <view class="{{good_item.stock===0?'sold-out':''}} right-item" wx:for="{{category_obj[category_item.id]}}" wx:if="{{good_item.type===category_item.type}}" wx:for-index="good_id" wx:for-item="good_item" bindtap="onRightItemTap" wx:key="index"  data-id="{{good_id}}" data-category_id="{{category_item.id}}" >
+    <view class="{{good_item.stock===0?'sold-out':''}} right-item" wx:for="{{category_item.goodsList}}" wx:if="{{good_item.type===category_item.type}}" wx:for-index="good_id" wx:for-item="good_item" bindtap="onRightItemTap" wx:key="index"  data-id="{{good_id}}" >
       <image class="img" mode="scaleToFill" src="{{good_item.goodsPic[0]}}"/>
       <view class="info-wrapper">
       <view class="dishName text-bold" style="color:black">{{good_item.goodsName}}</view>
