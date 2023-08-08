@@ -181,7 +181,7 @@
 }
 
 .sold-out{
-  display: none;
+  /* display: none; */
 }
 
 .info-wrapper{

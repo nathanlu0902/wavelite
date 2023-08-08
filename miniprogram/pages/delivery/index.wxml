@@ -30,7 +30,7 @@
     wx:for="{{category}}" 
     wx:key="index"
     bindtap="onLeftItemTap"
-    data-name="{{item.name}}"
+    data-id="{{item.id}}"
     data-index="{{index}}"
     >
     <image class="cat-icon iconfont icon-a-008_shalaqingshi " src="{{item.icon}}"></image>
@@ -47,14 +47,13 @@
         <view class="filter-btn" bindtap="change_type" data-type="set"  data-index="{{index}}" data-category_id="category_item.id">套餐</view>
       </view> 
     </view> 
-    <view class="{{good_item.stock===0?'sold-out':'right-item'}}" wx:for="{{category_obj[category_item.id]}}" wx:if="{{good_item.type===category_item.type}}" wx:for-index="good_id" wx:for-item="good_item" bindtap="onRightItemTap" wx:key="index"  data-id="{{good_id}}" data-category_id="{{category_item.id}}" >
+    <view class="{{good_item.stock===0?'sold-out':''}} right-item" wx:for="{{category_obj[category_item.id]}}" wx:if="{{good_item.type===category_item.type}}" wx:for-index="good_id" wx:for-item="good_item" bindtap="onRightItemTap" wx:key="index"  data-id="{{good_id}}" data-category_id="{{category_item.id}}" >
       <image class="img" mode="scaleToFill" src="{{good_item.goodsPic[0]}}"/>
       <view class="info-wrapper">
       <view class="dishName text-bold" style="color:black">{{good_item.goodsName}}</view>
       <view class="text-small grey-color small-desc">{{good_item.calories}}Kcal起 | {{good_item.description}}</view>
       <view class="price-action-wrapper">
         <view class="dishPrice text-large">¥{{good_item.goodsPrice}}</view>
-    
         <view wx:if="{{good_item.stock>0}}">
           <view wx:if="{{good_item.needConfig===true}}" class="config-wrapper">
             <view class="config-spu-qty">{{good_item.spu_qty}}</view>

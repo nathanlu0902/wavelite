@@ -7,7 +7,7 @@
         <view class="text-small grey-color">{{addressChosen.receiver}}  {{addressChosen.phone}}</view>
       </view>
       <view wx:else bindtap="chooseAddress">
-        请选择地址
+        请完善收货地址
       </view>
     </view>
     <view class="eta">
@@ -15,19 +15,20 @@
       <view class="time text-small grey-color">{{time}}</view>
       <picker mode="time" value="{{time}}" start="{{start}}" end="{{close}}" bindchange="onTimeChange" class="text-small grey-color">></picker>
     </view>
-
   </view>
 
   <view class="cart-content">
     <view>餐品详情</view>
-    <view wx:for="{{cart}}" wx:key="index" class="cart-item">
-      <image class="goodPic" mode="aspectFit" src="{{item.goodsPic[0]}}"></image>
-      <view class="cart-info">
-        <view >{{item.goodsName}}</view>
-        <view class="text-small grey-color">{{item.base.name}}</view>
-        <view >¥{{item.goodsPrice+item.base.price}}</view>
+    <view class="cart-item-wrapper">
+      <view wx:for="{{cart}}" wx:key="index" class="cart-item">
+        <image class="goodPic" mode="aspectFit" src="{{item.goodsPic[0]}}"></image>
+        <view class="cart-info">
+          <view >{{item.goodsName}}</view>
+          <view class="text-small grey-color">{{item.selectedBase.name}}</view>
+          <view >¥{{item.goodsPrice+item.selectedBase.price}}</view>
+        </view>
+        <view class="text-bold qty" >{{item.sku_qty}}</view>
       </view>
-      <view class="text-bold qty" >{{item.sku_qty}}</view>
     </view>
     <view class="summary">
       <view class="summary-item">
@@ -51,16 +52,21 @@
         <view>-¥{{coupon}}</view>
       </view>
     </view>
-    <view class="subtotal-wrapper" style="border-top: 1px dashed lightgrey;">
+    <view class="subtotal-wrapper" style="border-top: 2rpx dashed lightgrey;">
       <view class="subtotal">共{{totalCount}}件商品，总计¥{{totalPrice}}</view>
     </view>
   </view>
+  <view class="remark-wrapper">
+      <view style="height:28rpx;width:fit-content;white-space: nowrap;margin:auto 0;">订单备注</view>
+      <image class="iconfont" style="height:28rpx;width:28rpx"></image>
+      <navigator url="../remark/remark" style="height:28rpx;width:250rpx;white-space: nowrap;margin:auto 0;text-overflow: ellipsis;overflow:hidden;font-size: 12px;text-align: left;">{{remark?remark:"如有忌口或过敏者请填写在这里哦"}}</navigator>
+    </view>
 </view>
 <view class="checkout-wrapper">
   <view class="checkout-info-wrapper">
-    <view class="totalPrice"  style="display: inline;">¥{{totalPrice}}  </view>
-    <view class="discount" style="display: inline;">已优惠¥{{coupon+member_discount+good_discount}}</view>
-    <view class="calories">约{{totalCalories}}kcal</view>
+    <view style="display: inline;font-size: 40rpx; font-weight: 600;color:black">¥{{totalPrice}}  </view>
+    <view style="display: inline;font-size: 24rpx;">已优惠 ¥{{coupon+member_discount+good_discount}}</view>
+    <view style="font-size: 24rpx;">约{{totalCalories}} kCal</view>
   </view>
   
   <!-- <view class="pay-btn" bindtap="handlePayment">去支付</view> -->

@@ -1,13 +1,9 @@
-import config from "../../config/config"
-
 Page({
   data: {
     navBarData:{
       showSearch:false,
       showBack:true,
     },
-    label:["好吃","牛逼","太TM贵了"],
-    base:config.base,
   
   },
 
@@ -18,8 +14,9 @@ Page({
     this.data.id=id;
     //这个发生在attached之后，所以attached中获取不到properties
     let good=category_obj[category_id][id]
-    let totalCalories=(good.calories+good.base.calories)*good.temp_qty
-    let totalPrice=(good.goodsPrice+good.base.price)*good.temp_qty
+    good.selectedBase=good.base[0]
+    let totalCalories=(good.calories+good.selectedBase.calories)*good.temp_qty
+    let totalPrice=(good.goodsPrice+good.selectedBase.price)*good.temp_qty
     this.setData({
       good:good,
       totalCalories:totalCalories,
@@ -41,10 +38,9 @@ Page({
 
   updateCheckout(){
     //更新页面上的checkout bar
-    let category_obj=wx.getStorageSync('category_obj')
-    let good=category_obj[this.data.category_id][this.data.id]
-    let totalCalories=(good.calories+good.base.calories)*good.temp_qty
-    let totalPrice=(good.goodsPrice+good.base.price)*good.temp_qty
+    let good=this.data.good
+    let totalCalories=(good.calories+good.selectedBase.calories)*good.temp_qty
+    let totalPrice=(good.goodsPrice+good.selectedBase.price)*good.temp_qty
     this.setData({
       good:good,
       totalCalories:totalCalories,
@@ -53,24 +49,21 @@ Page({
 
   },
   onBaseChange(e){
-    let category_obj=wx.getStorageSync('category_obj')
-    let good=category_obj[this.data.category_id][this.data.id]
+    let good=this.data.good
     let {index}=e.currentTarget.dataset;
-    let base=this.data.base;
+    good.selectedBase=good.base[index]
     //更新价格
-    good.base=this.data.base[index];
-    base.forEach((item,item_index)=>{
+    good.base.forEach((item,item_index)=>{
       if(item_index==index){
         item.selected=true
       }else{
         item.selected=false
       }
     })
-    let totalCalories=good.calories+good.base.calories
-    let totalPrice=(good.goodsPrice+good.base.price)*good.temp_qty
+    let totalCalories=good.calories+good.selectedBase.calories
+    let totalPrice=(good.goodsPrice+good.selectedBase.price)*good.temp_qty
     this.setData({
       good:good,
-      base:base,
       totalCalories:totalCalories,
       totalPrice:totalPrice
     })
@@ -80,7 +73,7 @@ Page({
   add_cart(){
     let cart=wx.getStorageSync('cart')
     let category_obj=wx.getStorageSync('category_obj')
-    let good=category_obj[this.data.category_id][this.data.id]
+    let good=this.data.good
     if(cart.length==0){
       cart.push(good)
     }else{
@@ -88,7 +81,7 @@ Page({
         let cart_item=cart[i];
         try{
           //购物车中已有同样id，同样base的，增加qty
-          if(cart_item.id===good.id&&cart_item.base.name===good.base.name){
+          if(cart_item.id===good.id&&cart_item.selectedBase.name===good.selectedBase.name){
             cart_item.sku_qty+=good.temp_qty;
             cart_item.totalPrice+=this.data.totalPrice;
             //重置temp_qty

@@ -1,7 +1,13 @@
 export function shorten_address(long_address){
-  let city=long_address.match(/省([\u4E00-\u9FA5]{1,4}市)/)[1]//提取省后面的xx市
-  let short_address=long_address.match(/区(.*)/)[1] //提取区后面的所有字符
-  return {city:city,short_address:short_address}
+  try{
+    let city=long_address.match(/省([\u4E00-\u9FA5]{1,4}市)/)[1]//提取省后面的xx市
+    let short_address=long_address.match(/区(.*)/)[1] //提取区后面的所有字符
+    return {city:city,short_address:short_address}
+  }catch(e){
+    console.log(e)
+  }
+  
+  
 }
 
 export function total_cart_price(){
@@ -20,6 +26,15 @@ export function total_cart_count(){
     count+=cart[i].sku_qty
   }
   return count;
+}
+
+export function total_cart_calories(){
+  let cart=wx.getStorageSync('cart');
+  let totalCalories=0;
+  for(let i=0;i<cart.length;i++){
+    totalCalories+=(cart[i].calories+cart[i].selectedBase.calories)*cart[i].sku_qty;
+  }
+  return totalCalories;
 }
 
 export function current_time(){

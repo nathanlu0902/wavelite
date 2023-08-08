@@ -1,0 +1,18 @@
+.input-wrapper{
+  position: relative;
+}
+
+.remark-input{
+  height:412rpx;
+  width:650rpx;
+  border:2rpx solid #E9ECF1;
+  margin:50rpx auto;
+  padding:32rpx;
+}
+.word-length{
+  position: absolute;
+  bottom: 0;
+  right:30rpx;
+
+
+}

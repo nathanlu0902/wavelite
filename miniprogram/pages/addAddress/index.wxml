@@ -31,7 +31,7 @@
     <switch class="isDefault" color="{{address.isDefault?'grey':''}}" name="isDefault" disabled="{{address.isDefault}}" checked="{{address.isDefault}}"/>
   </view>
 </view>
-<button class="main-black-button" form-type="submit">确定</button>
+<button class="main-black-btn" style="position: fixed;" form-type="submit">确定</button>
 </form>
 
 

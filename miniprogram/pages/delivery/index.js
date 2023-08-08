@@ -60,11 +60,11 @@ Page({
   },
 
   onLeftItemTap:function(e){
-    let {name,index}=e.currentTarget.dataset;
+    let {id,index}=e.currentTarget.dataset;
     //设置scroll-into-view的参考对象
     //id不能为中文，key全小写
     this.setData({
-      viewid:name,
+      viewid:id,
       currentIndex:index
     })
   },
@@ -82,13 +82,20 @@ Page({
         var category_item=category[i];
         let category_id=Object.keys(category_item)[1] //获取分类名称，比如poke
         category_obj[category_id]={} //初始化
-        for(let index in category_item[category_id].goodsList){
+        let end=category_item[category_id].goodsList.length;
+        for(let index=0;index<end;index++){
           let good=category_item[category_id].goodsList[index];
           //将stock=0的项移至末位
           if(good.stock===0){
-            category_item[category_id].goodsList.push(category_item[category_id].goodsList.splice(index,1)[0])
+            console.log(index,good)
+            category_item[category_id].goodsList.push(category_item[category_id].goodsList.splice(index,1)[0]);
+            //array数据往前进一，避免跳过
+            // index-=1;
+            //避免最后数字重复排序
+            end-=1;
+            console.log(index,good)
           }
-
+          
           //更新价格,加上标配价格
           if(good.material){
             for(let k in good.material["标配"]){
@@ -99,7 +106,6 @@ Page({
           good.temp_qty=1
           
           category_obj[category_id][good.id]=good //不能直接[category_id][good.id]=good,会报cant set property of undefined 错误
-          
         }
         }
       //查找购物车，更新spu_qty
@@ -108,7 +114,6 @@ Page({
         let cart_item=cart[i]
         category_obj[cart_item.category_id][cart_item.id].spu_qty+=cart_item.sku_qty
       }
-
       wx.setStorageSync('category_obj', category_obj)
       this.setData({
         category_obj:category_obj

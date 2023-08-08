@@ -73,7 +73,7 @@ swiper-item image{
   background-color: #fff;
   z-index: 999;
 }
-.checkout-wrapper .add-cart-btn{
+/* .checkout-wrapper .add-cart-btn{
   background-color: black;
   width:327px;
   height:35px;
@@ -82,7 +82,7 @@ swiper-item image{
   color:#fff;
   line-height:35px;
   font-size:14px;
-}
+} */
 
 .checkout-wrapper .checkout-info-wrapper{
   height:15px;

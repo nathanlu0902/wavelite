@@ -1,0 +1,7 @@
+<form bindsubmit="formSubmit">
+  <view class="input-wrapper">
+    <textarea name="remark" value="{{remark}}" class="remark-input" auto-focus maxlength="100" placeholder="添加更多用餐备注，如有忌口或过敏者请填写在这里哦" bindinput="count_word"></textarea>
+    <view class="word-length grey-color">{{word_length}}/100</view>
+  </view>   
+  <button class="main-black-btn submit-btn" form-type="submit">提交</button>
+</form>

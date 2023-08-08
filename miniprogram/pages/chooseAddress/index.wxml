@@ -43,4 +43,4 @@
   </view>
   </block>  
 </view>
-<view class="main-black-button" bindtap="add_address">添加新地址</view>
+<view class="main-black-btn" bindtap="add_address">添加新地址</view>
