@@ -3,7 +3,14 @@ export default{
     {
       name:"大地波奇",
       id:"poke",
-      icon:"icon-a-008_shalaqingshi"
+      icon:"icon-a-008_shalaqingshi",
+      type:"single"
+    },
+    {
+      name:"海洋波奇",
+      id:"oceanpoke",
+      icon:"icon-a-008_shalaqingshi",
+      type:"single"
     }
   ],
   "shopList":[{

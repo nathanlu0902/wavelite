@@ -73,16 +73,6 @@ swiper-item image{
   background-color: #fff;
   z-index: 999;
 }
-/* .checkout-wrapper .add-cart-btn{
-  background-color: black;
-  width:327px;
-  height:35px;
-  text-align: center;
-  margin: 0 auto;
-  color:#fff;
-  line-height:35px;
-  font-size:14px;
-} */
 
 .checkout-wrapper .checkout-info-wrapper{
   height:15px;

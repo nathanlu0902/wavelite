@@ -20,32 +20,8 @@ Page({
   },
   //options(Object)
   onLoad: function() {
-    wx.cloud.callFunction({
-      name:"login"
-    }).then(res=>{
-      if(res.result.length>0){
-        console.log("登陆完成")
-        this.setData({
-          loggedIn:true,
-          nickname:userinfo.nickname,
-          points:userinfo.points
-        })
-        app.globalData.loggedIn=true;
-        wx.setStorageSync('userinfo', res.result[0])
-      }else{
-        let userinfo={}
-        userinfo.nickname="waver"
-        this.setData({
-          nickname:userinfo.nickname,
-          loggedIn:false
-        })
-        app.globalData.loggedIn=false;
-        wx.setStorageSync('userinfo', userinfo)
-      }
-    })
-    if(!wx.getStorageSync('cart')){
-      wx.setStorageSync('cart', [])
-    }
+    this.getUserInfo();
+    this.getGoodsList();
     this.registerPopup=this.selectComponent("#popup")
   },
 
@@ -90,6 +66,87 @@ Page({
       })
     }
   },
+  getUserInfo(){
+    wx.cloud.callFunction({
+      name:"login"
+    }).then(res=>{
+      if(res.result.length>0){
+        console.log("登陆完成")
+        let userinfo=res.result[0];
+        this.setData({
+          loggedIn:true,
+          nickname:userinfo.nickname
+        })
+        app.globalData.loggedIn=true;
+        wx.setStorageSync('userinfo', userinfo)
+      }else{
+        let userinfo={}
+        userinfo.nickname="waver"
+        this.setData({
+          nickname:userinfo.nickname,
+          loggedIn:false
+        })
+        app.globalData.loggedIn=false;
+        wx.setStorageSync('userinfo', userinfo)
+      }
+    })
+    this.registerPopup=this.selectComponent("#popup")
+  },
+  getGoodsList(){
+    wx.cloud.callFunction({
+      name:"category",
+      data:{
+        type:"get"
+      }
+    }).then(res=>{
+      let cart=wx.getStorageSync('cart')||[]
+      if(cart==[]){
+        wx.setStorageSync('cart', cart)
+      }
+      //得到一个数组，每一项为category对象
+      let categoryList=res.result.data
+      for(let index in categoryList){
+        //category_item:{_id:xxx,goodsList:{}}
+        var category_item=categoryList[index];
+        for(let i=0;i<category_item.goodsList.length;i++){
+          let good=category_item.goodsList[i];
+          if(good.stock===0){
+            //将stock=0的项移至末位
+            category_item.goodsList.push(category_item.goodsList.splice(i,1)[0]);
+            //array数据往前进一，避免跳过
+            i-=1;
+          }
+          //更新价格,加上标配价格
+          if(good.material){
+            for(let k in good.material["标配"]){
+              good.goodsPrice+=good.material["标配"][k]
+            }
+          }
+          // good.category_name=category_name
+          good.temp_qty=1
+        }
+      }
+      //查找购物车，更新spu_qty
+      for(let i=0;i<cart.length;i++){
+        let cart_item=cart[i]
+        for(let category_index=0;category_index<categoryList.length;category_index++){
+          {
+            let good_index=categoryList[category_index].goodsList.findIndex(item=>{
+                return item.id===cart_item.id
+              })
+            if(good_index==-1){
+              category_index+=1;
+              continue;
+            }else{
+              categoryList[category_index].goodsList[good_index].spu_qty+=cart_item.sku_qty;
+            }
+          }
+        }
+        
+      }
+      wx.setStorageSync('categoryList', categoryList)
 
+    })
+  },
 });
   

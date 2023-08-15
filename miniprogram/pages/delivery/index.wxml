@@ -25,31 +25,28 @@
 </swiper>
 <view class="menu-wrapper">
 <scroll-view class="left-menu" scroll-y="true" enable-flex="true">
-
   <view 
     class="left-item {{currentIndex==index?'active':''}}" 
     wx:for="{{category_list}}" 
     wx:key="id"
-    wx:for-item="category" 
     bindtap="onLeftItemTap"
-    data-id="id"
     data-index="index"
     >
-    <image class="cat-icon iconfont {{category.icon}}"></image>
-    <view>{{category.name}}</view>
+    <image class="cat-icon iconfont {{item.icon}}"></image>
+    <view>{{item.name}}</view>
   </view>
 </scroll-view>
 <scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-with-animation>
-  <view class="right-category" wx:for="{{category_obj}}" wx:for-item="category_item" wx:for-index="category_name" id="{{category_item.id}}" wx:key="id">
+  <view class="right-category" wx:for="{{categoryList}}" wx:for-index="category_index" wx:key="index">
   <!-- 分类名称（大地波奇） -->
     <view class="category-header">
-      <view>{{category_item.category}}</view>
+      <view>{{category_list[category_index].name}}</view>
       <view class="filter">
-        <view class="filter-btn" bindtap="change_type" data-type="single" data-category_name="{{category_name}}">单品</view>
-        <view class="filter-btn" bindtap="change_type" data-type="set" data-category_id="{{category_name}}">套餐</view>
+        <view class="filter-btn" bindtap="changeType" data-type="single" data-category_index="{{category_index}}">单品</view>
+        <view class="filter-btn" bindtap="changeType" data-type="set" data-category_index="{{category_index}}">套餐</view>
       </view> 
     </view> 
-    <view class="{{good_item.stock===0?'sold-out':''}} right-item" wx:for="{{category_item.goodsList}}" wx:if="{{good_item.type===category_item.type}}" wx:for-index="good_id" wx:for-item="good_item" bindtap="onRightItemTap" wx:key="index"  data-id="{{good_id}}" >
+    <view wx:for="{{item.goodsList}}" wx:for-item="good_item" class="{{good_item.stock===0?'sold-out':''}} right-item"  wx:if="{{good_item.type===category_list[category_index].type}}" wx:for-index="good_index" bindtap="onRightItemTap" data-category_index="{{category_index}}" data-good_index="{{good_index}}" wx:key="good_index" >
       <image class="img" mode="scaleToFill" src="{{good_item.goodsPic[0]}}"/>
       <view class="info-wrapper">
       <view class="dishName text-bold" style="color:black">{{good_item.goodsName}}</view>
@@ -57,13 +54,14 @@
       <view class="price-action-wrapper">
         <view class="dishPrice text-large">¥{{good_item.goodsPrice}}</view>
         <view wx:if="{{good_item.stock>0}}">
-          <view wx:if="{{good_item.needConfig===true}}" class="config-wrapper">
+          <qty-control pagetype="listPage" category_index="{{category_index}}" good_index="{{good_index}}" bindchooseConfig="chooseConfig"></qty-control>
+          <!-- <view wx:if="{{good_item.needConfig===true}}" class="config-wrapper">
             <view class="config-spu-qty">{{good_item.spu_qty}}</view>
-            <view class="config-btn">去配置</view>
+            <view class="config-btn" catchtap="chooseConfig" data-category_index="{{category_index}}" data-good_index="{{good_index}}">选规格</view>
           </view>
           <view wx:else class="btn-wrapper">
-            <qty-control bindupdateCheckout="updateCheckout" category_id="{{category_item.id}}" goodid="{{good_id}}"/>
-          </view>
+            <qty-control bindupdateCheckout="updateCheckout" category_index="{{category_index}}" good_index="{{good_index}}"/>
+          </view> -->
         </view>  
         <view wx:else>已售罄</view>
       </view>
@@ -82,7 +80,6 @@
   </view>
 </view>
 
-<popup id="popup-register">
-  <register/>
+<popup popup-outer-class="popup-outer-class" id="config-popup">
+  <configselector id="config-selector"  bindhideSelector="hideSelector"></configselector>
 </popup>
-<!-- <checkout-bar class="checkout-bar" totalCount="{{totalCount}}" totalPrice="{{totalPrice}}"/> -->

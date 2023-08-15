@@ -1,11 +1,11 @@
 {
   "usingComponents": {
     "price":"../../components/price/price",
-    "checkout-bar":"../../components/checkout-bar/index",
     "register":"../../components/register/register",
     "custom-nav-bar":"../../components/custom-nav-bar/custom-nav-bar",
     "popup":"../../components/popup/popup",
-    "qty-control":"../../components/qty-control/qty-control"
+    "qty-control":"../../components/qty-control/qty-control",
+    "configselector":"../../components/configSelector/configSelector"
   },
   "navigationStyle": "custom"
   ,

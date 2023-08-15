@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "qty-control":"../../components/qty-control/qty-control"
+  }
+}

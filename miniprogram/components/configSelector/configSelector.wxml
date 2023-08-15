@@ -1,0 +1,24 @@
+<view style="padding:40rpx">
+  <view class="item-wrapper">
+    <image class="img" mode="scaleToFill" src="{{selectedGood.goodsPic[0]}}"/>
+    <view class="info-wrapper">
+      <view class="dishName text-bold" style="color:black">{{selectedGood.goodsName}}</view>
+      <view class="grey-color text-small">{{selectedGood.calories}}Kcal起</view>
+      <view class="grey-color text-small">已选: {{selectedBase}}</view>
+    </view>
+  </view>
+
+  <view class="qty-wrapper">
+    <view>数量</view>
+    <qty-control pagetype="configPage" category_index="{{category_index}}" good_index="{{good_index}}"></qty-control>
+  </view>
+
+  <view class="selection-wrapper" style="margin-top:40rpx;">
+    <view>选基底</view>
+    <view class="label-wrapper">
+      <view wx:for="{{selectedGood.base}}" class="label-item selection {{item.selected?'selected':''}}" wx:key="name" bindtap="onConfigChange" data-index="{{index}}">{{item.name}}</view>  
+    </view> 
+  </view>
+
+  <view class="main-black-btn" bindtap="add_cart">选好了</view>
+</view>
