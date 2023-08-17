@@ -54,14 +54,7 @@
       <view class="price-action-wrapper">
         <view class="dishPrice text-large">¥{{good_item.goodsPrice}}</view>
         <view wx:if="{{good_item.stock>0}}">
-          <qty-control pagetype="listPage" category_index="{{category_index}}" good_index="{{good_index}}" bindchooseConfig="chooseConfig"></qty-control>
-          <!-- <view wx:if="{{good_item.needConfig===true}}" class="config-wrapper">
-            <view class="config-spu-qty">{{good_item.spu_qty}}</view>
-            <view class="config-btn" catchtap="chooseConfig" data-category_index="{{category_index}}" data-good_index="{{good_index}}">选规格</view>
-          </view>
-          <view wx:else class="btn-wrapper">
-            <qty-control bindupdateCheckout="updateCheckout" category_index="{{category_index}}" good_index="{{good_index}}"/>
-          </view> -->
+          <qty-control class="qty-control" pagetype="listPage" category_index="{{category_index}}" good_index="{{good_index}}" bindchooseConfig="chooseConfig"></qty-control>
         </view>  
         <view wx:else>已售罄</view>
       </view>

@@ -1,6 +1,6 @@
 
 import config from "../../config/config"
-import {total_cart_price} from "../../utils/utils"
+import {total_cart_price, update_spu_qty} from "../../utils/utils"
 
 
 Page({
@@ -37,7 +37,6 @@ Page({
 
   },
   onShow(){
-    // this.getGoodsList();
     let categoryList=wx.getStorageSync('categoryList')
     this.updateCheckout();
     var userinfo=wx.getStorageSync('userinfo')
@@ -70,65 +69,6 @@ Page({
       currentIndex:index
     })
   },
-
-  // getGoodsList(){
-  //   wx.cloud.callFunction({
-  //     name:"category",
-  //     data:{
-  //       type:"get"
-  //     }
-  //   }).then(res=>{
-  //     let cart=wx.getStorageSync('cart')
-  //     //得到一个数组，每一项为category对象
-  //     let categoryList=res.result.data
-  //     for(let index in categoryList){
-  //       //category_item:{_id:xxx,goodsList:{}}
-  //       var category_item=categoryList[index];
-  //       for(let i=0;i<category_item.goodsList.length;i++){
-  //         let good=category_item.goodsList[i];
-  //         if(good.stock===0){
-  //           //将stock=0的项移至末位
-  //           category_item.goodsList.push(category_item.goodsList.splice(i,1)[0]);
-  //           //array数据往前进一，避免跳过
-  //           i-=1;
-  //         }
-  //         //更新价格,加上标配价格
-  //         if(good.material){
-  //           for(let k in good.material["标配"]){
-  //             good.goodsPrice+=good.material["标配"][k]
-  //           }
-  //         }
-  //         // good.category_name=category_name
-  //         good.temp_qty=1
-  //       }
-  //     }
-  //     //查找购物车，更新spu_qty
-  //     for(let i=0;i<cart.length;i++){
-  //       let cart_item=cart[i]
-  //       for(let category_index=0;category_index<categoryList.length;category_index++){
-  //         {
-  //           let good_index=categoryList[category_index].goodsList.findIndex(item=>{
-  //               return item.id===cart_item.id
-  //             })
-  //           if(good_index==-1){
-  //             category_index+=1;
-  //             continue;
-  //           }else{
-  //             categoryList[category_index].goodsList[good_index].spu_qty+=cart_item.sku_qty;
-  //           }
-  //         }
-  //       }
-        
-  //     }
-  //     this.setData({
-  //       categoryList:categoryList
-  //     })
-  //     wx.setStorageSync('categoryList', categoryList)
-  //     // console.log("设置完categoryList",categoryList)
-
-  //   })
-  // },
-
 
 
   onRightItemTap(e){
@@ -172,6 +112,7 @@ Page({
   },
 
   chooseConfig(e){
+    //qty-control传入
     let {category_index,good_index}=e.detail;
     this.selectComponent("#config-selector").properties.category_index=category_index;
     this.selectComponent("#config-selector").properties.good_index=good_index;
@@ -182,8 +123,13 @@ Page({
   },
 
   hideSelector(){
-    let selector=this.selectComponent('#config-popup');
-    selector.hideModal();
-    wx.removeStorageSync('selectedGood')
+    this.selectComponent('#config-popup').hideModal();
+    this.updateCheckout();
+    //选择所有qty-control组件，调用loadgood方法
+    var list=this.selectAllComponents(".qty-control")
+    list.forEach(item=>{
+      item.loadGood();
+    })
+
   }
 })

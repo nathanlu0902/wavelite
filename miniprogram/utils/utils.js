@@ -7,8 +7,9 @@ export function shorten_address(long_address){
     console.log(e)
   }
   
-  
 }
+
+
 
 export function total_cart_price(){
   let cart=wx.getStorageSync('cart');
@@ -16,7 +17,7 @@ export function total_cart_price(){
   for(let i=0; i<cart.length;i++){
     totalPrice+=cart[i].totalPrice
   }
-  return totalPrice;
+  return totalPrice.toFixed(2);
 }
 
 export function total_cart_count(){
@@ -48,4 +49,33 @@ export function current_time(){
 
 export function generateUuid (length=5){
   return Number(Math.random().toString().substr(3, length) + Date.now()).toString(36);
+}
+
+//搜索cart，更新缓存中categoryList的spu_qty
+export function update_spu_qty(){
+  let cart=wx.getStorageSync('cart')
+  let categoryList=wx.getStorageSync('categoryList')
+  //遍历categoryList，重置spu_qty
+  for(let category_index=0;category_index<categoryList.length;category_index++){
+    for(let good_index=0;good_index<categoryList[category_index].goodsList.length;good_index++){
+      categoryList[category_index].goodsList[good_index].spu_qty=0;
+    }
+  }
+  //查找购物车，更新spu_qty
+  for(let i=0;i<cart.length;i++){
+    let cart_item=cart[i]
+    for(let category_index=0;category_index<categoryList.length;category_index++){
+      {
+        let good_index=categoryList[category_index].goodsList.findIndex(item=>{
+            return item.id===cart_item.id
+          })
+        if(good_index==-1){
+          continue;
+        }else{
+          categoryList[category_index].goodsList[good_index].spu_qty+=cart_item.sku_qty;
+        }
+      }
+    }
+  }
+  wx.setStorageSync('categoryList', categoryList)
 }

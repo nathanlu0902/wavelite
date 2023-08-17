@@ -4,7 +4,8 @@
     <view class="info-wrapper">
       <view class="dishName text-bold" style="color:black">{{selectedGood.goodsName}}</view>
       <view class="grey-color text-small">{{selectedGood.calories}}Kcal起</view>
-      <view class="grey-color text-small">已选: {{selectedBase}}</view>
+      <view class="grey-color text-small">已选: {{selectedGood.selectedBase.name}}</view>
+      <view style="margin-top:20rpx;">¥{{selectedGood.goodsPrice+selectedGood.selectedBase.price}}</view>
     </view>
   </view>
 

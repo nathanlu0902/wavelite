@@ -1,5 +1,5 @@
 const app=getApp()
-var userinfo=wx.getStorageSync('userinfo')
+import {update_spu_qty} from "../../utils/utils"
 
 Page({
   data: {
@@ -100,7 +100,8 @@ Page({
       }
     }).then(res=>{
       let cart=wx.getStorageSync('cart')||[]
-      if(cart==[]){
+
+      if(cart.length===0){
         wx.setStorageSync('cart', cart)
       }
       //得到一个数组，每一项为category对象
@@ -126,25 +127,8 @@ Page({
           good.temp_qty=1
         }
       }
-      //查找购物车，更新spu_qty
-      for(let i=0;i<cart.length;i++){
-        let cart_item=cart[i]
-        for(let category_index=0;category_index<categoryList.length;category_index++){
-          {
-            let good_index=categoryList[category_index].goodsList.findIndex(item=>{
-                return item.id===cart_item.id
-              })
-            if(good_index==-1){
-              category_index+=1;
-              continue;
-            }else{
-              categoryList[category_index].goodsList[good_index].spu_qty+=cart_item.sku_qty;
-            }
-          }
-        }
-        
-      }
       wx.setStorageSync('categoryList', categoryList)
+      update_spu_qty();
 
     })
   },

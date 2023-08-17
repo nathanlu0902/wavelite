@@ -1,3 +1,4 @@
+ import {update_spu_qty} from "../../utils/utils" 
   /*
     1.列表页，详情页
       good.needconfig==true&&spu_qty=0
@@ -29,15 +30,13 @@ Component({
       type:String
     }
   },
+  pageLifetimes:{
+    show:function(){
+    }
+  },
   lifetimes:{
     ready:function(){
-      //获取缓存中的categoryList,得到good，根据good的属性判断如何显示
-      let categoryList=wx.getStorageSync('categoryList')
-      let good=categoryList[this.properties.category_index].goodsList[this.properties.good_index]
-      good.temp_qty=1;
-      this.setData({
-        good:good
-      })
+      this.loadGood();
     }
   },
   data: {
@@ -45,6 +44,16 @@ Component({
   },
 
   methods: {
+    loadGood(){
+      //获取缓存中的categoryList,得到good，根据good的属性判断如何显示
+      update_spu_qty();
+      let categoryList=wx.getStorageSync('categoryList')
+      let good=categoryList[this.properties.category_index].goodsList[this.properties.good_index]
+      good.temp_qty=1;
+      this.setData({
+        good:good
+      })
+    },
     configAdd(){
       this.triggerEvent("chooseConfig",{category_index:this.properties.category_index,good_index:this.properties.good_index})
     },
