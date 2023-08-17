@@ -123,8 +123,6 @@ Page({
               good.goodsPrice+=good.material["标配"][k]
             }
           }
-          // good.category_name=category_name
-          good.temp_qty=1
         }
       }
       wx.setStorageSync('categoryList', categoryList)

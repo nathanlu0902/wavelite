@@ -30,10 +30,7 @@ Component({
       type:String
     }
   },
-  pageLifetimes:{
-    show:function(){
-    }
-  },
+
   lifetimes:{
     ready:function(){
       this.loadGood();
@@ -49,11 +46,15 @@ Component({
       update_spu_qty();
       let categoryList=wx.getStorageSync('categoryList')
       let good=categoryList[this.properties.category_index].goodsList[this.properties.good_index]
-      good.temp_qty=1;
+      let temp_qty=1;
+      this.triggerEvent("updateTempQty",temp_qty);
       this.setData({
-        good:good
+        good:good,
+        temp_qty:temp_qty
       })
+  
     },
+    //列表页面配置项的增
     configAdd(){
       this.triggerEvent("chooseConfig",{category_index:this.properties.category_index,good_index:this.properties.good_index})
     },
@@ -116,24 +117,25 @@ Component({
       }
       this.triggerEvent("updateCheckout")
     },
+    //弹出配置页面的增减
     configPageAdd(){
-      let good=this.data.good;
+      let temp_qty=this.data.temp_qty
       //如果是config项，只更新页面上的temp_qty
-      good.temp_qty+=1;
+      temp_qty+=1;
       this.setData({
-        good:good
+        temp_qty:temp_qty
       })
-      this.triggerEvent("updateCheckout",good.temp_qty);
+      this.triggerEvent("updateTempQty",temp_qty);
     },
     configPageMinus(){
-      let good=this.data.good;
-      if(good.temp_qty>1){
-        good.temp_qty-=1;
+      let temp_qty=this.data.temp_qty
+      if(temp_qty>1){
+        temp_qty-=1;
         this.setData({
-          good:good
+          temp_qty:temp_qty
         })
       }
-      this.triggerEvent("updateCheckout",good.temp_qty)
+      this.triggerEvent("updateTempQty",temp_qty)
     }
   }
 })

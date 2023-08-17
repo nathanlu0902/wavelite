@@ -123,13 +123,13 @@ Page({
   },
 
   hideSelector(){
-    this.selectComponent('#config-popup').hideModal();
     this.updateCheckout();
     //选择所有qty-control组件，调用loadgood方法
     var list=this.selectAllComponents(".qty-control")
     list.forEach(item=>{
       item.loadGood();
     })
+    this.selectComponent('#config-popup').hideModal();
 
   }
 })

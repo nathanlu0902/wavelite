@@ -16,12 +16,15 @@ Component({
   },
 
   data: {
-    
+    temp_qty:1
   },
 
   lifetimes:{
     ready(){
       this.load_good();
+    },
+    detached(){
+      console.log("bye")
     }
   },
   
@@ -35,13 +38,20 @@ Component({
       })
     },
 
+    updateTempQty(e){
+      let temp_qty=e.detail;
+      this.setData({
+        temp_qty:temp_qty
+      })
+    },
+
     add_cart(){
       let cart=wx.getStorageSync('cart')
       let selectedGood=this.data.selectedGood
-      selectedGood.totalPrice=(selectedGood.goodsPrice+selectedGood.selectedBase.price)*selectedGood.temp_qty;
+      selectedGood.totalPrice=(selectedGood.goodsPrice+selectedGood.selectedBase.price)*this.data.temp_qty;
       if(cart.length===0){
         //初始化sku_qty为此时的temp_qty
-        selectedGood.sku_qty=selectedGood.temp_qty;
+        selectedGood.sku_qty=this.data.temp_qty
         //如果购物车为空，直接推入cart
         try{
           cart.push(selectedGood);
@@ -56,7 +66,7 @@ Component({
           let cart_item=cart[i];
           //购物车中已有同样id，同样base的，增加qty
           if(cart_item.id===selectedGood.id&&cart_item.selectedBase.name===selectedGood.selectedBase.name){
-            cart_item.sku_qty+=selectedGood.temp_qty;
+            cart_item.sku_qty+=this.data.temp_qty;
             cart_item.totalPrice+=selectedGood.totalPrice;
             wx.showToast({
               title: '添加购物车成功',
@@ -66,7 +76,7 @@ Component({
           //遍历结束依然没有找到
           if(i===cart.length-1){
             //初始化sku_qty为此时的temp_qty
-            selectedGood.sku_qty=selectedGood.temp_qty;
+            selectedGood.sku_qty=this.data.temp_qty;
             //购物车中无同样项，push新item
             try{
               cart.push(selectedGood);
@@ -80,10 +90,10 @@ Component({
         }
       }
       //数量归位
-      selectedGood.temp_qty=1;
-      this.setData({
-        selectedGood:selectedGood
-      })
+      // selectedGood.temp_qty=1;
+      // this.setData({
+      //   selectedGood:selectedGood
+      // })
       wx.setStorageSync('cart', cart);
       this.triggerEvent("hideSelector")
       

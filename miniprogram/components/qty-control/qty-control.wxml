@@ -2,7 +2,7 @@
   <block wx:if="{{pagetype=='configPage'}}">
     <view class="control-wrapper" >
       <view class="iconfont icon-move goods-btn_img" catchtap="configPageMinus" ></view>
-      <view class="qty">{{good.temp_qty}}</view>
+      <view class="qty">{{temp_qty}}</view>
       <view class="iconfont icon-add goods-btn_img" catchtap="configPageAdd"></view>  
     </view>
   </block>
