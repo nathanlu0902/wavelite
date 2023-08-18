@@ -40,7 +40,7 @@
 <view class="checkout-wrapper">
   <view class="checkout-info-wrapper">
     <view class="calories-info">约{{totalCalories}}kcal</view>
-    <qty-control category_index="{{category_index}}" good_index="{{good_index}}" class="qty-control" bindupdateCheckout="updateCheckout" pagetype="configPage"></qty-control>
+    <qty-control category_index="{{category_index}}" good_index="{{good_index}}" class="qty-control" bindupdateCheckout="updateCheckout" pagetype="configPage" bindupdateTempQty="updateTempQty"></qty-control>
   </view>
   <view wx:if="{{good.stock>0}}" class="main-black-btn" bindtap="add_cart">加入购物车 ￥{{totalPrice}}</view>
   <view wx:else>已售罄</view>

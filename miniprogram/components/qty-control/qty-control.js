@@ -47,13 +47,13 @@ Component({
       let categoryList=wx.getStorageSync('categoryList')
       let good=categoryList[this.properties.category_index].goodsList[this.properties.good_index]
       let temp_qty=1;
-      this.triggerEvent("updateTempQty",temp_qty);
       this.setData({
         good:good,
         temp_qty:temp_qty
       })
   
     },
+  
     //列表页面配置项的增
     configAdd(){
       this.triggerEvent("chooseConfig",{category_index:this.properties.category_index,good_index:this.properties.good_index})

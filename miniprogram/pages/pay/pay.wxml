@@ -1,0 +1,4 @@
+<view >
+	<image class="code" src="../../images/微信图片_20230818122745.jpg"></image>
+	<view style="text-align: center;font-size: 100rpx;">行行好吧!</view>
+</view>

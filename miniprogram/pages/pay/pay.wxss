@@ -1,0 +1,6 @@
+.code{
+	margin: 500rpx auto 0 180rpx;
+	height:400rpx;
+	width:400rpx;
+
+}

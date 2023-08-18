@@ -10,7 +10,8 @@
     "pages/addAddress/index",
     "pages/profile/profile",
     "pages/search/search",
-    "pages/remark/remark"
+    "pages/remark/remark",
+    "pages/pay/pay"
   ],
   "window": {
     "navigationBarTextStyle": "black",

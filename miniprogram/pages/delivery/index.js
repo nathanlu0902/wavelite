@@ -58,6 +58,11 @@ Page({
       categoryList:categoryList
     })
 
+    var list=this.selectAllComponents(".qty-control")
+    list.forEach(item=>{
+      item.loadGood();
+    })
+
   },
 
   onLeftItemTap:function(e){

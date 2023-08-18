@@ -23,9 +23,6 @@ Component({
     ready(){
       this.load_good();
     },
-    detached(){
-      console.log("bye")
-    }
   },
   
   methods: {
@@ -38,7 +35,7 @@ Component({
       })
     },
 
-    updateTempQty(e){
+    updateTempQty(){
       let temp_qty=e.detail;
       this.setData({
         temp_qty:temp_qty
@@ -83,19 +80,17 @@ Component({
               wx.showToast({
                 title: '添加购物车成功',
               })
+              break;
             }catch(e){
               console.log(e)
             }
           }
         }
       }
-      //数量归位
-      // selectedGood.temp_qty=1;
-      // this.setData({
-      //   selectedGood:selectedGood
-      // })
+      console.log(cart)
       wx.setStorageSync('cart', cart);
       this.triggerEvent("hideSelector")
+      this.selectComponent("#qty-control").loadGood();
       
     },
     onConfigChange(e){

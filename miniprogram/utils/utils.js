@@ -32,8 +32,10 @@ export function total_cart_count(){
 export function total_cart_calories(){
   let cart=wx.getStorageSync('cart');
   let totalCalories=0;
+  console.log(cart.length)
   for(let i=0;i<cart.length;i++){
-    totalCalories+=(cart[i].calories+cart[i].selectedBase.calories)*cart[i].sku_qty;
+    let calories=(cart[i].calories+cart[i].selectedBase.calories)*cart[i].sku_qty
+    totalCalories+=calories;
   }
   return totalCalories;
 }

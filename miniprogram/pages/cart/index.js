@@ -15,6 +15,7 @@ Page({
 
   onShow(){
     let userinfo=wx.getStorageSync('userinfo')
+    let cart=wx.getStorageSync('cart')
     let addressChosen=userinfo.address.filter(item=>{
       return item.selected===true
     })[0]
@@ -57,6 +58,8 @@ Page({
 
 
   handlePayment(){
-
+    wx.navigateTo({
+      url: '../pay/pay',
+    })
   }
 })
