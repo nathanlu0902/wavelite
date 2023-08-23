@@ -60,7 +60,7 @@ page{
 }
 
 .benefit-item{
-  border:1px solid;
+  border:2rpx solid;
   width:50%;
   height:100%;
   position:relative;

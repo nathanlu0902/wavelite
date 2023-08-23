@@ -28,4 +28,11 @@
       </view>
     </view>
   </block>
+  <block wx:if="{{pagetype=='cartPage'}}">
+    <view class="control-wrapper" >
+      <view class="iconfont icon-move goods-btn_img" catchtap="cartPageMinus" ></view>
+      <view class="qty">{{cart_item.sku_qty}}</view>
+      <view class="iconfont icon-add goods-btn_img" catchtap="cartPageAdd"></view>  
+    </view>
+  </block>
 </view>

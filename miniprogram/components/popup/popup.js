@@ -29,6 +29,7 @@ Component({
           animationData:animation.export(),
           showModal:false
         })}.bind(this),200)
+      this.triggerEvent("updateList")
     },
 
     showModal(){

@@ -15,7 +15,7 @@
 <view class="notification-wrapper">
   <view class="iconfont icon-comment"></view>
   <swiper class="notification-swiper" autoplay="true" interval="4000" vertical="true" circular="true">
-    <swiper-item class="notification-item" wx:for="{{notification_list}}" wx:key="index">{{item}}</swiper-item>
+    <swiper-item class="notification-item" wx:for="{{notification_list}}" wx:key="index" bindtap="{{item.method}}">{{item.name}}</swiper-item>
   </swiper>
 </view>
 <swiper class="banner-swiper" autoplay="false" 	display-multiple-items="2" >
@@ -65,14 +65,23 @@
 </scroll-view>
 </view>
 
-<view class="checkout-bar-wrapper" bindtap="checkout">
-  <image class="cart-icon iconfont icon-cart"></image>
-  <view class="info-wrapper">
+<view class="{{cart_expanded?'checkout-bar-wrapper_expanded':'checkout-bar-wrapper'}}" >
+  <image class="cart-icon iconfont icon-cart" bindtap="expand_cart"></image>
+  <view class="checkout-info-wrapper">
     <view class="totalPrice">¥{{totalPrice}}</view>
     <view class="remark">满¥20起送</view>
   </view>
+  <view bindtap="checkout" class="checkout-btn" wx:if="{{cart_expanded}}">去结算</view>
 </view>
 
-<popup popup-outer-class="popup-outer-class" id="config-popup">
+<popup popup-outer-class="popup-outer-class" id="config-popup" bindupdateList="updateList">
   <configselector id="config-selector"  bindhideSelector="hideSelector"></configselector>
+</popup>
+
+<popup popup-outer-class="popup-outer-class" id="shopNotice-popup">
+  <shopnotice></shopnotice>
+</popup>
+
+<popup popup-outer-class="cartpopup-outer-class" id="cart-popup" bindupdateList="updateList">
+  <cartpopup id="cartpopup" bindupdateCheckout="updateCheckout"></cartpopup>
 </popup>

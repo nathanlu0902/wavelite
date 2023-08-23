@@ -20,14 +20,14 @@
   <view class="cart-content">
     <view>餐品详情</view>
     <view class="cart-item-wrapper">
-      <view wx:for="{{cart}}" wx:key="index" class="cart-item">
+      <view wx:if="{{item.sku_qty>0}}" wx:for="{{cart}}" wx:key="index" class="cart-item">
         <image class="goodPic" mode="aspectFit" src="{{item.goodsPic[0]}}"></image>
         <view class="cart-info">
           <view >{{item.goodsName}}</view>
           <view class="text-small grey-color">{{item.selectedBase.name}}</view>
           <view >¥{{item.goodsPrice+item.selectedBase.price}}</view>
         </view>
-        <view class="text-bold qty" >{{item.sku_qty}}</view>
+        <qty-control class="qty" pagetype="cartPage" cart_item_index="{{index}}" bindupdate_price_calories="update_price_calories"/>
       </view>
     </view>
     <view class="summary">
@@ -69,6 +69,5 @@
     <view style="font-size: 24rpx;">约{{totalCalories}} kCal</view>
   </view>
   
-  <!-- <view class="pay-btn" bindtap="handlePayment">去支付</view> -->
   <view class="pay-btn" bindtap="handlePayment">去支付</view>
 </view>
