@@ -1,4 +1,4 @@
-// pages/pay/pay.js
+// pages/order/order.js
 Page({
 
   /**
@@ -15,5 +15,6 @@ Page({
 
   },
 
+  //检查商品当前库存是否充足
 
 })

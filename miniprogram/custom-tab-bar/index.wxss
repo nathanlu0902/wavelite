@@ -11,7 +11,8 @@
   width:600rpx;
   margin:0 auto;
   bottom:0rpx;
-  position:fixed;
+  position: absolute;
+  pointer-events: auto;
   right:0;
   left:0
 }
@@ -25,10 +26,10 @@
 }
 
 .icon{
-  width:1.2em;
-  height:1.2em;
+  width:60rpx;
+  height:60rpx;
 }
 
 .text{
-  font-size: 22rpx;
+  font-size: 28rpx;
 }

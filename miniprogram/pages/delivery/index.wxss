@@ -129,7 +129,7 @@
 .right-menu{
   display:flex;
   flex-direction: column;
-  height:1000rpx;
+  height:900rpx;
 }
 
 .right-category{
@@ -159,7 +159,7 @@
  
 }
 
-.right-category .filter .filter-btn .selected{
+.right-category .filter .selected{
   border:2rpx solid black;
   background-color: white;
 }
@@ -342,5 +342,6 @@
 
 .cartpopup-outer-class{
   height:1000rpx;
-  bottom:106rpx !important;
+  bottom:125rpx !important;
+  z-index: 998 !important;
 }

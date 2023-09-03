@@ -20,7 +20,7 @@
 </view>
 <swiper class="banner-swiper" autoplay="false" 	display-multiple-items="2" >
   <swiper-item class="banner_item-wrapper" wx:for="{{bannerList}}" wx:key="title">
-    <image class="banner_item-image" mode="scaleToFill" src="{{item.imgUrl}}"/>
+    <image class="banner_item-image" mode="scaleToFill" src="{{item.imgUrl}}" bindtap="onRightItemTap" data-category_index="{{item.category_index}}" data-good_index="{{item.good_index}}"/>
   </swiper-item>>
 </swiper>
 <view class="menu-wrapper">
@@ -30,20 +30,20 @@
     wx:for="{{category_list}}" 
     wx:key="id"
     bindtap="onLeftItemTap"
-    data-index="index"
+    data-index="{{index}}"
     >
     <image class="cat-icon iconfont {{item.icon}}"></image>
     <view>{{item.name}}</view>
   </view>
 </scroll-view>
 <scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-with-animation>
-  <view class="right-category" wx:for="{{categoryList}}" wx:for-index="category_index" wx:key="index">
+  <view class="right-category" id="{{category_list[category_index].id}}" wx:for="{{categoryList}}" wx:for-index="category_index" wx:key="index">
   <!-- 分类名称（大地波奇） -->
-    <view class="category-header">
+    <view class="category-header"  >
       <view>{{category_list[category_index].name}}</view>
       <view class="filter">
-        <view class="filter-btn" bindtap="changeType" data-type="single" data-category_index="{{category_index}}">单品</view>
-        <view class="filter-btn" bindtap="changeType" data-type="set" data-category_index="{{category_index}}">套餐</view>
+        <view class="filter-btn {{category_list[category_index].type==='single'?'selected':''}}" bindtap="changeType" data-type="single" data-category_index="{{category_index}}">单品</view>
+        <view class="filter-btn {{category_list[category_index].type==='set'?'selected':''}}" bindtap="changeType" data-type="set" data-category_index="{{category_index}}">套餐</view>
       </view> 
     </view> 
     <view wx:for="{{item.goodsList}}" wx:for-item="good_item" class="{{good_item.stock===0?'sold-out':''}} right-item"  wx:if="{{good_item.type===category_list[category_index].type}}" wx:for-index="good_index" bindtap="onRightItemTap" data-category_index="{{category_index}}" data-good_index="{{good_index}}" wx:key="good_index" >

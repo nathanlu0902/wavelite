@@ -80,3 +80,33 @@ export function update_spu_qty(){
   }
   wx.setStorageSync('categoryList', categoryList)
 }
+
+export function checkStock(good){
+  wx.cloud.callFunction({
+    name:"category",
+    data:{
+      type:"get"
+    }
+  }).then(res=>{
+    //得到一个数组，每一项为category对象
+    let categoryList=res.result.data
+    for(let index in categoryList){
+      //category_item:{_id:xxx,goodsList:{}}
+      var goodsList=categoryList[index].goodsList;
+      let good_index=goodsList.findIndex(item=>{
+        return item.id===good.id
+      })
+      if(good_index!=-1){
+        let good=goodsList[good_index];
+        if(good.stock<good.sku_qty){
+          //找到，但缺货
+          return false;
+        }else{
+          //找到，未缺货
+          return true;
+        }
+      }
+      
+}
+})
+}

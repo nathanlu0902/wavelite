@@ -69,5 +69,5 @@
     <view style="font-size: 24rpx;">约{{totalCalories}} kCal</view>
   </view>
   
-  <view class="pay-btn" bindtap="handlePayment">去支付</view>
+  <view class="pay-btn" bindtap="pay">去支付</view>
 </view>

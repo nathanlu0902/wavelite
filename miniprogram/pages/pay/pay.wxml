@@ -1,4 +1,1 @@
-<view >
-	<image class="code" src="../../images/微信图片_20230818122745.jpg"></image>
-	<view style="text-align: center;font-size: 100rpx;">行行好吧!</view>
-</view>
+<!-- 待支付页面，支付中断后回调显示 -->

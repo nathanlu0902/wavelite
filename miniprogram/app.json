@@ -11,7 +11,8 @@
     "pages/profile/profile",
     "pages/search/search",
     "pages/remark/remark",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/order/order"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -31,7 +32,11 @@
       },
       {
         "pagePath": "pages/delivery/index",
-        "text": "外卖"
+        "text": "点单"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单"
       },
       {
         "pagePath": "pages/mine/index",

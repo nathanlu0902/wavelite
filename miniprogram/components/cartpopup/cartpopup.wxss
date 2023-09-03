@@ -1,3 +1,8 @@
+.cart-scroll{
+  height:800rpx;
+  margin:40rpx 0;
+}
+
 .title{
   width:200rpx;
   font-size: 36rpx;
@@ -9,36 +14,44 @@
 .cart-content{
   display:flex;
   flex-direction: column;
-  padding:30rpx;
 }
+
 .cart-item-wrapper{
-  margin:30rpx 0;
-  padding:32rpx 10rpx;
-  border-bottom: 2rpx dash grey;
+  margin-top:30rpx;
+  padding:0 48rpx;
+  display:flex;
+  flex-direction: column;
+
 }
 
 .cart-item{
   display:flex;
   flex-direction: row;
   justify-content: flex-start;
+  margin-bottom: 26rpx;
   position: relative;
+  border-bottom: 2rpx dashed lightgray;
+  height:150rpx;
 
 }
 
 .cart-item .goodPic{
   width:120rpx;
   height:120rpx;
-  margin-right:16rpx;
+  position: absolute;
+  top: 0;
 }
 .cart-item .cart-info{
-  font-size: 30rpx;
-  margin-left: 30rpx;
+  font-size: 28rpx;
+  position: absolute;
+  top: 0;
+  left:140rpx;
 
 }
 
 .cart-item .qty{
   position: absolute;
-  bottom:0;
+  top:80rpx;
   right:0;
   font-size: 28rpx;
 

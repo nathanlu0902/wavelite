@@ -14,9 +14,6 @@ Page({
       },
       {
         name:"广告1"
-      },
-      {
-        name:"广告2"
       }
     ],
     navBarData:{
@@ -24,16 +21,19 @@ Page({
       showSearch:true
     },
     bannerList:[
-      {link:'',
-       imgUrl:"../../images/kc.jpg",
+      {category_index:1,
+       good_index:1,
+       imgUrl:"cloud://cloud1-8gf4k3n9d3a701cc.636c-cloud1-8gf4k3n9d3a701cc-1304230492/1cf7e0a6f61606df40a660831a26b10a.png",
        title:"test1"
       },
-      {link:'',
-      imgUrl:"../../images/kc.jpg",
+      {category_index:1,
+      good_index:2,
+      imgUrl:"cloud://cloud1-8gf4k3n9d3a701cc.636c-cloud1-8gf4k3n9d3a701cc-1304230492/1cf7e0a6f61606df40a660831a26b10a.png",
       title:"test2"
      },
-     {link:'',
-     imgUrl:"../../images/kc.jpg",
+     {category_index:1,
+      good_index:3,
+     imgUrl:"cloud://cloud1-8gf4k3n9d3a701cc.636c-cloud1-8gf4k3n9d3a701cc-1304230492/1cf7e0a6f61606df40a660831a26b10a.png",
      title:"test3"
     },
     ],
@@ -81,6 +81,7 @@ Page({
       viewid:this.data.category_list[index].id,
       currentIndex:index
     })
+
   },
 
 

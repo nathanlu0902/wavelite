@@ -1,9 +1,12 @@
-// components/tabbar.js
+
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
+  },
+  options: {
+    addGlobalClass: true
   },
 
   /**
@@ -14,20 +17,26 @@ Component({
     tabBarItem: [
       {
         path:"/pages/index/index",
-        iconSelectedName: "wap-home",
-        iconName: "wap-home-o",
+        iconSelectedName: "icon-check",
+        iconName: "icon-check",
         text: "首页"
       },
       {
         path:"/pages/delivery/index",
-        iconSelectedName: "wap-delivery",
-        iconName: "wap-delivery-o",
-        text: "外卖"
+        iconSelectedName: "icon-check",
+        iconName: "icon-check",
+        text: "点单"
+      },
+      {
+        path:"/page/order/order",
+        iconSelectedName: "icon-check",
+        iconName: "icon-check",
+        text: "订单"
       },
       {
         path:"/pages/mine/index",
-        iconSelectedClass: "icon-myfill",
-        iconClass: "icon-my",
+        iconSelectedName: "icon-myfill",
+        iconName: "icon-my",
         text: "个人中心"
       }
     ]

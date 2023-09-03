@@ -117,6 +117,7 @@ Page({
             wx.showToast({
               title: '添加购物车成功',
             })
+            break;
           }catch(e){
             console.log(e)
           }

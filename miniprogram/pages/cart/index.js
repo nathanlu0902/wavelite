@@ -1,5 +1,4 @@
-import {total_cart_calories, total_cart_count, total_cart_price} from "../../utils/utils"
-var cart=wx.getStorageSync('cart')
+import {total_cart_calories, total_cart_count, total_cart_price,checkStock} from "../../utils/utils"
 import config from "../../config/config"
 import {current_time} from "../../utils/utils"
 
@@ -47,11 +46,38 @@ Page({
     })
   },
 
+  generateOrder(){
+    let create_time=Date.now();
+    //购物车中的价格取结算页价格，后续改动不影响
+    let cart_snap=wx.getStorageSync('cart_snap')
+    let openid=wx.getStorageSync('userinfo').openid
+    let status="待支付"
+    let order={
+      openid:openid,
+      create_time:create_time,
+      status:status,
+      cart_snap:cart_snap
+    }
+    wx.setStorageSync('order', order)
+  },
 
-  handlePayment(){
-    wx.navigateTo({
-      url: '../pay/pay',
-    })
+  pay(){
+    //1.检查库存
+    let out_of_stock=[]
+    for(let i=0;i<this.data.cart.length;i++){
+      let item=this.data.cart[i]
+      if(!checkStock(item)){
+        out_of_stock.push(item)
+      }
+    }
+    //2.若库存充足，继续到3；否则弹出提示，是否删除？结束流程
+    if(out_of_stock.length>0){
+
+    }else{
+      this.generateOrder();
+      //3.调起支付API
+    }
+    
   },
 
   update_price_calories(){
