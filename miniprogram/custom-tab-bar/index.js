@@ -34,6 +34,12 @@ Component({
         text: "订单"
       },
       {
+        path:"/pages/subscribe/subscribe",
+        iconSelectedName: "wap-delivery",
+        iconName: "wap-delivery-o",
+        text: "订阅"
+      },
+      {
         path:"/pages/mine/index",
         iconSelectedName: "icon-myfill",
         iconName: "icon-my",
