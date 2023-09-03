@@ -1,0 +1,4 @@
+<view class="btn-wrapper">
+	<navigator class="nav-btn" style="background-color: lightseagreen;" url="../subscribe/week/week">周卡</navigator>
+	<navigator class="nav-btn" style="background-color: lightskyblue;" url="../subscribe/month/month">月卡</navigator>
+</view>
