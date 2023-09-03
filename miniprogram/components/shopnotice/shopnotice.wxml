@@ -1,0 +1,20 @@
+<view class="wrapper">
+  <view class="title">店铺公告</view>
+  <view class="item">
+    <view class="header">门店信息</view>
+    <view class="body">地址：苏州工业园区钟园路788号丰隆汇商城一楼黄小递美食广场</view>
+    <view class="body">电话：17751218841</view>
+    <view class="body">外卖营业时间：周一至周日10:00-20:00</view>
+    <view class="body">门店营业时间：周一至周日10:00-20:00</view>
+  </view>
+  <view class="item">
+    <view class="header">配送规则</view>
+    <view class="body">满20起送</view>
+    <view class="body">1~3公里：3元</view>
+    <view class="body">3~5公里：5元</view>
+    <view class="body">5公里以上：7元</view>
+  </view>
+  <view class="item">
+    <view class="header">食品安全档案</view>
+  </view>
+</view>

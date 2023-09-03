@@ -1,15 +1,23 @@
 
 import config from "../../config/config"
-import {total_cart_price, update_spu_qty} from "../../utils/utils"
+import {total_cart_price} from "../../utils/utils"
 
 
 Page({
   data: {
+    cart_expanded:false,
     currentIndex:0,
     notification_list:[
-      '你知道吗',
-      'KC是',
-      'SB'
+      {
+        name:"店铺公告",
+        method:"showShopNotice"
+      },
+      {
+        name:"广告1"
+      },
+      {
+        name:"广告2"
+      }
     ],
     navBarData:{
       showBack:false,
@@ -92,9 +100,20 @@ Page({
 
   updateCheckout(){
     let totalPrice=total_cart_price();
-    this.setData({
-      totalPrice:totalPrice
-    })
+    //满足最低起送价，展开去结算按钮
+    if(totalPrice>=config.minimum_price){
+      this.setData({
+        totalPrice:totalPrice,
+        cart_expanded:true
+      })
+    }else{
+      this.setData({
+        totalPrice:totalPrice,
+        cart_expanded:false
+      })
+    }
+
+
   },
 
   changeType(e){
@@ -128,13 +147,29 @@ Page({
   },
 
   hideSelector(){
+    this.selectComponent('#config-popup').hideModal();
+  },
+
+  //当popup隐藏时候做的一些动作
+  updateList(){
     this.updateCheckout();
     //选择所有qty-control组件，调用loadgood方法
     var list=this.selectAllComponents(".qty-control")
     list.forEach(item=>{
       item.loadGood();
     })
-    this.selectComponent('#config-popup').hideModal();
+  },
 
+  showShopNotice(){
+    this.selectComponent("#shopNotice-popup").showModal();
+  },
+
+  expand_cart(){
+    this.selectComponent("#cart-popup").showModal();
+    this.selectComponent("#cartpopup").load_cart();
+    this.setData({
+      cart_expanded:true
+    })
+    
   }
 })

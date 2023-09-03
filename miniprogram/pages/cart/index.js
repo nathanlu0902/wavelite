@@ -19,11 +19,6 @@ Page({
     let addressChosen=userinfo.address.filter(item=>{
       return item.selected===true
     })[0]
-    let rawTotal=total_cart_price();
-    let totalCount=total_cart_count();
-    let totalCalories=total_cart_calories();
-    //扣除折扣
-    let totalPrice=rawTotal+this.data.delivery_fee-this.data.member_discount-this.data.good_discount-this.data.delivery_fee
     
     //根据当前时间设置最早可配送时间
     let now=current_time();
@@ -31,14 +26,10 @@ Page({
 
     //获取缓存中的备注
     let remark=wx.getStorageSync('remark')||""
-
+    this.update_price_calories()
     this.setData({
       addressChosen:addressChosen,
       cart:cart,
-      rawTotal:rawTotal,
-      totalCount:totalCount,
-      totalPrice:totalPrice,
-      totalCalories:totalCalories,
       start:start,
       remark:remark
     })
@@ -60,6 +51,22 @@ Page({
   handlePayment(){
     wx.navigateTo({
       url: '../pay/pay',
+    })
+  },
+
+  update_price_calories(){
+    let rawTotal=total_cart_price();
+    let totalCount=total_cart_count();
+    let totalCalories=total_cart_calories();
+    let cart=wx.getStorageSync('cart')
+    //扣除折扣
+    let totalPrice=rawTotal+this.data.delivery_fee-this.data.member_discount-this.data.good_discount
+    this.setData({
+      rawTotal:rawTotal,
+      totalCount:totalCount,
+      totalPrice:totalPrice,
+      totalCalories:totalCalories,
+      cart:cart
     })
   }
 })

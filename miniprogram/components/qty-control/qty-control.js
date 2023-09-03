@@ -28,6 +28,9 @@ Component({
     },
     pagetype:{
       type:String
+    },
+    cart_item_index:{
+      type:Number
     }
   },
 
@@ -42,14 +45,17 @@ Component({
 
   methods: {
     loadGood(){
+      let cart=wx.getStorageSync('cart')
       //获取缓存中的categoryList,得到good，根据good的属性判断如何显示
       update_spu_qty();
       let categoryList=wx.getStorageSync('categoryList')
       let good=categoryList[this.properties.category_index].goodsList[this.properties.good_index]
       let temp_qty=1;
+      let cart_item=cart[this.properties.cart_item_index]
       this.setData({
         good:good,
-        temp_qty:temp_qty
+        temp_qty:temp_qty,
+        cart_item:cart_item
       })
   
     },
@@ -136,6 +142,33 @@ Component({
         })
       }
       this.triggerEvent("updateTempQty",temp_qty)
+    },
+
+    cartPageAdd(){
+      let cart=wx.getStorageSync('cart')
+      let cart_item=cart[this.properties.cart_item_index]
+      cart_item.sku_qty+=1;
+      cart_item.totalPrice=(cart_item.goodsPrice+cart_item.selectedBase.price)*cart_item.sku_qty
+      wx.setStorageSync('cart', cart)
+      this.loadGood();
+      this.triggerEvent("update_price_calories")
+      
+    },
+
+    cartPageMinus(){
+      let cart=wx.getStorageSync('cart')
+      let cart_item=cart[this.properties.cart_item_index]
+      if(cart_item.sku_qty>1){
+        cart_item.sku_qty-=1;
+        cart_item.totalPrice=(cart_item.goodsPrice+cart_item.selectedBase.price)*cart_item.sku_qty
+      }else{
+        cart.splice(this.properties.cart_item_index,1)
+        cart_item.totalPrice=0
+      }
+      wx.setStorageSync('cart', cart)
+      this.loadGood()
+      this.triggerEvent("update_price_calories")
+      
     }
   }
 })

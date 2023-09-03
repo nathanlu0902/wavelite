@@ -18,6 +18,7 @@ export default{
     open:"10:00",
     close:"19:00"
   }],
+  "minimum_price":20
 
 }
 

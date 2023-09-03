@@ -1,0 +1,56 @@
+.title{
+  width:200rpx;
+  font-size: 36rpx;
+  font-weight: 450;
+  margin:40rpx auto 0;
+  text-align: center;
+}
+
+.cart-content{
+  display:flex;
+  flex-direction: column;
+  padding:30rpx;
+}
+.cart-item-wrapper{
+  margin:30rpx 0;
+  padding:32rpx 10rpx;
+  border-bottom: 2rpx dash grey;
+}
+
+.cart-item{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: relative;
+
+}
+
+.cart-item .goodPic{
+  width:120rpx;
+  height:120rpx;
+  margin-right:16rpx;
+}
+.cart-item .cart-info{
+  font-size: 30rpx;
+  margin-left: 30rpx;
+
+}
+
+.cart-item .qty{
+  position: absolute;
+  bottom:0;
+  right:0;
+  font-size: 28rpx;
+
+}
+
+.good-info-wrapper{
+  display:flex;
+  flex-direction: row;
+}
+
+.calories{
+  position:absolute;
+  right:0;
+  top:10rpx;
+}

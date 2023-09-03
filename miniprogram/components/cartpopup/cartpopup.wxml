@@ -1,0 +1,17 @@
+<view wx:if="{{cart.length===0}}">购物车是空的哦</view>
+<view wx:else class="cart-content">
+    <view class="title">购物车</view>
+    <view class="cart-item-wrapper">
+      <view wx:if="{{item.sku_qty>0}}" wx:for="{{cart}}" wx:key="index" class="cart-item">
+        <image class="goodPic" mode="aspectFit" src="{{item.goodsPic[0]}}"></image>
+        <view class="cart-info">
+          <view >{{item.goodsName}}</view>
+          <view class="text-small grey-color">{{item.selectedBase.name}}</view>
+          <view >¥{{item.goodsPrice+item.selectedBase.price}}</view>
+        </view>
+        <view class="calories text-small grey-color">{{(item.calories+item.selectedBase.calories)*item.sku_qty}} kCal</view>
+        <qty-control class="qty" pagetype="cartPage" cart_item_index="{{index}}" bindupdate_price_calories="update_price_calories"/>
+      </view>
+    </view>
+
+</view>

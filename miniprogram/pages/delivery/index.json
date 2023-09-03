@@ -5,7 +5,9 @@
     "custom-nav-bar":"../../components/custom-nav-bar/custom-nav-bar",
     "popup":"../../components/popup/popup",
     "qty-control":"../../components/qty-control/qty-control",
-    "configselector":"../../components/configSelector/configSelector"
+    "configselector":"../../components/configSelector/configSelector",
+    "shopnotice":"../../components/shopnotice/shopnotice",
+    "cartpopup":"../../components/cartpopup/cartpopup"
   },
   "navigationStyle": "custom"
   ,

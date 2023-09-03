@@ -35,7 +35,7 @@ Component({
       })
     },
 
-    updateTempQty(){
+    updateTempQty(e){
       let temp_qty=e.detail;
       this.setData({
         temp_qty:temp_qty
@@ -87,7 +87,6 @@ Component({
           }
         }
       }
-      console.log(cart)
       wx.setStorageSync('cart', cart);
       this.triggerEvent("hideSelector")
       this.selectComponent("#qty-control").loadGood();

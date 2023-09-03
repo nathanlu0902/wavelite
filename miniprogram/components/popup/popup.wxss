@@ -19,4 +19,5 @@
   padding-top:20rpx;
   bottom:0;
   left:0;
+  border-radius: 30rpx;
 }
