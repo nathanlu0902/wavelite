@@ -1,0 +1,9 @@
+.order-item{
+	margin:40rpx auto;
+	width:600rpx;
+	border:1px solid lightgrey;
+	border-radius:30rpx;
+	box-shadow: 0 0 14px rgba(0,0,0,.2);
+	padding:40rpx;
+
+}

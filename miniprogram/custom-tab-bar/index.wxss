@@ -1,17 +1,17 @@
-@import "../styles/iconfont.wxss";
+
 .tabbar-wrapper{
   display:flex;
   flex-direction:row;
   justify-content: space-around;
   align-items: center;
-  background: #fff;
+  background: #F1F2EE;
   box-shadow: 0 0 14px rgba(0,0,0,.2);
   border-radius: 30px;
   height:100rpx;
   width:600rpx;
   margin:0 auto;
-  bottom:0rpx;
-  position: absolute;
+  bottom:44rpx;
+  position: fixed;
   pointer-events: auto;
   right:0;
   left:0
@@ -25,11 +25,7 @@
   align-items: center;
 }
 
-.icon{
-  width:60rpx;
-  height:60rpx;
-}
-
 .text{
+	margin-top:10rpx;
   font-size: 28rpx;
 }

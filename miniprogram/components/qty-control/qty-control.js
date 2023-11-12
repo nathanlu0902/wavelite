@@ -122,7 +122,9 @@ Component({
         })
       }
       this.triggerEvent("updateCheckout")
-    },
+	},
+	
+	
     //弹出配置页面的增减
     configPageAdd(){
       let temp_qty=this.data.temp_qty

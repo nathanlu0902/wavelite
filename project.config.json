@@ -2,6 +2,13 @@
   "compileType": "miniprogram",
   "condition": {},
   "setting": {
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./miniprogram"
+      }
+    ],
     "urlCheck": true,
     "coverView": true,
     "es6": true,
@@ -14,8 +21,6 @@
     "uploadWithSourceMap": true,
     "enhance": true,
     "showShadowRootInWxmlPanel": true,
-    "packNpmManually": true,
-    "packNpmRelationList": [],
     "minifyWXSS": true,
     "useStaticServer": true,
     "showES6CompileOption": false,
@@ -31,7 +36,8 @@
     "minifyWXML": true,
     "ignoreUploadUnusedFiles": true,
     "useIsolateContext": true,
-    "condition": false
+    "condition": false,
+    "compileWorklet": false
   },
   "editorSetting": {
     "tabIndent": "insertSpaces",

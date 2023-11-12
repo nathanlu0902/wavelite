@@ -1,11 +1,85 @@
 {
+  "setting": {
+    "compileHotReLoad": false,
+    "urlCheck": false
+  },
   "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
   "condition": {
     "miniprogram": {
       "list": [
         {
           "name": "",
+          "pathName": "pages/count/info/info",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/count/countHistory/countHistory",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/count/countmgt/countmgt",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/count/newOrder/newOrder",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/count/countmgt/countmgt",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/count/count",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/nutri/nutri",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/profile/profile",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/mine/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/userInfo/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/index/index",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -20,14 +94,7 @@
         {
           "name": "",
           "pathName": "pages/goodsDetail/index",
-          "query": "index=0",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/profile/profile",
-          "query": "",
+          "query": "id=POKE001",
           "launchMode": "default",
           "scene": null
         },
@@ -40,21 +107,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/search/search",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/chooseAddress/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
-          "pathName": "pages/remark/remark",
+          "pathName": "pages/addAddress/index",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -62,8 +115,6 @@
       ]
     }
   },
-  "libVersion": "2.31.0",
-  "setting": {
-    "urlCheck": false
-  }
+  "projectname": "wavelite",
+  "libVersion": "3.1.5"
 }

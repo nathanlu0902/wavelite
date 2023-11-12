@@ -1,68 +1,69 @@
-/**index.wxss**/
-.index-swiper{
-  width:100%;
-  display:block;
-  height:500rpx;
-  padding-top: constant(safe-area-inset-top);
+page{
+	background-color: #F1F2EE;
 }
-.bnr-item-img{
-  width:100%;
-  height:inherit;
-}
-.btn-wrapper{
-  display:flex;
-  flex-direction:row;
-  justify-content: space-around;
-  margin:20px auto;
-}
-.btn{
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  height:70px;
-  width:70px;
-  text-align:center;
-  box-shadow: 0 1px 11px 0 rgba(0,0,0,.09);
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight:500;
-  letter-spacing: .053px;
-  line-height: 24px;
+.index-swiper {
+	width: 100%;
+	display: block;
+	height: 650rpx;
+	padding-top: constant(safe-area-inset-top);
 }
 
-.userCard{
-  display:flex;
-  flex-direction:row;
-  justify-content: space-around;
-  width:100%;
-  border: 1px solid black;
-  height:200rpx;
+.bnr-item-img {
+	width: 100%;
+	height: inherit;
 }
-.pic{
-  width:26rpx;
-  height:26rpx;
+
+.btn-wrapper {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	height: 160rpx;
+	padding:40rpx 0;
 }
-.member-info{
-  display:flex;
-  flex-direction: column;
+
+.btn {
+	display: flex;
+	flex-direction:column;
+	justify-content:space-around;
+	padding: 20rpx 0;
+	box-sizing: border-box;
+	position: relative;
+	height: 160rpx;
+	width: 160rpx;
+	text-align: center;
+	box-shadow: 0 1px 11px 0 rgba(0, 0, 0, .09);
+	border-radius: 8px;
+	font-size: 15px;
+	font-weight: 500;
 }
 
 
-.pic-wrapper{
-  width: 100%;
-  left:0;
-  right:0;
-  margin:0 auto;
+.userCard {
+	box-shadow: 0 1px 11px 0 rgba(0, 0, 0, .09);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 100%;
+	border: 1px solid lightgray;
+	border-radius: 20rpx;
+	height: 200rpx;
+	position: relative;
 }
 
-.pic-wrapper image{
-  width:100%;
-  overflow:hidden;
+.member-info {
+	position: absolute;
+	left:100rpx;
+	top:30rpx;
+	display: flex;
+	flex-direction: column;
+	font-size: 32rpx;
+	font-weight: 400;
 }
 
-.delivery-nav{
-  border: 1px solid black;
-  width:100rpx;
-  height:100rpx;
-  background-color: cornsilk;
+.delivery-nav {
+	border: 1px solid black;
+	width: 100rpx;
+	height: 100rpx;
+	background-color: cornsilk;
 }

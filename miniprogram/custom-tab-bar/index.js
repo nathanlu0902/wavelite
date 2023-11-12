@@ -17,32 +17,14 @@ Component({
     tabBarItem: [
       {
         path:"/pages/index/index",
-        iconSelectedName: "icon-check",
-        iconName: "icon-check",
+        iconSelectedName: "wap-home",
+        iconName: "wap-home-o",
         text: "首页"
       },
       {
-        path:"/pages/delivery/index",
-        iconSelectedName: "icon-check",
-        iconName: "icon-check",
-        text: "点单"
-      },
-      {
-        path:"/page/order/order",
-        iconSelectedName: "icon-check",
-        iconName: "icon-check",
-        text: "订单"
-      },
-      {
-        path:"/pages/subscribe/subscribe",
-        iconSelectedName: "wap-delivery",
-        iconName: "wap-delivery-o",
-        text: "订阅"
-      },
-      {
         path:"/pages/mine/index",
-        iconSelectedName: "icon-myfill",
-        iconName: "icon-my",
+        iconSelectedName: "user",
+        iconName: "user-o",
         text: "个人中心"
       }
     ]

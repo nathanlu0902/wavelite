@@ -1,0 +1,14 @@
+page{
+	background-color: white;
+}
+.header{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin:20rpx 0 0;
+	padding:20rpx; 
+	/* border:1px solid lightgray; */
+	background-color: white;
+	border-radius: 10px;
+}

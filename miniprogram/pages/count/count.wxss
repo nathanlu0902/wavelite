@@ -1,0 +1,46 @@
+
+
+.set-wrapper{
+	width:100%;
+	height:500rpx;
+}
+
+.set{
+
+	height:500rpx;
+
+}
+
+.itemImg{
+	width:90%;
+	border-radius: 15rpx;
+	position: absolute;
+	height:300rpx;
+	z-index: 5;
+	opacity: 0.7;
+	top:13%;
+	margin:0 30rpx;
+}
+
+.active {
+	opacity: 1;
+	z-index: 10;
+	height: 360rpx;
+	top: 7%;
+	transition: all .2s ease-in 0s;
+  }
+
+.radio{
+	position: absolute;
+	right:10rpx;
+	bottom:10rpx;
+}
+.info-wrapper{
+	position: relative;
+}
+
+.address{
+	text-align: left;text-overflow: ellipsis;
+}
+
+

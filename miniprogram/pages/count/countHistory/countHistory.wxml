@@ -1,0 +1,22 @@
+<van-tabs active="{{ active }}" >
+	<van-tab title="当前订单">
+		<view wx:for="{{count.delivery_order}}" wx:for-item="delivery_order" class="delivery-order-wrapper" wx:if="{{delivery_order.status==='待配送'}}" class="order-item">
+			<view>{{delivery_order.receiver}}</view>
+			<view>{{delivery_order.phone}}</view>
+			<view>{{delivery_order.address}}</view>
+			<view>{{delivery_order.delivery_time}}</view>
+			<view>{{delivery_order.status}}</view>
+
+		</view>
+	</van-tab>
+	<van-tab title="历史订单">
+		<view wx:for="{{count.delivery_order}}" wx:for-item="delivery_order" class="delivery-order-wrapper" wx:if="{{delivery_order.status==='已完成'}}" class="order-item">
+			<view>{{delivery_order.receiver}}</view>
+			<view>{{delivery_order.phone}}</view>
+			<view>{{delivery_order.address}}</view>
+			<view>{{delivery_order.delivery_time}}</view>
+			<view>{{delivery_order.status}}</view>
+
+		</view>
+	</van-tab>
+</van-tabs>

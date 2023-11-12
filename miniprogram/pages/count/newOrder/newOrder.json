@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+	"qty-control":"../../../components/qty-control/qty-control",
+	"configselector":"../../../components/configSelector/configSelector",
+	"popup":"../../../components/popup/popup"
+  },
+  "navigationStyle": "default",
+  "navigationBarTitleText": "新建订单"
+}

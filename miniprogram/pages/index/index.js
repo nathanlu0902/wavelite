@@ -20,9 +20,16 @@ Page({
   },
   //options(Object)
   onLoad: function() {
-    this.getUserInfo();
-    this.getGoodsList();
-    this.registerPopup=this.selectComponent("#popup")
+	const db=wx.cloud.database()
+	db.collection('count').get().then(res=>{
+		wx.setStorageSync('count', res.data)
+	})
+	db.collection('dish').get().then(res=>{
+		wx.setStorageSync('dishList', res.data)
+	})
+	this.getUserInfo();
+    // this.getGoodsList();
+    // this.registerPopup=this.selectComponent("#popup")
   },
 
   onShow: function() {
@@ -75,7 +82,7 @@ Page({
         let userinfo=res.result[0];
         this.setData({
           loggedIn:true,
-          nickname:userinfo.nickname
+          userinfo:userinfo
         })
         app.globalData.loggedIn=true;
         wx.setStorageSync('userinfo', userinfo)
@@ -83,14 +90,24 @@ Page({
         let userinfo={}
         userinfo.nickname="waver"
         this.setData({
-          nickname:userinfo.nickname,
+          userinfo:userinfo,
           loggedIn:false
         })
         app.globalData.loggedIn=false;
         wx.setStorageSync('userinfo', userinfo)
       }
     })
-    this.registerPopup=this.selectComponent("#popup")
+	this.registerPopup=this.selectComponent("#popup")
+	const db=wx.cloud.database()
+	return db.collection('count').get().then(res=>{
+		if(res.data.length===0){
+			console.log("没有次卡")
+			app.globalData.hasCount=false
+		}else if(res.data.length>0&&res.data[0].status==='已审批'){
+			app.globalData.hasCount=true
+			wx.setStorageSync('count', res.data[0])
+		}
+	})
   },
   getGoodsList(){
     wx.cloud.callFunction({
@@ -130,5 +147,31 @@ Page({
 
     })
   },
+  toDelivery(){
+	  wx.showToast({
+		title: '即将开放，敬请期待',
+		icon:"none"
+	  })
+	//   wx.switchTab({
+	// 	url: '../delivery/index',
+	//   })
+  },
+  toNutri(){
+	  wx.navigateTo({
+		url: '../nutri/nutri',
+	  })
+  },
+  toCount(){
+	  if(app.globalData.hasCount){
+		wx.navigateTo({
+			url: '../count/countmgt/countmgt',
+		  })
+	  }else{
+		wx.navigateTo({
+			url: '../count/count',
+		  })
+	  }
+
+  }
 });
   

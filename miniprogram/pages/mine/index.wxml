@@ -1,41 +1,41 @@
+<view class="background-pic">
+	<image style="width: 100%;height:600rpx" mode="scaleToFill" src="../../images/5.png"></image>
+</view>
 <view class="userinfo-wrapper">
-  <image class="avatar" src="{{avatarUrl}}"></image>
-  <navigator class="nickname" url="../profile/profile">{{nickname}}</navigator>
+	<image class="avatar" src="{{avatarUrl}}"></image>
+	<view class="nickname">{{nickname}}</view>
+	<van-icon bind:tap="toEdit" name="edit" size="50rpx"></van-icon>
 </view>
-<view class="info-wrapper">
-  <view class="star-wrapper">
-    <view class="star-info">
-      <view class="starCount">5</view>
-      <navigator class="mybenefit" url="../benefit/benefit">我的权益</navigator>
-    </view>
-    <view class="starStatus-bar">
-      <view class="reached" style="height:50rpx;background-color: blue;width:20%"/>
-      <view class="unreached" style="height:50rpx;background-color:lightblue;width:80%"/>
-    </view>
-  </view>
-  <view class="benefit-wrapper">
-    <view class="coupon benefit-item">
-      <view class="couponCount benefit-info">5张</view>
-      <navigator url="../coupon/coupon" class="small-link">我的卡券 ></navigator>
-    </view>
-    <view class="invite benefit-item">
-      <view class="inviteCount benefit-info">7已邀请</view>
-      <navigator url="../invite/invite" class="small-link">邀请有礼 ></navigator>
-    </view>
-  </view>
-  <view class="useful-wrapper">
-    <view class="useful-title">常用功能</view>
-    <view class="item-wrapper">
-      <navigator class="useful_item" url="../chooseAddress/index">地址管理</navigator>
-      <navigator class="useful_item">关注公众号</navigator>
-      <navigator class="useful_item">联系我们</navigator>
-      <navigator class="useful_item">设置</navigator>
-    </view>
-  </view>
+<!-- <van-cell-group inset class="starStatus-bar">
+	<view style="margin-bottom:20rpx">等级进度：</view> -->
+	<!-- <view class="reached" style="height:50rpx;background-color: blue;width:20%" />
+	<view class="unreached" style="height:50rpx;background-color:lightblue;width:80%" /> -->
+	<!-- <van-progress percentage="30" stroke-width="28"></van-progress>
+</van-cell-group> -->
+<view style="margin-top:30rpx">
+	<van-cell-group inset>
+		<van-grid square column-num="4" style="width: 100%;" direction="vertical">
+			<van-grid-item url="{{item.url}}" icon="{{item.iconName}}" wx:for="{{function_list}}" text="{{item.title}}"> </van-grid-item>
+		</van-grid>
+	</van-cell-group>
 </view>
-<!-- <mp-cells>
-  <mp-cell icon="" value="地址管理" link="true"></mp-cell>
-  <mp-cell icon="" value="关注公众号" link="true"></mp-cell>
-  <mp-cell icon="" value="联系我们" link="true"></mp-cell>
-  <mp-cell icon="" value="设置" link="true"></mp-cell>
-</mp-cells> -->
+<!-- <view class="info-wrapper"> -->
+<!-- <view class="star-wrapper"> -->
+<!-- <view class="star-info">
+			<view class="starCount">5</view>
+			<navigator class="mybenefit" url="../benefit/benefit">我的权益</navigator>
+		</view> -->
+
+<!-- </view> -->
+<!-- <view class="benefit-wrapper">
+		<view class="coupon benefit-item">
+			<view class="couponCount benefit-info">5张</view>
+			<navigator url="../coupon/coupon" class="small-link">我的卡券 ></navigator>
+		</view>
+		<view class="invite benefit-item">
+			<view class="inviteCount benefit-info">7已邀请</view>
+			<navigator url="../invite/invite" class="small-link">邀请有礼 ></navigator>
+		</view>
+	</view> -->
+
+<!-- </view> -->

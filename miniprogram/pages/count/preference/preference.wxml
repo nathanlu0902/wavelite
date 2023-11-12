@@ -1,0 +1,10 @@
+<van-cell-group wx:for="{{question}}" wx:for-index="category" wx:for-item="questions" title="{{category}}" inset>
+	<van-checkbox-group>
+		<van-checkbox wx:for="{{questions}}">
+			{{item}}
+		</van-checkbox>
+	</van-checkbox-group>
+</van-cell-group>
+<van-cell-group title="其他备注" >
+	<textarea placeholder="请输入您的其他备注" style="border: 1px solid black;margin:0 auto;width:700rpx;border-radius: 10rpx;"></textarea>
+</van-cell-group>

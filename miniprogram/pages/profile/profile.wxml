@@ -1,24 +1,24 @@
-<custom-nav-bar navBarData="{{navBarData}}"></custom-nav-bar>
-<button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar" style="margin-top:{{statusBarHeight+navBarHeight}}px">
-  <image class="avatar" src="{{userinfo.avatarUrl}}"></image>
+<button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar" >
+	<image class="avatar" src="{{avatarUrl}}"></image>
 </button>
 
-<form class="userinfo-form" bindsubmit="submit">
-  <view class="userinfo-item">
-    <view class="userinfo-label">昵称</view>
-    <input class="userinfo-input" value="{{userinfo.nickname}}" name="nickname"></input>
-  </view>
-  <view class="userinfo-item">
-    <view class="userinfo-label">手机</view>
-    <input class="userinfo-input" value="{{userinfo.phone}}" name="phone"></input>
-  </view>
-  <view class="userinfo-item">
-    <view class="userinfo-label">性别</view>
-    <picker range="{{gender}}" bindchange="onGenderChange">{{userinfo.gender?userinfo.gender:"选择"}}</picker>
-  </view>
-  <view class="userinfo-item">
-    <view class="userinfo-label">生日</view>
-    <picker mode="date" start="1930-01-01" bindchange="onBirthdayChange">{{userinfo.birthday?userinfo.birthday:"选择生日"}}</picker>
-  </view>
-  <button class="submit-btn" form-type="submit">保存</button>
-</form>
+<van-cell-group cen inset>
+	<van-cell required class="profile-cell"   center title="昵称">
+		<van-field  clearable border="false" value="{{nickname}}" bindchange="onNicknameChange" placeholder="请输入用户名"></van-field>
+	</van-cell>
+	<van-cell required class="profile-cell"  center title="手机号">
+		<van-field type="number" clearable value="{{phone}}" border="false" bindchange="onPhoneChnage" placeholder="请输入用户名"></van-field>
+	</van-cell>
+	<van-cell  class="profile-cell"  center title="性别">
+		<van-radio-group direction="horizontal" value="{{gender}}" bindchange="onGenderChange">
+			<van-radio name="男">男</van-radio>
+			<van-radio name="女">女</van-radio>
+		</van-radio-group>
+	</van-cell>
+	<van-cell class="profile-cell" center title="生日" bind:tap="show_popup" value="{{birthday}}"/>
+	<van-popup show="{{popup_show}}" bind:close="onClose" position="bottom">
+		<van-datetime-picker type="date" max-date="{{maxDate}}" min-date="{{minDate}}" bind:confirm="onBirthdayConfirm" bind:cancel="onBirthdayCancel" />
+	</van-popup>
+
+</van-cell-group>
+<van-button class="submit-btn" type="primary" bind:tap="submit">保存</van-button>

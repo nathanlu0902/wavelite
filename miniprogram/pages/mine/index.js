@@ -3,7 +3,19 @@ const app=getApp()
 Page({
 
   data: {
-    
+	function_list:[
+		{
+			title:"关注公众号",
+			url:"../chooseAddress/index",
+			iconName:"bookmark-o"
+		},
+		{
+			title:"联系我们",
+			url:"../chooseAddress/index",
+			iconName:"contact-o"
+		}
+
+	]
   },
 
 
@@ -29,5 +41,10 @@ Page({
     }
   },
 
+  toEdit(){
+	  wx.navigateTo({
+		url: '../profile/profile',
+	  })
+  }
   
 })

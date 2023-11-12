@@ -28,6 +28,28 @@
       </view>
     </view>
   </block>
+
+  <block wx:if="{{pagetype=='countPage'}}">
+    <view wx:if="{{!good.needConfig}}" class="control-wrapper" >
+      <view wx:if="{{good.spu_qty>0}}">
+        <view class="iconfont icon-move goods-btn_img" catchtap="countMinus" ></view>
+        <view class="qty">{{good.spu_qty}}</view>
+      </view>
+      <view class="iconfont icon-add goods-btn_img" catchtap="countAdd"></view>  
+    </view>
+
+
+    <view wx:if="{{good.needConfig}}" >
+      <view wx:if="{{good.spu_qty===0}}">
+        <view class="config-btn" catchtap="configAdd">选规格</view>
+      </view>
+      <view wx:else class="control-wrapper">
+        <view class="iconfont icon-move goods-btn_img" catchtap="configMinus" ></view>
+        <view class="qty">{{good.spu_qty}}</view>
+        <view class="iconfont icon-add goods-btn_img" catchtap="configAdd"></view>  
+      </view>
+    </view>
+  </block>
   <block wx:if="{{pagetype=='cartPage'}}">
     <view class="control-wrapper" >
       <view class="iconfont icon-move goods-btn_img" catchtap="cartPageMinus" ></view>

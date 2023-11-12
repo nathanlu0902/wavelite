@@ -1,0 +1,76 @@
+<view class="menu-wrapper">
+	<!-- <scroll-view class="left-menu" scroll-y="true" enable-flex="true"> -->
+	<van-sidebar class="left-menu">
+		<van-sidebar-item class="left-item" title="{{key}}" wx:for="{{dishObj}}" wx:for-index="key" wx:for-item="dishes" bindtap="onLeftItemTap" data-key="{{key}}"></van-sidebar-item>
+	</van-sidebar>
+	<!-- <view class="left-item {{viewid==key?'active':''}}" wx:for="{{dishObj}}" wx:for-index="key" wx:for-item="dishes" bindtap="onLeftItemTap" data-key="{{key}}">
+			<view>{{key}}</view>
+		</view> -->
+	<!-- </scroll-view> -->
+	<scroll-view class="right-menu" scroll-y scroll-into-view="{{viewid}}" scroll-with-animation>
+		<view class="right-category" wx:for="{{dishObj}}" wx:for-index="key" wx:for-item="dishes">
+			<!-- 分类名称 -->
+			<view id="{{key}}" class="category-header">
+				<view>{{key}}</view>
+			</view>
+			<view wx:for="{{dishes}}" wx:for-item="dish" class="{{dish.stock===0?'sold-out':''}} right-item" bindtap="onRightItemTap">
+				<image class="img" mode="scaleToFill" src="{{dish.dishPic[0]}}" />
+				<view class="info-wrapper">
+					<view class="dishName text-bold" style="color:black">{{dish.dishName}}</view>
+					<view class="text-small grey-color small-desc">{{dish.calories}}Kcal起</view>
+					<view class="price-action-wrapper">
+						<view class="dishPrice text-large">¥{{dish.dishPrice}}</view>
+						<view wx:if="{{dish.stock>0}}">
+							<view wx:if="{{dish.spu_qty>0}}" class="control-wrapper">
+								<view class="iconfont icon-reduce-btn-fill" catchtap="countMinus" data-index="{{index}}" data-key="{{key}}"></view>
+								<view class="qty">{{dish.spu_qty}}</view>
+								<view name="add"  class="iconfont icon-add-btn-fill"  catchtap="countAdd" data-index="{{index}}" data-key="{{key}}"></view>
+							</view>
+							<view wx:else>
+								<view class="{{!dish.needConfig?'iconfont icon-add goods-btn_img':''}}" catchtap="countAdd" data-key="{{key}}" data-index="{{index}}" style="background-color: black;border-radius: 20rpx;color:white;width:100rpx;height:40rpx;text-align: center;">{{dish.needConfig?'选规格':''}}</view>
+							</view>
+						</view>
+						<view wx:else>已售罄</view>
+					</view>
+				</view>
+
+			</view>
+		</view>
+	</scroll-view>
+</view>
+<view class="{{cart_expanded?'checkout-bar-wrapper_expanded':'checkout-bar-wrapper'}}">
+	<image class="cart-icon iconfont icon-cart" bindtap="expand_cart"></image>
+	<view bindtap="checkout" plain type="info" class="checkout-btn">下单</view>
+</view>
+
+<van-popup round show="{{cart_expanded}}" position="bottom" custom-style="height:50%;margin-bottom:170rpx;" bind:close="onCartPopupClose">
+	<view class="title">购物车</view>
+	<scroll-view class="cart-scroll" scroll-y>
+		<view wx:if="{{cart.length===0}}">购物车是空的哦</view>
+		<view wx:else class="cart-content">
+			<view class="cart-item-wrapper">
+				<view wx:for="{{cart}}" wx:key="index" class="cart-item">
+					<image class="goodPic" mode="aspectFit" src="{{item.dishPic[0]}}"></image>
+					<view class="cart-info">
+						<view>{{item.dishName}}</view>
+						<view class="text-small grey-color">{{item.selectedBase.name}}</view>
+					</view>
+					<view class="calories text-small grey-color">{{(item.calories+item.selectedBase.calories)*item.spu_qty}} kCal</view>
+					<view class="qty">x {{item.spu_qty}}</view>
+				</view>
+			</view>
+
+		</view>
+	</scroll-view>
+</van-popup>
+
+<van-popup round show="{{configShow}}" bind:close="onConfigPopupClose" position="bottom" custom-style="height:30%;">
+	<view class="selection-wrapper" style=" padding:40rpx;">
+		<view>选基底</view>
+		<view class="label-wrapper">
+			<view wx:for="{{dishObj[selectedKey][selectedIndex].base}}" class="label-item selection {{index===selectedBaseIndex?'selected':''}}" wx:key="name" bindtap="onConfigChange" data-index="{{index}}">{{item.name}}</view>
+		</view>
+	</view>
+
+	<view class="main-black-btn" bindtap="add_cart" data-key="">选好了</view>
+</van-popup>

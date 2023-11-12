@@ -1,0 +1,28 @@
+<van-cell-group style="margin:0 24rpx">
+	<van-cell border="{{false}}" title="菜品:" size="large">
+		<view bind:tap="select_dish">选择菜品</view>
+	</van-cell>
+	<van-popup show="{{popup_show}}"  bind:close="onClose" position="bottom">
+		<van-picker></van-picker>
+	</van-popup>
+	<view class="header">
+		<view>
+			<image style="width: 100px; height:100px" mode="aspectFill" src="../../static/img/WechatIMG34056.jpg"></image>
+		</view>
+		<view>
+			<view style="margin-left:-90rpx;font-size: 14px; font-weight: 400;width:260rpx;text-align: center;">嫩煎鸡胸波奇碗</view>
+		</view>
+		<view>
+			<view style="font-size: 16px; width:180rpx; font-weight: 400;">
+				<view style="text-align: center;">热量/100g</view>
+				<view style="text-align: center;">500千卡</view>
+			</view>
+		</view>
+	</view>
+</van-cell-group>
+<van-divider contentPosition="center">营养价值</van-divider>
+<view>
+	<van-cell-group inset>
+		<van-cell wx:for="{{nutri}}" wx:for-item="value" wx:for-index="key" title="{{key}}" value="{{value}}"></van-cell>
+	</van-cell-group>
+</view>
