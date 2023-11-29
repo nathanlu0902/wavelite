@@ -2,7 +2,6 @@
   "usingComponents": {
     "tabbar":"../../components/tabbar/index",
     "register":"../../components/register/register",
-    "popup":"../../components/popup/popup",
     "custom-nav-bar":"../../components/custom-nav-bar/custom-nav-bar",
     "qty-control":"../../components/qty-control/qty-control",
     "configSelector":"../../components/configSelector/configSelector"

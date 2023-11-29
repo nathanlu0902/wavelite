@@ -4,7 +4,7 @@
   flex-direction:row;
   justify-content: space-around;
   align-items: center;
-  background: #F1F2EE;
+  background: #fffcf7;
   box-shadow: 0 0 14px rgba(0,0,0,.2);
   border-radius: 30px;
   height:100rpx;
@@ -14,7 +14,8 @@
   position: fixed;
   pointer-events: auto;
   right:0;
-  left:0
+  left:0;
+  opacity: 0.85;
 }
 
 .tabbar-item-wrapper{

@@ -5,5 +5,16 @@
 	border-radius:30rpx;
 	box-shadow: 0 0 14px rgba(0,0,0,.2);
 	padding:40rpx;
+	font-weight: 300;
 
 }
+.info-item{
+	margin-bottom: 10rpx;
+}
+.status{
+	position: absolute;
+	right:40rpx;
+	top:20rpx;
+	font-weight: 500;
+}
+

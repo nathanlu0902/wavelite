@@ -1,85 +1,91 @@
 @import "./styles/iconfont.wxss";
 
-page{
-  --primary-color:#ff5801
+page {
+	--primary-color: #ff5801
 }
 
-.grey-color{
-  color:#999 !important;
+.grey-color {
+	color: #999 !important;
 }
 
-.text-large{
-  font-size:1.1em;
+.text-large {
+	font-size: 1.1em;
 }
 
-.text-medium{
-  font-size: 0.9em;
+.text-medium {
+	font-size: 0.9em;
 }
 
-.text-small{
-  font-size:0.7em;
+.text-small {
+	font-size: 0.7em;
 }
 
-.text-bold{
-  font-weight:500;
+.text-bold {
+	font-weight: 500;
 }
 
-.main-black-btn{
-  background-color: black;
-  height:35px;
-  text-align: center;
-  color:#fff;
-  line-height:35px;
-  font-size:14px;
-  position: fixed;
-  bottom: 68rpx;
-  width: 684rpx;
-  right:33rpx;
+.main-black-btn {
+	background-color: black;
+	height: 35px;
+	text-align: center;
+	color: #fff;
+	line-height: 35px;
+	font-size: 14px;
+	position: fixed;
+	bottom: 68rpx;
+	width: 684rpx;
+	right: 33rpx;
 }
 
-.cart-item-wrapper{
-	margin-top:30rpx;
-	padding:0 48rpx;
-	display:flex;
+.cart-item-wrapper {
+	margin-top: 30rpx;
+	padding: 40rpx 48rpx;
+	display: flex;
 	flex-direction: column;
-  
-  }
-  
-  .cart-item{
-	display:flex;
+
+}
+
+.cart-item {
+	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	margin-bottom: 26rpx;
 	position: relative;
 	border-bottom: 2rpx dashed lightgray;
-	height:150rpx;
-  
-  }
-  
-  .cart-item .goodPic{
-	width:120rpx;
-	height:120rpx;
+	height: 150rpx;
+
+}
+
+.goodPic {
+	width: 160rpx;
+	height: 120rpx;
 	position: absolute;
 	top: 0;
-  }
-  .cart-item .cart-info{
+}
+
+.cart-info {
 	font-size: 28rpx;
 	position: absolute;
 	top: 0;
-	left:140rpx;
-  
-  }
-  
-  .cart-item .qty{
+	left: 140rpx;
+
+}
+
+/* .qty {
 	position: absolute;
-	top:80rpx;
-	right:0;
+	top: 80rpx;
+	right: 0;
 	font-size: 28rpx;
-  
-  }
 
-  .main-btn{
-	margin:40rpx auto 0;background-color:#C4712E;border-radius: 20rpx;color:white;width: 120rpx;height:60rpx;line-height:60rpx;text-align: center;padding:10rpx
-  }
+} */
 
-
+.main-btn {
+	margin: 20rpx auto 0;
+	background-color: #f68703;
+	border-radius: 20rpx;
+	color: white;
+	width: 450rpx;
+	height: 80rpx;
+	line-height: 80rpx;
+	text-align: center;
+	padding: 10rpx
+}

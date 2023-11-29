@@ -1,7 +1,0 @@
-<view class="half-screen">
-  <view class="back-screen" bindtap="hideModal" wx:if="{{showModal}}"></view>
-  <view animation="{{animationData}}" wx:if="{{showModal}}" class="popup popup-outer-class">
-    <slot></slot>
-  </view>
-  
-</view>

@@ -1,0 +1,27 @@
+Page{
+	position: relative;
+}
+.calories{
+	position:absolute;
+	right:0;
+	top:10rpx;
+  }
+
+  .cart-content{
+	display:flex;
+	flex-direction: column;
+  }
+
+  .good-info-wrapper{
+	display:flex;
+	flex-direction: row;
+  }
+  .cart-content{
+	display:flex;
+	flex-direction: column;
+  }
+  .cancel-btn{
+	  position: absolute;
+	  right:30rpx;
+  }
+

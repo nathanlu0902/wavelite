@@ -1,7 +1,6 @@
 {
   "usingComponents": {
-    "register":"../../components/register/register",
-    "popup":"../../components/popup/popup"
+    "register":"../../components/register/register"
   },
   "navigationStyle": "custom"
 }

@@ -6,8 +6,8 @@
 <van-cell-group inset title="次卡信息">
 	<van-cell title="次卡类型" value="{{order.set}}"></van-cell>
 	<van-cell title="次数" value="{{order.num}}"></van-cell>
-	<van-cell title="次卡价格" value="{{price}}"></van-cell>
+	<van-cell title="次卡价格" value="{{order.price}}"></van-cell>
 </van-cell-group>
 <view  style="margin:50rpx auto 0;width:200rpx" >
-<van-button type="primary" round bind:tap="onOrderConfirm">提交订单</van-button>
+<view bindtap="onOrderConfirm" class="main-black-btn">提交订单</view>
 </view>

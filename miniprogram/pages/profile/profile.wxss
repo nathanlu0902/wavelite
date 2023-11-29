@@ -1,9 +1,11 @@
 .avatar-wrapper{
   background-color:transparent;
+  margin-top:60rpx;
 }
 
 .avatar-wrapper::after{
-  border:none
+  border:none;
+  
 }
 
 .avatar{
@@ -16,4 +18,8 @@
 	position: fixed;
 	left:330rpx;
 	top:700rpx;
+}
+
+.birthday {
+	text-align: left !important;
 }

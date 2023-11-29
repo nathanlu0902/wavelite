@@ -9,6 +9,13 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/count/checkout/checkout",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/count/info/info",
           "query": "",
           "launchMode": "default",

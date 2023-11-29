@@ -12,13 +12,17 @@ Page({
 				operation:"get"
 			}
 		}).then(res=>{
-			console.log(res)
 			let count=res.result[0]
 			this.setData({
 				count:count
 			})
 		})
 	},
-  
-
+	toDetail(e){
+		const {index}=e.currentTarget.dataset;
+		wx.navigateTo({
+		  url: `../orderDetail/orderDetail?index=${index}`,
+		})
+	}
+	
   })

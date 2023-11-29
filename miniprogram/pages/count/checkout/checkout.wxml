@@ -7,10 +7,10 @@
 <van-cell-group inset title="商品信息">
 	<view class="cart-item-wrapper">
 		<view wx:for="{{cart}}" wx:key="index" class="cart-item">
-			<image class="goodPic" mode="aspectFit" src="{{item.dishPic[0]}}"></image>
+			<image class="goodPic" mode="aspectFit" src="{{item.dishPic}}"></image>
 			<view class="cart-info">
 				<view>{{item.dishName}}</view>
-				<view class="text-small grey-color">{{item.selectedBase.name}}</view>
+				<view class="text-small grey-color">{{item.selectedBase}}</view>
 			</view>
 			<view class="calories text-small grey-color">{{(item.calories+item.selectedBase.calories)*item.spu_qty}} kCal</view>
 			<view class="qty">x {{item.spu_qty}}</view>
@@ -23,5 +23,5 @@
 </view>
 
 <van-popup show="{{showTimePickerPopup}}" position="bottom" bind:close="onTimePickerPopupClose">
-		<van-datetime-picker type="time" min-hour="{{minhour}}" max-hour="{{maxhour}}" show-toolbar bind:confirm="onTimePickerConfirm" bind:cancel="onTimePickerCancel" min-minute="{{minminute}}"></van-datetime-picker>
-	</van-popup>
+	<van-datetime-picker type="time" min-hour="{{minhour}}" max-hour="{{maxhour}}" show-toolbar bind:confirm="onTimePickerConfirm" bind:cancel="onTimePickerCancel" min-minute="{{minminute}}"></van-datetime-picker>
+</van-popup>

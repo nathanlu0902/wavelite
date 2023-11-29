@@ -1,14 +1,22 @@
 page{
-	background-color: white;
+	background-color: #f9faec;
 }
 .header{
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
-	margin:20rpx 0 0;
-	padding:20rpx; 
+	padding:20rpx 40rpx; 
 	/* border:1px solid lightgray; */
 	background-color: white;
 	border-radius: 10px;
+}
+.dish{
+	text-align: left !important; 
+	font-size: 14px !important;
+
+}
+
+.cell-group{
+	background-color: #f9faec !important;
 }

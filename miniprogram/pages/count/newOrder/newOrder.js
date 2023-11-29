@@ -4,20 +4,82 @@ Page({
 		currentIndex: 0,
 		configShow: false,
 		selectedBaseIndex: 0,
-		viewid: "A",
+		baseNutri:{
+			"杂粮饭":{
+				calories:200,
+				fat:100,
+				carb:100,
+				protein:100
+			},
+			"沙拉菜":{
+				calories:100,
+				fat:100,
+				carb:100,
+				protein:100
+			},
+			"荞麦面":{
+				calories:300,
+				fat:100,
+				carb:100,
+				protein:100
+			},
+		},
+		level: {
+			'基础': {
+				id: 'basic',
+				count: '',
+				valid: true
+			},
+			'中等': {
+				id: 'medium',
+				count: '',
+				valid: true
+			},
+			'高级': {
+				id: 'high',
+				count: '',
+				valid: true
+			},
+			// '尊享': {
+			// 	id: 'best',
+			// 	count: '',
+			// 	valid: true
+			// },
+			'酱汁': {
+				id: 'sauce',
+				count: '',
+				valid: true
+			}
+		},
+		viewid: "",
 		main_dish_limit: 1,
 		sauce_limit: 1
 
 	},
 
 	onLoad() {
+		//获取次卡中每个品类菜品剩余次数
+		let count = wx.getStorageSync('count')
+		let level = this.data.level
+		level['基础']['count'] = count.level_a_count
+		level['中等']['count'] = count.level_b_count
+		level['高级']['count'] = count.level_b_count
+		// level['尊享']['count'] = count.level_d_count
+		for(let key in level){
+			if(level[key].count>0){
+				level[key].valid=true
+			}else{
+				level[key].valid=false
+			}
+		}
+
 		//取出缓存中最新的菜品列表
 		let dishList = wx.getStorageSync('dishList')
 		let dishObj = {
-			"Tier 1": [],
-			"Tier 2": [],
-			"Tier 3": [],
-			"酱汁": []
+			["基础"]: [],
+			["中等"]: [],
+			["高级"]: [],
+			["酱汁"]: []
 		}
 		for (let key in dishObj) {
 			dishObj[key] = dishList.filter(dish => {
@@ -25,11 +87,9 @@ Page({
 			})
 		}
 		this.setData({
-			dishObj: dishObj
+			dishObj: dishObj,
+			level: level
 		})
-
-
-
 		this.updateQty();
 
 
@@ -51,19 +111,20 @@ Page({
 				}
 			}
 			this.setData({
-				dishObj: dishObj
+				dishObj: dishObj,
+				totalCount:this.updateTotalCount()
 			})
 		}
 
 	},
 	onLeftItemTap: function (e) {
 		let {
-			key
+			id
 		} = e.currentTarget.dataset;
 		//设置scroll-into-view的参考对象
 		//id不能为中文，key全小写
 		this.setData({
-			viewid: key
+			viewid: id
 		})
 
 	},
@@ -117,8 +178,8 @@ Page({
 			index,
 			key
 		} = e.currentTarget.dataset
-		let cart = wx.getStorageSync('cart')||[]
-		let dishObj=this.data.dishObj
+		let cart = wx.getStorageSync('cart') || []
+		let dishObj = this.data.dishObj
 		let dish = dishObj[key][index]
 
 		//遍历cart，如果已存在同类，则提示限购
@@ -146,7 +207,10 @@ Page({
 				wx.showToast({
 					title: '已添加购物车',
 				})
-				
+				this.setData({
+					totalCount:this.updateTotalCount()
+				})
+
 			}
 
 
@@ -168,7 +232,6 @@ Page({
 					let cart_index = cart.findIndex(item => {
 						return item._id == dish._id
 					})
-					console.log(cart_index)
 					if (cart_index != -1) {
 						cart.splice(cart_index, 1)
 						wx.showToast({
@@ -176,11 +239,13 @@ Page({
 						})
 						let dishObj = this.data.dishObj
 						dishObj[key][index].spu_qty -= 1
+						wx.setStorageSync('cart', cart)
 						this.setData({
-							dishObj: dishObj
+							dishObj: dishObj,
+							totalCount:this.updateTotalCount()
 						})
 					}
-					wx.setStorageSync('cart', cart)
+					
 				}
 
 			}
@@ -189,12 +254,30 @@ Page({
 
 	},
 
+	updateTotalCount(){
+		let cart=wx.getStorageSync('cart')
+		let totalCount=0
+		cart.forEach(item=>{
+			totalCount+=item.spu_qty
+		})
+		return totalCount
+	},
+
+
 	onConfigChange(e) {
 		let {
 			index
 		} = e.currentTarget.dataset;
+		let {
+			selectedIndex,
+			selectedKey
+		} = this.data
+		let dishObj = this.data.dishObj
+		let dish=dishObj[selectedKey][selectedIndex]
+		dish.selectedBase=dish.base[index]
 		this.setData({
-			selectedBaseIndex: index,
+			dishObj:dishObj,
+			selectedBaseIndex:index
 		})
 	},
 

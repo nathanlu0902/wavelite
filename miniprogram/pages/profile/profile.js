@@ -2,25 +2,24 @@ const app = getApp()
 
 Page({
 	data: {
-		nickname: "",
-		gender: "",
-		phone: "",
-		birthday: "",
 		popup_show: false,
 		maxDate: new Date().getTime(),
-		minDate: new Date(1960, 1, 1).getTime()
+		minDate: new Date(1960, 1, 1).getTime(),
+		gender:"男"
 	},
 
 	onLoad(options) {
-		var userinfo = wx.getStorageSync('userinfo')
-		this.setData({
-			gender: userinfo.gender,
-			phone: userinfo.phone,
-			nickname: userinfo.nickname,
-			birthday: userinfo.birthday,
-			avatarUrl: userinfo.avatarUrl,
-			openid: userinfo.openid
-		})
+		if(wx.getStorageSync('userinfo')){
+			let userinfo=wx.getStorageSync('userinfo')
+			for(let key in userinfo){
+				console.log(key)
+				this.setData({
+					[`${key}`]:userinfo[key]
+				})
+			}
+		}
+
+
 	},
 
 	onNicknameChange(e) {
@@ -124,12 +123,7 @@ Page({
 				birthday: this.data.birthday
 			}
 		}).then(res => {
-				let userinfo = {
-					nickname: this.data.nickname,
-					phone: this.data.phone,
-					gender: this.data.gender,
-					birthday: this.data.birthday
-				}
+				console.log(res)
 				wx.showToast({
 					title: '个人资料已更新',
 				})

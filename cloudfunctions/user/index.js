@@ -13,31 +13,25 @@ exports.main = async (event, context) => {
 	const {
 		operation
 	} = event;
+
 	switch (operation) {
 		case "get":
-			db.collection("wavelite_user").where({
+			const result=await db.collection("wavelite_user").where({
 				openid:	OPENID
-			}).get().then(res=>{
-				const user=res.data[0];
-				return user
-			})
+			}).get()
+			return result;
+			break;
 		case "create":
 			const {
-				nickname, phone
+				phonenumber
 			} = event;
-			return db.collection("wavelite_user").add({
+			return await db.collection("wavelite_user").add({
 				data: {
 					openid: OPENID,
-					phone: phone,
-					nickname: nickname,
-
-				}
-			}).then(res => {
-				return {
-					code: "200",
-					msg: "user is created"
-				}
+					phone: phonenumber,
+				},
 			})
+
 		case "update":
 			//取event中除operation以外的属性
 			let {operation,...data}=event;

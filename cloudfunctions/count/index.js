@@ -17,40 +17,14 @@ exports.main = async (event, context) => {
 
 	switch (operation) {
 		case "create":
-			const {
+			var {
 				order
 			} = event
-			switch (order['set']) {
-				case "low":
-					order.level_a_count = 10
-					order.level_b_count = 20
-					order.level_c_count = 30
-					order.level_d_count = 40
-				case "medium":
-					order.level_a_count = 10
-					order.level_b_count = 20
-					order.level_c_count = 30
-					order.level_d_count = 40
-				case "high":
-					order.level_a_count = 10
-					order.level_b_count = 20
-					order.level_c_count = 30
-					order.level_d_count = 40
-			}
-
+			order.openid=openid
+			order.create_time=db.serverDate()
+			order.status="待审批"
 			return count_collection.add({
-				data: {
-					openid: openid,
-					level_a_count: order.level_a_count,
-					level_b_count: order.level_b_count,
-					level_c_count: order.level_c_count,
-					create_time: db.serverDate(),
-					receiver: order.receiver,
-					phone: order.phone,
-					delivery_time: order.delivery_time,
-					address: order.address,
-					status: "待审批"
-				}
+				data:order
 			}).then((e) => {
 				return {
 					code: "COUNT_ADDED"

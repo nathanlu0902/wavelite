@@ -1,16 +1,9 @@
-<view style="background-color: white; padding:20rpx 0 40rpx">
-	<view class="card-title">次卡级别：{{count.set}}</view>
-	<view class="card">
-		<image></image>
-	</view>
+<view style="margin:0 auto;width:660rpx">
+<image class="card" src="{{count.picUrl}}" mode="scaleToFill"></image>
 </view>
-<view class="userinfo-wrapper">
-	<!-- <image class="avatar" src="{{avatarUrl}}"></image> -->
-	<view class="nickname">欢迎您，{{nickname}}</view>
-	<view class="main-btn" bind:tap="toUse" >使用次卡</view>
-</view>
-
-<van-cell-group custom-class="" class="function-list" inset>
+<view class="main-btn" bind:tap="toUse">使用次卡</view>
+<view class="main-btn" bind:tap="toHistory">订单历史</view>
+<!-- <van-cell-group inset>
 	<van-cell icon="" title="我的订单" is-link url="../countHistory/countHistory"></van-cell>
 	<van-cell icon="" title="次卡权益" is-link url="../countInfo/countInfo"></van-cell>
-</van-cell-group>
+</van-cell-group> -->

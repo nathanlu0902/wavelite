@@ -1,28 +1,20 @@
-<van-cell-group style="margin:0 24rpx">
-	<van-cell border="{{false}}" title="菜品:" size="large">
-		<view bind:tap="select_dish">选择菜品</view>
+<van-popup show="{{popup_show}}" bind:close="onClose" position="bottom">
+	<van-picker columns="{{columns}}" show-toolbar bindconfirm="onPickerChange"></van-picker>
+</van-popup>
+<view style=" width:480rpx;margin:40rpx auto;">
+	<image style="width: 480rpx; height:360rpx;" mode="aspectFill" src="{{dish.dishPic}}" />
+</view>
+
+<!-- <van-divider contentPosition="center">营养价值</van-divider> -->
+<view style="margin-top:40rpx;">
+<van-cell-group inset>
+	<van-cell custom-class="cell-group" value-class="dish" title="选择菜品" value="{{dish.dishName}}/{{selectedBase.name}}" is-link bind:tap="select_dish" size="large">
 	</van-cell>
-	<van-popup show="{{popup_show}}"  bind:close="onClose" position="bottom">
-		<van-picker></van-picker>
-	</van-popup>
-	<view class="header">
-		<view>
-			<image style="width: 100px; height:100px" mode="aspectFill" src="../../static/img/WechatIMG34056.jpg"></image>
-		</view>
-		<view>
-			<view style="margin-left:-90rpx;font-size: 14px; font-weight: 400;width:260rpx;text-align: center;">嫩煎鸡胸波奇碗</view>
-		</view>
-		<view>
-			<view style="font-size: 16px; width:180rpx; font-weight: 400;">
-				<view style="text-align: center;">热量/100g</view>
-				<view style="text-align: center;">500千卡</view>
-			</view>
-		</view>
-	</view>
 </van-cell-group>
-<van-divider contentPosition="center">营养价值</van-divider>
-<view>
-	<van-cell-group inset>
-		<van-cell wx:for="{{nutri}}" wx:for-item="value" wx:for-index="key" title="{{key}}" value="{{value}}"></van-cell>
-	</van-cell-group>
+<van-cell-group inset style="margin-top:40rpx">
+	<van-cell custom-class="cell-group" title="热量" value="{{dish.calories+selectedBase.calories}} 千卡"></van-cell>
+	<van-cell custom-class="cell-group"  title="碳水化合物" value="{{dish.carb+selectedBase.carb}} 克"></van-cell>
+	<van-cell custom-class="cell-group"  title="脂肪" value="{{dish.fat+selectedBase.fat}} 克"></van-cell>
+	<van-cell custom-class="cell-group"  title="蛋白质" value="{{dish.protein+selectedBase.protein}} 克"></van-cell>
+</van-cell-group>
 </view>

@@ -1,0 +1,23 @@
+<van-cell-group title="配送信息" class="wrapper">
+	<van-cell title="收件人" value="{{order.receiver}}"></van-cell>
+	<van-cell title="电话" value="{{order.phone}}"></van-cell>
+	<van-cell title="地址" value="{{order.address}}"></van-cell>
+	<van-cell title="期望送达时间" value="{{order.delivery_time}}"></van-cell>
+	<van-cell title="订单状态" value="{{order.status}}"></van-cell>
+</van-cell-group>
+<van-cell-group title="菜品信息">
+	<view class="cart-item-wrapper">
+		<view wx:for="{{order.dishes}}" wx:key="index" class="cart-item">
+			<image class="goodPic" mode="aspectFit" src="{{item.dishPic}}"></image>
+			<view class="cart-info">
+				<view>{{item.dishName}}</view>
+				<view class="text-small grey-color">{{item.selectedBase}}</view>
+			</view>
+			<view class="calories text-small grey-color">{{(item.calories)*item.spu_qty}} kCal</view>
+			<view class="qty">x {{item.spu_qty}}</view>
+		</view>
+	</view>
+</van-cell-group>
+<view class="btn-wrapper">
+	<van-button type="default" round size="small" color="#1989fa" class="cancel-btn" bind:tap="cancel" disabled="{{is_overtime}}">取消订单</van-button>
+</view>

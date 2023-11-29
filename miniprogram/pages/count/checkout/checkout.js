@@ -1,4 +1,4 @@
-// pages/count/checkout/checkout.js
+import {generateUuid} from "../../../utils/utils"
 Page({
 
 	/**
@@ -15,11 +15,16 @@ Page({
 		//获取此时时间
 		let now= new Date()
 		let hourNow=now.getHours()
+		if(hourNow===23){
+			var minhour=0
+		}else{
+			var minhour=hourNow+1
+		}
 		let minNow=now.getMinutes()
 		this.setData({
 			count: count,
 			cart: cart,
-			minhour:hourNow+1,
+			minhour:minhour,
 			minminute:minNow
 		})
 	},
@@ -62,12 +67,24 @@ Page({
 	},
 
 	submit() {
-		const {
+		var {
 			receiver,
 			phone,
 			address,
 			delivery_time
 		} = this.data.count
+		//用户选择立即送出，自动生成一小时后的送达时间
+		if(!delivery_time){
+			let now=new Date()
+			let hour=now.getHours()
+			let minute=now.getMinutes()
+			if(hour===23){
+				var delivery_hour=0
+			}else{
+				var delivery_hour=hour+1
+			}
+			delivery_time=delivery_hour+':'+minute
+		}
 		const dish = this.data.cart[0]
 		const delivery_order = {
 			receiver: receiver,
@@ -75,7 +92,8 @@ Page({
 			address: address,
 			delivery_time: delivery_time,
 			dishes: this.data.cart,
-			status: "待配送"
+			status: "待配送",
+			id:generateUuid()
 		}
 		console.log(delivery_order)
 		//扣除可用次数

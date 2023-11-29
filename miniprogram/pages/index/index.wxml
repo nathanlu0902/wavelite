@@ -1,58 +1,49 @@
 <swiper class="index-swiper" autoplay="true" circular="true" indicator-dots="true" interval="5000" duration="1000">
 	<block wx:for="{{bnrUrl}}" wx:for-index="index" wx:key="index">
 		<swiper-item>
-			<image class="bnr-item-img" src="{{item.imgUrl}}"></image>
+			<image class="bnr-item-img" src="{{item.imgUrl}}" mode=""></image>
 		</swiper-item>
 	</block>
 </swiper>
-<!-- <view wx:if="{{currentOrder}}">
-	<view class="order-status">
-		<view>下单时间：{{currentOrder.order_time}}</view>
-		<view>订单状态：{{currentOrder.order_status}}</view>
-	</view>
-</view> -->
 <van-row class="btn-wrapper" gutter="50">
 	<van-col span="8">
-		<view class="btn" style="background-color: #828F9B;" bind:tap="toCount">
+		<view class="btn" style="background-color: #f68703;color:#fffcf7" bind:tap="toCount">
 			<van-icon size="48rpx" name="shop"></van-icon>
 			<view>次卡</view>
 		</view>
 	</van-col>
 	<van-col span="8">
-		<view class="btn" style="background-color: #C4712E;" bind:tap="toNutri">
+		<view class="btn" style="background-color: #7ab206;color:#fffcf7" bind:tap="toNutri">
 			<van-icon size="48rpx" name="search"></van-icon>
 			<view>营养素查询</view>
 		</view>
 	</van-col>
 	<van-col span="8">
-		<view class="btn" style="background-color: #99A9A0;" bind:tap="toDelivery">
+		<view class="btn" style="background-color: #bf1413;color:#fffcf7" bind:tap="toDelivery">
 			<van-icon size="48rpx" name="todo-list"></van-icon>
 			<view>订阅</view>
 		</view>
 	</van-col>
 </van-row>
-<!-- <view wx:if="{{loggedIn}}" class="userCard">
-	<view class="btn-area" bindtap="onBindUserTap">
-		<view class="member-info">
-			<view class="text-large">Hi，{{userinfo.nickname}}</view>
-			<view class="points text-small">星级:{{userinfo.rating}}</view>
-			<view class="points text-small">积分: 1000</view>
-		</view>
-		<image style="height:160rpx;width:160rpx;position: absolute;right:120rpx;top:10rpx" src="../../images/Nathan最帅.png"></image>
-	</view>
+
+
+<view class="user-card" wx:if="{{loggedIn}}">
+	<image style="height:100rpx;width:100rpx;margin:auto 0;margin-left:100rpx" src="cloud://cloud1-8gf4k3n9d3a701cc.636c-cloud1-8gf4k3n9d3a701cc-1304230492/logo/6.png"></image>
+	<view class="username">Hi,{{userinfo.username?userinfo.username:'惟悟会员'}}</view>
+	<navigator style="line-height: 150rpx; margin-left:190rpx;font-size: 48rpx;" url="../profile/profile">
+	<van-icon name="edit" class="text-small"  />
+	</navigator>
 </view>
-<view wx:else>
-	<view bindtap="showRegister">加入Wave</view>
-	<popup id="popup">
-		<register bindregisterCompleted="registerCompleted" slot="popup-page"></register>
-	</popup>
-</view> -->
+<view wx:elif="{{!loggedIn}}">
+	<button type="primary" open-type="getPhoneNumber" bindgetphonenumber="register">一键注册</button>
+</view>
 
-<image style="width: 100%;height:1000rpx;" src="http://www.wagas.com.cn/admin/img/indeximg/bc4bb4740548b7348f6ef04b9219d21f.jpg" mode="aspectFill"></image>
 
-<!-- <view > -->
+<view style="position: relative;">
+	<navigator style="width:550rpx;height:80rpx;position: absolute;top:1170rpx;left:100rpx" url="../nutri/nutri"></navigator>
+	<image style="width:100%;height:2000rpx" src="cloud://cloud1-8gf4k3n9d3a701cc.636c-cloud1-8gf4k3n9d3a701cc-1304230492/index/WechatIMG53250.jpg" mode="aspectFit"></image>
+</view>
+
 <button open-type="contact" bindcontact="handleContact" style="position: fixed; bottom:160rpx;right:30rpx;background-color: white;border-radius: 50%;padding:10rpx">
-	<van-icon size="36px" name="service-o" ></van-icon>
+	<van-icon size="36px" name="service-o"></van-icon>
 </button>
-
-<!-- </view> -->

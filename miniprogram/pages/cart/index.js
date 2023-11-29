@@ -1,5 +1,5 @@
 import {total_cart_calories, total_cart_count, total_cart_price,checkStock} from "../../utils/utils"
-import config from "../../config/config"
+import {shopList} from "../../config/config"
 import {current_time} from "../../utils/utils"
 
 Page({
@@ -9,7 +9,7 @@ Page({
     member_discount:0,
     good_discount:0,
     delivery_fee:0,
-    close:config.shopList[0].close
+    close:shopList[0].close
   },
 
   onShow(){

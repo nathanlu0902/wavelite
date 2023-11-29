@@ -20,13 +20,15 @@
     "pages/count/countmgt/countmgt",
     "pages/count/countHistory/countHistory",
 	"pages/count/newOrder/newOrder",
-	"pages/count/checkout/checkout"
+	"pages/count/checkout/checkout",
+	"pages/count/orderDetail/orderDetail"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Wave Lite",
-    "navigationStyle": "custom"
+	"navigationStyle": "custom",
+	"initialRenderingCache":"static"
   },
   "tabBar": {
     "custom": true,

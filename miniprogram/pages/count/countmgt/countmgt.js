@@ -14,16 +14,12 @@ Page({
   onLoad(options) {
 	let dishList=wx.getStorageSync('dishList')
 	let count=wx.getStorageSync('count')
+	
 	this.setData({
 		dishList:dishList,
-		count:count[0]
+		count:count
 	})
-	let userinfo=wx.getStorageSync('userinfo');
-    //没有头像连接则显示默认头像
-    this.setData({
-      nickname:userinfo.nickname,
-      avatarUrl:userinfo.avatarUrl
-    })
+	
   },
 
   toHistory(){
@@ -35,6 +31,11 @@ Page({
   toUse(){
 	  wx.navigateTo({
 		url: '../newOrder/newOrder',
+	  })
+  },
+  toHistory(){
+	  wx.navigateTo({
+		url: '../countHistory/countHistory',
 	  })
   }
 })
